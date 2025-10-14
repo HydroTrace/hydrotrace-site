@@ -10,7 +10,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <About />
+        <About className="bg-[#f8f7ee]" />
         <Technology className="bg-[#faf5ee]" />
         <Collaboration className="bg-slate-100" />
         <Contact />
