@@ -1,9 +1,9 @@
 import { Twitter, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Contact = () => {
+const Contact = ({ className }: { className?: string }) => {
   return (
-    <section id="contact" className="py-24 bg-[#F6F8F9]">
+    <section id="contact" className={`py-24 bg-[#F6F8F9] ${className || ""}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 font-['DM_Serif_Text']">

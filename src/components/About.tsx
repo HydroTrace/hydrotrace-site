@@ -1,8 +1,8 @@
 import circleLogo from "@/assets/hydrotrace-circle-logo.png";
 
-const About = () => {
+const About = ({ className }: { className?: string }) => {
   return (
-    <section id="about" className="py-24 bg-muted/10">
+    <section id="about" className={`py-24 bg-muted/10 ${className || ""}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">

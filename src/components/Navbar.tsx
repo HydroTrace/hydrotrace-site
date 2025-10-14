@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/hydrotrace-logo.png";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -29,9 +32,9 @@ const Navbar = () => {
               <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
                 Contact us
               </button>
-              <button onClick={() => scrollToSection("blog")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
+              <Link to="/blog" className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
                 Blog
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -55,9 +58,9 @@ const Navbar = () => {
               <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Contact us
               </button>
-              <button onClick={() => scrollToSection("blog")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+              <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Blog
-              </button>
+              </Link>
             </div>
           </div>}
       </div>
