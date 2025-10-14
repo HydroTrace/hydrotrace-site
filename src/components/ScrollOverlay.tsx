@@ -24,11 +24,11 @@ const ScrollOverlay = ({
     () => {
       if (!sectionRef.current || !imageRef.current || !contentRef.current) return;
 
-      // Set initial states
+      // Set initial states - start completely off-screen
       gsap.set(imageRef.current, {
-        y: '30vh',
+        y: '100vh',
         opacity: 0,
-        scale: 0.85,
+        scale: 0.8,
       });
 
       gsap.set(contentRef.current, {
@@ -90,7 +90,7 @@ const ScrollOverlay = ({
       {/* Content - centered text */}
       <div
         ref={contentRef}
-        className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center -mt-32"
       >
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto font-['DM_Serif_Text'] drop-shadow-lg">
           {title}

@@ -11,11 +11,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if we've scrolled past the hero section (approximately)
-      setIsScrolled(window.scrollY > 100);
+      // Get the scroll overlay section
+      const scrollOverlay = document.getElementById('scroll-overlay');
+      if (scrollOverlay) {
+        const overlayBottom = scrollOverlay.offsetTop + scrollOverlay.offsetHeight;
+        // Keep white styling until we scroll past the scroll overlay section
+        setIsScrolled(window.scrollY > overlayBottom - 100);
+      } else {
+        // Fallback if section not found
+        setIsScrolled(window.scrollY > 100);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
