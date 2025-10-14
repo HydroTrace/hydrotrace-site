@@ -15,20 +15,28 @@ const Navbar = () => {
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100">
         <div className="flex items-center justify-between h-20 bg-gray-100">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <img src={logo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={() => scrollToSection("hero")} />
+          {/* Logo and Navigation Links */}
+          <div className="flex items-center gap-8">
+            <div className="flex-shrink-0">
+              <img src={logo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={() => scrollToSection("hero")} />
+            </div>
+            
+            {/* Desktop Navigation - Left Side */}
+            <div className="hidden md:flex space-x-8">
+              <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
+                About us
+              </button>
+              <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
+                Contact us
+              </button>
+              <button onClick={() => scrollToSection("blog")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
+                Blog
+              </button>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
-              About us
-            </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors font-['DM_Serif_Text'] text-lg">
-              Contact us
-            </button>
-          </div>
+          {/* Empty spacer for alignment */}
+          <div className="hidden md:block"></div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -46,6 +54,9 @@ const Navbar = () => {
               </button>
               <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Contact us
+              </button>
+              <button onClick={() => scrollToSection("blog")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+                Blog
               </button>
             </div>
           </div>}

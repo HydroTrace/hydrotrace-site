@@ -1,35 +1,46 @@
-import { Mail } from "lucide-react";
+import { Twitter, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-muted/30">
+    <section id="contact" className="py-24 bg-[#F6F8F9]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 font-['DM_Serif_Text']">
             Get in Touch
           </h2>
           <p className="text-xl text-muted-foreground mb-12">
             Interested in learning more about HydroTrace? We'd love to hear from you.
           </p>
 
-          <div className="bg-background p-8 md:p-12 rounded-xl border border-border">
-            <div className="flex items-center justify-center mb-6">
-              <Mail className="h-12 w-12 text-accent" />
-            </div>
-            <a
-              href="mailto:info@hydrotrace.io"
-              className="text-2xl font-semibold text-accent hover:text-accent/80 transition-colors mb-8 block"
+          <Button
+            size="lg"
+            className="bg-foreground hover:bg-foreground/90 text-background px-8 mb-12 font-['DM_Serif_Text']"
+            onClick={() => window.location.href = "mailto:info@hydrotrace.io"}
+          >
+            Send us a message
+          </Button>
+
+          {/* Social Media Strip */}
+          <div className="flex items-center justify-center gap-6 pt-8 border-t border-border/50">
+            <a 
+              href="https://twitter.com/hydrotrace" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
             >
-              info@hydrotrace.io
+              <Twitter className="h-5 w-5" />
+              <span className="text-sm">@hydrotrace</span>
             </a>
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-white px-8 font-['DM_Serif_Text']"
-              onClick={() => window.location.href = "mailto:info@hydrotrace.io"}
+            <a 
+              href="https://linkedin.com/company/hydrotrace" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
             >
-              Send us a message
-            </Button>
+              <Linkedin className="h-5 w-5" />
+              <span className="text-sm">HydroTrace</span>
+            </a>
           </div>
         </div>
       </div>

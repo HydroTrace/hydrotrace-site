@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ShaderBackground from "./ShaderBackground";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -8,12 +6,16 @@ import { SplitText } from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText, useGSAP);
 
-const Hero = () => {
+interface HeroProps {
+  title: string;
+  description: string;
+}
+
+const Hero = ({ title, description }: HeroProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
   const ctaRef = useRef<HTMLDivElement | null>(null);
-  const badgeRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToAbout = () => {
     const element = document.getElementById("about");
@@ -37,12 +39,9 @@ const Hero = () => {
           yPercent: 30,
           autoAlpha: 0,
           scale: 1.06,
-          transformOrigin: '50% 100%',
+          transformOrigin: '50% 50%',
         });
 
-        if (badgeRef.current) {
-          gsap.set(badgeRef.current, { autoAlpha: 0, y: -8 });
-        }
         if (subtitleRef.current) {
           gsap.set(subtitleRef.current, { autoAlpha: 0, y: 8 });
         }
@@ -53,10 +52,6 @@ const Hero = () => {
         const tl = gsap.timeline({
           defaults: { ease: 'power3.out' },
         });
-
-        if (badgeRef.current) {
-          tl.to(badgeRef.current, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.0);
-        }
 
         tl.to(
           split.lines,
@@ -93,52 +88,35 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        {/* Badge */}
-        <div 
-          ref={badgeRef}
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm mb-6"
-        >
-          <span className="text-[10px] font-light uppercase tracking-[0.08em] text-white/80">New</span>
-          <span className="h-1 w-1 rounded-full bg-white/50" />
-          <span className="text-xs font-light tracking-tight text-white">Digital Water Infrastructure</span>
-        </div>
-
         {/* Title */}
         <h1 
           ref={headerRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto font-['DM_Serif_Text']"
         >
-          Building Digital Foundations For Water Security
+          {title}
         </h1>
 
         {/* Subtitle */}
         <p 
           ref={subtitleRef}
-          className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-12 max-w-4xl mx-auto font-light"
+          className="text-xl sm:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-light"
         >
-          From Source to System: Blockchain for Traceable, Trustworthy Water Management
+          {description}
         </p>
 
         {/* CTA */}
         <div ref={ctaRef}>
-          <Button
+          <button
             onClick={scrollToAbout}
-            size="lg"
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-6 text-lg font-['DM_Serif_Text'] transition-all duration-300"
+            className="rounded-full border border-white/30 bg-transparent px-8 py-3 text-base text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/50 font-['DM_Serif_Text']"
           >
             Learn More
-            <ChevronDown className="ml-2 h-5 w-5" />
-          </Button>
+          </button>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-        <ChevronDown className="h-8 w-8 text-white/70" />
-      </div>
-
       {/* Bottom gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-primary/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/60 to-transparent" />
     </section>
   );
 };
