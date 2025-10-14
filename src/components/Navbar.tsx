@@ -1,18 +1,43 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/hydrotrace-logo.png";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth"
-      });
-      setIsMenuOpen(false);
+    setIsMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation and then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    }
+  };
+  
+  const handleLogoClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      scrollToSection("hero");
     }
   };
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -21,7 +46,7 @@ const Navbar = () => {
           {/* Logo and Navigation Links */}
           <div className="flex items-center gap-8">
             <div className="flex-shrink-0">
-              <img src={logo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={() => scrollToSection("hero")} />
+              <img src={logo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={handleLogoClick} />
             </div>
             
             {/* Desktop Navigation - Left Side */}
