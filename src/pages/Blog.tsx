@@ -1,69 +1,92 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import blogImage from "@/assets/blog-water-blockchain.jpg";
+import { ArrowRight } from "lucide-react";
+import agricultureImage from "@/assets/resource-agriculture.jpg";
+import municipalImage from "@/assets/resource-municipal.jpg";
+import industrialImage from "@/assets/resource-industrial.jpg";
+import conservationImage from "@/assets/resource-conservation.jpg";
 
-// Sample blog posts data - replace with real data/API later
-const blogPosts = [
+const resources = [
   {
-    slug: "blockchain-water-governance",
-    title: "Blockchain Technology in Water Governance",
-    description: "Exploring how blockchain can transform water resource management and create transparent governance systems.",
-    image: blogImage,
-    date: "October 14, 2025"
+    id: "agricultural-water-management",
+    title: "Agricultural Water Management",
+    description: "Optimize irrigation systems and ensure sustainable water use for farming communities",
+    image: agricultureImage,
+    slug: "agricultural-water-management"
+  },
+  {
+    id: "municipal-water-supply",
+    title: "Municipal Water Supply",
+    description: "Track and verify urban water distribution for transparent public service delivery",
+    image: municipalImage,
+    slug: "municipal-water-supply"
+  },
+  {
+    id: "industrial-water-compliance",
+    title: "Industrial Water Compliance",
+    description: "Monitor industrial water extraction and maintain regulatory compliance",
+    image: industrialImage,
+    slug: "industrial-water-compliance"
+  },
+  {
+    id: "groundwater-conservation",
+    title: "Groundwater Conservation",
+    description: "Protect aquifer systems through verifiable monitoring and sustainable practices",
+    image: conservationImage,
+    slug: "groundwater-conservation"
   }
 ];
 
 const Blog = () => {
   const navigate = useNavigate();
   
+  const handleResourceClick = (slug: string) => {
+    navigate(`/blog/${slug}`);
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-muted/20">
       <Navbar />
       <main className="flex-1 pt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-['DM_Serif_Text']">
-              Blog
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 font-['DM_Serif_Text'] text-foreground">
+              Learn More
             </h1>
-            <p className="text-xl text-muted-foreground mb-12">
-              Insights on water governance, blockchain technology, and sustainable management
+            <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
+              Explore how HydroTrace enables transparent water management across diverse sectors
             </p>
 
-            {blogPosts.length === 0 ? (
-              <div className="text-center py-24">
-                <p className="text-xl text-muted-foreground">
-                  Currently no blogs available — check back soon.
-                </p>
-              </div>
-            ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {blogPosts.map((post: any, index: number) => (
-                  <Card 
-                    key={index} 
-                    className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-                    onClick={() => navigate(`/blog/${post.slug}`)}
-                  >
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="aspect-video object-cover"
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {resources.map((resource) => (
+                <div
+                  key={resource.id}
+                  onClick={() => handleResourceClick(resource.slug)}
+                  className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group border border-border"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={resource.image}
+                      alt={resource.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <CardHeader>
-                      <CardTitle className="font-['DM_Serif_Text']">{post.title}</CardTitle>
-                      <CardDescription>{post.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Button variant="outline" className="font-['DM_Serif_Text']">
-                        Read More
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-3 font-['DM_Serif_Text'] text-foreground">
+                      {resource.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {resource.description}
+                    </p>
+                    <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>

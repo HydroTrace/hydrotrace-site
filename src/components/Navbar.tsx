@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/hydrotrace-logo.png";
+import logoWhite from "@/assets/hydrotrace-logo-white.png";
+import logoBlack from "@/assets/hydrotrace-logo-black.png";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if we've scrolled past the hero section (approximately)
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
@@ -40,25 +52,29 @@ const Navbar = () => {
       scrollToSection("hero");
     }
   };
+  const navTextColor = isScrolled ? "text-foreground" : "text-white";
+  const navHoverColor = isScrolled ? "hover:text-foreground/70" : "hover:text-white/80";
+  const currentLogo = isScrolled ? logoBlack : logoWhite;
+
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Navigation Links */}
           <div className="flex items-center gap-8">
             <div className="flex-shrink-0">
-              <img src={logo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={handleLogoClick} />
+              <img src={currentLogo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={handleLogoClick} />
             </div>
             
             {/* Desktop Navigation - Left Side */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection("about")} className="text-white hover:text-white/80 transition-colors font-['DM_Serif_Text'] text-lg">
+              <button onClick={() => scrollToSection("about")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
                 About us
               </button>
-              <button onClick={() => scrollToSection("contact")} className="text-white hover:text-white/80 transition-colors font-['DM_Serif_Text'] text-lg">
+              <button onClick={() => scrollToSection("contact")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
                 Contact us
               </button>
-              <Link to="/blog" className="text-white hover:text-white/80 transition-colors font-['DM_Serif_Text'] text-lg">
-                Blog
+              <Link to="/blog" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
+                Learn More
               </Link>
             </div>
           </div>
@@ -68,7 +84,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-white/80 transition-colors" aria-label="Toggle menu">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`${navTextColor} ${navHoverColor} transition-colors`} aria-label="Toggle menu">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -84,7 +100,7 @@ const Navbar = () => {
                 Contact us
               </button>
               <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
-                Blog
+                Learn More
               </Link>
             </div>
           </div>}

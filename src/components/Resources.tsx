@@ -55,7 +55,7 @@ const Resources = ({ className }: { className?: string }) => {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resources.map((resource) => (
+            {resources.slice(0, 4).map((resource) => (
               <div
                 key={resource.id}
                 onClick={() => handleResourceClick(resource.slug)}
