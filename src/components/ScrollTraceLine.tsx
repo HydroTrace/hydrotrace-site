@@ -74,11 +74,11 @@ const ScrollTraceLine = () => {
              Q 30,95 35,100"
           fill="none"
           stroke="url(#traceGradient)"
-          strokeWidth="0.3"
+          strokeWidth="0.2"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#glow)"
-          opacity="0.8"
+          opacity="0.6"
         />
         
         {/* Subtle flowing dots along the path */}
