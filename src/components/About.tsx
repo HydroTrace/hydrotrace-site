@@ -1,4 +1,4 @@
-import retroLogo from "@/assets/hydrotrace-retro-logo.png";
+import circleLogo from "@/assets/hydrotrace-circle-logo.png";
 
 const About = () => {
   return (
@@ -9,8 +9,8 @@ const About = () => {
             {/* Logo on Left */}
             <div className="flex items-center justify-center">
               <img 
-                src={retroLogo} 
-                alt="HydroTrace Retro Logo" 
+                src={circleLogo} 
+                alt="HydroTrace Circle Logo" 
                 className="w-full max-w-md h-auto"
               />
             </div>

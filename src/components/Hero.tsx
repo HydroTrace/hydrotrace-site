@@ -7,11 +7,14 @@ import { SplitText } from 'gsap/SplitText';
 gsap.registerPlugin(SplitText, useGSAP);
 
 interface HeroProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-const Hero = ({ title, description }: HeroProps) => {
+const Hero = ({ 
+  title = "Transparent Water Management Through Digital Trust",
+  description = "Building verifiable systems for sustainable groundwater governance"
+}: HeroProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
