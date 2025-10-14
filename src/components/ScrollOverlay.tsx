@@ -24,51 +24,46 @@ const ScrollOverlay = ({
     () => {
       if (!sectionRef.current || !imageRef.current || !contentRef.current) return;
 
+      // Set initial states
+      gsap.set(imageRef.current, {
+        y: '30vh',
+        opacity: 0,
+        scale: 0.85,
+      });
+
+      gsap.set(contentRef.current, {
+        y: 60,
+        opacity: 0,
+      });
+
       // Animate image popping up from bottom
-      gsap.fromTo(
-        imageRef.current,
-        {
-          y: 200,
-          opacity: 0,
-          scale: 0.9,
+      gsap.to(imageRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'center center',
+          scrub: 1.5,
         },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            end: 'top 20%',
-            scrub: 1,
-          },
-        }
-      );
+      });
 
       // Animate content fading in
-      gsap.fromTo(
-        contentRef.current,
-        {
-          y: 50,
-          opacity: 0,
+      gsap.to(contentRef.current, {
+        y: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          end: 'center center',
+          scrub: 1.5,
         },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 60%',
-            end: 'top 30%',
-            scrub: 1,
-          },
-        }
-      );
+      });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
