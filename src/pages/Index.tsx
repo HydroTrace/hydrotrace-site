@@ -5,15 +5,16 @@ import Technology from "@/components/Technology";
 import Collaboration from "@/components/Collaboration";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
+import ScrollTraceLine from "@/components/ScrollTraceLine";
 const Index = () => {
   return <div className="min-h-screen relative">
+      <ScrollTraceLine />
       <Navbar />
       <main>
         <Hero />
         <About />
         <Technology className="bg-[#faf5ee]" />
-        <Collaboration />
+        <Collaboration className="bg-slate-100" />
         <Contact />
       </main>
       <Footer />
