@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import pathlinesImage from "@/assets/pathlines-aerial.png";
 
-const Collaboration = () => {
+const Collaboration = ({ className }: { className?: string }) => {
   return (
-    <section className="py-24 bg-muted/30">
+    <section className={`py-24 bg-muted/30 ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
