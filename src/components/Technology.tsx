@@ -1,5 +1,5 @@
 import { Shield, UserCheck, Activity, Lock } from "lucide-react";
-import pathlinesImage from "@/assets/pathlines-aerial.png";
+import irrigationImage from "@/assets/irrigation-water-droplet.png";
 
 const features = [
   {
@@ -68,8 +68,8 @@ const Technology = ({ className }: { className?: string }) => {
             {/* Right Column: Image */}
             <div className="flex items-center justify-center">
               <img 
-                src={pathlinesImage} 
-                alt="Aerial view of water pathlines" 
+                src={irrigationImage} 
+                alt="Irrigation system in agricultural field" 
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
             </div>

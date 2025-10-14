@@ -7,7 +7,16 @@ const Collaboration = ({ className }: { className?: string }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Half: Text Content */}
+            {/* Left Half: Image */}
+            <div className="flex items-center justify-center">
+              <img 
+                src={pathlinesImage} 
+                alt="Stampriet Transboundary Aquifer System visualization" 
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </div>
+
+            {/* Right Half: Text Content */}
             <div className="space-y-6">
               <p className="text-xl md:text-2xl text-foreground leading-relaxed">
                 "HydroTrace is collaborating with the Ministry of Agriculture, Water and Land Reform (MAFWLR) to explore blockchain-supported water quota management within the Stampriet Transboundary Aquifer System (STAS)."
@@ -19,15 +28,6 @@ const Collaboration = ({ className }: { className?: string }) => {
               >
                 Read the Concept Note
               </Button>
-            </div>
-
-            {/* Right Half: Image */}
-            <div className="flex items-center justify-center">
-              <img 
-                src={pathlinesImage} 
-                alt="Collaboration visual" 
-                className="w-full h-auto rounded-2xl shadow-lg"
-              />
             </div>
           </div>
         </div>
