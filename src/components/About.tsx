@@ -1,4 +1,4 @@
-import circleLogo from "@/assets/hydrotrace-circle-logo.png";
+import sphereLogo from "@/assets/hydrotrace-sphere.png";
 
 const About = ({ className }: { className?: string }) => {
   return (
@@ -9,8 +9,8 @@ const About = ({ className }: { className?: string }) => {
             {/* Logo on Left */}
             <div className="flex items-center justify-center">
               <img 
-                src={circleLogo} 
-                alt="HydroTrace Circle Logo" 
+                src={sphereLogo} 
+                alt="HydroTrace Sphere Logo" 
                 className="w-full max-w-md h-auto"
               />
             </div>
