@@ -1,0 +1,114 @@
+import { useRef, useEffect } from "react";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ShaderBackground from "./ShaderBackground";
+import grassField from "@/assets/grass-field.png";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+interface ScrollOverlayProps {
+  title?: string;
+  description?: string;
+}
+
+const ScrollOverlay = ({
+  title = "Sustainable Water Solutions",
+  description = "Transforming water management through innovative technology and transparent systems"
+}: ScrollOverlayProps) => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current || !imageRef.current || !contentRef.current) return;
+
+      // Animate image popping up from bottom
+      gsap.fromTo(
+        imageRef.current,
+        {
+          y: 200,
+          opacity: 0,
+          scale: 0.9,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: 1,
+          },
+        }
+      );
+
+      // Animate content fading in
+      gsap.fromTo(
+        contentRef.current,
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 60%',
+            end: 'top 30%',
+            scrub: 1,
+          },
+        }
+      );
+    },
+    { scope: sectionRef }
+  );
+
+  return (
+    <section
+      id="scroll-overlay"
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Shader Background - continues from hero */}
+      <ShaderBackground />
+
+      {/* Grass Field Image - pops up on scroll */}
+      <div
+        ref={imageRef}
+        className="absolute inset-0 z-10 flex items-end justify-center"
+      >
+        <img
+          src={grassField}
+          alt="Agricultural field with grass"
+          className="w-full h-[60vh] object-cover object-bottom"
+        />
+      </div>
+
+      {/* Content - centered text */}
+      <div
+        ref={contentRef}
+        className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto font-['DM_Serif_Text'] drop-shadow-lg">
+          {title}
+        </h2>
+        <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-light drop-shadow-md">
+          {description}
+        </p>
+      </div>
+
+      {/* Bottom gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7f7e9] to-transparent z-30" />
+    </section>
+  );
+};
+
+export default ScrollOverlay;

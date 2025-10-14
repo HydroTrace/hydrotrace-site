@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ScrollOverlay from "@/components/ScrollOverlay";
 import About from "@/components/About";
 import Technology from "@/components/Technology";
 import Resources from "@/components/Resources";
@@ -11,6 +12,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <ScrollOverlay />
         <About className="bg-[#f7f7e9]" />
         <Technology className="bg-[#faf5ee]" />
         <Resources className="bg-muted/20" />
