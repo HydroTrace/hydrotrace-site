@@ -45,8 +45,8 @@ const ScrollOverlay = ({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
-          end: 'center center',
-          scrub: 1.5,
+          end: 'bottom top',
+          scrub: 3,
         },
       });
 
@@ -57,9 +57,9 @@ const ScrollOverlay = ({
         ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'center center',
-          scrub: 1.5,
+          start: 'top 80%',
+          end: 'center 30%',
+          scrub: 3,
         },
       });
     },
