@@ -13,7 +13,7 @@ const Index = () => {
       <main>
         <Hero />
         <ScrollOverlay />
-        <About className="bg-[#2596be]" />
+        <About className="bg-[#faf7ef]" />
         <Technology className="bg-[#faf5ee]" />
         <Resources className="bg-muted/20" />
         <Collaboration className="bg-slate-100" />
