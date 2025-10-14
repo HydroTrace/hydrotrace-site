@@ -19,14 +19,24 @@ const About = ({ className }: { className?: string }) => {
     // Set video to first frame
     video.currentTime = 0;
 
+    // Create a proxy object to animate
+    const progress = { value: 0 };
+
     const scrollTrigger = ScrollTrigger.create({
       trigger: section,
       start: "top bottom",
       end: "bottom top",
+      scrub: 0.5, // Smooth scrubbing with 0.5 second delay
       onUpdate: (self) => {
         if (video.duration) {
-          // Map scroll progress to video time
-          video.currentTime = self.progress * video.duration;
+          gsap.to(progress, {
+            value: self.progress,
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: () => {
+              video.currentTime = progress.value * video.duration;
+            }
+          });
         }
       },
     });
