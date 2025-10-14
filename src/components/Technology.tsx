@@ -1,5 +1,4 @@
 import { Shield, UserCheck, Activity, Lock } from "lucide-react";
-import pathlinesImage from "@/assets/pathlines-aerial.png";
 
 const features = [
   {
@@ -26,53 +25,38 @@ const features = [
 
 const Technology = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column: Title + Features Grid */}
-            <div>
-              <div className="mb-12">
-                <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-['DM_Serif_Text']">
-                  Trusted Coordination Layer for Water Governance
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  Building transparent infrastructure for sustainable water management
-                </p>
-              </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+              Trusted Coordination Layer for Water Governance
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Building transparent infrastructure for sustainable water management
+            </p>
+          </div>
 
-              {/* 2x2 Feature Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {features.map((feature, index) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="bg-muted/30 p-6 rounded-lg border border-border hover:border-accent/50 transition-colors"
-                    >
-                      <div className="bg-accent/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                        <Icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2 font-['DM_Serif_Text']">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Column: Image */}
-            <div className="flex items-center justify-center">
-              <img 
-                src={pathlinesImage} 
-                alt="Aerial view of water pathlines" 
-                className="w-full h-auto rounded-2xl shadow-lg"
-              />
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-background p-8 rounded-lg border border-border hover:border-accent/50 transition-colors"
+                >
+                  <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                    <Icon className="h-8 w-8 text-accent" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3 font-['DM_Serif_Text']">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

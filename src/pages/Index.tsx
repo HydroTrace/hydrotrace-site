@@ -13,10 +13,7 @@ const Index = () => {
       <ScrollTraceLine />
       <Navbar />
       <main>
-        <Hero 
-          title="Building Digital Foundations for Water Security"
-          description="From Source to System: Blockchain for Traceable, Trustworthy Water Management"
-        />
+        <Hero />
         <About />
         <Technology />
         <Collaboration />
