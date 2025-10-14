@@ -1,14 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import blogImage from "@/assets/blog-water-blockchain.jpg";
 
-// Placeholder blog data - replace with real data later
+// Sample blog posts data - replace with real data/API later
 const blogPosts = [
-  // Empty array for now - will show "no blogs" message
+  {
+    slug: "blockchain-water-governance",
+    title: "Blockchain Technology in Water Governance",
+    description: "Exploring how blockchain can transform water resource management and create transparent governance systems.",
+    image: blogImage,
+    date: "October 14, 2025"
+  }
 ];
 
 const Blog = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -31,8 +41,16 @@ const Blog = () => {
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {blogPosts.map((post: any, index: number) => (
-                  <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                    <div className="aspect-video bg-muted"></div>
+                  <Card 
+                    key={index} 
+                    className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                    onClick={() => navigate(`/blog/${post.slug}`)}
+                  >
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="aspect-video object-cover"
+                    />
                     <CardHeader>
                       <CardTitle className="font-['DM_Serif_Text']">{post.title}</CardTitle>
                       <CardDescription>{post.description}</CardDescription>
