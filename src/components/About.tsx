@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import animationVideo from "@/assets/hydrotrace-animation.mp4";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,7 @@ const About = ({ className }: { className?: string }) => {
     <section 
       id="about" 
       ref={sectionRef}
-      className={`py-24 bg-muted/10 ${className || ""}`}
+      className={cn("py-24", className)}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">

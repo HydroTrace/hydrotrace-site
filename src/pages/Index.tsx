@@ -4,7 +4,7 @@ import ScrollOverlay from "@/components/ScrollOverlay";
 import About from "@/components/About";
 import Technology from "@/components/Technology";
 import Resources from "@/components/Resources";
-import Collaboration from "@/components/Collaboration";
+
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 const Index = () => {
@@ -16,7 +16,7 @@ const Index = () => {
         <About className="bg-[#faf7ef]" />
         <Technology className="bg-[#faf5ee]" />
         <Resources className="bg-muted/20" />
-        <Collaboration className="bg-slate-100" />
+        
         <Contact />
       </main>
       <Footer />
