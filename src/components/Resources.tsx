@@ -1,9 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import agricultureImage from "@/assets/resource-agriculture.jpg";
 import municipalImage from "@/assets/resource-municipal.jpg";
 import industrialImage from "@/assets/resource-industrial.jpg";
 import conservationImage from "@/assets/resource-conservation.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const resources = [
   {
@@ -46,43 +53,45 @@ const Resources = ({ className }: { className?: string }) => {
   return (
     <section className={`py-24 ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-['DM_Serif_Text'] text-foreground">
-            Applications & Use Cases
-          </h2>
-          <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
-            Explore how HydroTrace enables transparent water management across diverse sectors
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resources.slice(0, 4).map((resource) => (
-              <div
-                key={resource.id}
-                onClick={() => handleResourceClick(resource.slug)}
-                className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group border border-border"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={resource.image}
-                    alt={resource.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 font-['DM_Serif_Text'] text-foreground">
-                    {resource.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {resource.description}
-                  </p>
-                  <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
-                    Learn more
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        <div className="max-w-6xl mx-auto">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {resources.map((resource) => (
+                <CarouselItem key={resource.id}>
+                  <div className="p-4">
+                    <div 
+                      onClick={() => handleResourceClick(resource.slug)}
+                      className="border-2 border-border rounded-lg overflow-hidden cursor-pointer hover:border-primary/50 transition-all duration-300 bg-card"
+                    >
+                      <div className="grid md:grid-cols-2 gap-0">
+                        <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
+                          <img
+                            src={resource.image}
+                            alt={resource.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-8 md:p-12 flex flex-col justify-center">
+                          <h3 className="text-2xl md:text-3xl font-bold mb-4 font-['DM_Serif_Text'] text-foreground">
+                            {resource.title}
+                          </h3>
+                          <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
+                            {resource.description}
+                          </p>
+                          <div className="flex items-center text-foreground font-medium group hover:gap-2 transition-all">
+                            Read the case study
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+          </Carousel>
         </div>
       </div>
     </section>
