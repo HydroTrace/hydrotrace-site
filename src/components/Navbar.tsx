@@ -61,9 +61,13 @@ const Navbar = () => {
       scrollToSection("hero");
     }
   };
-  const navTextColor = isScrolled ? "text-foreground" : "text-white";
-  const navHoverColor = isScrolled ? "hover:text-foreground/70" : "hover:text-white/80";
-  const currentLogo = isScrolled ? logoBlack : logoWhite;
+  // Force dark mode on blog page
+  const isBlogPage = location.pathname.startsWith("/blog");
+  const shouldUseDarkMode = isScrolled || isBlogPage;
+  
+  const navTextColor = shouldUseDarkMode ? "text-foreground" : "text-white";
+  const navHoverColor = shouldUseDarkMode ? "hover:text-foreground/70" : "hover:text-white/80";
+  const currentLogo = shouldUseDarkMode ? logoBlack : logoWhite;
 
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

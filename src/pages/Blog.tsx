@@ -2,18 +2,18 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
-import agricultureImage from "@/assets/resource-agriculture.jpg";
+import waterGovernanceImage from "@/assets/resource-water-governance.png";
 import municipalImage from "@/assets/resource-municipal.jpg";
 import industrialImage from "@/assets/resource-industrial.jpg";
 import conservationImage from "@/assets/resource-conservation.jpg";
 
 const resources = [
   {
-    id: "agricultural-water-management",
-    title: "Agricultural Water Management",
+    id: "water-governance",
+    title: "Accountable and transparent water governance",
     description: "Optimize irrigation systems and ensure sustainable water use for farming communities",
-    image: agricultureImage,
-    slug: "agricultural-water-management"
+    image: waterGovernanceImage,
+    slug: "water-governance"
   },
   {
     id: "municipal-water-supply",
@@ -58,7 +58,7 @@ const Blog = () => {
               Explore how HydroTrace enables transparent water management across diverse sectors
             </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {resources.map((resource) => (
                 <div
                   key={resource.id}
