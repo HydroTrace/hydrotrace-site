@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import agricultureImage from "@/assets/resource-agriculture.jpg";
+import waterGovernanceImage from "@/assets/resource-water-governance.png";
 import municipalImage from "@/assets/resource-municipal.jpg";
 import industrialImage from "@/assets/resource-industrial.jpg";
 import conservationImage from "@/assets/resource-conservation.jpg";
@@ -14,11 +14,11 @@ import {
 
 const resources = [
   {
-    id: "agricultural-water-management",
-    title: "Agricultural Water Management",
+    id: "water-governance",
+    title: "Accountable and transparent water governance",
     description: "Optimize irrigation systems and ensure sustainable water use for farming communities",
-    image: agricultureImage,
-    slug: "agricultural-water-management"
+    image: waterGovernanceImage,
+    slug: "water-governance"
   },
   {
     id: "municipal-water-supply",
@@ -70,11 +70,11 @@ const Resources = ({ className }: { className?: string }) => {
                       className="border-2 border-border rounded-2xl overflow-hidden cursor-pointer hover:border-primary/50 transition-all duration-300 bg-card shadow-lg"
                     >
                       <div className="grid md:grid-cols-2 gap-0">
-                        <div className="overflow-hidden rounded-l-2xl">
+                        <div className="p-4 flex items-center">
                           <img
                             src={resource.image}
                             alt={resource.title}
-                            className="w-full h-full object-cover aspect-square"
+                            className="w-full h-full object-cover aspect-square rounded-xl"
                           />
                         </div>
                         <div className="p-8 md:p-12 flex flex-col justify-center bg-card">
