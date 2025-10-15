@@ -1,10 +1,17 @@
 import { Shield, UserCheck, Activity, Lock } from "lucide-react";
-import irrigationImage from "@/assets/irrigation-water-droplet.png";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import irrigationStructure from "@/assets/irrigation-structure.png";
+import irrigationDroplet from "@/assets/irrigation-water-droplet.png";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -34,8 +41,38 @@ const features = [
 ];
 
 const Technology = ({ className }: { className?: string }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageStructureRef = useRef<HTMLImageElement>(null);
+  const imageDropletRef = useRef<HTMLImageElement>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current || !imageStructureRef.current || !imageDropletRef.current) return;
+
+    gsap.set(imageDropletRef.current, { opacity: 0 });
+    
+    gsap.to(imageStructureRef.current, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+      }
+    });
+
+    gsap.to(imageDropletRef.current, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+      }
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section className={`py-24 bg-background ${className || ''}`}>
+    <section ref={sectionRef} className={`py-24 bg-background ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -91,11 +128,18 @@ const Technology = ({ className }: { className?: string }) => {
             </div>
 
             {/* Right Column: Image */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center relative">
               <img 
-                src={irrigationImage} 
-                alt="Irrigation system in agricultural field" 
+                ref={imageStructureRef}
+                src={irrigationStructure} 
+                alt="Irrigation infrastructure in agricultural field" 
                 className="w-full h-auto rounded-2xl shadow-lg"
+              />
+              <img 
+                ref={imageDropletRef}
+                src={irrigationDroplet} 
+                alt="Water droplet irrigation system" 
+                className="w-full h-auto rounded-2xl shadow-lg absolute inset-0"
               />
             </div>
           </div>
