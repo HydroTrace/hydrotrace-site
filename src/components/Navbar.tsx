@@ -61,9 +61,10 @@ const Navbar = () => {
       scrollToSection("hero");
     }
   };
-  // Force dark mode on blog page
+  // Force dark mode on blog and team pages
   const isBlogPage = location.pathname.startsWith("/blog");
-  const shouldUseDarkMode = isScrolled || isBlogPage;
+  const isTeamPage = location.pathname.startsWith("/team");
+  const shouldUseDarkMode = isScrolled || isBlogPage || isTeamPage;
   
   const navTextColor = shouldUseDarkMode ? "text-foreground" : "text-white";
   const navHoverColor = shouldUseDarkMode ? "hover:text-foreground/70" : "hover:text-white/80";
@@ -86,6 +87,9 @@ const Navbar = () => {
               <button onClick={() => scrollToSection("contact")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
                 Contact us
               </button>
+              <Link to="/team" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
+                Team
+              </Link>
               <Link to="/blog" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
                 Learn More
               </Link>
@@ -112,6 +116,9 @@ const Navbar = () => {
               <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Contact us
               </button>
+              <Link to="/team" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+                Team
+              </Link>
               <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Learn More
               </Link>
