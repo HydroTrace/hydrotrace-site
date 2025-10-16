@@ -13,8 +13,8 @@ interface ScrollOverlayProps {
 }
 
 const ScrollOverlay = ({
-  title = "Sustainable Water Solutions",
-  description = "Transforming water management through innovative technology and transparent systems"
+  title = "Strengthening Water Transparency in Agriculture",
+  description = "Agriculture accounts for over 70% of global freshwater use — yet most irrigation systems still rely on manual reporting and outdated records. HydroTrace brings verifiable, digital transparency to water allocation and use, helping farmers and regulators manage water more fairly, efficiently, and sustainably."
 }: ScrollOverlayProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageRef = useRef<HTMLDivElement | null>(null);

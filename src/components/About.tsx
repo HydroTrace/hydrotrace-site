@@ -71,11 +71,8 @@ const About = ({ className }: { className?: string }) => {
             {/* Text Content on Right */}
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-8 font-['DM_Serif_Text']">
-                Strengthening Water Transparency in Agriculture
+                Making Water Governance Traceable and Fair
               </h2>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Agriculture accounts for over 70% of global freshwater use — yet most irrigation systems still rely on manual reporting and outdated records. HydroTrace brings verifiable, digital transparency to water allocation and use, helping farmers and regulators manage water more fairly, efficiently, and sustainably.
-              </p>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
                   HydroTrace develops transparent digital systems that strengthen how water is allocated, monitored, and reported. By combining blockchain verification, mobile monitoring, and data integrity tools, we help bridge the gap between policy frameworks and real-world water use.
