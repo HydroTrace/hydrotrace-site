@@ -12,8 +12,8 @@ interface HeroProps {
 }
 
 const Hero = ({ 
-  title = "Transparent Water Management Through Digital Trust",
-  description = "Building verifiable systems for sustainable groundwater governance"
+  title = "Building Digital Foundations for Water Security",
+  description = "From Source to System: Traceable, Trustworthy, and Adaptive Water Management."
 }: HeroProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLHeadingElement | null>(null);

@@ -75,10 +75,10 @@ const About = ({ className }: { className?: string }) => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  HydroTrace develops transparent digital systems for managing groundwater and water quotas using blockchain-based verification and data integrity tools.
+                  HydroTrace develops transparent digital systems that strengthen how water is allocated, monitored, and reported. By combining blockchain verification, mobile monitoring, and data integrity tools, we help bridge the gap between policy frameworks and real-world water use.
                 </p>
                 <p>
-                  Our goal is to bridge policy and practice — making water allocation traceable, auditable, and fair.
+                  Our mission is to make groundwater management traceable, auditable, and fair, empowering regulators and communities with trusted information to support sustainable water governance.
                 </p>
               </div>
             </div>
