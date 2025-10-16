@@ -1,38 +1,30 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import teamMember1 from "@/assets/team-member-1.jpg";
-import teamMember2 from "@/assets/team-member-2.jpg";
-import teamMember3 from "@/assets/team-member-3.jpg";
-import teamMember4 from "@/assets/team-member-4.jpg";
 
 const teamMembers = [
   {
     id: 1,
-    name: "Dr. Sarah Johnson",
-    role: "Chief Executive Officer",
-    bio: "With over 15 years of experience in water resource management and technology innovation, Sarah leads HydroTrace's vision for transparent water governance.",
-    image: teamMember1,
+    name: "Dr. Kevin De Vriendt",
+    role: "Founder, Groundwater Scientist",
+    bio: "Kevin is a groundwater and environmental geoscientist with extensive experience in quantitative hydrogeology and sustainable water management. He has worked on international technical cooperation projects and capacity-building initiatives across Africa and the Middle East, focusing on groundwater scarcity and long-term sustainability challenges.",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Chief Technology Officer",
-    bio: "A blockchain expert and software architect, Michael oversees the development of HydroTrace's cutting-edge water tracking platform.",
-    image: teamMember2,
+    name: "Dr. Georg Simhandl",
+    role: "Co-founder, Software Developer / Systems Architect",
+    bio: "Georg is a software engineer, researcher, and entrepreneur with more than 20 years of experience in software architecture, IoT, and distributed systems. He bridges academia and industry to drive innovation in data ecosystems, security, and sustainable technologies such as water management and the circular economy. He has led high-impact projects, founded a successful startup, and published extensively while teaching and mentoring the next generation of engineers.",
   },
   {
     id: 3,
-    name: "Dr. Emily Rodriguez",
-    role: "Head of Research",
-    bio: "Emily brings extensive expertise in environmental science and data analytics, driving innovation in water monitoring solutions.",
-    image: teamMember3,
+    name: "Dr. Andreas Schuster",
+    role: "Co-founder, Embedded Systems Engineer / Software Developer",
+    bio: "Andreas is an embedded systems engineer with over a decade of experience developing hardware and software for embedded systems across a variety of fields and international research projects.",
   },
   {
     id: 4,
-    name: "James Williams",
-    role: "Director of Operations",
-    bio: "James ensures seamless implementation of HydroTrace solutions across agricultural, municipal, and industrial sectors.",
-    image: teamMember4,
+    name: "Maverick Huys",
+    role: "Co-founder, Business Development and Finance",
+    bio: "Maverick, a CFA Charterholder, provides strategic guidance on financial planning, investor relations, and partnership development for HydroTrace. His role integrates budgeting, capital structuring, risk management, and stakeholder engagement to support long-term sustainability and unlock future growth opportunities.",
   },
 ];
 
@@ -62,12 +54,7 @@ const Team = () => {
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {teamMembers.map((member) => (
               <div key={member.id} className="group cursor-pointer">
-                <div className="relative aspect-square rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-all duration-300 group-hover:blur-sm group-hover:scale-110"
-                  />
+                <div className="relative aspect-square rounded-lg overflow-hidden mb-4 bg-black">
                   <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
                     <p className="text-white text-center text-sm leading-relaxed">
                       {member.bio}
