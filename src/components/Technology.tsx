@@ -80,10 +80,10 @@ const Technology = ({ className }: { className?: string }) => {
             <div>
               <div className="mb-12">
                 <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-['DM_Serif_Text']">
-                  Empowering Agriculture Through Transparent Water Governance
+                  Trusted Coordination Layer for Water Governance
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Agriculture accounts for over 70% of global freshwater use — yet most irrigation systems still rely on manual reporting and outdated records. HydroTrace brings verifiable, digital transparency to water allocation and use, helping farmers and regulators manage water more fairly, efficiently, and sustainably.
+                  Building transparent infrastructure for sustainable water management
                 </p>
               </div>
 
