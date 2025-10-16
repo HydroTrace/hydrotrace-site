@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import waterGovernanceImage from "@/assets/resource-water-governance.png";
 import municipalImage from "@/assets/resource-municipal.jpg";
@@ -48,12 +47,6 @@ const resources = [
 ];
 
 const Resources = ({ className }: { className?: string }) => {
-  const navigate = useNavigate();
-
-  const handleResourceClick = (slug: string) => {
-    navigate(`/blog/${slug}`);
-  };
-
   return (
     <section className={`py-24 ${className || ''}`} style={{ backgroundColor: '#e8f4f8' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,10 +63,9 @@ const Resources = ({ className }: { className?: string }) => {
                 <CarouselItem key={resource.id} className="pl-4 md:basis-4/5 lg:basis-3/4">
                   <div className="p-4">
                     <div 
-                      onClick={resource.isActive ? () => handleResourceClick(resource.slug) : undefined}
                       className={`border-2 border-border rounded-2xl overflow-hidden transition-all duration-300 bg-card shadow-lg relative ${
                         resource.isActive 
-                          ? 'cursor-pointer hover:border-primary/50' 
+                          ? '' 
                           : 'opacity-50 blur-[2px] cursor-default'
                       }`}
                     >
