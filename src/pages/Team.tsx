@@ -79,7 +79,7 @@ const Team = () => {
               <div key={member.id} className="group cursor-pointer">
                 <div className="relative aspect-square rounded-lg overflow-hidden mb-4 bg-black">
                   <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
-                    <p className="text-white text-center text-sm leading-relaxed">
+                    <p className="text-white text-center text-xs md:text-sm leading-relaxed">
                       {member.bio}
                     </p>
                   </div>
