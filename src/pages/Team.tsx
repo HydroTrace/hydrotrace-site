@@ -50,19 +50,19 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Purpose Section with Dot Pattern */}
-      <section className="relative py-32 px-4 overflow-hidden" style={{ backgroundColor: '#d0d5dd' }}>
+      {/* Purpose Section with Dot Pattern - Scroll Reveal */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden -mt-24" style={{ backgroundColor: '#e8eef2' }}>
         {/* Dot Pattern Background */}
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px)',
             backgroundSize: '24px 24px'
           }}
         />
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-8">Our Purpose</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+        <div className="container mx-auto max-w-4xl text-center relative z-10 py-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 font-['DM_Serif_Text']">Our Purpose</h2>
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
             United by a commitment to climate resilience and sustainable resource use, HydroTrace brings science and technology together to strengthen how water is governed.
             Our goal is to enable societies to manage water more transparently and sustainably through data, innovation, and collaboration.
           </p>
