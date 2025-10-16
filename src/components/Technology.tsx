@@ -16,27 +16,27 @@ gsap.registerPlugin(ScrollTrigger);
 const features = [
   {
     icon: Shield,
-    title: "Secure Records",
-    description: "Secure, tamper-resistant water usage records",
-    detailedDescription: "Every water transaction is recorded on an immutable blockchain ledger, ensuring complete transparency and accountability. Historical data cannot be altered or deleted, providing a permanent audit trail for regulators and stakeholders."
+    title: "Blockchain Integrity Layer",
+    description: "Blockchain Integrity Layer",
+    detailedDescription: "Blockchain is the core of HydroTrace. It provides the accountable coordination layer that records all actions in an immutable and verifiable ledger. It connects field data, institutions, and policy decisions through transparent records that cannot be altered, ensuring trust and traceability across the entire water management system."
   },
   {
     icon: UserCheck,
-    title: "Digital Identity",
-    description: "Verifiable quota management using digital identities",
-    detailedDescription: "Water users receive cryptographic digital identities that enable secure authentication and quota tracking. Smart contracts automatically enforce allocation limits while maintaining user privacy and preventing unauthorized access."
+    title: "Verifiable Usage Data",
+    description: "Verifiable Usage Data",
+    detailedDescription: "Data from IoT sensors, flow meter readings, or mobile submissions is securely linked to blockchain anchored identities. This creates a clear chain of custody from source to regulator, improving data integrity, reducing errors, and providing a reliable foundation for adaptive water governance."
   },
   {
     icon: Activity,
-    title: "Real-time Monitoring",
-    description: "Real-time monitoring integration (IoT & mobile reporting)",
-    detailedDescription: "IoT sensors and mobile applications continuously feed data into the system, providing live visibility into water extraction, flow rates, and usage patterns. Automated alerts notify stakeholders of anomalies or threshold breaches instantly."
+    title: "Digital Water Credits",
+    description: "Digital Water Credits",
+    detailedDescription: "HydroTrace enables water allocations to be represented digitally, either anchored on chain or issued through blockchain native assets that can be transferred to water license holders through custodial wallets. These digital credits make allocation and use fully traceable, supporting accountable quota management and opening opportunities for ESG linked value creation and transparent water credit markets that reward sustainable agriculture."
   },
   {
     icon: Lock,
-    title: "Privacy-First",
-    description: "Privacy-preserving data verification (Zero-Knowledge proofs)",
-    detailedDescription: "Advanced cryptographic techniques allow verification of compliance without revealing sensitive operational data. Zero-knowledge proofs enable auditors to confirm usage limits are met while protecting proprietary information and competitive advantages."
+    title: "Transparent Policy and Smart Contracts",
+    description: "Transparent Policy and Smart Contracts",
+    detailedDescription: "Smart contracts encode allocation logic, trading rules, and policy adjustments directly on chain. This ensures that enforcement, quota changes, and trading mechanisms remain transparent, auditable, and automatically executed, reducing administrative overhead while improving trust and compliance."
   },
 ];
 
@@ -83,7 +83,7 @@ const Technology = ({ className }: { className?: string }) => {
                   Trusted Coordination Layer for Water Governance
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Building transparent infrastructure for sustainable water management
+                  Blockchain forms the secure and transparent foundation linking water use from source to policy. This trusted digital layer makes data tamper resistant, verifiable, and auditable. It enables regulators and agencies to make confident management decisions based on reliable and high quality information.
                 </p>
               </div>
 

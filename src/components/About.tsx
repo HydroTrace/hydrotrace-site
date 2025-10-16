@@ -71,14 +71,14 @@ const About = ({ className }: { className?: string }) => {
             {/* Text Content on Right */}
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-8 font-['DM_Serif_Text']">
-                About HydroTrace
+                Making Water Governance Traceable and Fair
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
                   HydroTrace develops transparent digital systems that strengthen how water is allocated, monitored, and reported. By combining blockchain verification, mobile monitoring, and data integrity tools, we help bridge the gap between policy frameworks and real-world water use.
                 </p>
                 <p>
-                  Our mission is to make groundwater management traceable, auditable, and fair, empowering regulators and communities with trusted information to support sustainable water governance.
+                  Our mission is to make groundwater management traceable, auditable, and fair — empowering regulators and communities with trusted information to support sustainable water governance.
                 </p>
               </div>
             </div>

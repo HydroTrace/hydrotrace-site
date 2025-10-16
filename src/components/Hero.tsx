@@ -12,8 +12,8 @@ interface HeroProps {
 }
 
 const Hero = ({ 
-  title = "Empowering Agriculture Through Transparent Water Governance",
-  description = "Agriculture accounts for over 70% of global freshwater use — yet most irrigation systems still rely on manual reporting and outdated records. HydroTrace brings verifiable, digital transparency to water allocation and use, helping farmers and regulators manage water more fairly, efficiently, and sustainably."
+  title = "Building Digital Foundations for Water Governance",
+  description = "From Source to System — Traceable, Trustworthy, and Adaptive Water Management."
 }: HeroProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLHeadingElement | null>(null);
