@@ -81,18 +81,12 @@ const Navbar = () => {
             
             {/* Desktop Navigation - Left Side */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection("about")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
-                About us
-              </button>
+              <Link to="/team" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
+                About
+              </Link>
               <button onClick={() => scrollToSection("contact")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
                 Contact us
               </button>
-              <Link to="/team" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
-                Team
-              </Link>
-              <Link to="/blog" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
-                Learn More
-              </Link>
             </div>
           </div>
 
@@ -110,18 +104,12 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && <div className="md:hidden pb-4 bg-background/95 backdrop-blur-sm rounded-lg mt-2 p-4">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
-                About us
-              </button>
+              <Link to="/team" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+                About
+              </Link>
               <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
                 Contact us
               </button>
-              <Link to="/team" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
-                Team
-              </Link>
-              <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
-                Learn More
-              </Link>
             </div>
           </div>}
       </div>
