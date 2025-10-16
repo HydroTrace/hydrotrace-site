@@ -42,7 +42,7 @@ const Team = () => {
         >
           <div className="absolute inset-0 bg-black/30" />
         </div>
-        <div className="container mx-auto max-w-4xl text-center relative z-10 px-4 -mt-40">
+        <div className="container mx-auto max-w-4xl text-center relative z-10 px-4 -mt-64">
           <h1 className="text-5xl md:text-6xl font-bold mb-8 text-white">Our Collective Pursuit</h1>
           <p className="text-xl md:text-2xl text-white leading-relaxed">
             We believe in transparent systems, trusted data, and collective innovation to secure water for people, agriculture, and the planet.
