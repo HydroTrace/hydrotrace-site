@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import farmAboutImg from "@/assets/farm-about-img.png";
 
 const teamMembers = [
   {
@@ -33,15 +34,29 @@ const Team = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Story Section */}
-      <section className="pt-32 pb-16 px-4 bg-muted/30">
+      {/* Hero Section with Background */}
+      <section className="relative pt-32 pb-16 px-4 min-h-[60vh] flex items-center justify-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${farmAboutImg})` }}
+        >
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <h1 className="text-5xl font-bold mb-8 text-white">Our Collective Pursuit</h1>
+          <p className="text-xl text-white leading-relaxed">
+            We believe in transparent systems, trusted data, and collective innovation to secure water for people, agriculture, and the planet.
+          </p>
+        </div>
+      </section>
+
+      {/* Purpose Section */}
+      <section className="py-16 px-4 bg-muted/30">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl font-bold mb-8">Our Story</h1>
+          <h2 className="text-4xl font-bold mb-8">Our Purpose</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            HydroTrace was founded with a vision to revolutionize water management through 
-            transparent, blockchain-powered tracking. Our team combines decades of expertise 
-            in water resource management, technology innovation, and environmental science 
-            to create solutions that ensure sustainable water use for future generations.
+            United by a commitment to climate resilience and sustainable resource use, HydroTrace brings science and technology together to strengthen how water is governed.
+            Our goal is to enable societies to manage water more transparently and sustainably through data, innovation, and collaboration.
           </p>
         </div>
       </section>
