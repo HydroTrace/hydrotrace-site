@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import farmAboutImg from "@/assets/farm-about-img.png";
+import morfieldsImg from "@/assets/morfields.jpg";
 
 const teamMembers = [
   {
@@ -34,25 +34,33 @@ const Team = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section with Background */}
-      <section className="relative pt-32 pb-16 px-4 min-h-[60vh] flex items-center justify-center">
+      {/* Full Screen Hero Section */}
+      <section className="relative h-screen flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${farmAboutImg})` }}
+          style={{ backgroundImage: `url(${morfieldsImg})` }}
         >
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <h1 className="text-5xl font-bold mb-8 text-white">Our Collective Pursuit</h1>
-          <p className="text-xl text-white leading-relaxed">
+        <div className="container mx-auto max-w-4xl text-center relative z-10 px-4 -mt-20">
+          <h1 className="text-5xl md:text-6xl font-bold mb-8 text-white">Our Collective Pursuit</h1>
+          <p className="text-xl md:text-2xl text-white leading-relaxed">
             We believe in transparent systems, trusted data, and collective innovation to secure water for people, agriculture, and the planet.
           </p>
         </div>
       </section>
 
-      {/* Purpose Section */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-4xl text-center">
+      {/* Purpose Section with Dot Pattern */}
+      <section className="relative py-20 px-4 bg-background overflow-hidden">
+        {/* Dot Pattern Background */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px)',
+            backgroundSize: '24px 24px'
+          }}
+        />
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
           <h2 className="text-4xl font-bold mb-8">Our Purpose</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             United by a commitment to climate resilience and sustainable resource use, HydroTrace brings science and technology together to strengthen how water is governed.

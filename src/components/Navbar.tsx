@@ -61,10 +61,10 @@ const Navbar = () => {
       scrollToSection("hero");
     }
   };
-  // Force dark mode on blog and team pages
+  // Force dark mode on blog page, but keep white on team page until scroll
   const isBlogPage = location.pathname.startsWith("/blog");
   const isTeamPage = location.pathname.startsWith("/team");
-  const shouldUseDarkMode = isScrolled || isBlogPage || isTeamPage;
+  const shouldUseDarkMode = isBlogPage || (isTeamPage ? isScrolled : isScrolled);
   
   const navTextColor = shouldUseDarkMode ? "text-foreground" : "text-white";
   const navHoverColor = shouldUseDarkMode ? "hover:text-foreground/70" : "hover:text-white/80";
