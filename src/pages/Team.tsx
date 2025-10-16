@@ -35,7 +35,7 @@ const Team = () => {
       <Navbar />
       
       {/* Full Screen Hero Section */}
-      <section className="relative h-screen flex items-center justify-center">
+      <section className="relative h-screen flex items-center justify-center z-20">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${morfieldsImg})` }}
@@ -51,7 +51,7 @@ const Team = () => {
       </section>
 
       {/* Purpose Section with Dot Pattern */}
-      <section className="relative py-20 px-4 bg-background overflow-hidden">
+      <section className="relative py-32 px-4 overflow-hidden" style={{ backgroundColor: '#d0d5dd' }}>
         {/* Dot Pattern Background */}
         <div 
           className="absolute inset-0 opacity-30"
