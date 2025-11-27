@@ -57,7 +57,7 @@ const Hero = ({
             
             {/* Title */}
             <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-['Roboto']"
+              className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 leading-tight font-['Open_Sans']"
               style={{ color: '#21177a' }}
             >
               {title}
