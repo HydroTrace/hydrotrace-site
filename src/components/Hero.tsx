@@ -1,11 +1,11 @@
-import AnimatedSpiral from './AnimatedSpiral';
+import AnimatedSquiggle from './AnimatedSquiggle';
 
 interface HeroProps {
   title?: string;
   description?: string;
 }
 
-const Hero = ({
+const Hero = ({ 
   title = "Building Digital Foundations for Water Governance",
   description = "From Source to System — Traceable, Trustworthy, and Adaptive Water Management."
 }: HeroProps) => {
@@ -47,58 +47,53 @@ const Hero = ({
         />
       </div>
 
+      {/* Animated Squiggle - spans entire section */}
+      <div className="absolute inset-0 top-24 pointer-events-none z-[2]">
+        <AnimatedSquiggle className="w-full h-full" />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Text content */}
-          <div className="max-w-2xl">
-            {/* Tag */}
-            <span 
-              className="font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']"
-              style={{ color: '#030bfc' }}
-            >
-              Water Governance
-            </span>
-            
-            {/* Title */}
-            <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 leading-tight font-['Open_Sans']"
-              style={{ color: '#21177a' }}
-            >
-              {title}
-            </h1>
+        <div className="max-w-2xl">
+          {/* Tag */}
+          <span 
+            className="font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']"
+            style={{ color: '#030bfc' }}
+          >
+            Water Governance
+          </span>
+          
+          {/* Title */}
+          <h1 
+            className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 leading-tight font-['Open_Sans']"
+            style={{ color: '#21177a' }}
+          >
+            {title}
+          </h1>
 
-            {/* Subtitle */}
-            <p 
-              className="text-lg mb-8 leading-relaxed font-['Fira_Code'] uppercase tracking-wide"
-              style={{ color: '#249be0' }}
-            >
-              {description}
-            </p>
+          {/* Subtitle */}
+          <p 
+            className="text-lg mb-8 leading-relaxed font-['Fira_Code'] uppercase tracking-wide"
+            style={{ color: '#249be0' }}
+          >
+            {description}
+          </p>
 
-            {/* CTA */}
-            <button
-              onClick={scrollToAbout}
-              className="inline-flex items-center gap-2 bg-[#044cdb] px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-[#044cdb]/90 font-['Roboto']"
+          {/* CTA */}
+          <button
+            onClick={scrollToAbout}
+            className="inline-flex items-center gap-2 bg-[#044cdb] px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-[#044cdb]/90 font-['Roboto']"
+          >
+            Learn More
+            <svg 
+              className="w-4 h-4" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
             >
-              Learn More
-              <svg 
-                className="w-4 h-4" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Right side - Animated Spiral */}
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative w-full max-w-lg h-[400px] flex items-center justify-center">
-              <AnimatedSpiral className="w-full h-full" />
-            </div>
-          </div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
