@@ -72,10 +72,10 @@ const About = ({ className }: { className?: string }) => {
             </div>
 
             {/* Video on Right */}
-            <div className="relative pl-12 overflow-hidden">
+            <div className="relative pl-12 overflow-visible">
               {/* Squares pattern with diagonal fade */}
               <div 
-                className="absolute inset-0 -left-12"
+                className="absolute -top-8 -bottom-8 -left-12 -right-8"
                 style={{
                   backgroundImage: `
                     linear-gradient(to right, rgba(5, 135, 68, 0.5) 1px, transparent 1px),
