@@ -50,7 +50,7 @@ const Navbar = () => {
               className="h-10 w-auto" 
             />
             <span 
-              className="text-[19px] font-semibold font-['IBM_Plex_Mono'] tracking-tight text-[#101982] hover:text-[#044dde] transition-colors"
+              className="text-[22px] font-semibold font-['IBM_Plex_Mono'] tracking-tight text-[#101982] hover:text-[#044dde] transition-colors"
             >
               HydroTrace
             </span>
