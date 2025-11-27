@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import irrigationCircle from "@/assets/irrigation-circle.png";
+import RotatingArcs from "./RotatingArcs";
 
 const About = ({ className }: { className?: string }) => {
   return (
@@ -41,6 +42,10 @@ const About = ({ className }: { className?: string }) => {
                 }}
               />
               <div className="relative flex items-center justify-center py-8">
+                {/* Rotating arcs behind the logo */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <RotatingArcs className="w-[500px] h-[500px]" />
+                </div>
                 <img
                   src={irrigationCircle}
                   alt="Aerial view of circular irrigation system"
