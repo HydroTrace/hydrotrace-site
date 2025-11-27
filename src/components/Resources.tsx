@@ -32,11 +32,11 @@ const Resources = ({ className }: { className?: string }) => {
             backgroundSize: '30px 30px',
           }}
         />
-        {/* Beige overlay that fades toward upper right to reveal grid */}
+        {/* Beige overlay that fades from left to right - grid visible on left */}
         <div 
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(135deg, transparent 0%, transparent 20%, #F8F7F4 50%, #F8F7F4 100%)`
+            background: `linear-gradient(to right, transparent 0%, #F8F7F4 50%, #F8F7F4 100%)`
           }}
         />
       </div>
