@@ -86,8 +86,8 @@ const ConcentricCircles = ({
       height="560"
       viewBox="0 0 600 560"
       style={{
-        [isTopLeft ? 'left' : 'right']: '-100px',
-        [isTopLeft ? 'top' : 'bottom']: '-80px',
+        [isTopLeft ? 'left' : 'right']: isTopLeft ? '5%' : '10%',
+        [isTopLeft ? 'top' : 'bottom']: isTopLeft ? '-50px' : '-30px',
       }}
     >
       <style>
