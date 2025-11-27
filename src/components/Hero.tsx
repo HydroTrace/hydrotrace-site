@@ -51,7 +51,10 @@ const Hero = ({
           {/* Left side - Text content */}
           <div className="max-w-2xl">
             {/* Tag */}
-            <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']">
+            <span 
+              className="font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']"
+              style={{ color: '#030bfc' }}
+            >
               Water Governance
             </span>
             
@@ -65,8 +68,8 @@ const Hero = ({
 
             {/* Subtitle */}
             <p 
-              className="text-lg mb-8 leading-relaxed font-['Roboto']"
-              style={{ color: '#21177a' }}
+              className="text-lg mb-8 leading-relaxed font-['Fira_Code'] uppercase tracking-wide"
+              style={{ color: '#249be0' }}
             >
               {description}
             </p>
