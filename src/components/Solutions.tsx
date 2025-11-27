@@ -9,7 +9,10 @@ const solutions = [
     title: "Water stewards",
     description: "HydroTrace is a single hub for agricultural abstraction data. Standardize how information is collected, reduce errors, and streamline compliance tracking across farms and seasons. Replace scattered spreadsheets and paper forms with a clear, auditable digital workflow.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and generate regulatory submissions quickly and confidently."
   },
-  { title: "Water Footprinting" },
+  { 
+    title: "Water Footprinting",
+    description: "Accurate water footprints start with real data. HydroTrace brings field-level abstraction measurements into your sustainability workflows, giving you a defensible foundation for blue-water use, basin impacts, and supply-chain accountability. Track water intensity across sourcing regions, spot hotspots, and quantify progress toward corporate water targets with confidence."
+  },
 ];
 
 const Solutions = ({ className }: { className?: string }) => {
