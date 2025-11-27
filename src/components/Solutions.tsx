@@ -4,7 +4,7 @@ const solutions = [
     description: "HydroTrace makes water reporting simple, accurate, and stress-free. Skip the field notebook and manual entries. Capture water-use data automatically, stay compliant with local requirements, and get a reliable picture of your abstractions throughout the season.\n\nSpend less time on paperwork and more time farming — all while protecting your allocation and reducing the risk of compliance issues."
   },
   { 
-    title: "Water stewards",
+    title: "Water Stewards",
     description: "HydroTrace is a single hub for agricultural abstraction data. Standardize how information is collected, reduce errors, and streamline compliance tracking across farms and seasons. Replace scattered spreadsheets and paper forms with a clear, auditable digital workflow.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and generate regulatory submissions quickly and confidently."
   },
   { 
