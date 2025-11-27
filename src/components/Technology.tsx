@@ -121,11 +121,11 @@ const Technology = ({ className }: { className?: string }) => {
           </h2>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-0 lg:pl-12">
+        {/* Main Content Grid - aligned columns */}
+        <div className="grid lg:grid-cols-2 gap-0 lg:pl-12 items-stretch">
           
           {/* Left Side - Steps */}
-          <div className="relative">
+          <div className="relative flex flex-col">
             {/* Top border */}
             <div 
               className="absolute top-0 left-0 right-0 h-px"
@@ -203,184 +203,81 @@ const Technology = ({ className }: { className?: string }) => {
           </div>
 
           {/* Right Side - Interactive Panel */}
-          <div className="relative min-h-[620px]">
-            {/* Left vertical divider */}
+          <div className="relative h-full">
+            {/* Left vertical divider (between columns) */}
             <div 
               className="absolute left-0 top-0 bottom-0 w-px hidden lg:block"
               style={{ backgroundColor: '#D1DBF9' }}
             />
             
-            {/* Outer Frame with gradient */}
+            {/* OUTER FRAME - with gradient background */}
             <div 
-              className="h-full rounded-sm overflow-hidden border transition-all duration-500"
-              style={{ borderColor: '#D4DCF6' }}
+              className="h-full rounded overflow-hidden border flex flex-col"
+              style={{ 
+                borderColor: '#D4DCF6',
+                borderRadius: '4px',
+                background: 'linear-gradient(180deg, #EEF4FC 0%, #EEF4FC 8%, #FFFFFF 8%, #FFFFFF 85%, #FAF6EE 85%, #F5EDE0 100%)'
+              }}
             >
-              {/* Top Gradient Section */}
+              {/* Top Blue Gradient Area */}
               <div 
-                className="h-16"
-                style={{ backgroundColor: '#EEF4FC' }}
+                className="h-12 flex-shrink-0 border-b"
+                style={{ 
+                  backgroundColor: '#EEF4FC',
+                  borderColor: '#D4DCF6'
+                }}
               />
               
-              {/* Inner White Panel Container */}
-              <div className="bg-white mx-0 relative">
-                <div className="flex">
-                  {/* Left Sidebar Strip */}
+              {/* INNER WHITE PANEL - sits inside the gradient frame */}
+              <div 
+                className="flex-1 bg-white flex border-b"
+                style={{ borderColor: '#D4DCF6' }}
+              >
+                {/* Left Sidebar Strip */}
+                <div 
+                  className="w-12 flex-shrink-0 border-r flex flex-col items-center pt-5"
+                  style={{ borderColor: '#D4DCF6' }}
+                >
+                  {/* Logo Circle Placeholder */}
                   <div 
-                    className="w-14 flex-shrink-0 border-r flex flex-col items-center pt-6"
+                    className="w-7 h-7 rounded-full border flex items-center justify-center"
                     style={{ borderColor: '#D4DCF6' }}
                   >
-                    {/* Logo Circle */}
                     <div 
-                      className="w-8 h-8 rounded-full border-2 flex items-center justify-center"
-                      style={{ borderColor: '#D4DCF6' }}
-                    >
-                      <div 
-                        className="w-3 h-3 rounded-full"
-                        style={{ backgroundColor: '#336CFF' }}
-                      />
-                    </div>
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ backgroundColor: '#336CFF' }}
+                    />
+                  </div>
+                </div>
+                
+                {/* Main Content Area */}
+                <div className="flex-1 flex flex-col">
+                  {/* Title Bar Area (empty placeholder) */}
+                  <div 
+                    className="h-14 border-b flex-shrink-0"
+                    style={{ borderColor: '#D4DCF6' }}
+                  >
+                    {/* Empty - title goes here */}
                   </div>
                   
-                  {/* Main Content Area */}
-                  <div className="flex-1">
-                    {/* Title Row */}
-                    <div 
-                      className="px-6 py-5 border-b flex items-center gap-3"
-                      style={{ borderColor: '#D4DCF6' }}
-                    >
-                      <h4 
-                        className="text-lg font-medium transition-all duration-300"
-                        style={{ color: '#0A1B44' }}
-                      >
-                        {steps[activeIndex].content.title}
-                      </h4>
-                      <div 
-                        className="ml-auto px-3 py-1 rounded text-xs"
-                        style={{ backgroundColor: '#E8EFF8', color: '#6B7A99' }}
-                      >
-                        
-                      </div>
-                    </div>
-                    
-                    {/* Charts Section */}
-                    <div 
-                      className="px-6 py-6 border-b"
-                      style={{ borderColor: '#D4DCF6' }}
-                    >
-                      {/* Headers Row */}
-                      <div className="grid grid-cols-2 gap-8 mb-6">
-                        <span 
-                          className="text-xs font-medium"
-                          style={{ color: '#0A1B44' }}
-                        >
-                          Gross emissions by category
-                        </span>
-                        <span 
-                          className="text-xs font-medium"
-                          style={{ color: '#0A1B44' }}
-                        >
-                          Gross emissions over time
-                        </span>
-                      </div>
-                      
-                      {/* Charts Row */}
-                      <div className="grid grid-cols-2 gap-8">
-                        {/* Left: Donut + Legend */}
-                        <div className="flex items-start gap-5">
-                          {/* Donut Chart */}
-                          <div className="relative w-20 h-20 flex-shrink-0">
-                            <svg viewBox="0 0 36 36" className="w-full h-full">
-                              <circle
-                                cx="18"
-                                cy="18"
-                                r="14"
-                                fill="none"
-                                stroke="#dbeafe"
-                                strokeWidth="4"
-                              />
-                              <circle
-                                cx="18"
-                                cy="18"
-                                r="14"
-                                fill="none"
-                                stroke="#336CFF"
-                                strokeWidth="4"
-                                strokeDasharray="55 45"
-                                strokeLinecap="round"
-                                transform="rotate(-90 18 18)"
-                              />
-                            </svg>
-                          </div>
-                          
-                          {/* Legend */}
-                          <div className="grid grid-cols-1 gap-1.5 text-xs">
-                            {steps[activeIndex].content.categories.map((cat, i) => (
-                              <div key={i} className="flex items-center gap-2">
-                                <div 
-                                  className="w-2 h-2 rounded-full flex-shrink-0"
-                                  style={{ backgroundColor: cat.color }}
-                                />
-                                <span style={{ color: '#0A1B44' }}>{cat.name}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        {/* Right: Bar Chart */}
-                        <div className="flex items-end gap-1.5 h-20">
-                          {[45, 55, 40, 65, 50, 75, 55, 85, 60, 70].map((h, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 rounded-t transition-all duration-300"
-                              style={{ 
-                                height: `${h}%`,
-                                backgroundColor: '#336CFF'
-                              }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Table Section */}
-                    <div className="px-6 py-5">
-                      {/* Expandable Header */}
-                      <div 
-                        className="flex items-center justify-between pb-4 border-b mb-4"
-                        style={{ borderColor: '#E8EFF8' }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs" style={{ color: '#336CFF' }}>▼</span>
-                          <span className="text-sm font-medium" style={{ color: '#0A1B44' }}>
-                            Goods & Services
-                          </span>
-                        </div>
-                        <span className="text-sm" style={{ color: '#0A1B44' }}>
-                          {steps[activeIndex].content.categories[0]?.value || "177,204"} <span className="text-xs text-[#6B7A99]">tCO₂e</span>
-                        </span>
-                      </div>
-                      
-                      {/* Items Table */}
-                      <div className="space-y-0">
-                        {steps[activeIndex].content.items.map((item, i) => (
-                          <div 
-                            key={i}
-                            className="flex justify-between text-sm py-2 border-b last:border-b-0"
-                            style={{ borderColor: '#F0F4F9' }}
-                          >
-                            <span style={{ color: '#0A1B44' }}>{item.name}</span>
-                            <span style={{ color: '#0A1B44' }}>{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                  {/* Charts Area (empty placeholder) */}
+                  <div 
+                    className="flex-1 border-b min-h-[200px]"
+                    style={{ borderColor: '#D4DCF6' }}
+                  >
+                    {/* Empty - charts go here */}
+                  </div>
+                  
+                  {/* Table Area (empty placeholder) */}
+                  <div className="flex-1 min-h-[160px]">
+                    {/* Empty - table goes here */}
                   </div>
                 </div>
               </div>
               
-              {/* Bottom Beige Gradient Section */}
+              {/* Bottom Beige Gradient Footer (outside inner white panel) */}
               <div 
-                className="h-20"
+                className="h-16 flex-shrink-0"
                 style={{ 
                   background: 'linear-gradient(180deg, #FAF6EE 0%, #F5EDE0 100%)'
                 }}
