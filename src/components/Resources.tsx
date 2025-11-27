@@ -133,7 +133,7 @@ const Resources = ({ className }: { className?: string }) => {
           className="heading-xl"
           style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
         >
-          Data-driven <span style={{ color: '#030bfc' }}>water governance</span>
+          Data-driven water governance
         </h2>
       </div>
 
