@@ -55,13 +55,11 @@ const About = ({ className }: { className?: string }) => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-0 items-center border-2 border-dashed border-[#21177a]/40 rounded-lg p-8">
+          <div className="grid md:grid-cols-2 gap-0 items-center border-t-2 border-dashed border-[#21177a]/40 p-8">
             {/* Text Content on Left */}
             <div className="pr-12">
               <h2 className="heading-l mb-8">
-                Making{" "}
-                <span style={{ color: '#030bfc' }}>Water Governance</span>{" "}
-                Traceable and Fair
+                Making Water Governance Traceable and Fair
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
@@ -73,29 +71,8 @@ const About = ({ className }: { className?: string }) => {
               </div>
             </div>
 
-            {/* Blue dashed border separator */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 border-l-2 border-dashed border-[#044cdb]/40" style={{ transform: 'translateX(-50%)' }} />
-
-            {/* Video on Right with gradient background and dots */}
+            {/* Video on Right */}
             <div className="relative pl-12">
-              {/* Gradient background */}
-              <div 
-                className="absolute inset-0 -right-20 rounded-lg"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(4, 76, 219, 0.05) 0%, rgba(4, 76, 219, 0.15) 100%)',
-                }}
-              />
-              
-              {/* Subtle dots pattern */}
-              <div 
-                className="absolute inset-0 -right-20"
-                style={{
-                  backgroundImage: 'radial-gradient(circle, rgba(4, 76, 219, 0.15) 1px, transparent 1px)',
-                  backgroundSize: '20px 20px',
-                }}
-              />
-              
-              {/* Video */}
               <div className="relative flex items-center justify-center py-8">
                 <video
                   ref={videoRef}
@@ -111,7 +88,7 @@ const About = ({ className }: { className?: string }) => {
         </div>
       </div>
       
-      {/* Dashed border line - positioned as pseudo element alternative */}
+      {/* Dashed border line - interior vertical only */}
       <style>{`
         #about .grid {
           position: relative;
@@ -123,7 +100,7 @@ const About = ({ className }: { className?: string }) => {
           top: 0;
           bottom: 0;
           width: 2px;
-          border-left: 2px dashed rgba(4, 76, 219, 0.4);
+          border-left: 2px dashed rgba(33, 23, 122, 0.4);
           transform: translateX(-50%);
         }
         @media (max-width: 768px) {
