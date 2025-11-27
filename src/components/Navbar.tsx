@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoWhite from "@/assets/hydrotrace-logo-white.png";
 import logoBlack from "@/assets/hydrotrace-logo-black.png";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,45 +11,29 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the scroll overlay section
-      const scrollOverlay = document.getElementById('scroll-overlay');
-      if (scrollOverlay) {
-        const overlayBottom = scrollOverlay.offsetTop + scrollOverlay.offsetHeight;
-        // Keep white styling until we scroll past the scroll overlay section
-        setIsScrolled(window.scrollY > overlayBottom - 100);
-      } else {
-        // Fallback if section not found
-        setIsScrolled(window.scrollY > 100);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on mount
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
     
-    // If we're not on the home page, navigate there first
     if (location.pathname !== "/") {
       navigate("/");
-      // Wait for navigation and then scroll
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({
-            behavior: "smooth"
-          });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     } else {
-      // We're already on home page, just scroll
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({
-          behavior: "smooth"
-        });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
@@ -61,58 +45,100 @@ const Navbar = () => {
       scrollToSection("hero");
     }
   };
-  // Force dark mode on blog page, but keep white on team page until scroll
-  const isBlogPage = location.pathname.startsWith("/blog");
-  const isTeamPage = location.pathname.startsWith("/team");
-  const shouldUseDarkMode = isBlogPage || (isTeamPage ? isScrolled : isScrolled);
-  
-  const navTextColor = shouldUseDarkMode ? "text-foreground" : "text-white";
-  const navHoverColor = shouldUseDarkMode ? "hover:text-foreground/70" : "hover:text-white/80";
-  const currentLogo = shouldUseDarkMode ? logoBlack : logoWhite;
 
-  return <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo and Navigation Links */}
-          <div className="flex items-center gap-8">
-            <div className="flex-shrink-0">
-              <img src={currentLogo} alt="HydroTrace Logo" className="h-12 w-auto cursor-pointer" onClick={handleLogoClick} />
-            </div>
-            
-            {/* Desktop Navigation - Left Side */}
-            <div className="hidden md:flex space-x-8">
-              <Link to="/team" className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
-                About
-              </Link>
-              <button onClick={() => scrollToSection("contact")} className={`${navTextColor} ${navHoverColor} transition-colors font-['DM_Serif_Text'] text-lg`}>
-                Contact us
-              </button>
-            </div>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img 
+              src={logoBlack} 
+              alt="HydroTrace Logo" 
+              className="h-10 w-auto cursor-pointer" 
+              onClick={handleLogoClick} 
+            />
+          </div>
+          
+          {/* Desktop Navigation - Center */}
+          <div className="hidden md:flex items-center space-x-1">
+            <Link 
+              to="/team" 
+              className="px-4 py-2 text-foreground hover:text-foreground/70 transition-colors font-medium text-sm"
+            >
+              About
+            </Link>
+            <button 
+              onClick={() => scrollToSection("technology")} 
+              className="px-4 py-2 text-foreground hover:text-foreground/70 transition-colors font-medium text-sm"
+            >
+              Technology
+            </button>
+            <button 
+              onClick={() => scrollToSection("resources")} 
+              className="px-4 py-2 text-foreground hover:text-foreground/70 transition-colors font-medium text-sm"
+            >
+              Resources
+            </button>
           </div>
 
-          {/* Empty spacer for alignment */}
-          <div className="hidden md:block"></div>
+          {/* Right side buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            <button 
+              onClick={() => scrollToSection("contact")} 
+              className="px-5 py-2 rounded-lg border border-border text-foreground hover:bg-muted transition-colors font-medium text-sm"
+            >
+              Contact us
+            </button>
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`${navTextColor} ${navHoverColor} transition-colors`} aria-label="Toggle menu">
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className="text-foreground hover:text-foreground/70 transition-colors" 
+              aria-label="Toggle menu"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && <div className="md:hidden pb-4 bg-background/95 backdrop-blur-sm rounded-lg mt-2 p-4">
-            <div className="flex flex-col space-y-4">
-              <Link to="/team" onClick={() => setIsMenuOpen(false)} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 bg-background/95 backdrop-blur-sm rounded-lg mt-2 p-4 border border-border">
+            <div className="flex flex-col space-y-3">
+              <Link 
+                to="/team" 
+                onClick={() => setIsMenuOpen(false)} 
+                className="text-foreground hover:text-accent transition-colors text-left font-medium px-2 py-2"
+              >
                 About
               </Link>
-              <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-accent transition-colors text-left font-['DM_Serif_Text']">
+              <button 
+                onClick={() => scrollToSection("technology")} 
+                className="text-foreground hover:text-accent transition-colors text-left font-medium px-2 py-2"
+              >
+                Technology
+              </button>
+              <button 
+                onClick={() => scrollToSection("resources")} 
+                className="text-foreground hover:text-accent transition-colors text-left font-medium px-2 py-2"
+              >
+                Resources
+              </button>
+              <button 
+                onClick={() => scrollToSection("contact")} 
+                className="text-foreground hover:text-accent transition-colors text-left font-medium px-2 py-2"
+              >
                 Contact us
               </button>
             </div>
-          </div>}
+          </div>
+        )}
       </div>
-    </nav>;
+    </nav>
+  );
 };
+
 export default Navbar;
