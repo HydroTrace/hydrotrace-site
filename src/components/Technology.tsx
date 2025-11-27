@@ -101,8 +101,8 @@ const Technology = ({ className }: { className?: string }) => {
           }}
         >
           <span 
-            className="text-[11px] tracking-[0.35em] font-light uppercase"
-            style={{ color: '#336CFF' }}
+            className="text-sm tracking-[0.35em] font-normal uppercase"
+            style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
           >
             HOW IT WORKS
           </span>
