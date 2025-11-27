@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import irrigationCircle from "@/assets/irrigation-circle.png";
 import RotatingArcs from "./RotatingArcs";
-import { ArrowRight } from "lucide-react";
 
 const About = ({ className }: { className?: string }) => {
   return (
@@ -29,11 +28,15 @@ const About = ({ className }: { className?: string }) => {
               {/* Learn more link */}
               <a 
                 href="#" 
-                className="about-learn-more inline-flex items-center gap-2 mt-8 text-lg font-bold transition-colors duration-200"
-                style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+                className="about-learn-more inline-block mt-12 px-6 py-3 text-lg font-bold transition-colors duration-200"
+                style={{ 
+                  color: '#21177a', 
+                  fontFamily: "'Open Sans', sans-serif",
+                  backgroundColor: '#f0f0f0',
+                  border: '2px solid #1500fa',
+                }}
               >
                 Learn more about water allocation
-                <ArrowRight size={20} />
               </a>
             </div>
 
