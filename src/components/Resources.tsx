@@ -369,7 +369,7 @@ const Resources = ({ className }: { className?: string }) => {
                   className="text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
-                  103'437
+                  103,437
                 </span>
                 <span 
                   className="text-[10px] mt-1"
