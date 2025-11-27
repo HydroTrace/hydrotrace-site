@@ -14,14 +14,14 @@ const About = ({ className }: { className?: string }) => {
             {/* Text Content on Left */}
             <div className="pr-12">
               <h2 className="heading-l mb-8">
-                Making Water Governance Traceable and Fair
+                A Modern Data Layer for Agricultural Water Management
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  HydroTrace develops transparent digital systems that strengthen how water is allocated, monitored, and reported. By combining blockchain verification, mobile monitoring, and data integrity tools, we help bridge the gap between policy frameworks and real-world water use.
+                  HydroTrace streamlines how groundwater and surface-water abstractions are captured and reported. Through consistent measurement, integrated verification, and clean digital workflows, we reduce the friction that slows down compliance and makes water data difficult to trust.
                 </p>
                 <p>
-                  Our mission is to make groundwater management traceable, auditable, and fair — empowering regulators and communities with trusted information to support sustainable water governance.
+                  The result is reliable information that helps farmers, managers, and entire basins move toward accurate reporting, stronger compliance, and genuinely data-driven water management.
                 </p>
               </div>
             </div>
