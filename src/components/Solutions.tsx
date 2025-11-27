@@ -233,6 +233,77 @@ const WaterSeepageOverlay = ({ isHovered }: { isHovered: boolean }) => (
   </div>
 );
 
+const FootprintOverlay = ({ isHovered }: { isHovered: boolean }) => (
+  <div className="absolute top-0 right-0 w-28 h-36 pointer-events-none">
+    <svg 
+      viewBox="0 0 100 130" 
+      className="w-full h-full"
+    >
+      {/* First footprint - top right, more visible */}
+      <g 
+        style={{ 
+          opacity: isHovered ? 0.85 : 0, 
+          transform: isHovered ? 'translateY(0)' : 'translateY(-10px)',
+          transition: 'all 0.5s ease-out 0.1s'
+        }}
+      >
+        {/* Toes - water droplet circles */}
+        <ellipse cx="72" cy="8" rx="4" ry="5" fill="#3366a8"/>
+        <ellipse cx="82" cy="12" rx="3.5" ry="4.5" fill="#3366a8"/>
+        <ellipse cx="90" cy="18" rx="3" ry="4" fill="#3366a8"/>
+        <ellipse cx="63" cy="12" rx="3" ry="4" fill="#3366a8"/>
+        <ellipse cx="56" cy="18" rx="2.5" ry="3.5" fill="#3366a8"/>
+        
+        {/* Main foot body */}
+        <path
+          d="M62 22 Q58 28 60 38 Q62 48 68 55 Q72 60 72 68 Q72 75 68 80 L76 80 Q80 72 78 62 Q76 52 82 42 Q88 32 86 24 Q84 20 78 20 Q72 20 66 22 Z"
+          fill="#3366a8"
+        />
+      </g>
+      
+      {/* Second footprint - lower left, more transparent */}
+      <g 
+        style={{ 
+          opacity: isHovered ? 0.4 : 0, 
+          transform: isHovered ? 'translateY(0)' : 'translateY(-15px)',
+          transition: 'all 0.6s ease-out 0.4s'
+        }}
+      >
+        {/* Toes - water droplet circles */}
+        <ellipse cx="42" cy="48" rx="3.5" ry="4.5" fill="#3366a8"/>
+        <ellipse cx="51" cy="52" rx="3" ry="4" fill="#3366a8"/>
+        <ellipse cx="58" cy="58" rx="2.8" ry="3.5" fill="#3366a8"/>
+        <ellipse cx="34" cy="52" rx="2.8" ry="3.5" fill="#3366a8"/>
+        <ellipse cx="28" cy="58" rx="2.5" ry="3" fill="#3366a8"/>
+        
+        {/* Main foot body */}
+        <path
+          d="M34 62 Q30 68 32 76 Q34 84 39 90 Q42 94 42 100 Q42 106 39 110 L46 110 Q49 104 48 96 Q46 88 51 80 Q56 72 54 64 Q52 60 48 60 Q42 60 38 62 Z"
+          fill="#3366a8"
+        />
+      </g>
+      
+      {/* Third footprint hint - very faint */}
+      <g 
+        style={{ 
+          opacity: isHovered ? 0.15 : 0, 
+          transform: isHovered ? 'translateY(0)' : 'translateY(-20px)',
+          transition: 'all 0.7s ease-out 0.7s'
+        }}
+      >
+        <ellipse cx="18" cy="88" rx="3" ry="4" fill="#3366a8"/>
+        <ellipse cx="26" cy="92" rx="2.5" ry="3.5" fill="#3366a8"/>
+        <ellipse cx="32" cy="97" rx="2.3" ry="3" fill="#3366a8"/>
+        <ellipse cx="11" cy="92" rx="2.3" ry="3" fill="#3366a8"/>
+        <path
+          d="M12 100 Q9 105 10 112 Q12 118 16 122 L22 122 Q24 117 23 112 Q21 106 25 100 Q28 94 26 100 Q24 96 20 96 Q16 96 14 98 Z"
+          fill="#3366a8"
+        />
+      </g>
+    </svg>
+  </div>
+);
+
 const Solutions = ({ className }: { className?: string }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -251,6 +322,8 @@ const Solutions = ({ className }: { className?: string }) => {
               {index === 0 && <VineOverlay isHovered={hoveredIndex === 0} />}
               {/* Water seepage overlay for Water Stewards card */}
               {index === 1 && <WaterSeepageOverlay isHovered={hoveredIndex === 1} />}
+              {/* Footprint overlay for Water Footprinting card */}
+              {index === 2 && <FootprintOverlay isHovered={hoveredIndex === 2} />}
               
               <div className="relative z-10">
                 <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
