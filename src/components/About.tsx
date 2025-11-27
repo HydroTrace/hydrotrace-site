@@ -1,56 +1,10 @@
-import { useRef, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import animationVideo from "@/assets/hydrotrace-animation.mp4";
 import { cn } from "@/lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
+import irrigationCircle from "@/assets/irrigation-circle.png";
 
 const About = ({ className }: { className?: string }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    const section = sectionRef.current;
-    
-    if (!video || !section) return;
-
-    // Set video to first frame
-    video.currentTime = 0;
-
-    // Create a proxy object to animate
-    const progress = { value: 0 };
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 0.5, // Smooth scrubbing with 0.5 second delay
-      onUpdate: (self) => {
-        if (video.duration) {
-          gsap.to(progress, {
-            value: self.progress,
-            duration: 0.5,
-            ease: "power2.out",
-            onUpdate: () => {
-              video.currentTime = progress.value * video.duration;
-            }
-          });
-        }
-      },
-    });
-
-    return () => {
-      scrollTrigger.kill();
-    };
-  }, []);
-
   return (
     <section 
       id="about" 
-      ref={sectionRef}
       className={cn("py-24 bg-white", className)}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +25,7 @@ const About = ({ className }: { className?: string }) => {
               </div>
             </div>
 
-            {/* Video on Right */}
+            {/* Image on Right */}
             <div className="relative pl-12 overflow-visible">
               {/* Squares pattern with diagonal fade */}
               <div 
@@ -87,13 +41,10 @@ const About = ({ className }: { className?: string }) => {
                 }}
               />
               <div className="relative flex items-center justify-center py-8">
-                <video
-                  ref={videoRef}
-                  src={animationVideo}
+                <img
+                  src={irrigationCircle}
+                  alt="Aerial view of circular irrigation system"
                   className="w-full max-w-md h-auto relative z-10"
-                  muted
-                  playsInline
-                  preload="auto"
                 />
               </div>
             </div>
