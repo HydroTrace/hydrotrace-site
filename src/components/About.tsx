@@ -44,7 +44,7 @@ const About = ({ className }: { className?: string }) => {
               <div className="relative flex items-center justify-center py-8">
                 {/* Rotating arcs behind the logo */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <RotatingArcs className="w-[800px] h-[800px]" />
+                  <RotatingArcs className="w-[550px] h-[550px]" />
                 </div>
                 <img
                   src={irrigationCircle}
