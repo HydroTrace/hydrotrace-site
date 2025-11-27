@@ -1,113 +1,135 @@
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const features = [
-  {
-    title: "Numbers you can trust",
-    description: "Get the highest-quality water governance data, with methodologies developed by in-house experts and vetted by third-party auditors.",
-    link: "OUR APPROACH TO WATER DATA",
-    href: "#"
-  },
-  {
-    title: "Impact you can prove",
-    description: "HydroTrace is the only platform purpose-built for real results. Set targets, model and track usage, and ensure compliance with our industry-leading tools.",
-    link: "BUILD A HIGH-IMPACT WATER PROGRAM",
-    href: "#"
+const generateRings = (count: number, baseRadius: number, centerX: number, centerY: number) => {
+  const rings = [];
+  for (let i = 0; i < count; i++) {
+    const radius = baseRadius + i * 25;
+    const opacity = 0.25 - (i * 0.012);
+    const duration = 15 + i * 2;
+    const direction = i % 2 === 0 ? 1 : -1;
+    const dashArray = `${80 + i * 15} ${120 + i * 20}`;
+    const dashOffset = i * 50;
+    
+    rings.push({
+      radius,
+      opacity: Math.max(opacity, 0.08),
+      duration,
+      direction,
+      dashArray,
+      dashOffset,
+      centerX,
+      centerY,
+    });
   }
-];
+  return rings;
+};
+
+const AnimatedRing = ({ 
+  radius, 
+  opacity, 
+  duration, 
+  direction, 
+  dashArray, 
+  dashOffset,
+  centerX,
+  centerY,
+  index 
+}: {
+  radius: number;
+  opacity: number;
+  duration: number;
+  direction: number;
+  dashArray: string;
+  dashOffset: number;
+  centerX: number;
+  centerY: number;
+  index: number;
+}) => {
+  const circumference = 2 * Math.PI * radius;
+  
+  return (
+    <circle
+      cx={centerX}
+      cy={centerY}
+      r={radius}
+      fill="none"
+      stroke="#0A1B44"
+      strokeWidth="1.5"
+      strokeOpacity={opacity}
+      strokeDasharray={dashArray}
+      strokeLinecap="round"
+      style={{
+        transformOrigin: `${centerX}px ${centerY}px`,
+        animation: `spin-ring-${direction > 0 ? 'cw' : 'ccw'} ${duration}s linear infinite`,
+        animationDelay: `${index * 0.5}s`,
+      }}
+    />
+  );
+};
+
+const ConcentricCircles = ({ 
+  position, 
+  className 
+}: { 
+  position: 'top-left' | 'bottom-right';
+  className?: string;
+}) => {
+  const isTopLeft = position === 'top-left';
+  const centerX = isTopLeft ? 280 : 320;
+  const centerY = isTopLeft ? 280 : 280;
+  const rings = generateRings(12, 60, centerX, centerY);
+  
+  return (
+    <svg
+      className={cn("absolute pointer-events-none", className)}
+      width="600"
+      height="560"
+      viewBox="0 0 600 560"
+      style={{
+        [isTopLeft ? 'left' : 'right']: '-100px',
+        [isTopLeft ? 'top' : 'bottom']: '-80px',
+      }}
+    >
+      <style>
+        {`
+          @keyframes spin-ring-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes spin-ring-ccw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+          }
+          @keyframes dash-slide {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: 1000; }
+          }
+        `}
+      </style>
+      {rings.map((ring, index) => (
+        <AnimatedRing
+          key={index}
+          {...ring}
+          index={index}
+        />
+      ))}
+    </svg>
+  );
+};
 
 const Resources = ({ className }: { className?: string }) => {
   return (
-    <section className={cn("py-32 relative overflow-hidden", className)} style={{ backgroundColor: '#F8F7F4' }}>
+    <section 
+      className={cn("py-32 relative overflow-hidden min-h-[600px]", className)} 
+      style={{ backgroundColor: '#FAFAF7' }}
+    >
+      {/* Animated concentric circle clusters */}
+      <ConcentricCircles position="top-left" />
+      <ConcentricCircles position="bottom-right" />
 
-      {/* Vertical dashed lines */}
-      <div 
-        className="absolute left-[15%] top-0 bottom-0 w-px hidden lg:block"
-        style={{ 
-          backgroundImage: 'linear-gradient(to bottom, #D1DBF9 50%, transparent 50%)',
-          backgroundSize: '1px 8px'
-        }}
-      />
-      <div 
-        className="absolute right-[15%] top-0 bottom-0 w-px hidden lg:block"
-        style={{ 
-          backgroundImage: 'linear-gradient(to bottom, #D1DBF9 50%, transparent 50%)',
-          backgroundSize: '1px 8px'
-        }}
-      />
-
-      {/* Content */}
+      {/* Content placeholder - can be replaced with dashboard UI */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          
-          {/* Left Column */}
-          <div>
-            {/* Main Headline */}
-            <h2 className="heading-xl mb-16" style={{ color: '#21177a' }}>
-              The HydroTrace Way
-            </h2>
-            
-            {/* Placeholder Image */}
-            <div 
-              className="aspect-[4/3] rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: '#E8EEF8' }}
-            >
-              <span className="text-[#A0B0C8] text-sm">Placeholder image</span>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="pt-4">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className={cn(
-                  "pb-10",
-                  index < features.length - 1 && "mb-10 border-b",
-                )}
-                style={{ borderColor: '#D1DBF9' }}
-              >
-                {/* Top border for first item */}
-                {index === 0 && (
-                  <div 
-                    className="h-px w-full mb-8"
-                    style={{ backgroundColor: '#D1DBF9' }}
-                  />
-                )}
-                
-                <h3 
-                  className="text-[1.7rem] sm:text-[2.1rem] font-bold mb-5"
-                  style={{ 
-                    color: '#0A1B44',
-                    fontFamily: "'Open Sans', sans-serif"
-                  }}
-                >
-                  {feature.title}
-                </h3>
-                
-                <p 
-                  className="text-[1.1rem] leading-[1.8] mb-6"
-                  style={{ 
-                    color: '#0A1B44',
-                    fontFamily: "'Open Sans', sans-serif",
-                    fontWeight: 300
-                  }}
-                >
-                  {feature.description}
-                </p>
-                
-                <a 
-                  href={feature.href}
-                  className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.15em] transition-all duration-200 hover:gap-3"
-                  style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
-                >
-                  {feature.link}
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Your content goes here */}
       </div>
     </section>
   );
