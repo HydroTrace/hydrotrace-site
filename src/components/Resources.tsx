@@ -68,9 +68,8 @@ const Resources = ({ className }: { className?: string }) => {
           {/* Left Column */}
           <div>
             {/* Main Headline */}
-            <h2 className="heading-xl mb-16" style={{ color: '#336CFF' }}>
-              The HydroTrace<br />
-              difference
+            <h2 className="heading-xl mb-16" style={{ color: '#21177a' }}>
+              The HydroTrace Way
             </h2>
             
             {/* Placeholder Image */}
@@ -102,18 +101,17 @@ const Resources = ({ className }: { className?: string }) => {
                 )}
                 
                 <h3 
-                  className="text-2xl sm:text-3xl font-light mb-5"
+                  className="text-[1.7rem] sm:text-[2.1rem] font-bold mb-5"
                   style={{ 
                     color: '#0A1B44',
-                    fontFamily: "'Open Sans', sans-serif",
-                    fontWeight: 300
+                    fontFamily: "'Open Sans', sans-serif"
                   }}
                 >
                   {feature.title}
                 </h3>
                 
                 <p 
-                  className="text-base leading-[1.8] mb-6 font-light"
+                  className="text-[1.1rem] leading-[1.8] mb-6"
                   style={{ 
                     color: '#0A1B44',
                     fontFamily: "'Open Sans', sans-serif",
