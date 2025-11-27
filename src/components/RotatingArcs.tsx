@@ -1,9 +1,9 @@
 const RotatingArcs = ({ className }: { className?: string }) => {
   // Define arcs at different radii with varying dash patterns
   const arcs = [
-    { radius: 160, dashArray: '200 100', rotation: 'cw', duration: 25, startAngle: 0 },
-    { radius: 190, dashArray: '250 120', rotation: 'ccw', duration: 20, startAngle: 120 },
-    { radius: 220, dashArray: '220 130', rotation: 'cw', duration: 30, startAngle: 240 },
+    { radius: 240, dashArray: '200 100', rotation: 'cw', duration: 25, startAngle: 0 },
+    { radius: 280, dashArray: '250 120', rotation: 'ccw', duration: 20, startAngle: 120 },
+    { radius: 320, dashArray: '220 130', rotation: 'cw', duration: 30, startAngle: 240 },
   ];
 
   const centerX = 350;
