@@ -134,24 +134,7 @@ const AnimatedGridPanel = () => {
               transform: `scale(${anim.scale}) translateX(${anim.x}px)`,
               transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
-          >
-            {cell.id === 4 && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-1">
-                <span 
-                  className="text-lg font-semibold leading-tight"
-                  style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
-                >
-                  5 M m³/year
-                </span>
-                <span 
-                  className="text-[8px] text-center leading-tight mt-1"
-                  style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
-                >
-                  TOTAL ALLOCATED GROUNDWATER
-                </span>
-              </div>
-            )}
-          </div>
+          />
         );
       })}
     </div>
@@ -272,7 +255,20 @@ const Resources = ({ className }: { className?: string }) => {
               style={{ border: '1px solid #3366CC' }}
             >
               {/* Row 1 */}
-              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+                <span 
+                  className="text-2xl font-semibold"
+                  style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+                >
+                  5 M m³/year
+                </span>
+                <span 
+                  className="text-[10px] mt-1"
+                  style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
+                >
+                  TOTAL ALLOCATED GROUNDWATER
+                </span>
+              </div>
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               
