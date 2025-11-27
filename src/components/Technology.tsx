@@ -203,164 +203,188 @@ const Technology = ({ className }: { className?: string }) => {
           </div>
 
           {/* Right Side - Interactive Panel */}
-          <div className="relative min-h-[560px]">
+          <div className="relative min-h-[620px]">
             {/* Left vertical divider */}
             <div 
               className="absolute left-0 top-0 bottom-0 w-px hidden lg:block"
               style={{ backgroundColor: '#D1DBF9' }}
             />
             
-            {/* Panel Container */}
-            <div className="h-full lg:pl-0">
+            {/* Outer Frame with gradient */}
+            <div 
+              className="h-full rounded-sm overflow-hidden border transition-all duration-500"
+              style={{ borderColor: '#D4DCF6' }}
+            >
+              {/* Top Gradient Section */}
               <div 
-                className="h-full border transition-all duration-500 flex flex-col"
-                style={{ borderColor: '#B8C7E8' }}
-              >
-                {/* Top Section - Light Blue */}
-                <div 
-                  className="p-6 border-b flex items-center gap-3"
-                  style={{ 
-                    backgroundColor: '#EEF3FC',
-                    borderColor: '#D1DBF9'
-                  }}
-                >
+                className="h-16"
+                style={{ backgroundColor: '#EEF4FC' }}
+              />
+              
+              {/* Inner White Panel Container */}
+              <div className="bg-white mx-0 relative">
+                <div className="flex">
+                  {/* Left Sidebar Strip */}
                   <div 
-                    className="w-7 h-7 rounded-full border flex items-center justify-center"
-                    style={{ borderColor: '#B8C7E8' }}
+                    className="w-14 flex-shrink-0 border-r flex flex-col items-center pt-6"
+                    style={{ borderColor: '#D4DCF6' }}
                   >
+                    {/* Logo Circle */}
                     <div 
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: '#336CFF' }}
-                    />
-                  </div>
-                  <h4 
-                    className="text-lg font-medium transition-all duration-300"
-                    style={{ color: '#0A1B44' }}
-                  >
-                    {steps[activeIndex].content.title}
-                  </h4>
-                </div>
-                
-                {/* Middle Section - White */}
-                <div 
-                  className="flex-1 p-6 bg-white border-b"
-                  style={{ borderColor: '#D1DBF9' }}
-                >
-                  {/* Headers Row */}
-                  <div className="grid grid-cols-2 gap-8 mb-6">
-                    <span 
-                      className="text-xs font-medium"
-                      style={{ color: '#0A1B44' }}
+                      className="w-8 h-8 rounded-full border-2 flex items-center justify-center"
+                      style={{ borderColor: '#D4DCF6' }}
                     >
-                      Gross emissions by category
-                    </span>
-                    <span 
-                      className="text-xs font-medium"
-                      style={{ color: '#0A1B44' }}
-                    >
-                      Gross emissions over time
-                    </span>
+                      <div 
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: '#336CFF' }}
+                      />
+                    </div>
                   </div>
                   
-                  {/* Charts Row */}
-                  <div className="grid grid-cols-2 gap-8 mb-8">
-                    {/* Left: Donut + Legend */}
-                    <div className="flex items-start gap-6">
-                      {/* Donut Chart */}
-                      <div className="relative w-20 h-20 flex-shrink-0">
-                        <svg viewBox="0 0 36 36" className="w-full h-full">
-                          <circle
-                            cx="18"
-                            cy="18"
-                            r="14"
-                            fill="none"
-                            stroke="#dbeafe"
-                            strokeWidth="4"
-                          />
-                          <circle
-                            cx="18"
-                            cy="18"
-                            r="14"
-                            fill="none"
-                            stroke="#336CFF"
-                            strokeWidth="4"
-                            strokeDasharray="55 45"
-                            strokeLinecap="round"
-                            transform="rotate(-90 18 18)"
-                          />
-                        </svg>
+                  {/* Main Content Area */}
+                  <div className="flex-1">
+                    {/* Title Row */}
+                    <div 
+                      className="px-6 py-5 border-b flex items-center gap-3"
+                      style={{ borderColor: '#D4DCF6' }}
+                    >
+                      <h4 
+                        className="text-lg font-medium transition-all duration-300"
+                        style={{ color: '#0A1B44' }}
+                      >
+                        {steps[activeIndex].content.title}
+                      </h4>
+                      <div 
+                        className="ml-auto px-3 py-1 rounded text-xs"
+                        style={{ backgroundColor: '#E8EFF8', color: '#6B7A99' }}
+                      >
+                        
+                      </div>
+                    </div>
+                    
+                    {/* Charts Section */}
+                    <div 
+                      className="px-6 py-6 border-b"
+                      style={{ borderColor: '#D4DCF6' }}
+                    >
+                      {/* Headers Row */}
+                      <div className="grid grid-cols-2 gap-8 mb-6">
+                        <span 
+                          className="text-xs font-medium"
+                          style={{ color: '#0A1B44' }}
+                        >
+                          Gross emissions by category
+                        </span>
+                        <span 
+                          className="text-xs font-medium"
+                          style={{ color: '#0A1B44' }}
+                        >
+                          Gross emissions over time
+                        </span>
                       </div>
                       
-                      {/* Legend */}
-                      <div className="grid grid-cols-1 gap-1.5 text-xs">
-                        {steps[activeIndex].content.categories.map((cat, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <div 
-                              className="w-2 h-2 rounded-full flex-shrink-0"
-                              style={{ backgroundColor: cat.color }}
+                      {/* Charts Row */}
+                      <div className="grid grid-cols-2 gap-8">
+                        {/* Left: Donut + Legend */}
+                        <div className="flex items-start gap-5">
+                          {/* Donut Chart */}
+                          <div className="relative w-20 h-20 flex-shrink-0">
+                            <svg viewBox="0 0 36 36" className="w-full h-full">
+                              <circle
+                                cx="18"
+                                cy="18"
+                                r="14"
+                                fill="none"
+                                stroke="#dbeafe"
+                                strokeWidth="4"
+                              />
+                              <circle
+                                cx="18"
+                                cy="18"
+                                r="14"
+                                fill="none"
+                                stroke="#336CFF"
+                                strokeWidth="4"
+                                strokeDasharray="55 45"
+                                strokeLinecap="round"
+                                transform="rotate(-90 18 18)"
+                              />
+                            </svg>
+                          </div>
+                          
+                          {/* Legend */}
+                          <div className="grid grid-cols-1 gap-1.5 text-xs">
+                            {steps[activeIndex].content.categories.map((cat, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <div 
+                                  className="w-2 h-2 rounded-full flex-shrink-0"
+                                  style={{ backgroundColor: cat.color }}
+                                />
+                                <span style={{ color: '#0A1B44' }}>{cat.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        {/* Right: Bar Chart */}
+                        <div className="flex items-end gap-1.5 h-20">
+                          {[45, 55, 40, 65, 50, 75, 55, 85, 60, 70].map((h, i) => (
+                            <div
+                              key={i}
+                              className="flex-1 rounded-t transition-all duration-300"
+                              style={{ 
+                                height: `${h}%`,
+                                backgroundColor: '#336CFF'
+                              }}
                             />
-                            <span style={{ color: '#0A1B44' }}>{cat.name}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Table Section */}
+                    <div className="px-6 py-5">
+                      {/* Expandable Header */}
+                      <div 
+                        className="flex items-center justify-between pb-4 border-b mb-4"
+                        style={{ borderColor: '#E8EFF8' }}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs" style={{ color: '#336CFF' }}>▼</span>
+                          <span className="text-sm font-medium" style={{ color: '#0A1B44' }}>
+                            Goods & Services
+                          </span>
+                        </div>
+                        <span className="text-sm" style={{ color: '#0A1B44' }}>
+                          {steps[activeIndex].content.categories[0]?.value || "177,204"} <span className="text-xs text-[#6B7A99]">tCO₂e</span>
+                        </span>
+                      </div>
+                      
+                      {/* Items Table */}
+                      <div className="space-y-0">
+                        {steps[activeIndex].content.items.map((item, i) => (
+                          <div 
+                            key={i}
+                            className="flex justify-between text-sm py-2 border-b last:border-b-0"
+                            style={{ borderColor: '#F0F4F9' }}
+                          >
+                            <span style={{ color: '#0A1B44' }}>{item.name}</span>
+                            <span style={{ color: '#0A1B44' }}>{item.value}</span>
                           </div>
                         ))}
                       </div>
                     </div>
-                    
-                    {/* Right: Bar Chart */}
-                    <div className="flex items-end gap-1.5 h-20">
-                      {[45, 55, 40, 65, 50, 75, 55, 85, 60, 70].map((h, i) => (
-                        <div
-                          key={i}
-                          className="flex-1 rounded-t transition-all duration-300"
-                          style={{ 
-                            height: `${h}%`,
-                            backgroundColor: '#336CFF'
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Divider */}
-                  <div 
-                    className="h-px mb-4"
-                    style={{ backgroundColor: '#D1DBF9' }}
-                  />
-                  
-                  {/* Expandable Section Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs" style={{ color: '#336CFF' }}>▼</span>
-                      <span className="text-sm font-medium" style={{ color: '#0A1B44' }}>
-                        Goods & Services
-                      </span>
-                    </div>
-                    <span className="text-sm" style={{ color: '#0A1B44' }}>
-                      {steps[activeIndex].content.categories[0]?.value || "177,204"} <span className="text-xs">tCO₂e</span>
-                    </span>
-                  </div>
-                  
-                  {/* Items List */}
-                  <div className="space-y-3 pl-5">
-                    {steps[activeIndex].content.items.map((item, i) => (
-                      <div 
-                        key={i}
-                        className="flex justify-between text-sm"
-                      >
-                        <span style={{ color: '#0A1B44' }}>{item.name}</span>
-                        <span style={{ color: '#0A1B44' }}>{item.value}</span>
-                      </div>
-                    ))}
                   </div>
                 </div>
-                
-                {/* Bottom Section - Beige */}
-                <div 
-                  className="h-20"
-                  style={{ 
-                    background: 'linear-gradient(180deg, #FAF6EE 0%, #F5EDE0 100%)'
-                  }}
-                />
               </div>
+              
+              {/* Bottom Beige Gradient Section */}
+              <div 
+                className="h-20"
+                style={{ 
+                  background: 'linear-gradient(180deg, #FAF6EE 0%, #F5EDE0 100%)'
+                }}
+              />
             </div>
           </div>
         </div>
