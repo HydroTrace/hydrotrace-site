@@ -34,7 +34,7 @@ const RotatingArcs = ({ className }: { className?: string }) => {
           r={arc.radius}
           fill="none"
           stroke="#0C5212"
-          strokeWidth="1.5"
+          strokeWidth="3"
           strokeOpacity="0.4"
           strokeDasharray={arc.dashArray}
           strokeLinecap="round"
