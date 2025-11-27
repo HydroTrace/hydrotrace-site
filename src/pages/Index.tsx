@@ -12,7 +12,7 @@ const Index = () => {
       <main>
         <Hero />
         <About className="bg-[#faf7ef]" />
-        <Technology className="bg-[#faf5ee]" />
+        <Technology />
         <Resources className="bg-muted/20" />
         
         <Contact />
