@@ -67,6 +67,79 @@ const AnimatedRing = ({
   );
 };
 
+import { useState, useEffect } from 'react';
+
+// Grid layout configurations for animation
+const gridLayouts = [
+  // Layout A
+  [
+    { gridColumn: '1 / 3', gridRow: '1 / 2', opacity: 0.6 },
+    { gridColumn: '3 / 4', gridRow: '1 / 3', opacity: 0.4 },
+    { gridColumn: '4 / 5', gridRow: '1 / 2', opacity: 0.7 },
+    { gridColumn: '1 / 2', gridRow: '2 / 4', opacity: 0.5 },
+    { gridColumn: '2 / 3', gridRow: '2 / 3', opacity: 0.8 },
+    { gridColumn: '4 / 5', gridRow: '2 / 4', opacity: 0.45 },
+    { gridColumn: '2 / 4', gridRow: '3 / 4', opacity: 0.55 },
+  ],
+  // Layout B
+  [
+    { gridColumn: '1 / 2', gridRow: '1 / 2', opacity: 0.7 },
+    { gridColumn: '2 / 4', gridRow: '1 / 2', opacity: 0.5 },
+    { gridColumn: '4 / 5', gridRow: '1 / 3', opacity: 0.6 },
+    { gridColumn: '1 / 3', gridRow: '2 / 3', opacity: 0.45 },
+    { gridColumn: '3 / 4', gridRow: '2 / 4', opacity: 0.8 },
+    { gridColumn: '1 / 2', gridRow: '3 / 4', opacity: 0.55 },
+    { gridColumn: '2 / 3', gridRow: '3 / 4', opacity: 0.4 },
+  ],
+  // Layout C
+  [
+    { gridColumn: '1 / 3', gridRow: '1 / 3', opacity: 0.5 },
+    { gridColumn: '3 / 5', gridRow: '1 / 2', opacity: 0.65 },
+    { gridColumn: '3 / 4', gridRow: '2 / 3', opacity: 0.4 },
+    { gridColumn: '4 / 5', gridRow: '2 / 4', opacity: 0.75 },
+    { gridColumn: '1 / 2', gridRow: '3 / 4', opacity: 0.6 },
+    { gridColumn: '2 / 4', gridRow: '3 / 4', opacity: 0.5 },
+    { gridColumn: '4 / 5', gridRow: '3 / 4', opacity: 0 },
+  ],
+];
+
+const AnimatedGridPanel = () => {
+  const [layoutIndex, setLayoutIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLayoutIndex((prev) => (prev + 1) % gridLayouts.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentLayout = gridLayouts[layoutIndex];
+
+  return (
+    <div 
+      className="grid h-full w-full gap-[2px]"
+      style={{ 
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gridTemplateRows: 'repeat(3, 1fr)',
+      }}
+    >
+      {currentLayout.map((cell, index) => (
+        <div
+          key={index}
+          style={{
+            gridColumn: cell.gridColumn,
+            gridRow: cell.gridRow,
+            backgroundColor: `rgba(214, 227, 248, ${cell.opacity})`,
+            border: '1px solid #D4DCF6',
+            borderRadius: '2px',
+            transition: 'all 800ms cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const ConcentricCircles = ({ 
   position, 
   className 
@@ -185,34 +258,15 @@ const Resources = ({ className }: { className?: string }) => {
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               
-              {/* Right side filled grid - Row 1 */}
-              <div className="col-span-3 grid grid-cols-4 grid-rows-2" style={{ borderBottom: '1px solid #3366CC' }}>
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ borderBottom: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
-                <div style={{ borderRight: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8' }} />
+              {/* Right side animated grid panel */}
+              <div className="col-span-3 row-span-2 p-1" style={{ borderBottom: '1px solid #3366CC' }}>
+                <AnimatedGridPanel />
               </div>
               
               {/* Row 2 */}
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-              
-              {/* Right side filled grid - Row 2 */}
-              <div className="col-span-3 grid grid-cols-4 grid-rows-2" style={{ borderBottom: '1px solid #3366CC' }}>
-                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderBottom: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
-                <div style={{ borderRight: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
-                <div style={{ backgroundColor: '#D6E3F8' }} />
-              </div>
             </div>
             
             {/* Lower section with horizontal line */}
