@@ -11,9 +11,9 @@ const steps = [
       title: "Carbon footprint",
       categories: [
         { name: "Goods & Services", color: "#1e40af", value: "177,204" },
-        { name: "Offices", color: "#60a5fa", value: "" },
-        { name: "Marketing", color: "#93c5fd", value: "" },
-        { name: "Cloud", color: "#bfdbfe", value: "" },
+        { name: "Offices", color: "#93c5fd", value: "" },
+        { name: "Marketing", color: "#bfdbfe", value: "" },
+        { name: "Cloud", color: "#c7d2fe", value: "" },
         { name: "Employees", color: "#dbeafe", value: "" },
         { name: "Travel", color: "#1e3a8a", value: "" },
       ],
@@ -79,190 +79,212 @@ const Technology = ({ className }: { className?: string }) => {
   }, [isHovering, cycleToNext]);
 
   return (
-    <section className={cn("py-24 bg-white relative", className)}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto relative">
-          {/* Vertical Label */}
-          <div 
-            className="absolute left-0 top-0 hidden lg:flex items-center"
+    <section className={cn("py-32 bg-white relative overflow-hidden", className)}>
+      <div className="max-w-[1400px] mx-auto px-8 relative">
+        
+        {/* Left Dashed Vertical Border */}
+        <div 
+          className="absolute left-8 top-0 bottom-0 w-px hidden lg:block"
+          style={{ 
+            backgroundImage: 'linear-gradient(to bottom, #336CFF 50%, transparent 50%)',
+            backgroundSize: '1px 8px'
+          }}
+        />
+
+        {/* Vertical HOW IT WORKS Label */}
+        <div 
+          className="absolute left-0 top-8 hidden lg:flex items-start justify-center"
+          style={{ 
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
+            width: '32px'
+          }}
+        >
+          <span 
+            className="text-[11px] tracking-[0.35em] font-light uppercase"
+            style={{ color: '#336CFF' }}
+          >
+            HOW IT WORKS
+          </span>
+        </div>
+
+        {/* Main Headline */}
+        <div className="text-center mb-20 pt-8 lg:pl-12">
+          <h2 
+            className="text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.1]"
             style={{ 
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg) translateX(60px)',
-              height: '120px'
+              color: '#0A1B44',
+              fontFamily: "'DM Serif Display', serif"
             }}
           >
-            <span 
-              className="text-xs tracking-[0.3em] font-medium"
-              style={{ color: '#1e40af' }}
-            >
-              HOW IT WORKS
-            </span>
-          </div>
+            Making the invisible, visible.
+          </h2>
+        </div>
 
-          {/* Main Headline */}
-          <div className="text-center mb-16 pl-8 lg:pl-16">
-            <h2 
-              className="text-4xl sm:text-5xl lg:text-6xl font-light"
-              style={{ 
-                color: '#0a1b44',
-                fontFamily: "'DM Serif Text', serif"
-              }}
-            >
-              Making the invisible, visible.
-            </h2>
-          </div>
-
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-0 pl-8 lg:pl-16">
-            {/* Left Side - Steps */}
-            <div className="relative">
-              {/* Top border line */}
-              <div 
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ backgroundColor: '#c7d2e8' }}
-              />
-              
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className="relative cursor-pointer group"
-                  onMouseEnter={() => {
-                    setIsHovering(true);
-                    setActiveIndex(index);
-                  }}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  {/* Bottom border line */}
-                  <div 
-                    className="absolute bottom-0 left-0 right-0 h-px"
-                    style={{ backgroundColor: '#c7d2e8' }}
-                  />
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-0 lg:pl-12">
+          
+          {/* Left Side - Steps */}
+          <div className="relative">
+            {/* Top border */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-px"
+              style={{ backgroundColor: '#D1DBF9' }}
+            />
+            
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="relative cursor-pointer"
+                onMouseEnter={() => {
+                  setIsHovering(true);
+                  setActiveIndex(index);
+                }}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                {/* Bottom border */}
+                <div 
+                  className="absolute bottom-0 left-0 right-0 h-px"
+                  style={{ backgroundColor: '#D1DBF9' }}
+                />
+                
+                {/* Active underline indicator */}
+                <div 
+                  className={cn(
+                    "absolute bottom-0 left-0 h-[3px] transition-all duration-300 ease-out",
+                    activeIndex === index ? "w-28 opacity-100" : "w-0 opacity-0"
+                  )}
+                  style={{ backgroundColor: '#336CFF' }}
+                />
+                
+                <div className="py-10 pr-12 flex items-start gap-6">
+                  {/* Step Number */}
+                  <span 
+                    className="text-sm font-normal mt-2"
+                    style={{ color: '#336CFF' }}
+                  >
+                    {step.number}
+                  </span>
                   
-                  {/* Active indicator line */}
-                  <div 
-                    className={cn(
-                      "absolute bottom-0 left-0 h-[3px] transition-all duration-300 ease-out",
-                      activeIndex === index ? "w-24 opacity-100" : "w-0 opacity-0"
-                    )}
-                    style={{ backgroundColor: '#1e40af' }}
-                  />
-                  
-                  <div className="py-8 pr-8 flex items-start gap-4">
-                    {/* Step Number */}
-                    <span 
-                      className="text-sm font-medium mt-1"
-                      style={{ color: '#1e40af' }}
-                    >
-                      {step.number}
-                    </span>
-                    
-                    {/* Step Content */}
-                    <div className="flex-1">
-                      <h3 
-                        className={cn(
-                          "text-2xl sm:text-3xl font-medium mb-3 transition-colors duration-200",
-                          activeIndex === index ? "text-[#0a1b44]" : "text-[#1e40af]"
-                        )}
-                        style={{ fontFamily: "'DM Serif Text', serif" }}
-                      >
-                        {step.title}
-                      </h3>
-                      <p 
-                        className="text-base leading-relaxed max-w-md"
-                        style={{ color: '#64748b' }}
-                      >
-                        {step.description}
-                      </p>
-                    </div>
-                    
-                    {/* Arrow */}
-                    <ArrowRight 
+                  {/* Step Content */}
+                  <div className="flex-1">
+                    <h3 
                       className={cn(
-                        "w-5 h-5 mt-2 transition-all duration-200",
-                        activeIndex === index 
-                          ? "opacity-100 translate-x-0" 
-                          : "opacity-50 -translate-x-1"
+                        "text-3xl sm:text-4xl font-normal mb-4 transition-colors duration-200"
                       )}
-                      style={{ color: '#1e40af' }}
+                      style={{ 
+                        color: activeIndex === index ? '#0A1B44' : '#336CFF',
+                        fontFamily: "'DM Serif Display', serif"
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    <p 
+                      className="text-base leading-[1.7] max-w-[400px]"
+                      style={{ color: '#0A1B44' }}
+                    >
+                      {step.description}
+                    </p>
+                  </div>
+                  
+                  {/* Arrow */}
+                  <ArrowRight 
+                    className={cn(
+                      "w-5 h-5 mt-3 transition-all duration-200 flex-shrink-0",
+                      activeIndex === index 
+                        ? "opacity-100 translate-x-0" 
+                        : "opacity-40 -translate-x-1"
+                    )}
+                    style={{ color: '#336CFF' }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Side - Interactive Panel */}
+          <div className="relative min-h-[560px]">
+            {/* Left vertical divider */}
+            <div 
+              className="absolute left-0 top-0 bottom-0 w-px hidden lg:block"
+              style={{ backgroundColor: '#D1DBF9' }}
+            />
+            
+            {/* Panel Container */}
+            <div className="h-full lg:pl-0">
+              <div 
+                className="h-full border transition-all duration-500 flex flex-col"
+                style={{ borderColor: '#B8C7E8' }}
+              >
+                {/* Top Section - Light Blue */}
+                <div 
+                  className="p-6 border-b flex items-center gap-3"
+                  style={{ 
+                    backgroundColor: '#EEF3FC',
+                    borderColor: '#D1DBF9'
+                  }}
+                >
+                  <div 
+                    className="w-7 h-7 rounded-full border flex items-center justify-center"
+                    style={{ borderColor: '#B8C7E8' }}
+                  >
+                    <div 
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ backgroundColor: '#336CFF' }}
                     />
                   </div>
+                  <h4 
+                    className="text-lg font-medium transition-all duration-300"
+                    style={{ color: '#0A1B44' }}
+                  >
+                    {steps[activeIndex].content.title}
+                  </h4>
                 </div>
-              ))}
-            </div>
-
-            {/* Right Side - Interactive Panel */}
-            <div className="relative">
-              {/* Vertical divider */}
-              <div 
-                className="absolute left-0 top-0 bottom-0 w-px hidden lg:block"
-                style={{ backgroundColor: '#c7d2e8' }}
-              />
-              
-              {/* Right border */}
-              <div 
-                className="absolute right-0 top-0 bottom-0 w-px hidden lg:block"
-                style={{ backgroundColor: '#c7d2e8' }}
-              />
-              
-              {/* Content Panel */}
-              <div className="lg:pl-8 pt-4">
+                
+                {/* Middle Section - White */}
                 <div 
-                  className="rounded-lg overflow-hidden border-2 transition-all duration-500"
-                  style={{ 
-                    borderColor: '#a5b4d4',
-                    background: 'linear-gradient(180deg, #e8f0fc 0%, #faf8f4 100%)'
-                  }}
+                  className="flex-1 p-6 bg-white border-b"
+                  style={{ borderColor: '#D1DBF9' }}
                 >
-                  {/* Panel Header */}
-                  <div className="p-6 border-b" style={{ borderColor: '#d4dff0' }}>
-                    <div className="flex items-center gap-3">
-                      <div 
-                        className="w-8 h-8 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: '#e8f0fc' }}
-                      >
-                        <div 
-                          className="w-4 h-4 rounded-full"
-                          style={{ backgroundColor: '#1e40af' }}
-                        />
-                      </div>
-                      <h4 
-                        className="text-xl font-semibold transition-all duration-300"
-                        style={{ color: '#0a1b44' }}
-                      >
-                        {steps[activeIndex].content.title}
-                      </h4>
-                    </div>
+                  {/* Headers Row */}
+                  <div className="grid grid-cols-2 gap-8 mb-6">
+                    <span 
+                      className="text-xs font-medium"
+                      style={{ color: '#0A1B44' }}
+                    >
+                      Gross emissions by category
+                    </span>
+                    <span 
+                      className="text-xs font-medium"
+                      style={{ color: '#0A1B44' }}
+                    >
+                      Gross emissions over time
+                    </span>
                   </div>
                   
-                  {/* Panel Content */}
-                  <div className="p-6">
-                    {/* Categories Header */}
-                    <div className="flex justify-between text-xs font-medium mb-4" style={{ color: '#1e40af' }}>
-                      <span>Gross emissions by category</span>
-                      <span>Gross emissions over time</span>
-                    </div>
-                    
-                    {/* Chart Area */}
-                    <div className="flex items-center gap-8 mb-6">
-                      {/* Donut Chart Placeholder */}
-                      <div className="relative w-20 h-20">
+                  {/* Charts Row */}
+                  <div className="grid grid-cols-2 gap-8 mb-8">
+                    {/* Left: Donut + Legend */}
+                    <div className="flex items-start gap-6">
+                      {/* Donut Chart */}
+                      <div className="relative w-20 h-20 flex-shrink-0">
                         <svg viewBox="0 0 36 36" className="w-full h-full">
                           <circle
                             cx="18"
                             cy="18"
-                            r="15.5"
+                            r="14"
                             fill="none"
                             stroke="#dbeafe"
-                            strokeWidth="3"
+                            strokeWidth="4"
                           />
                           <circle
                             cx="18"
                             cy="18"
-                            r="15.5"
+                            r="14"
                             fill="none"
-                            stroke="#1e40af"
-                            strokeWidth="3"
-                            strokeDasharray="60 40"
+                            stroke="#336CFF"
+                            strokeWidth="4"
+                            strokeDasharray="55 45"
                             strokeLinecap="round"
                             transform="rotate(-90 18 18)"
                           />
@@ -270,73 +292,74 @@ const Technology = ({ className }: { className?: string }) => {
                       </div>
                       
                       {/* Legend */}
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                      <div className="grid grid-cols-1 gap-1.5 text-xs">
                         {steps[activeIndex].content.categories.map((cat, i) => (
-                          <div key={i} className="flex items-center gap-1">
+                          <div key={i} className="flex items-center gap-2">
                             <div 
-                              className="w-2 h-2 rounded-full"
+                              className="w-2 h-2 rounded-full flex-shrink-0"
                               style={{ backgroundColor: cat.color }}
                             />
-                            <span style={{ color: '#64748b' }}>{cat.name}</span>
+                            <span style={{ color: '#0A1B44' }}>{cat.name}</span>
                           </div>
-                        ))}
-                      </div>
-                      
-                      {/* Bar Chart Placeholder */}
-                      <div className="flex items-end gap-1 h-16 ml-auto">
-                        {[40, 55, 35, 70, 45, 80, 60, 90, 50, 65].map((h, i) => (
-                          <div
-                            key={i}
-                            className="w-2 rounded-t transition-all duration-300"
-                            style={{ 
-                              height: `${h}%`,
-                              backgroundColor: '#1e40af'
-                            }}
-                          />
                         ))}
                       </div>
                     </div>
                     
-                    {/* Expandable Section */}
-                    <div 
-                      className="border-t pt-4"
-                      style={{ borderColor: '#d4dff0' }}
-                    >
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs" style={{ color: '#64748b' }}>▼</span>
-                          <span className="text-sm font-medium" style={{ color: '#0a1b44' }}>
-                            Goods & Services
-                          </span>
-                        </div>
-                        <span className="text-sm" style={{ color: '#64748b' }}>
-                          {steps[activeIndex].content.categories[0]?.value || "177,204"} tCO₂e
-                        </span>
-                      </div>
-                      
-                      {/* Items List */}
-                      <div className="space-y-2 pl-5">
-                        {steps[activeIndex].content.items.map((item, i) => (
-                          <div 
-                            key={i}
-                            className="flex justify-between text-sm py-1"
-                          >
-                            <span style={{ color: '#64748b' }}>{item.name}</span>
-                            <span style={{ color: '#64748b' }}>{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
+                    {/* Right: Bar Chart */}
+                    <div className="flex items-end gap-1.5 h-20">
+                      {[45, 55, 40, 65, 50, 75, 55, 85, 60, 70].map((h, i) => (
+                        <div
+                          key={i}
+                          className="flex-1 rounded-t transition-all duration-300"
+                          style={{ 
+                            height: `${h}%`,
+                            backgroundColor: '#336CFF'
+                          }}
+                        />
+                      ))}
                     </div>
                   </div>
                   
-                  {/* Panel Footer */}
+                  {/* Divider */}
                   <div 
-                    className="h-12"
-                    style={{ 
-                      background: 'linear-gradient(180deg, #f5efe6 0%, #f0e6d8 100%)'
-                    }}
+                    className="h-px mb-4"
+                    style={{ backgroundColor: '#D1DBF9' }}
                   />
+                  
+                  {/* Expandable Section Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs" style={{ color: '#336CFF' }}>▼</span>
+                      <span className="text-sm font-medium" style={{ color: '#0A1B44' }}>
+                        Goods & Services
+                      </span>
+                    </div>
+                    <span className="text-sm" style={{ color: '#0A1B44' }}>
+                      {steps[activeIndex].content.categories[0]?.value || "177,204"} <span className="text-xs">tCO₂e</span>
+                    </span>
+                  </div>
+                  
+                  {/* Items List */}
+                  <div className="space-y-3 pl-5">
+                    {steps[activeIndex].content.items.map((item, i) => (
+                      <div 
+                        key={i}
+                        className="flex justify-between text-sm"
+                      >
+                        <span style={{ color: '#0A1B44' }}>{item.name}</span>
+                        <span style={{ color: '#0A1B44' }}>{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+                
+                {/* Bottom Section - Beige */}
+                <div 
+                  className="h-20"
+                  style={{ 
+                    background: 'linear-gradient(180deg, #FAF6EE 0%, #F5EDE0 100%)'
+                  }}
+                />
               </div>
             </div>
           </div>
