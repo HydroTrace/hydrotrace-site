@@ -19,27 +19,6 @@ const features = [
 const Resources = ({ className }: { className?: string }) => {
   return (
     <section className={cn("py-32 relative overflow-hidden", className)} style={{ backgroundColor: '#F8F7F4' }}>
-      {/* Grid Background - revealed toward upper right */}
-      <div className="absolute inset-0">
-        {/* Grid pattern with #1a00c2 at 70% transparency */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(26, 0, 194, 0.7) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(26, 0, 194, 0.7) 1px, transparent 1px)
-            `,
-            backgroundSize: '30px 30px',
-          }}
-        />
-        {/* Beige overlay that fades from left to right - grid visible on left */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to right, transparent 0%, #F8F7F4 50%, #F8F7F4 100%)`
-          }}
-        />
-      </div>
 
       {/* Vertical dashed lines */}
       <div 
