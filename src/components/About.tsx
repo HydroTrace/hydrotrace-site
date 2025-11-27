@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import irrigationCircle from "@/assets/irrigation-circle.png";
 import RotatingArcs from "./RotatingArcs";
+import { ArrowRight } from "lucide-react";
 
 const About = ({ className }: { className?: string }) => {
   return (
@@ -24,6 +25,16 @@ const About = ({ className }: { className?: string }) => {
                   The result is reliable information that helps farmers, managers, and entire basins move toward accurate reporting, stronger compliance, and genuinely data-driven water management.
                 </p>
               </div>
+              
+              {/* Learn more link */}
+              <a 
+                href="#" 
+                className="about-learn-more inline-flex items-center gap-2 mt-8 text-lg font-bold transition-colors duration-200"
+                style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+              >
+                Learn more about water allocation
+                <ArrowRight size={20} />
+              </a>
             </div>
 
             {/* Image on Right */}
@@ -53,17 +64,6 @@ const About = ({ className }: { className?: string }) => {
                 />
               </div>
             </div>
-          </div>
-          
-          {/* Learn more link */}
-          <div className="mt-12 text-center">
-            <a 
-              href="#" 
-              className="about-learn-more text-lg font-medium transition-colors duration-200"
-              style={{ color: '#21177a' }}
-            >
-              Learn more about water allocation
-            </a>
           </div>
         </div>
       </div>
