@@ -68,7 +68,7 @@ const Resources = ({ className }: { className?: string }) => {
           {/* Left Column */}
           <div>
             {/* Main Headline */}
-            <h2 className="heading-l mb-16" style={{ color: '#336CFF' }}>
+            <h2 className="heading-xl mb-16" style={{ color: '#336CFF' }}>
               The HydroTrace<br />
               difference
             </h2>
