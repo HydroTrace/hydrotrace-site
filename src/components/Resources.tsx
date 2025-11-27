@@ -127,8 +127,18 @@ const Resources = ({ className }: { className?: string }) => {
       <ConcentricCircles position="top-left" />
       <ConcentricCircles position="bottom-right" />
 
+      {/* Section Title */}
+      <div className="relative z-10 text-center pt-16 mb-8">
+        <h2 
+          className="heading-xl"
+          style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+        >
+          Data-driven <span style={{ color: '#030bfc' }}>water governance</span>
+        </h2>
+      </div>
+
       {/* Dashboard UI */}
-      <div className="relative z-10 flex items-center justify-center min-h-[700px] px-4">
+      <div className="relative z-10 flex items-center justify-center min-h-[600px] px-4">
         <div 
           className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm"
           style={{ 
