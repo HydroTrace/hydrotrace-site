@@ -80,35 +80,15 @@ const WaterTankFilling = ({ progress }: { progress: number }) => {
           border: '2px solid #3366CC',
         }}
       >
-        {/* Water fill */}
+        {/* Water fill - smooth transition */}
         <div 
-          className="absolute bottom-0 left-0 w-full transition-all duration-100"
+          className="absolute bottom-0 left-0 w-full"
           style={{ 
             height: `${progress * 100}%`,
             background: 'linear-gradient(180deg, #5588DD 0%, #3366CC 100%)',
+            transition: 'height 50ms linear',
           }}
         />
-        {/* Wave effect at top of water */}
-        {progress > 0.02 && (
-          <svg 
-            className="absolute left-0 w-full"
-            style={{ 
-              bottom: `${progress * 100}%`,
-              transform: 'translateY(50%)',
-              height: '12px'
-            }}
-            viewBox="0 0 100 10"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0 10 Q10 0, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"
-              fill="#5588DD"
-              style={{
-                animation: 'wave 2s ease-in-out infinite',
-              }}
-            />
-          </svg>
-        )}
         {/* Percentage text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span 
@@ -123,14 +103,6 @@ const WaterTankFilling = ({ progress }: { progress: number }) => {
           </span>
         </div>
       </div>
-      <style>
-        {`
-          @keyframes wave {
-            0%, 100% { d: path("M0 10 Q10 0, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"); }
-            50% { d: path("M0 10 Q10 10, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"); }
-          }
-        `}
-      </style>
     </div>
   );
 };
@@ -258,16 +230,6 @@ const ConsumptionPlot = ({ progress }: { progress: number }) => {
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-          />
-        )}
-        
-        {/* Current point marker */}
-        {progress > 0.01 && (
-          <circle
-            cx={currentX}
-            cy={currentY}
-            r="2"
-            fill="#3366CC"
           />
         )}
         
