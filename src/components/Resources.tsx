@@ -107,48 +107,27 @@ const WaterTankFilling = ({ progress }: { progress: number }) => {
   );
 };
 
-// Non-linear easing function: slow start, plateau, then increase
-const customEasing = (t: number): number => {
-  // Creates: slow start (0-0.3), plateau (0.3-0.6), faster increase (0.6-1)
-  if (t < 0.3) {
-    // Slow start - cubic ease in
-    return Math.pow(t / 0.3, 2) * 0.15;
-  } else if (t < 0.6) {
-    // Plateau - very slow growth
-    return 0.15 + (t - 0.3) * 0.1;
-  } else {
-    // Faster increase - ease out
-    const remaining = (t - 0.6) / 0.4;
-    return 0.18 + Math.pow(remaining, 0.7) * 0.82;
-  }
-};
-
-// Animated consumption visualization component
-const useConsumptionAnimation = (maxValue: number, duration: number = 15000) => {
+// Smooth linear animation hook
+const useConsumptionAnimation = (maxValue: number, duration: number = 10000) => {
   const [progress, setProgress] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(true);
   const startTimeRef = useRef<number | null>(null);
   const animationRef = useRef<number>();
 
   useEffect(() => {
-    if (!isAnimating) return;
-
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
       const elapsed = timestamp - startTimeRef.current;
       const linearProgress = Math.min(elapsed / duration, 1);
-      const easedProgress = customEasing(linearProgress);
       
-      setProgress(easedProgress);
+      setProgress(linearProgress);
       
       if (linearProgress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
-        // Reset and loop
-        setTimeout(() => {
-          startTimeRef.current = null;
-          setProgress(0);
-        }, 2000);
+        // Reset and loop seamlessly
+        startTimeRef.current = null;
+        setProgress(0);
+        animationRef.current = requestAnimationFrame(animate);
       }
     };
 
@@ -159,7 +138,7 @@ const useConsumptionAnimation = (maxValue: number, duration: number = 15000) => 
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isAnimating, duration, progress]);
+  }, [duration]);
 
   const currentValue = progress * maxValue;
   return { progress, currentValue };
