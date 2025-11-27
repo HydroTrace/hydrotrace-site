@@ -131,6 +131,108 @@ const VineOverlay = ({ isHovered }: { isHovered: boolean }) => (
   </div>
 );
 
+const WaterSeepageOverlay = ({ isHovered }: { isHovered: boolean }) => (
+  <div className="absolute top-0 right-0 w-24 h-32 pointer-events-none">
+    <svg 
+      viewBox="0 0 80 110" 
+      className="w-full h-full"
+      style={{ opacity: isHovered ? 1 : 0, transition: 'opacity 0.3s ease-out' }}
+    >
+      {/* Water drip 1 - main drip */}
+      <path
+        d="M70 0 L70 25 Q70 32 68 38 L68 55 Q68 62 66 70 L66 85"
+        fill="none"
+        stroke="#7db8e0"
+        strokeWidth="2"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 100,
+          strokeDashoffset: isHovered ? 0 : 100,
+          transition: 'stroke-dashoffset 0.8s ease-out'
+        }}
+      />
+      
+      {/* Water drip 2 */}
+      <path
+        d="M58 0 L58 18 Q57 25 55 32 L55 48 Q54 55 52 65"
+        fill="none"
+        stroke="#a8d4f0"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 80,
+          strokeDashoffset: isHovered ? 0 : 80,
+          transition: 'stroke-dashoffset 0.7s ease-out 0.1s'
+        }}
+      />
+      
+      {/* Water drip 3 */}
+      <path
+        d="M78 8 L78 35 Q77 42 75 50 L75 72"
+        fill="none"
+        stroke="#c5e4f7"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 70,
+          strokeDashoffset: isHovered ? 0 : 70,
+          transition: 'stroke-dashoffset 0.6s ease-out 0.15s'
+        }}
+      />
+      
+      {/* Water drip 4 - thin */}
+      <path
+        d="M50 0 L50 12 Q49 18 47 25 L47 40"
+        fill="none"
+        stroke="#7db8e0"
+        strokeWidth="1"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 50,
+          strokeDashoffset: isHovered ? 0 : 50,
+          transition: 'stroke-dashoffset 0.5s ease-out 0.2s'
+        }}
+      />
+      
+      {/* Water drip 5 */}
+      <path
+        d="M64 5 L64 30 Q63 38 61 45 L61 60"
+        fill="none"
+        stroke="#a8d4f0"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        style={{
+          strokeDasharray: 65,
+          strokeDashoffset: isHovered ? 0 : 65,
+          transition: 'stroke-dashoffset 0.65s ease-out 0.12s'
+        }}
+      />
+      
+      {/* Water droplets at ends */}
+      <g style={{ 
+        opacity: isHovered ? 1 : 0, 
+        transition: 'opacity 0.3s ease-out 0.6s'
+      }}>
+        <ellipse cx="66" cy="88" rx="3" ry="4" fill="#7db8e0"/>
+        <ellipse cx="52" cy="68" rx="2.5" ry="3.5" fill="#a8d4f0"/>
+        <ellipse cx="75" cy="75" rx="2" ry="3" fill="#c5e4f7"/>
+        <ellipse cx="47" cy="43" rx="2" ry="2.5" fill="#7db8e0"/>
+        <ellipse cx="61" cy="63" rx="2" ry="3" fill="#a8d4f0"/>
+      </g>
+      
+      {/* Small splash marks */}
+      <g style={{ 
+        opacity: isHovered ? 1 : 0, 
+        transition: 'opacity 0.3s ease-out 0.7s'
+      }}>
+        <circle cx="68" cy="92" r="1.5" fill="#c5e4f7"/>
+        <circle cx="63" cy="90" r="1" fill="#a8d4f0"/>
+        <circle cx="54" cy="70" r="1" fill="#c5e4f7"/>
+      </g>
+    </svg>
+  </div>
+);
+
 const Solutions = ({ className }: { className?: string }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -147,6 +249,8 @@ const Solutions = ({ className }: { className?: string }) => {
             >
               {/* Vine overlay for Farmers card */}
               {index === 0 && <VineOverlay isHovered={hoveredIndex === 0} />}
+              {/* Water seepage overlay for Water Stewards card */}
+              {index === 1 && <WaterSeepageOverlay isHovered={hoveredIndex === 1} />}
               
               <div className="relative z-10">
                 <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
