@@ -420,7 +420,20 @@ const Resources = ({ className }: { className?: string }) => {
                   TOTAL CONSUMED TO DATE
                 </span>
               </div>
-              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+                <span 
+                  className="text-2xl font-semibold"
+                  style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+                >
+                  {Math.floor(progress * 10000).toLocaleString()}
+                </span>
+                <span 
+                  className="text-[10px] mt-1"
+                  style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
+                >
+                  NUMBER OF USAGE RECORDINGS
+                </span>
+              </div>
               
               {/* Right side animated grid panel */}
               <div className="col-span-3 row-span-2 p-1" style={{ borderBottom: '1px solid #3366CC' }}>
