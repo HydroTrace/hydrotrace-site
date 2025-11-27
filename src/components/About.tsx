@@ -55,10 +55,10 @@ const About = ({ className }: { className?: string }) => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-0 items-center">
+          <div className="grid md:grid-cols-2 gap-0 items-center border-2 border-dashed border-[#21177a]/40 rounded-lg p-8">
             {/* Text Content on Left */}
             <div className="pr-12">
-              <h2 className="text-4xl sm:text-5xl font-semibold text-foreground mb-8 font-['Open_Sans'] leading-tight">
+              <h2 className="heading-l mb-8">
                 Making{" "}
                 <span style={{ color: '#030bfc' }}>Water Governance</span>{" "}
                 Traceable and Fair
