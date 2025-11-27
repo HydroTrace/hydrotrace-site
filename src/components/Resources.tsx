@@ -67,7 +67,7 @@ const AnimatedRing = ({
   );
 };
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Fixed grid cells with morphing scale/padding animations
 const gridCells = [
@@ -141,6 +141,118 @@ const AnimatedGridPanel = () => {
   );
 };
 
+// Animated consumption visualization component
+const useConsumptionAnimation = (maxValue: number, duration: number = 15000) => {
+  const [progress, setProgress] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const startTimeRef = useRef<number | null>(null);
+  const animationRef = useRef<number>();
+
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const animate = (timestamp: number) => {
+      if (!startTimeRef.current) startTimeRef.current = timestamp;
+      const elapsed = timestamp - startTimeRef.current;
+      const newProgress = Math.min(elapsed / duration, 1);
+      
+      setProgress(newProgress);
+      
+      if (newProgress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Reset and loop
+        setTimeout(() => {
+          startTimeRef.current = null;
+          setProgress(0);
+        }, 2000);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isAnimating, duration, progress]);
+
+  const currentValue = progress * maxValue;
+  return { progress, currentValue };
+};
+
+const ConsumptionProgressBar = ({ progress }: { progress: number }) => {
+  return (
+    <div className="w-full">
+      <p 
+        className="text-xs mb-2"
+        style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace" }}
+      >
+        Cumulative Water Consumption
+      </p>
+      <div 
+        className="relative h-8 rounded-full overflow-hidden"
+        style={{ backgroundColor: '#E8F0FC', border: '1px solid #3366CC' }}
+      >
+        <div 
+          className="absolute top-0 left-0 h-full rounded-full transition-all duration-100"
+          style={{ 
+            width: `${progress * 100}%`,
+            background: 'linear-gradient(90deg, #3366CC 0%, #5588DD 100%)',
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const ConsumptionPlot = ({ progress, maxValue }: { progress: number; maxValue: number }) => {
+  const points = 50;
+  const width = 100;
+  const height = 60;
+  
+  // Generate path points based on progress
+  const pathPoints: string[] = [];
+  const visiblePoints = Math.floor(progress * points);
+  
+  for (let i = 0; i <= visiblePoints; i++) {
+    const x = (i / points) * width;
+    // Exponential growth curve
+    const normalizedProgress = i / points;
+    const y = height - (Math.pow(normalizedProgress, 1.5) * height * 0.8);
+    pathPoints.push(`${i === 0 ? 'M' : 'L'} ${x} ${y}`);
+  }
+  
+  const pathD = pathPoints.join(' ');
+  
+  return (
+    <div className="w-full mt-2">
+      <svg 
+        viewBox={`0 0 ${width} ${height}`} 
+        className="w-full h-20"
+        preserveAspectRatio="none"
+      >
+        {/* Grid lines */}
+        <line x1="0" y1={height} x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1="0" y1="0" x2="0" y2={height} stroke="#99BBEE" strokeWidth="0.5" />
+        
+        {/* Consumption line */}
+        {pathPoints.length > 1 && (
+          <path
+            d={pathD}
+            fill="none"
+            stroke="#3366CC"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        )}
+      </svg>
+    </div>
+  );
+};
+
 const ConcentricCircles = ({ 
   position, 
   className 
@@ -192,6 +304,17 @@ const ConcentricCircles = ({
 };
 
 const Resources = ({ className }: { className?: string }) => {
+  const MAX_ALLOCATED = 5; // 5 M m³/year
+  const { progress, currentValue } = useConsumptionAnimation(MAX_ALLOCATED, 12000);
+  
+  // Format the consumed value for display
+  const formatConsumed = (value: number) => {
+    if (value < 1) {
+      return `${(value * 1000).toFixed(0)} K m³/year`;
+    }
+    return `${value.toFixed(1)} M m³/year`;
+  };
+
   return (
     <section 
       className={cn("py-32 relative overflow-hidden min-h-[900px]", className)} 
@@ -274,7 +397,7 @@ const Resources = ({ className }: { className?: string }) => {
                   className="text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
-                  1 M m³/year
+                  {formatConsumed(currentValue)}
                 </span>
                 <span 
                   className="text-[10px] mt-1"
@@ -335,12 +458,10 @@ const Resources = ({ className }: { className?: string }) => {
               </div>
             </div>
             
-            {/* Lower section with horizontal line */}
-            <div className="mt-0 h-40 relative" style={{ borderLeft: '1px solid #3366CC', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
-              <div 
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ backgroundColor: '#99BBEE' }}
-              />
+            {/* Lower section with progress bar and plot */}
+            <div className="mt-0 px-4 py-4 relative" style={{ borderLeft: '1px solid #3366CC', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <ConsumptionProgressBar progress={progress} />
+              <ConsumptionPlot progress={progress} maxValue={MAX_ALLOCATED} />
             </div>
           </div>
         </div>
