@@ -6,59 +6,73 @@ import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
 const steps = [
   {
     number: "01",
-    title: "Measure",
-    description: "Map your carbon footprint in weeks, not months, with the leading climate software",
+    title: "Capture",
+    description: "Collect water abstraction data automatically from meters, sensors, and manual inputs across all your sources",
     content: {
-      title: "Carbon footprint",
+      title: "Data collection",
       categories: [
-        { name: "Goods & Services", color: "#1e40af", value: "177,204" },
-        { name: "Offices", color: "#93c5fd", value: "" },
-        { name: "Marketing", color: "#bfdbfe", value: "" },
-        { name: "Cloud", color: "#c7d2fe", value: "" },
-        { name: "Employees", color: "#dbeafe", value: "" },
-        { name: "Travel", color: "#1e3a8a", value: "" },
+        { name: "Meters", color: "#1e40af", value: "2,847" },
+        { name: "Sensors", color: "#93c5fd", value: "" },
+        { name: "Manual", color: "#bfdbfe", value: "" },
       ],
       items: [
-        { name: "Accounting & Legal", value: "97,588" },
-        { name: "IT", value: "21,739" },
-        { name: "Insurance", value: "10,074" },
-        { name: "Personnel Costs", value: "4,094" },
+        { name: "Groundwater", value: "1,204" },
+        { name: "Surface water", value: "892" },
+        { name: "Rainfall", value: "751" },
       ]
     }
   },
   {
     number: "02",
-    title: "Report",
-    description: "Prepare and file climate disclosures to meet global regulatory standards",
+    title: "Verify",
+    description: "Validate data integrity through automated checks, cross-referencing, and audit trails",
     content: {
-      title: "Disclosure reports",
+      title: "Data verification",
       categories: [
-        { name: "CSRD", color: "#1e40af", value: "" },
-        { name: "SEC", color: "#60a5fa", value: "" },
-        { name: "CDP", color: "#93c5fd", value: "" },
+        { name: "Validated", color: "#1e40af", value: "" },
+        { name: "Pending", color: "#60a5fa", value: "" },
+        { name: "Flagged", color: "#93c5fd", value: "" },
       ],
       items: [
-        { name: "Annual Report", value: "Complete" },
-        { name: "Quarterly Update", value: "In Progress" },
-        { name: "Audit Trail", value: "Verified" },
+        { name: "Automated checks", value: "Active" },
+        { name: "Cross-reference", value: "Enabled" },
+        { name: "Audit trail", value: "Complete" },
       ]
     }
   },
   {
     number: "03",
-    title: "Act",
-    description: "Set targets, reduce emissions, and track progress to real decarbonization",
+    title: "Analyse",
+    description: "Transform raw data into actionable insights with trends, forecasts, and compliance reporting",
     content: {
-      title: "Reduction targets",
+      title: "Analytics dashboard",
       categories: [
-        { name: "Scope 1", color: "#1e40af", value: "-15%" },
-        { name: "Scope 2", color: "#60a5fa", value: "-22%" },
-        { name: "Scope 3", color: "#93c5fd", value: "-8%" },
+        { name: "Trends", color: "#1e40af", value: "" },
+        { name: "Forecasts", color: "#60a5fa", value: "" },
+        { name: "Alerts", color: "#93c5fd", value: "" },
       ],
       items: [
-        { name: "Energy efficiency", value: "Active" },
-        { name: "Renewable transition", value: "Planning" },
-        { name: "Supply chain", value: "Assessment" },
+        { name: "Usage patterns", value: "Tracked" },
+        { name: "Seasonal trends", value: "Analyzed" },
+        { name: "Compliance status", value: "Current" },
+      ]
+    }
+  },
+  {
+    number: "04",
+    title: "Act",
+    description: "Make informed decisions, optimize water use, and generate regulatory submissions with confidence",
+    content: {
+      title: "Action center",
+      categories: [
+        { name: "Reports", color: "#1e40af", value: "" },
+        { name: "Alerts", color: "#60a5fa", value: "" },
+        { name: "Actions", color: "#93c5fd", value: "" },
+      ],
+      items: [
+        { name: "Regulatory filings", value: "Ready" },
+        { name: "Optimization", value: "Active" },
+        { name: "Notifications", value: "Enabled" },
       ]
     }
   },
