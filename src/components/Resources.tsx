@@ -4,7 +4,7 @@ const generateRings = (count: number, baseRadius: number, centerX: number, cente
   const rings = [];
   for (let i = 0; i < count; i++) {
     const radius = baseRadius + i * 25;
-    const opacity = 0.25 - (i * 0.012);
+    const opacity = 0.5 - (i * 0.025);
     const duration = 15 + i * 2;
     const direction = i % 2 === 0 ? 1 : -1;
     const dashArray = `${80 + i * 15} ${120 + i * 20}`;
@@ -12,7 +12,7 @@ const generateRings = (count: number, baseRadius: number, centerX: number, cente
     
     rings.push({
       radius,
-      opacity: Math.max(opacity, 0.08),
+      opacity: Math.max(opacity, 0.2),
       duration,
       direction,
       dashArray,
@@ -120,7 +120,7 @@ const ConcentricCircles = ({
 const Resources = ({ className }: { className?: string }) => {
   return (
     <section 
-      className={cn("py-32 relative overflow-hidden min-h-[600px]", className)} 
+      className={cn("py-32 relative overflow-hidden min-h-[900px]", className)} 
       style={{ backgroundColor: '#FAFAF7' }}
     >
       {/* Animated concentric circle clusters */}
