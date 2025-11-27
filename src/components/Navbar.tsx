@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoBlack from "@/assets/hydrotrace-logo-black.png";
+import logoIcon from "@/assets/hydrotrace-icon.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,13 +40,21 @@ const Navbar = () => {
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center h-20">
           {/* Logo - bordered */}
-          <div className="flex-shrink-0 pr-8 border-r border-[#0f1e94] h-full flex items-center">
+          <div 
+            className="flex-shrink-0 pr-8 border-r border-[#0f1e94] h-full flex items-center gap-3 cursor-pointer"
+            onClick={handleLogoClick}
+          >
             <img 
-              src={logoBlack} 
+              src={logoIcon} 
               alt="HydroTrace Logo" 
-              className="h-10 w-auto cursor-pointer" 
-              onClick={handleLogoClick} 
+              className="h-9 w-auto" 
             />
+            <span 
+              className="text-xl font-semibold font-['Open_Sans'] tracking-tight"
+              style={{ color: '#1523bd' }}
+            >
+              HydroTrace
+            </span>
           </div>
           
           {/* Desktop Navigation - bordered group */}
