@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Solutions from "@/components/Solutions";
 import Technology from "@/components/Technology";
 import Resources from "@/components/Resources";
 
@@ -12,6 +13,7 @@ const Index = () => {
       <main>
         <Hero />
         <About className="bg-[#faf7ef]" />
+        <Solutions className="bg-[#faf7ef]" />
         <Technology />
         <Resources className="bg-muted/20" />
         
