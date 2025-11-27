@@ -291,7 +291,20 @@ const Resources = ({ className }: { className?: string }) => {
               </div>
               
               {/* Row 2 */}
-              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+                <span 
+                  className="text-2xl font-semibold"
+                  style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+                >
+                  6000
+                </span>
+                <span 
+                  className="text-[10px] mt-1"
+                  style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
+                >
+                  REGISTERED FARMERS
+                </span>
+              </div>
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
               <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
             </div>
