@@ -69,76 +69,86 @@ const AnimatedRing = ({
 
 import { useState, useEffect, useRef } from 'react';
 
-// Fixed grid cells with morphing scale/padding animations
-const gridCells = [
-  // Row 1
-  { id: 1, col: 1, row: 1, colSpan: 2, rowSpan: 1 },
-  { id: 2, col: 3, row: 1, colSpan: 1, rowSpan: 1 },
-  { id: 3, col: 4, row: 1, colSpan: 1, rowSpan: 2 },
-  { id: 4, col: 5, row: 1, colSpan: 1, rowSpan: 1 },
-  // Row 2
-  { id: 5, col: 1, row: 2, colSpan: 1, rowSpan: 1 },
-  { id: 6, col: 2, row: 2, colSpan: 2, rowSpan: 1 },
-  { id: 7, col: 5, row: 2, colSpan: 1, rowSpan: 2 },
-  // Row 3
-  { id: 8, col: 1, row: 3, colSpan: 1, rowSpan: 1 },
-  { id: 9, col: 2, row: 3, colSpan: 1, rowSpan: 1 },
-  { id: 10, col: 3, row: 3, colSpan: 1, rowSpan: 1 },
-  { id: 11, col: 4, row: 3, colSpan: 1, rowSpan: 1 },
-];
-
-// Animation states for each layout
-const animationStates = [
-  // State A - default
-  { 1: { scale: 1, x: 0 }, 2: { scale: 1, x: 0 }, 3: { scale: 1, x: 0 }, 4: { scale: 1, x: 0 }, 5: { scale: 1, x: 0 }, 6: { scale: 1, x: 0 }, 7: { scale: 1, x: 0 }, 8: { scale: 1, x: 0 }, 9: { scale: 1, x: 0 }, 10: { scale: 1, x: 0 }, 11: { scale: 1, x: 0 } },
-  // State B - some cells scale up, others shrink
-  { 1: { scale: 0.92, x: 0 }, 2: { scale: 1.08, x: 0 }, 3: { scale: 1.05, x: 0 }, 4: { scale: 0.9, x: 2 }, 5: { scale: 1.1, x: 0 }, 6: { scale: 0.95, x: -2 }, 7: { scale: 1.08, x: 0 }, 8: { scale: 0.9, x: 0 }, 9: { scale: 1.12, x: 0 }, 10: { scale: 0.88, x: 2 }, 11: { scale: 1.05, x: 0 } },
-  // State C - alternate pattern
-  { 1: { scale: 1.06, x: 2 }, 2: { scale: 0.88, x: 0 }, 3: { scale: 0.92, x: 0 }, 4: { scale: 1.1, x: -2 }, 5: { scale: 0.9, x: 0 }, 6: { scale: 1.1, x: 3 }, 7: { scale: 0.9, x: 0 }, 8: { scale: 1.08, x: 0 }, 9: { scale: 0.85, x: 0 }, 10: { scale: 1.1, x: -2 }, 11: { scale: 0.92, x: 0 } },
-];
-
-const AnimatedGridPanel = () => {
-  const [stateIndex, setStateIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStateIndex((prev) => (prev + 1) % animationStates.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentState = animationStates[stateIndex];
-
+const WaterTankFilling = ({ progress }: { progress: number }) => {
   return (
-    <div 
-      className="relative h-full w-full"
-      style={{ 
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gridTemplateRows: 'repeat(3, 1fr)',
-        gap: '0px',
-        backgroundColor: '#E8F0FC',
-      }}
-    >
-      {gridCells.map((cell) => {
-        const anim = currentState[cell.id] || { scale: 1, x: 0 };
-        return (
-          <div
-            key={cell.id}
-            className="relative"
-            style={{
-              gridColumn: `${cell.col} / span ${cell.colSpan}`,
-              gridRow: `${cell.row} / span ${cell.rowSpan}`,
-              backgroundColor: '#D6E3F8',
-              border: '2px solid #3366CC',
-              transform: `scale(${anim.scale}) translateX(${anim.x}px)`,
-              transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
+    <div className="relative h-full w-full flex flex-col items-center justify-center p-2">
+      {/* Tank container */}
+      <div 
+        className="relative w-full h-full rounded-sm overflow-hidden"
+        style={{ 
+          backgroundColor: '#E8F0FC',
+          border: '2px solid #3366CC',
+        }}
+      >
+        {/* Water fill */}
+        <div 
+          className="absolute bottom-0 left-0 w-full transition-all duration-100"
+          style={{ 
+            height: `${progress * 100}%`,
+            background: 'linear-gradient(180deg, #5588DD 0%, #3366CC 100%)',
+          }}
+        />
+        {/* Wave effect at top of water */}
+        {progress > 0.02 && (
+          <svg 
+            className="absolute left-0 w-full"
+            style={{ 
+              bottom: `${progress * 100}%`,
+              transform: 'translateY(50%)',
+              height: '12px'
             }}
-          />
-        );
-      })}
+            viewBox="0 0 100 10"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 10 Q10 0, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"
+              fill="#5588DD"
+              style={{
+                animation: 'wave 2s ease-in-out infinite',
+              }}
+            />
+          </svg>
+        )}
+        {/* Percentage text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span 
+            className="text-lg font-semibold"
+            style={{ 
+              color: progress > 0.5 ? '#FFFFFF' : '#3366CC',
+              fontFamily: "'Fira Code', monospace",
+              textShadow: progress > 0.5 ? '0 1px 2px rgba(0,0,0,0.2)' : 'none'
+            }}
+          >
+            {Math.round(progress * 100)}%
+          </span>
+        </div>
+      </div>
+      <style>
+        {`
+          @keyframes wave {
+            0%, 100% { d: path("M0 10 Q10 0, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"); }
+            50% { d: path("M0 10 Q10 10, 20 5 T40 5 T60 5 T80 5 T100 5 L100 10 Z"); }
+          }
+        `}
+      </style>
     </div>
   );
+};
+
+// Non-linear easing function: slow start, plateau, then increase
+const customEasing = (t: number): number => {
+  // Creates: slow start (0-0.3), plateau (0.3-0.6), faster increase (0.6-1)
+  if (t < 0.3) {
+    // Slow start - cubic ease in
+    return Math.pow(t / 0.3, 2) * 0.15;
+  } else if (t < 0.6) {
+    // Plateau - very slow growth
+    return 0.15 + (t - 0.3) * 0.1;
+  } else {
+    // Faster increase - ease out
+    const remaining = (t - 0.6) / 0.4;
+    return 0.18 + Math.pow(remaining, 0.7) * 0.82;
+  }
 };
 
 // Animated consumption visualization component
@@ -154,11 +164,12 @@ const useConsumptionAnimation = (maxValue: number, duration: number = 15000) => 
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
       const elapsed = timestamp - startTimeRef.current;
-      const newProgress = Math.min(elapsed / duration, 1);
+      const linearProgress = Math.min(elapsed / duration, 1);
+      const easedProgress = customEasing(linearProgress);
       
-      setProgress(newProgress);
+      setProgress(easedProgress);
       
-      if (newProgress < 1) {
+      if (linearProgress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
         // Reset and loop
@@ -182,72 +193,59 @@ const useConsumptionAnimation = (maxValue: number, duration: number = 15000) => 
   return { progress, currentValue };
 };
 
-const ConsumptionProgressBar = ({ progress }: { progress: number }) => {
+const ConsumptionPlot = ({ progress }: { progress: number }) => {
+  const points = 100;
+  const width = 100;
+  const height = 60;
+  
+  // Generate path points matching the non-linear easing curve
+  const pathPoints: string[] = [];
+  
+  // Draw the full curve up to current progress
+  for (let i = 0; i <= points; i++) {
+    const t = i / points;
+    if (t > progress) break;
+    
+    const x = t * width;
+    // Y value matches the easing curve shape
+    const y = height - (progress > 0 ? (t / progress) * progress * height * 0.85 : 0);
+    pathPoints.push(`${i === 0 ? 'M' : 'L'} ${x} ${y}`);
+  }
+  
+  const pathD = pathPoints.join(' ');
+  const currentX = progress * width;
+  const currentY = height - (progress * height * 0.85);
+  
   return (
     <div className="w-full">
       <p 
         className="text-xs mb-2"
         style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace" }}
       >
-        Cumulative Water Consumption
+        Cumulative Water Consumption Over Time
       </p>
-      <div 
-        className="relative h-8 rounded-full overflow-hidden"
-        style={{ backgroundColor: '#E8F0FC', border: '1px solid #3366CC' }}
-      >
-        <div 
-          className="absolute top-0 left-0 h-full rounded-full transition-all duration-100"
-          style={{ 
-            width: `${progress * 100}%`,
-            background: 'linear-gradient(90deg, #3366CC 0%, #5588DD 100%)',
-          }}
-        />
-      </div>
-    </div>
-  );
-};
-
-const ConsumptionPlot = ({ progress }: { progress: number }) => {
-  const points = 100;
-  const width = 100;
-  const height = 60;
-  
-  // Generate path points - x-axis directly matches progress bar position
-  const pathPoints: string[] = [];
-  const currentX = progress * width;
-  
-  // Draw from 0 to current progress position
-  for (let i = 0; i <= points; i++) {
-    const x = (i / points) * currentX;
-    const normalizedX = x / width;
-    // Exponential growth curve based on x position
-    const y = height - (Math.pow(normalizedX, 1.5) * height * 0.85);
-    pathPoints.push(`${i === 0 ? 'M' : 'L'} ${x} ${y}`);
-  }
-  
-  const pathD = pathPoints.join(' ');
-  
-  return (
-    <div className="w-full mt-2">
       <svg 
         viewBox={`0 0 ${width} ${height}`} 
-        className="w-full h-20"
+        className="w-full h-24"
         preserveAspectRatio="none"
       >
         {/* Grid lines */}
         <line x1="0" y1={height} x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
         <line x1="0" y1="0" x2="0" y2={height} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1={width} y1="0" x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1="0" y1="0" x2={width} y2="0" stroke="#99BBEE" strokeWidth="0.5" />
         
-        {/* Vertical marker at current position */}
+        {/* Horizontal grid lines */}
+        <line x1="0" y1={height * 0.25} x2={width} y2={height * 0.25} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
+        <line x1="0" y1={height * 0.5} x2={width} y2={height * 0.5} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
+        <line x1="0" y1={height * 0.75} x2={width} y2={height * 0.75} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
+        
+        {/* Filled area under the line */}
         {progress > 0 && (
-          <line 
-            x1={currentX} 
-            y1={0} 
-            x2={currentX} 
-            y2={height} 
-            stroke="#99BBEE" 
-            strokeWidth="0.3" 
-            strokeDasharray="2 2"
+          <path
+            d={`${pathD} L ${currentX} ${height} L 0 ${height} Z`}
+            fill="url(#consumptionGradient)"
+            opacity="0.3"
           />
         )}
         
@@ -262,6 +260,23 @@ const ConsumptionPlot = ({ progress }: { progress: number }) => {
             strokeLinejoin="round"
           />
         )}
+        
+        {/* Current point marker */}
+        {progress > 0.01 && (
+          <circle
+            cx={currentX}
+            cy={currentY}
+            r="2"
+            fill="#3366CC"
+          />
+        )}
+        
+        <defs>
+          <linearGradient id="consumptionGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#3366CC" />
+            <stop offset="100%" stopColor="#3366CC" stopOpacity="0" />
+          </linearGradient>
+        </defs>
       </svg>
     </div>
   );
@@ -435,9 +450,9 @@ const Resources = ({ className }: { className?: string }) => {
                 </span>
               </div>
               
-              {/* Right side animated grid panel */}
+              {/* Right side water tank filling */}
               <div className="col-span-3 row-span-2 p-1" style={{ borderBottom: '1px solid #3366CC' }}>
-                <AnimatedGridPanel />
+                <WaterTankFilling progress={progress} />
               </div>
               
               {/* Row 2 */}
@@ -485,9 +500,8 @@ const Resources = ({ className }: { className?: string }) => {
               </div>
             </div>
             
-            {/* Lower section with progress bar and plot */}
+            {/* Lower section with plot only */}
             <div className="mt-0 px-4 py-4 relative" style={{ borderLeft: '1px solid #3366CC', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
-              <ConsumptionProgressBar progress={progress} />
               <ConsumptionPlot progress={progress} />
             </div>
           </div>
