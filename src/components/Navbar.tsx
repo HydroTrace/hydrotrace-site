@@ -47,11 +47,10 @@ const Navbar = () => {
             <img 
               src={logoIcon} 
               alt="HydroTrace Logo" 
-              className="h-9 w-auto" 
+              className="h-10 w-auto" 
             />
             <span 
-              className="text-xl font-semibold font-['Open_Sans'] tracking-tight"
-              style={{ color: '#1523bd' }}
+              className="text-[19px] font-semibold font-['IBM_Plex_Mono'] tracking-tight text-[#101982] hover:text-[#044dde] transition-colors"
             >
               HydroTrace
             </span>
@@ -61,19 +60,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center h-full border-r border-[#0f1e94]">
             <Link 
               to="/team" 
-              className="px-6 py-2 text-[#0A1B44] hover:text-[#0f1e94] transition-colors font-medium text-base tracking-wide font-['Open_Sans']"
+              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
               About
             </Link>
             <button 
               onClick={() => scrollToSection("technology")} 
-              className="px-6 py-2 text-[#0A1B44] hover:text-[#0f1e94] transition-colors font-medium text-base tracking-wide font-['Open_Sans']"
+              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
               Technology
             </button>
             <button 
               onClick={() => scrollToSection("resources")} 
-              className="px-6 py-2 text-[#0A1B44] hover:text-[#0f1e94] transition-colors font-medium text-base tracking-wide font-['Open_Sans']"
+              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
               Resources
             </button>
@@ -83,7 +82,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center ml-auto h-full pl-6">
             <button 
               onClick={() => scrollToSection("contact")} 
-              className="px-6 py-2.5 text-white bg-[#0f1e94] hover:bg-[#0f1e94]/90 transition-colors font-medium text-base tracking-wide font-['Open_Sans'] rounded"
+              className="px-6 py-2.5 text-white bg-[#0f1e94] hover:bg-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono'] rounded"
             >
               Contact us
             </button>
@@ -108,25 +107,25 @@ const Navbar = () => {
               <Link 
                 to="/team" 
                 onClick={() => setIsMenuOpen(false)} 
-                className="text-[#0A1B44] hover:bg-[#F5F7FA] transition-colors text-left font-medium text-base tracking-wide px-3 py-3 rounded font-['Open_Sans']"
+                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
               >
                 About
               </Link>
               <button 
                 onClick={() => scrollToSection("technology")} 
-                className="text-[#0A1B44] hover:bg-[#F5F7FA] transition-colors text-left font-medium text-base tracking-wide px-3 py-3 rounded font-['Open_Sans']"
+                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
               >
                 Technology
               </button>
               <button 
                 onClick={() => scrollToSection("resources")} 
-                className="text-[#0A1B44] hover:bg-[#F5F7FA] transition-colors text-left font-medium text-base tracking-wide px-3 py-3 rounded font-['Open_Sans']"
+                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
               >
                 Resources
               </button>
               <button 
                 onClick={() => scrollToSection("contact")} 
-                className="text-white bg-[#0f1e94] hover:bg-[#0f1e94]/90 transition-colors text-left font-medium text-base tracking-wide px-3 py-3 rounded mt-2 font-['Open_Sans']"
+                className="text-white bg-[#0f1e94] hover:bg-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded mt-2 font-['IBM_Plex_Mono']"
               >
                 Contact us
               </button>
