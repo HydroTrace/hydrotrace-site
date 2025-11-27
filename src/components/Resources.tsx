@@ -125,6 +125,7 @@ const AnimatedGridPanel = () => {
         return (
           <div
             key={cell.id}
+            className="relative"
             style={{
               gridColumn: `${cell.col} / span ${cell.colSpan}`,
               gridRow: `${cell.row} / span ${cell.rowSpan}`,
@@ -133,7 +134,24 @@ const AnimatedGridPanel = () => {
               transform: `scale(${anim.scale}) translateX(${anim.x}px)`,
               transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
-          />
+          >
+            {cell.id === 4 && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-1">
+                <span 
+                  className="text-lg font-semibold leading-tight"
+                  style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+                >
+                  5 M m³/year
+                </span>
+                <span 
+                  className="text-[8px] text-center leading-tight mt-1"
+                  style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
+                >
+                  TOTAL ALLOCATED GROUNDWATER
+                </span>
+              </div>
+            )}
+          </div>
         );
       })}
     </div>
