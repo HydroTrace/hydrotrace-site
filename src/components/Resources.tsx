@@ -207,20 +207,21 @@ const ConsumptionProgressBar = ({ progress }: { progress: number }) => {
   );
 };
 
-const ConsumptionPlot = ({ progress, maxValue }: { progress: number; maxValue: number }) => {
-  const points = 50;
+const ConsumptionPlot = ({ progress }: { progress: number }) => {
+  const points = 100;
   const width = 100;
   const height = 60;
   
-  // Generate path points based on progress
+  // Generate path points - x-axis directly matches progress bar position
   const pathPoints: string[] = [];
-  const visiblePoints = Math.floor(progress * points);
+  const currentX = progress * width;
   
-  for (let i = 0; i <= visiblePoints; i++) {
-    const x = (i / points) * width;
-    // Exponential growth curve
-    const normalizedProgress = i / points;
-    const y = height - (Math.pow(normalizedProgress, 1.5) * height * 0.8);
+  // Draw from 0 to current progress position
+  for (let i = 0; i <= points; i++) {
+    const x = (i / points) * currentX;
+    const normalizedX = x / width;
+    // Exponential growth curve based on x position
+    const y = height - (Math.pow(normalizedX, 1.5) * height * 0.85);
     pathPoints.push(`${i === 0 ? 'M' : 'L'} ${x} ${y}`);
   }
   
@@ -237,8 +238,21 @@ const ConsumptionPlot = ({ progress, maxValue }: { progress: number; maxValue: n
         <line x1="0" y1={height} x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
         <line x1="0" y1="0" x2="0" y2={height} stroke="#99BBEE" strokeWidth="0.5" />
         
+        {/* Vertical marker at current position */}
+        {progress > 0 && (
+          <line 
+            x1={currentX} 
+            y1={0} 
+            x2={currentX} 
+            y2={height} 
+            stroke="#99BBEE" 
+            strokeWidth="0.3" 
+            strokeDasharray="2 2"
+          />
+        )}
+        
         {/* Consumption line */}
-        {pathPoints.length > 1 && (
+        {progress > 0 && (
           <path
             d={pathD}
             fill="none"
@@ -461,7 +475,7 @@ const Resources = ({ className }: { className?: string }) => {
             {/* Lower section with progress bar and plot */}
             <div className="mt-0 px-4 py-4 relative" style={{ borderLeft: '1px solid #3366CC', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
               <ConsumptionProgressBar progress={progress} />
-              <ConsumptionPlot progress={progress} maxValue={MAX_ALLOCATED} />
+              <ConsumptionPlot progress={progress} />
             </div>
           </div>
         </div>
