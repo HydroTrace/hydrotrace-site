@@ -72,18 +72,18 @@ const About = ({ className }: { className?: string }) => {
             </div>
 
             {/* Video on Right */}
-            <div className="relative pl-12">
+            <div className="relative pl-12 overflow-hidden">
               {/* Squares pattern with diagonal fade */}
               <div 
-                className="absolute inset-0 -right-8"
+                className="absolute inset-0 -left-12"
                 style={{
                   backgroundImage: `
-                    linear-gradient(to right, rgba(5, 135, 68, 0.7) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(5, 135, 68, 0.7) 1px, transparent 1px)
+                    linear-gradient(to right, rgba(5, 135, 68, 0.5) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(5, 135, 68, 0.5) 1px, transparent 1px)
                   `,
                   backgroundSize: '20px 20px',
-                  maskImage: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.29) 100%)',
-                  WebkitMaskImage: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.29) 100%)',
+                  maskImage: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
                 }}
               />
               <div className="relative flex items-center justify-center py-8">
