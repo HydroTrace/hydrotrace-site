@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
 
 const steps = [
   {
@@ -238,16 +239,12 @@ const Technology = ({ className }: { className?: string }) => {
                   className="w-12 flex-shrink-0 border-r flex flex-col items-center pt-5"
                   style={{ borderColor: '#D4DCF6' }}
                 >
-                  {/* Logo Circle Placeholder */}
-                  <div 
-                    className="w-7 h-7 rounded-full border flex items-center justify-center"
-                    style={{ borderColor: '#D4DCF6' }}
-                  >
-                    <div 
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: '#336CFF' }}
-                    />
-                  </div>
+                  {/* HydroTrace Logo */}
+                  <img 
+                    src={hydrotraceLogoMark} 
+                    alt="HydroTrace" 
+                    className="w-7 h-7 rounded-full object-cover"
+                  />
                 </div>
                 
                 {/* Main Content Area */}
