@@ -1,24 +1,27 @@
 const AnimatedSquiggle = ({ className }: { className?: string }) => {
-  // More random, organic squiggly path with frequent curves
+  // Organic loopy path similar to reference - with big curves and loops
   const squigglePath = `
-    M -30 220
-    C 40 150, 80 280, 140 200
-    S 180 100, 240 160
-    S 300 250, 360 180
-    S 400 90, 480 150
-    S 540 240, 620 170
-    S 680 80, 760 140
-    S 820 230, 900 160
-    S 960 70, 1040 130
-    S 1100 220, 1180 150
-    S 1240 90, 1320 170
-    S 1380 250, 1460 180
+    M -50 350
+    C 50 320, 100 280, 150 320
+    C 200 360, 220 400, 280 380
+    C 340 360, 360 280, 400 220
+    C 440 160, 420 80, 480 60
+    C 540 40, 580 100, 560 160
+    C 540 220, 480 240, 500 300
+    C 520 360, 600 380, 680 340
+    C 760 300, 800 200, 860 140
+    C 920 80, 1000 40, 1080 80
+    C 1160 120, 1180 220, 1140 300
+    C 1100 380, 1020 400, 980 340
+    C 940 280, 980 200, 1060 180
+    C 1140 160, 1220 200, 1280 280
+    C 1340 360, 1400 380, 1480 340
   `;
 
   return (
     <svg
       className={className}
-      viewBox="0 0 1400 400"
+      viewBox="0 0 1400 450"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid slice"
@@ -57,7 +60,7 @@ const AnimatedSquiggle = ({ className }: { className?: string }) => {
         fill="none"
         className="tracer-1"
         style={{
-          strokeDasharray: '180 2200',
+          strokeDasharray: '200 3000',
           strokeDashoffset: '0',
         }}
       />
@@ -71,20 +74,20 @@ const AnimatedSquiggle = ({ className }: { className?: string }) => {
         fill="none"
         className="tracer-2"
         style={{
-          strokeDasharray: '100 2200',
-          strokeDashoffset: '-800',
+          strokeDasharray: '120 3000',
+          strokeDashoffset: '-1200',
         }}
       />
       
       <style>
         {`
           .tracer-1 {
-            animation: trace-path-1 12s linear infinite;
+            animation: trace-path-1 14s linear infinite;
           }
           
           .tracer-2 {
-            animation: trace-path-2 9s linear infinite;
-            animation-delay: -3s;
+            animation: trace-path-2 11s linear infinite;
+            animation-delay: -4s;
           }
           
           @keyframes trace-path-1 {
@@ -92,16 +95,16 @@ const AnimatedSquiggle = ({ className }: { className?: string }) => {
               stroke-dashoffset: 0;
             }
             100% {
-              stroke-dashoffset: -2400;
+              stroke-dashoffset: -3200;
             }
           }
           
           @keyframes trace-path-2 {
             0% {
-              stroke-dashoffset: -800;
+              stroke-dashoffset: -1200;
             }
             100% {
-              stroke-dashoffset: -3200;
+              stroke-dashoffset: -4400;
             }
           }
         `}
