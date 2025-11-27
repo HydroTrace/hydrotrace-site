@@ -127,9 +127,93 @@ const Resources = ({ className }: { className?: string }) => {
       <ConcentricCircles position="top-left" />
       <ConcentricCircles position="bottom-right" />
 
-      {/* Content placeholder - can be replaced with dashboard UI */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-8">
-        {/* Your content goes here */}
+      {/* Dashboard UI */}
+      <div className="relative z-10 flex items-center justify-center min-h-[700px] px-4">
+        <div 
+          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm"
+          style={{ 
+            border: '2px solid #3366CC',
+            minHeight: '550px'
+          }}
+        >
+          {/* Header with globe icon */}
+          <div className="p-6">
+            {/* Globe icon */}
+            <div className="mb-6">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#3366CC" strokeWidth="1.5">
+                <circle cx="16" cy="16" r="12" />
+                <ellipse cx="16" cy="16" rx="5" ry="12" />
+                <line x1="4" y1="16" x2="28" y2="16" />
+                <path d="M6 10 Q16 8 26 10" />
+                <path d="M6 22 Q16 24 26 22" />
+              </svg>
+            </div>
+            
+            {/* Dashboard title */}
+            <h2 
+              className="text-3xl font-normal mb-6"
+              style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+            >
+              Dashboard
+            </h2>
+            
+            {/* Metrics label */}
+            <p 
+              className="text-sm font-medium mb-4"
+              style={{ color: '#3366CC' }}
+            >
+              Metrics
+            </p>
+            
+            {/* Metrics Grid */}
+            <div 
+              className="grid grid-cols-12 gap-0"
+              style={{ border: '1px solid #3366CC' }}
+            >
+              {/* Row 1 */}
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              
+              {/* Right side filled grid - Row 1 */}
+              <div className="col-span-3 grid grid-cols-4 grid-rows-2" style={{ borderBottom: '1px solid #3366CC' }}>
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ borderBottom: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
+                <div style={{ borderRight: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8' }} />
+              </div>
+              
+              {/* Row 2 */}
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              <div className="col-span-3 h-20" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+              
+              {/* Right side filled grid - Row 2 */}
+              <div className="col-span-3 grid grid-cols-4 grid-rows-2" style={{ borderBottom: '1px solid #3366CC' }}>
+                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderBottom: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
+                <div style={{ borderRight: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8', borderRight: '1px solid #3366CC' }} />
+                <div style={{ backgroundColor: '#D6E3F8' }} />
+              </div>
+            </div>
+            
+            {/* Lower section with horizontal line */}
+            <div className="mt-0 h-40 relative" style={{ borderLeft: '1px solid #3366CC', borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div 
+                className="absolute top-0 left-0 right-0 h-px"
+                style={{ backgroundColor: '#99BBEE' }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
