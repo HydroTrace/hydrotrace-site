@@ -69,73 +69,73 @@ const AnimatedRing = ({
 
 import { useState, useEffect } from 'react';
 
-// Grid layout configurations for animation
-const gridLayouts = [
-  // Layout A
-  [
-    { gridColumn: '1 / 3', gridRow: '1 / 2', opacity: 0.6 },
-    { gridColumn: '3 / 4', gridRow: '1 / 3', opacity: 0.4 },
-    { gridColumn: '4 / 5', gridRow: '1 / 2', opacity: 0.7 },
-    { gridColumn: '1 / 2', gridRow: '2 / 4', opacity: 0.5 },
-    { gridColumn: '2 / 3', gridRow: '2 / 3', opacity: 0.8 },
-    { gridColumn: '4 / 5', gridRow: '2 / 4', opacity: 0.45 },
-    { gridColumn: '2 / 4', gridRow: '3 / 4', opacity: 0.55 },
-  ],
-  // Layout B
-  [
-    { gridColumn: '1 / 2', gridRow: '1 / 2', opacity: 0.7 },
-    { gridColumn: '2 / 4', gridRow: '1 / 2', opacity: 0.5 },
-    { gridColumn: '4 / 5', gridRow: '1 / 3', opacity: 0.6 },
-    { gridColumn: '1 / 3', gridRow: '2 / 3', opacity: 0.45 },
-    { gridColumn: '3 / 4', gridRow: '2 / 4', opacity: 0.8 },
-    { gridColumn: '1 / 2', gridRow: '3 / 4', opacity: 0.55 },
-    { gridColumn: '2 / 3', gridRow: '3 / 4', opacity: 0.4 },
-  ],
-  // Layout C
-  [
-    { gridColumn: '1 / 3', gridRow: '1 / 3', opacity: 0.5 },
-    { gridColumn: '3 / 5', gridRow: '1 / 2', opacity: 0.65 },
-    { gridColumn: '3 / 4', gridRow: '2 / 3', opacity: 0.4 },
-    { gridColumn: '4 / 5', gridRow: '2 / 4', opacity: 0.75 },
-    { gridColumn: '1 / 2', gridRow: '3 / 4', opacity: 0.6 },
-    { gridColumn: '2 / 4', gridRow: '3 / 4', opacity: 0.5 },
-    { gridColumn: '4 / 5', gridRow: '3 / 4', opacity: 0 },
-  ],
+// Fixed grid cells with morphing scale/padding animations
+const gridCells = [
+  // Row 1
+  { id: 1, col: 1, row: 1, colSpan: 2, rowSpan: 1 },
+  { id: 2, col: 3, row: 1, colSpan: 1, rowSpan: 1 },
+  { id: 3, col: 4, row: 1, colSpan: 1, rowSpan: 2 },
+  { id: 4, col: 5, row: 1, colSpan: 1, rowSpan: 1 },
+  // Row 2
+  { id: 5, col: 1, row: 2, colSpan: 1, rowSpan: 1 },
+  { id: 6, col: 2, row: 2, colSpan: 2, rowSpan: 1 },
+  { id: 7, col: 5, row: 2, colSpan: 1, rowSpan: 2 },
+  // Row 3
+  { id: 8, col: 1, row: 3, colSpan: 1, rowSpan: 1 },
+  { id: 9, col: 2, row: 3, colSpan: 1, rowSpan: 1 },
+  { id: 10, col: 3, row: 3, colSpan: 1, rowSpan: 1 },
+  { id: 11, col: 4, row: 3, colSpan: 1, rowSpan: 1 },
+];
+
+// Animation states for each layout
+const animationStates = [
+  // State A - default
+  { 1: { scale: 1, x: 0 }, 2: { scale: 1, x: 0 }, 3: { scale: 1, x: 0 }, 4: { scale: 1, x: 0 }, 5: { scale: 1, x: 0 }, 6: { scale: 1, x: 0 }, 7: { scale: 1, x: 0 }, 8: { scale: 1, x: 0 }, 9: { scale: 1, x: 0 }, 10: { scale: 1, x: 0 }, 11: { scale: 1, x: 0 } },
+  // State B - some cells scale up, others shrink
+  { 1: { scale: 0.92, x: 0 }, 2: { scale: 1.08, x: 0 }, 3: { scale: 1.05, x: 0 }, 4: { scale: 0.9, x: 2 }, 5: { scale: 1.1, x: 0 }, 6: { scale: 0.95, x: -2 }, 7: { scale: 1.08, x: 0 }, 8: { scale: 0.9, x: 0 }, 9: { scale: 1.12, x: 0 }, 10: { scale: 0.88, x: 2 }, 11: { scale: 1.05, x: 0 } },
+  // State C - alternate pattern
+  { 1: { scale: 1.06, x: 2 }, 2: { scale: 0.88, x: 0 }, 3: { scale: 0.92, x: 0 }, 4: { scale: 1.1, x: -2 }, 5: { scale: 0.9, x: 0 }, 6: { scale: 1.1, x: 3 }, 7: { scale: 0.9, x: 0 }, 8: { scale: 1.08, x: 0 }, 9: { scale: 0.85, x: 0 }, 10: { scale: 1.1, x: -2 }, 11: { scale: 0.92, x: 0 } },
 ];
 
 const AnimatedGridPanel = () => {
-  const [layoutIndex, setLayoutIndex] = useState(0);
+  const [stateIndex, setStateIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLayoutIndex((prev) => (prev + 1) % gridLayouts.length);
+      setStateIndex((prev) => (prev + 1) % animationStates.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  const currentLayout = gridLayouts[layoutIndex];
+  const currentState = animationStates[stateIndex];
 
   return (
     <div 
-      className="grid h-full w-full gap-[2px]"
+      className="relative h-full w-full"
       style={{ 
-        gridTemplateColumns: 'repeat(4, 1fr)',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
         gridTemplateRows: 'repeat(3, 1fr)',
+        gap: '0px',
+        backgroundColor: '#E8F0FC',
       }}
     >
-      {currentLayout.map((cell, index) => (
-        <div
-          key={index}
-          style={{
-            gridColumn: cell.gridColumn,
-            gridRow: cell.gridRow,
-            backgroundColor: `rgba(214, 227, 248, ${cell.opacity})`,
-            border: '1px solid #D4DCF6',
-            borderRadius: '2px',
-            transition: 'all 800ms cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        />
-      ))}
+      {gridCells.map((cell) => {
+        const anim = currentState[cell.id] || { scale: 1, x: 0 };
+        return (
+          <div
+            key={cell.id}
+            style={{
+              gridColumn: `${cell.col} / span ${cell.colSpan}`,
+              gridRow: `${cell.row} / span ${cell.rowSpan}`,
+              backgroundColor: '#D6E3F8',
+              border: '2px solid #3366CC',
+              transform: `scale(${anim.scale}) translateX(${anim.x}px)`,
+              transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          />
+        );
+      })}
     </div>
   );
 };
