@@ -54,6 +54,17 @@ const About = ({ className }: { className?: string }) => {
               </div>
             </div>
           </div>
+          
+          {/* Learn more link */}
+          <div className="mt-12 text-center">
+            <a 
+              href="#" 
+              className="about-learn-more text-lg font-medium transition-colors duration-200"
+              style={{ color: '#21177a' }}
+            >
+              Learn more about water allocation
+            </a>
+          </div>
         </div>
       </div>
       
@@ -76,6 +87,9 @@ const About = ({ className }: { className?: string }) => {
           #about .grid::before {
             display: none;
           }
+        }
+        .about-learn-more:hover {
+          color: #1500fa !important;
         }
       `}</style>
     </section>
