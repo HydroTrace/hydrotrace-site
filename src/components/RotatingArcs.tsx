@@ -1,16 +1,9 @@
 const RotatingArcs = ({ className }: { className?: string }) => {
   // Define arcs at different radii with varying dash patterns
   const arcs = [
-    { radius: 120, dashArray: '200 100', rotation: 'cw', duration: 25, startAngle: 0 },
-    { radius: 140, dashArray: '250 120', rotation: 'ccw', duration: 20, startAngle: 45 },
-    { radius: 160, dashArray: '220 130', rotation: 'cw', duration: 30, startAngle: 120 },
-    { radius: 180, dashArray: '280 100', rotation: 'ccw', duration: 18, startAngle: 200 },
-    { radius: 200, dashArray: '210 140', rotation: 'cw', duration: 22, startAngle: 80 },
-    { radius: 220, dashArray: '300 120', rotation: 'ccw', duration: 28, startAngle: 160 },
-    { radius: 240, dashArray: '240 110', rotation: 'cw', duration: 15, startAngle: 270 },
-    { radius: 260, dashArray: '260 130', rotation: 'ccw', duration: 24, startAngle: 30 },
-    { radius: 280, dashArray: '230 150', rotation: 'cw', duration: 26, startAngle: 90 },
-    { radius: 300, dashArray: '290 110', rotation: 'ccw', duration: 22, startAngle: 180 },
+    { radius: 160, dashArray: '200 100', rotation: 'cw', duration: 25, startAngle: 0 },
+    { radius: 190, dashArray: '250 120', rotation: 'ccw', duration: 20, startAngle: 120 },
+    { radius: 220, dashArray: '220 130', rotation: 'cw', duration: 30, startAngle: 240 },
   ];
 
   const centerX = 350;
@@ -42,7 +35,7 @@ const RotatingArcs = ({ className }: { className?: string }) => {
           fill="none"
           stroke="#0C5212"
           strokeWidth="1.5"
-          strokeOpacity="0.5"
+          strokeOpacity="0.4"
           strokeDasharray={arc.dashArray}
           strokeLinecap="round"
           style={{
