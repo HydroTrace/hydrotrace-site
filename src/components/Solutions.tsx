@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-
 const solutions = [
   { 
     title: "Farmers",
@@ -34,9 +32,6 @@ const Solutions = ({ className }: { className?: string }) => {
                     {solution.description}
                   </p>
                 )}
-              </div>
-              <div className="mt-8">
-                <ArrowRight className="w-5 h-5 text-[#030bfc] group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           ))}
