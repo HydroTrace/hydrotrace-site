@@ -18,54 +18,63 @@ const Hero = ({
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-background"
+      className="relative min-h-[70vh] flex items-center overflow-hidden bg-background"
     >
+      {/* White area behind navbar */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-background z-[1]" />
+
       {/* Grid Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Grid pattern */}
+      <div className="absolute inset-0 overflow-hidden top-24">
+        {/* Grid pattern - smaller squares, more transparent */}
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-              linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)
+              linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px)
             `,
-            backgroundSize: '60px 60px',
+            backgroundSize: '30px 30px',
           }}
         />
-        {/* Fade overlay from center */}
+        {/* Stronger fade overlay from center-left */}
         <div 
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(ellipse 80% 70% at 30% 50%, hsl(var(--background)) 0%, transparent 70%)`
+            background: `radial-gradient(ellipse 90% 80% at 25% 50%, hsl(var(--background)) 0%, hsl(var(--background) / 0.9) 30%, transparent 70%)`
           }}
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div className="max-w-xl">
             {/* Tag */}
-            <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block">
+            <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']">
               Water Governance
             </span>
             
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight font-['DM_Serif_Text']">
+            <h1 
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-['DM_Serif_Text']"
+              style={{ color: '#21177a' }}
+            >
               {title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p 
+              className="text-lg mb-8 leading-relaxed font-['Roboto']"
+              style={{ color: '#21177a' }}
+            >
               {description}
             </p>
 
             {/* CTA */}
             <button
               onClick={scrollToAbout}
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-medium text-accent-foreground transition-all duration-300 hover:bg-accent/90"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-medium text-accent-foreground transition-all duration-300 hover:bg-accent/90 font-['Roboto']"
             >
               Learn More
               <svg 
@@ -81,7 +90,7 @@ const Hero = ({
 
           {/* Right side - Image placeholder */}
           <div className="hidden lg:flex justify-center items-center">
-            <div className="relative w-full max-w-lg h-[400px] flex items-center justify-center">
+            <div className="relative w-full max-w-lg h-[350px] flex items-center justify-center">
               {/* Placeholder for future image */}
               <div className="text-muted-foreground/30 text-center">
                 <p className="text-sm">Image area</p>
