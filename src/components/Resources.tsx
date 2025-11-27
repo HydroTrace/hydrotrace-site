@@ -67,39 +67,54 @@ const AnimatedRing = ({
   );
 };
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
+// Simple linear animation hook - no CSS transitions, pure JS
+const useLinearProgress = (duration: number = 8000) => {
+  const [progress, setProgress] = useState(0);
+  const rafRef = useRef<number>(0);
+  const startRef = useRef<number>(0);
+
+  useEffect(() => {
+    const tick = (now: number) => {
+      if (!startRef.current) startRef.current = now;
+      const elapsed = now - startRef.current;
+      const p = (elapsed % duration) / duration;
+      setProgress(p);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [duration]);
+
+  return progress;
+};
+
+// Water tank - no CSS transition, direct height
 const WaterTankFilling = ({ progress }: { progress: number }) => {
+  const percent = Math.round(progress * 100);
   return (
-    <div className="relative h-full w-full flex flex-col items-center justify-center p-2">
-      {/* Tank container */}
+    <div className="relative h-full w-full p-2">
       <div 
         className="relative w-full h-full rounded-sm overflow-hidden"
-        style={{ 
-          backgroundColor: '#E8F0FC',
-          border: '2px solid #3366CC',
-        }}
+        style={{ backgroundColor: '#E8F0FC', border: '2px solid #3366CC' }}
       >
-        {/* Water fill - smooth transition */}
         <div 
           className="absolute bottom-0 left-0 w-full"
           style={{ 
-            height: `${progress * 100}%`,
+            height: `${percent}%`,
             background: 'linear-gradient(180deg, #5588DD 0%, #3366CC 100%)',
-            transition: 'height 50ms linear',
           }}
         />
-        {/* Percentage text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span 
             className="text-lg font-semibold"
             style={{ 
-              color: progress > 0.5 ? '#FFFFFF' : '#3366CC',
+              color: progress > 0.5 ? '#FFF' : '#3366CC',
               fontFamily: "'Fira Code', monospace",
-              textShadow: progress > 0.5 ? '0 1px 2px rgba(0,0,0,0.2)' : 'none'
             }}
           >
-            {Math.round(progress * 100)}%
+            {percent}%
           </span>
         </div>
       </div>
@@ -107,117 +122,40 @@ const WaterTankFilling = ({ progress }: { progress: number }) => {
   );
 };
 
-// Smooth linear animation hook
-const useConsumptionAnimation = (maxValue: number, duration: number = 10000) => {
-  const [progress, setProgress] = useState(0);
-  const startTimeRef = useRef<number | null>(null);
-  const animationRef = useRef<number>();
-
-  useEffect(() => {
-    const animate = (timestamp: number) => {
-      if (!startTimeRef.current) startTimeRef.current = timestamp;
-      const elapsed = timestamp - startTimeRef.current;
-      const linearProgress = Math.min(elapsed / duration, 1);
-      
-      setProgress(linearProgress);
-      
-      if (linearProgress < 1) {
-        animationRef.current = requestAnimationFrame(animate);
-      } else {
-        // Reset and loop seamlessly
-        startTimeRef.current = null;
-        setProgress(0);
-        animationRef.current = requestAnimationFrame(animate);
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [duration]);
-
-  const currentValue = progress * maxValue;
-  return { progress, currentValue };
-};
-
+// Simple linear plot - precompute path for efficiency
 const ConsumptionPlot = ({ progress }: { progress: number }) => {
-  const points = 100;
-  const width = 100;
-  const height = 60;
+  const w = 100, h = 60;
+  const endX = progress * w;
+  const endY = h - progress * h * 0.85;
   
-  // Generate path points matching the non-linear easing curve
-  const pathPoints: string[] = [];
-  
-  // Draw the full curve up to current progress
-  for (let i = 0; i <= points; i++) {
-    const t = i / points;
-    if (t > progress) break;
-    
-    const x = t * width;
-    // Y value matches the easing curve shape
-    const y = height - (progress > 0 ? (t / progress) * progress * height * 0.85 : 0);
-    pathPoints.push(`${i === 0 ? 'M' : 'L'} ${x} ${y}`);
-  }
-  
-  const pathD = pathPoints.join(' ');
-  const currentX = progress * width;
-  const currentY = height - (progress * height * 0.85);
-  
+  const linePath = `M 0 ${h} L ${endX} ${endY}`;
+  const fillPath = `M 0 ${h} L ${endX} ${endY} L ${endX} ${h} Z`;
+
   return (
     <div className="w-full">
-      <p 
-        className="text-xs mb-2"
-        style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace" }}
-      >
+      <p className="text-xs mb-2" style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace" }}>
         Cumulative Water Consumption Over Time
       </p>
-      <svg 
-        viewBox={`0 0 ${width} ${height}`} 
-        className="w-full h-24"
-        preserveAspectRatio="none"
-      >
-        {/* Grid lines */}
-        <line x1="0" y1={height} x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
-        <line x1="0" y1="0" x2="0" y2={height} stroke="#99BBEE" strokeWidth="0.5" />
-        <line x1={width} y1="0" x2={width} y2={height} stroke="#99BBEE" strokeWidth="0.5" />
-        <line x1="0" y1="0" x2={width} y2="0" stroke="#99BBEE" strokeWidth="0.5" />
-        
-        {/* Horizontal grid lines */}
-        <line x1="0" y1={height * 0.25} x2={width} y2={height * 0.25} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
-        <line x1="0" y1={height * 0.5} x2={width} y2={height * 0.5} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
-        <line x1="0" y1={height * 0.75} x2={width} y2={height * 0.75} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
-        
-        {/* Filled area under the line */}
-        {progress > 0 && (
-          <path
-            d={`${pathD} L ${currentX} ${height} L 0 ${height} Z`}
-            fill="url(#consumptionGradient)"
-            opacity="0.3"
-          />
-        )}
-        
-        {/* Consumption line */}
-        {progress > 0 && (
-          <path
-            d={pathD}
-            fill="none"
-            stroke="#3366CC"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        )}
-        
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-24" preserveAspectRatio="none">
+        <line x1="0" y1={h} x2={w} y2={h} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1="0" y1="0" x2="0" y2={h} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1={w} y1="0" x2={w} y2={h} stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1="0" y1="0" x2={w} y2="0" stroke="#99BBEE" strokeWidth="0.5" />
+        <line x1="0" y1={h * 0.25} x2={w} y2={h * 0.25} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
+        <line x1="0" y1={h * 0.5} x2={w} y2={h * 0.5} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
+        <line x1="0" y1={h * 0.75} x2={w} y2={h * 0.75} stroke="#99BBEE" strokeWidth="0.2" strokeDasharray="2 2" />
         <defs>
-          <linearGradient id="consumptionGradient" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#3366CC" />
             <stop offset="100%" stopColor="#3366CC" stopOpacity="0" />
           </linearGradient>
         </defs>
+        {progress > 0.001 && (
+          <>
+            <path d={fillPath} fill="url(#cg)" opacity="0.3" />
+            <path d={linePath} fill="none" stroke="#3366CC" strokeWidth="1.5" strokeLinecap="round" />
+          </>
+        )}
       </svg>
     </div>
   );
@@ -275,7 +213,8 @@ const ConcentricCircles = ({
 
 const Resources = ({ className }: { className?: string }) => {
   const MAX_ALLOCATED = 5; // 5 M m³/year
-  const { progress, currentValue } = useConsumptionAnimation(MAX_ALLOCATED, 12000);
+  const progress = useLinearProgress(8000);
+  const currentValue = progress * MAX_ALLOCATED;
   
   // Format the consumed value for display
   const formatConsumed = (value: number) => {
