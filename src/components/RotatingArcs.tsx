@@ -1,23 +1,25 @@
 const RotatingArcs = ({ className }: { className?: string }) => {
   // Define arcs at different radii with varying dash patterns
   const arcs = [
-    { radius: 140, dashArray: '50 70', rotation: 'cw', duration: 25, startAngle: 0 },
-    { radius: 160, dashArray: '70 90', rotation: 'ccw', duration: 20, startAngle: 45 },
-    { radius: 180, dashArray: '60 100', rotation: 'cw', duration: 30, startAngle: 120 },
-    { radius: 200, dashArray: '80 70', rotation: 'ccw', duration: 18, startAngle: 200 },
-    { radius: 220, dashArray: '55 110', rotation: 'cw', duration: 22, startAngle: 80 },
-    { radius: 240, dashArray: '90 80', rotation: 'ccw', duration: 28, startAngle: 160 },
-    { radius: 260, dashArray: '65 95', rotation: 'cw', duration: 15, startAngle: 270 },
-    { radius: 280, dashArray: '75 85', rotation: 'ccw', duration: 24, startAngle: 30 },
+    { radius: 120, dashArray: '80 40', rotation: 'cw', duration: 25, startAngle: 0 },
+    { radius: 140, dashArray: '100 50', rotation: 'ccw', duration: 20, startAngle: 45 },
+    { radius: 160, dashArray: '90 60', rotation: 'cw', duration: 30, startAngle: 120 },
+    { radius: 180, dashArray: '110 40', rotation: 'ccw', duration: 18, startAngle: 200 },
+    { radius: 200, dashArray: '85 55', rotation: 'cw', duration: 22, startAngle: 80 },
+    { radius: 220, dashArray: '120 50', rotation: 'ccw', duration: 28, startAngle: 160 },
+    { radius: 240, dashArray: '95 45', rotation: 'cw', duration: 15, startAngle: 270 },
+    { radius: 260, dashArray: '105 55', rotation: 'ccw', duration: 24, startAngle: 30 },
+    { radius: 280, dashArray: '90 60', rotation: 'cw', duration: 26, startAngle: 90 },
+    { radius: 300, dashArray: '115 45', rotation: 'ccw', duration: 22, startAngle: 180 },
   ];
 
-  const centerX = 300;
-  const centerY = 300;
+  const centerX = 350;
+  const centerY = 350;
 
   return (
     <svg
       className={className}
-      viewBox="0 0 600 600"
+      viewBox="0 0 700 700"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -43,7 +45,7 @@ const RotatingArcs = ({ className }: { className?: string }) => {
           fill="none"
           stroke="#0C5212"
           strokeWidth="1.5"
-          strokeOpacity="0.3"
+          strokeOpacity="0.5"
           strokeDasharray={arc.dashArray}
           strokeLinecap="round"
           style={{
