@@ -108,3 +108,39 @@ All colors MUST be HSL.
     font-family: 'DM Serif Text', serif;
   }
 }
+
+@layer utilities {
+  .heading-xl {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #21177a;
+    font-size: 2.25rem;
+  }
+  
+  .heading-l {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #21177a;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .heading-xl {
+    font-size: 3rem;
+  }
+  .heading-l {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-xl {
+    font-size: 3.75rem;
+  }
+  .heading-l {
+    font-size: 2.25rem;
+  }
+}
