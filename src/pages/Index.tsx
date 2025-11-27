@@ -11,7 +11,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <About />
+        <About className="bg-[#faf7ef]" />
         <Technology className="bg-[#faf5ee]" />
         <Resources className="bg-muted/20" />
         
