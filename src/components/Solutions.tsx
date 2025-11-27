@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
 
 const solutions = [
-  { title: "Farmers" },
+  { 
+    title: "Farmers",
+    description: "HydroTrace makes water reporting simple, accurate, and stress-free. Skip the field notebook and manual entries. Capture water-use data automatically, stay compliant with local requirements, and get a reliable picture of your abstractions throughout the season.\n\nSpend less time on paperwork and more time farming — all while protecting your allocation and reducing the risk of compliance issues."
+  },
   { title: "Water stewards" },
   { title: "Water Footprinting" },
 ];
@@ -16,9 +19,16 @@ const Solutions = ({ className }: { className?: string }) => {
               key={index}
               className="bg-white border border-[#c5d4e8] rounded-sm p-8 flex flex-col justify-between min-h-[200px] hover:shadow-md transition-shadow cursor-pointer group"
             >
-              <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium">
-                {solution.title}
-              </h3>
+              <div>
+                <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
+                  {solution.title}
+                </h3>
+                {solution.description && (
+                  <p className="text-sm text-[#21177a]/80 leading-relaxed whitespace-pre-line">
+                    {solution.description}
+                  </p>
+                )}
+              </div>
               <div className="mt-8">
                 <ArrowRight className="w-5 h-5 text-[#030bfc] group-hover:translate-x-1 transition-transform" />
               </div>
