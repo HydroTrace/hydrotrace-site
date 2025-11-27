@@ -49,7 +49,7 @@ const Hero = ({
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
-          <div className="max-w-xl">
+          <div className="max-w-2xl">
             {/* Tag */}
             <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']">
               Water Governance
