@@ -51,27 +51,17 @@ const About = ({ className }: { className?: string }) => {
     <section 
       id="about" 
       ref={sectionRef}
-      className={cn("py-24", className)}
+      className={cn("py-24 bg-white", className)}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Video on Left */}
-            <div className="flex items-center justify-center">
-              <video
-                ref={videoRef}
-                src={animationVideo}
-                className="w-full max-w-md h-auto"
-                muted
-                playsInline
-                preload="auto"
-              />
-            </div>
-
-            {/* Text Content on Right */}
-            <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-8 font-['DM_Serif_Text']">
-                Making Water Governance Traceable and Fair
+          <div className="grid md:grid-cols-2 gap-0 items-center">
+            {/* Text Content on Left */}
+            <div className="pr-12">
+              <h2 className="text-4xl sm:text-5xl font-semibold text-foreground mb-8 font-['Open_Sans'] leading-tight">
+                Making{" "}
+                <span style={{ color: '#030bfc' }}>Water Governance</span>{" "}
+                Traceable and Fair
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
@@ -82,9 +72,66 @@ const About = ({ className }: { className?: string }) => {
                 </p>
               </div>
             </div>
+
+            {/* Blue dashed border separator */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 border-l-2 border-dashed border-[#044cdb]/40" style={{ transform: 'translateX(-50%)' }} />
+
+            {/* Video on Right with gradient background and dots */}
+            <div className="relative pl-12">
+              {/* Gradient background */}
+              <div 
+                className="absolute inset-0 -right-20 rounded-lg"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(4, 76, 219, 0.05) 0%, rgba(4, 76, 219, 0.15) 100%)',
+                }}
+              />
+              
+              {/* Subtle dots pattern */}
+              <div 
+                className="absolute inset-0 -right-20"
+                style={{
+                  backgroundImage: 'radial-gradient(circle, rgba(4, 76, 219, 0.15) 1px, transparent 1px)',
+                  backgroundSize: '20px 20px',
+                }}
+              />
+              
+              {/* Video */}
+              <div className="relative flex items-center justify-center py-8">
+                <video
+                  ref={videoRef}
+                  src={animationVideo}
+                  className="w-full max-w-md h-auto relative z-10"
+                  muted
+                  playsInline
+                  preload="auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      
+      {/* Dashed border line - positioned as pseudo element alternative */}
+      <style>{`
+        #about .grid {
+          position: relative;
+        }
+        #about .grid::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          border-left: 2px dashed rgba(4, 76, 219, 0.4);
+          transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+          #about .grid::before {
+            display: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };
