@@ -6,7 +6,20 @@ const LearnMore = () => {
     <div className="min-h-screen relative">
       <Navbar />
       <main className="pt-20">
-        <section className="py-24 bg-[#faf7ef]">
+        <section className="py-24 bg-[#faf7ef] relative overflow-hidden">
+          {/* Blue grid background fading from middle to right */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(15, 30, 148, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 30, 148, 0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '20px 20px',
+              maskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%)',
+            }}
+          />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h1 className="heading-xl mb-8">
