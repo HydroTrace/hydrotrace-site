@@ -65,6 +65,18 @@ const countryInfo: Record<string, CountryData> = {
     name: "France",
     content: "France manages water through River Basin Agencies under the Water Framework Directive. Agricultural irrigation, particularly in southern regions, faces increasing pressure from drought conditions, driving investment in efficiency measures and alternative storage solutions.",
   },
+  "Italy": {
+    name: "Italy",
+    content: "Italy faces growing water stress, particularly in the Po River basin which supports intensive agriculture. Regional water authorities manage allocation under EU directives, while aging infrastructure and climate variability challenge efficient distribution across agricultural and urban sectors.",
+  },
+  "Portugal": {
+    name: "Portugal",
+    content: "Portugal's water management is shaped by Mediterranean climate pressures and EU Water Framework Directive requirements. The Alqueva Dam project transformed southern irrigation, while ongoing challenges include balancing agricultural demand with ecosystem protection in increasingly dry conditions.",
+  },
+  "Namibia": {
+    name: "Namibia",
+    content: "Namibia, one of Africa's driest countries, has developed innovative water management approaches including pioneering direct potable water reuse. Agricultural allocation faces unique challenges with limited groundwater and variable rainfall, driving investment in efficient irrigation technologies.",
+  },
 };
 
 const defaultContent: CountryData = {
