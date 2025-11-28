@@ -65,16 +65,10 @@ const Navbar = () => {
               About
             </Link>
             <button 
-              onClick={() => scrollToSection("technology")} 
+              onClick={() => scrollToSection("about")} 
               className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
-              Technology
-            </button>
-            <button 
-              onClick={() => scrollToSection("resources")} 
-              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
-            >
-              Resources
+              Why
             </button>
           </div>
 
@@ -112,16 +106,10 @@ const Navbar = () => {
                 About
               </Link>
               <button 
-                onClick={() => scrollToSection("technology")} 
+                onClick={() => scrollToSection("about")} 
                 className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
               >
-                Technology
-              </button>
-              <button 
-                onClick={() => scrollToSection("resources")} 
-                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
-              >
-                Resources
+                Why
               </button>
               <button 
                 onClick={() => scrollToSection("contact")} 
