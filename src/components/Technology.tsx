@@ -287,7 +287,7 @@ const Technology = ({ className }: { className?: string }) => {
                   </div>
                   
                   {/* Bottom Text Area */}
-                  <div className="h-[120px] p-6 flex items-center">
+                  <div className="h-[80px] p-4 flex items-center">
                     {activeIndex === 0 && (
                       <p 
                         className="text-xl leading-relaxed"
