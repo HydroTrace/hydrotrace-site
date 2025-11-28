@@ -26,9 +26,9 @@ const About = ({ className }: { className?: string }) => {
               </div>
               
               {/* Learn more link */}
-              <a 
-                href="/learn-more" 
-                className="about-learn-more inline-block mt-12 px-6 py-3 text-lg font-bold transition-colors duration-200"
+              <button 
+                onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
+                className="about-learn-more inline-block mt-12 px-6 py-3 text-lg font-bold transition-colors duration-200 cursor-pointer"
                 style={{ 
                   color: '#21177a', 
                   fontFamily: "'Open Sans', sans-serif",
@@ -37,7 +37,7 @@ const About = ({ className }: { className?: string }) => {
                 }}
               >
                 Learn more about water allocation
-              </a>
+              </button>
             </div>
 
             {/* Image on Right */}
