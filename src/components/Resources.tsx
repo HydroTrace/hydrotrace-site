@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import WorldMap from "./WorldMap";
-import farmerPhoneDashboard from "@/assets/farmer-phone-dashboard.jpg";
+import farmerPhoneDashboard from "@/assets/farmer-phone-dashboard.png";
 
 const generateRings = (count: number, baseRadius: number, centerX: number, centerY: number) => {
   const rings = [];
