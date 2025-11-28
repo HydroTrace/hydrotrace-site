@@ -275,7 +275,7 @@ const Technology = ({ className }: { className?: string }) => {
                   {/* Charts Area */}
                   <div 
                     className="flex-1 border-b min-h-[200px] overflow-hidden"
-                    style={{ borderColor: '#D4DCF6' }}
+                    style={{ borderColor: '#D4DCF6', border: '2px solid #336CFF' }}
                   >
                     {activeIndex === 0 && (
                       <img 
