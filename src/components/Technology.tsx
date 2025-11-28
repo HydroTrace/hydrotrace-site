@@ -280,11 +280,11 @@ const Technology = ({ className }: { className?: string }) => {
                   </div>
                   
                   {/* Bottom Text Area */}
-                  <div className="flex-1 min-h-[160px] p-6 flex items-center">
+                  <div className="flex-1 min-h-[100px] p-6 flex items-center">
                     {activeIndex === 0 && (
                       <p 
-                        className="text-sm leading-relaxed"
-                        style={{ color: '#0A1B44', fontFamily: "'Inter', sans-serif" }}
+                        className="text-lg leading-relaxed"
+                        style={{ color: '#0A1B44', fontFamily: "'Open Sans', sans-serif" }}
                       >
                         Streamline usage recording with a simple phone workflow. Scan the QR tag at the well, enter the reading, and snap a photo for verification.
                       </p>
