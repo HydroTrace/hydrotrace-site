@@ -220,7 +220,7 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
 
   return (
     <div className="w-full">
-      <svg viewBox={`0 0 ${w} ${totalH + 40}`} className="w-full" style={{ height: '320px' }}>
+      <svg viewBox={`-60 -15 ${w + 70} ${totalH + 55}`} className="w-full" style={{ height: '320px' }}>
         {/* Policy zone backgrounds - Top chart */}
         <rect x={reform1Start * w} y="0" width={(reform2Start - reform1Start) * w} height={h1} fill="#CCDCEE" opacity="0.5" />
         <rect x={reform2Start * w} y="0" width={(1 - reform2Start) * w} height={h1} fill="#CCEECC" opacity="0.5" />
@@ -236,7 +236,7 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
         {/* Top chart - Abstraction */}
         <g>
           {/* Y-axis label */}
-          <text x="-40" y={h1 / 2} fill="#3366CC" fontSize="8" fontFamily="'Fira Code', monospace" transform={`rotate(-90, -40, ${h1 / 2})`} textAnchor="middle">
+          <text x="-45" y={h1 / 2} fill="#3366CC" fontSize="8" fontFamily="'Fira Code', monospace" transform={`rotate(-90, -45, ${h1 / 2})`} textAnchor="middle">
             Total Abstracted (Mm³/yr)
           </text>
           
@@ -246,9 +246,9 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
           <line x1="0" y1={h1 * 0.5} x2={w} y2={h1 * 0.5} stroke="#DDD" strokeWidth="0.5" strokeDasharray="2 2" />
           
           {/* Y-axis ticks */}
-          <text x="-5" y="5" fill="#666" fontSize="7" textAnchor="end">160</text>
-          <text x="-5" y={h1 / 2 + 2} fill="#666" fontSize="7" textAnchor="end">125</text>
-          <text x="-5" y={h1 - 2} fill="#666" fontSize="7" textAnchor="end">90</text>
+          <text x="-8" y="5" fill="#666" fontSize="7" textAnchor="end">160</text>
+          <text x="-8" y={h1 / 2 + 2} fill="#666" fontSize="7" textAnchor="end">125</text>
+          <text x="-8" y={h1 - 2} fill="#666" fontSize="7" textAnchor="end">90</text>
           
           {/* Data line */}
           {currentIndex >= 1 && (
@@ -264,7 +264,7 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
         {/* Bottom chart - Groundwater Level */}
         <g transform={`translate(0, ${h1 + gap})`}>
           {/* Y-axis label */}
-          <text x="-40" y={h2 / 2} fill="#228B22" fontSize="8" fontFamily="'Fira Code', monospace" transform={`rotate(-90, -40, ${h2 / 2})`} textAnchor="middle">
+          <text x="-45" y={h2 / 2} fill="#228B22" fontSize="8" fontFamily="'Fira Code', monospace" transform={`rotate(-90, -45, ${h2 / 2})`} textAnchor="middle">
             Groundwater Level (m)
           </text>
           
@@ -274,9 +274,9 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
           <line x1="0" y1={h2 * 0.5} x2={w} y2={h2 * 0.5} stroke="#DDD" strokeWidth="0.5" strokeDasharray="2 2" />
           
           {/* Y-axis ticks */}
-          <text x="-5" y="5" fill="#666" fontSize="7" textAnchor="end">11</text>
-          <text x="-5" y={h2 / 2 + 2} fill="#666" fontSize="7" textAnchor="end">8.5</text>
-          <text x="-5" y={h2 - 2} fill="#666" fontSize="7" textAnchor="end">6</text>
+          <text x="-8" y="5" fill="#666" fontSize="7" textAnchor="end">11</text>
+          <text x="-8" y={h2 / 2 + 2} fill="#666" fontSize="7" textAnchor="end">8.5</text>
+          <text x="-8" y={h2 - 2} fill="#666" fontSize="7" textAnchor="end">6</text>
           
           {/* Data line */}
           {currentIndex >= 1 && (
