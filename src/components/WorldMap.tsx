@@ -154,7 +154,7 @@ const WorldMap: React.FC = () => {
 
           {/* Text Section */}
           <div className="w-full lg:w-2/5 flex flex-col justify-center">
-            <div className="bg-white rounded-lg border border-[#e5e7eb] p-6 shadow-sm">
+            <div className="bg-white rounded-lg p-6 shadow-sm" style={{ border: '2px dashed #3366CC' }}>
               <h4 className="text-xl font-semibold text-[#3366CC] mb-4 font-['Fira_Code']">
                 {hoveredCountry.name}
               </h4>
