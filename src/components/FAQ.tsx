@@ -16,7 +16,7 @@ const faqItems = [
   },
   {
     question: "What is the status quo?",
-    answer: "Answer coming soon.",
+    answer: "In most regions, abstraction data is scattered across multiple systems and reporting channels. Farmers often submit readings to different agencies, sometimes through paper forms, spreadsheets, or unstructured emails. Each organisation collects data in its own format, which makes it difficult to assemble a complete picture of water use across a basin.\n\nBecause much of this reporting is manual, the quality of the data varies widely. Readings may be missing, delayed, or inconsistent, and few systems include validation checks that confirm whether a number is realistic or whether it aligns with previous patterns. As a result, regulators spend significant time cleaning data or filling gaps with assumptions, and important trends often remain hidden.\n\nThis fragmented status quo limits the ability of both farmers and regulators to make timely decisions. Without a unified, reliable view of actual abstraction, it is difficult to assess compliance, understand resource pressure, or plan for changing conditions. Modernisation begins with improving the consistency, quality, and accessibility of the data itself.",
   },
 ];
 
