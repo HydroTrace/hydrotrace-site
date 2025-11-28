@@ -22,8 +22,36 @@ const faqItems = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="py-24 bg-[#faf7ef]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 bg-[#faf7ef] relative overflow-hidden">
+      {/* Left grid pattern fading toward center */}
+      <div 
+        className="absolute inset-y-0 left-0 w-1/3 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(15, 30, 148, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(15, 30, 148, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px',
+          maskImage: 'linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)',
+        }}
+      />
+      
+      {/* Right grid pattern fading toward center */}
+      <div 
+        className="absolute inset-y-0 right-0 w-1/3 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(15, 30, 148, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(15, 30, 148, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px',
+          maskImage: 'linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)',
+        }}
+      />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="heading-xl mb-12">Learn more</h2>
           
