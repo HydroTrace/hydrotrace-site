@@ -154,7 +154,7 @@ const WorldMap: React.FC = () => {
 
           {/* Text Section */}
           <div className="w-full lg:w-2/5 flex flex-col justify-center">
-            <div className="relative bg-white p-6">
+            <div className="relative p-6" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
               {/* Corner borders - top left */}
               <div className="absolute top-0 left-0 w-8 h-8">
                 <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-[#3366CC]" />
