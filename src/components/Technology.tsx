@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
+import capturePhoneWorkflow from "@/assets/capture-phone-workflow.png";
 
 const steps = [
   {
@@ -271,12 +272,18 @@ const Technology = ({ className }: { className?: string }) => {
                     {/* Empty - title goes here */}
                   </div>
                   
-                  {/* Charts Area (empty placeholder) */}
+                  {/* Charts Area */}
                   <div 
-                    className="flex-1 border-b min-h-[200px]"
+                    className="flex-1 border-b min-h-[200px] overflow-hidden"
                     style={{ borderColor: '#D4DCF6' }}
                   >
-                    {/* Empty - charts go here */}
+                    {activeIndex === 0 && (
+                      <img 
+                        src={capturePhoneWorkflow} 
+                        alt="Phone workflow for water usage recording"
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                   
                   {/* Bottom Text Area */}
