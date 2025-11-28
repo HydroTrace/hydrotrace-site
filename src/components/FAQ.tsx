@@ -8,7 +8,7 @@ import {
 const faqItems = [
   {
     question: "What is water allocation?",
-    answer: "Answer coming soon.",
+    answer: "Understanding HydroTrace begins with understanding water allocation, which is the process of distributing access to finite water resources among competing users.\n\nAcross the world, allocation frameworks take many forms, from government-issued licences and quotas to market-based water rights and trading systems. Each aims to balance equity, efficiency, and sustainability, but the reality is increasingly complex. Climate variability, shifting economic pressures, and rising irrigation demand are placing unprecedented stress on these systems.\n\nEffective allocation depends on transparency, reliable data, and adaptive decision-making. Yet fragmented information systems, manual reporting, and slow feedback loops often make it difficult for regulators to assess compliance or anticipate resource stress.",
   },
   {
     question: "Why does abstraction data matter?",
@@ -65,7 +65,7 @@ const FAQ = () => {
                 <AccordionTrigger className="text-xl font-semibold text-[#21177a] hover:no-underline py-6">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-lg text-muted-foreground leading-relaxed pb-6">
+                <AccordionContent className="text-lg text-muted-foreground leading-relaxed pb-6 whitespace-pre-line">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
