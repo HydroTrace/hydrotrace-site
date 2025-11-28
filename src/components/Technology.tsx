@@ -138,7 +138,7 @@ const Technology = ({ className }: { className?: string }) => {
         </div>
 
         {/* Main Content Grid - aligned columns */}
-        <div className="grid lg:grid-cols-2 gap-0 lg:pl-12 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-0 lg:pl-12 items-start">
           
           {/* Left Side - Steps */}
           <div className="relative flex flex-col">
