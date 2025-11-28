@@ -164,7 +164,7 @@ const ConsumptionPlot = ({ progress }: { progress: number }) => {
 
 // Groundwater Management Plot - shows abstraction & groundwater level with policy zones
 const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
-  const w = 300, h1 = 80, h2 = 80, gap = 20;
+  const w = 400, h1 = 100, h2 = 100, gap = 25;
   const totalH = h1 + gap + h2;
   
   // Years from 2010 to 2030 (21 years)
@@ -220,7 +220,7 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
 
   return (
     <div className="w-full">
-      <svg viewBox={`-60 -15 ${w + 70} ${totalH + 55}`} className="w-full" style={{ height: '320px' }}>
+      <svg viewBox={`-70 -20 ${w + 80} ${totalH + 60}`} className="w-full" style={{ height: '420px' }}>
         {/* Policy zone backgrounds - Top chart */}
         <rect x={reform1Start * w} y="0" width={(reform2Start - reform1Start) * w} height={h1} fill="#CCDCEE" opacity="0.5" />
         <rect x={reform2Start * w} y="0" width={(1 - reform2Start) * w} height={h1} fill="#CCEECC" opacity="0.5" />
@@ -302,16 +302,16 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
         </g>
         
         {/* Zone labels */}
-        <text x={(reform1Start + (reform2Start - reform1Start) / 2) * w} y="-8" fill="#3366CC" fontSize="7" textAnchor="middle" fontFamily="'Fira Code', monospace">
+        <text x={(reform1Start + (reform2Start - reform1Start) / 2) * w} y="-8" fill="#3366CC" fontSize="8" textAnchor="middle" fontFamily="'Fira Code', monospace">
           Allocation Freeze
         </text>
-        <text x={(reform1Start + (reform2Start - reform1Start) / 2) * w} y="-1" fill="#3366CC" fontSize="6" textAnchor="middle" fontFamily="'Fira Code', monospace">
+        <text x={(reform1Start + (reform2Start - reform1Start) / 2) * w} y="0" fill="#3366CC" fontSize="7" textAnchor="middle" fontFamily="'Fira Code', monospace">
           (Reform 1)
         </text>
-        <text x={(reform2Start + (1 - reform2Start) / 2 + reform2Start / 2) * w} y="-8" fill="#228B22" fontSize="7" textAnchor="middle" fontFamily="'Fira Code', monospace">
+        <text x={(reform2Start + 1) / 2 * w} y="-8" fill="#228B22" fontSize="8" textAnchor="middle" fontFamily="'Fira Code', monospace">
           Allocation Reduction
         </text>
-        <text x={(reform2Start + (1 - reform2Start) / 2 + reform2Start / 2) * w} y="-1" fill="#228B22" fontSize="6" textAnchor="middle" fontFamily="'Fira Code', monospace">
+        <text x={(reform2Start + 1) / 2 * w} y="0" fill="#228B22" fontSize="7" textAnchor="middle" fontFamily="'Fira Code', monospace">
           (Reform 2)
         </text>
         
