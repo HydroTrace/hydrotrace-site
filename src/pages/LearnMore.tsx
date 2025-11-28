@@ -16,8 +16,8 @@ const LearnMore = () => {
                 linear-gradient(to bottom, rgba(15, 30, 148, 0.3) 1px, transparent 1px)
               `,
               backgroundSize: '20px 20px',
-              maskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%)',
+              maskImage: 'linear-gradient(to right, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0) 100%)',
             }}
           />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
