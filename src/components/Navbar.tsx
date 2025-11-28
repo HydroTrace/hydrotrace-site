@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoIcon from "@/assets/hydrotrace-icon.png";
 
@@ -70,12 +70,12 @@ const Navbar = () => {
             >
               Why
             </button>
-            <Link 
-              to="/learn-more" 
+            <button 
+              onClick={() => scrollToSection("faq")} 
               className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
               Learn more
-            </Link>
+            </button>
           </div>
 
           {/* Right side buttons */}
@@ -116,13 +116,12 @@ const Navbar = () => {
               >
                 Why
               </button>
-              <Link 
-                to="/learn-more"
-                onClick={() => setIsMenuOpen(false)} 
+              <button 
+                onClick={() => scrollToSection("faq")} 
                 className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
               >
                 Learn more
-              </Link>
+              </button>
               <button 
                 onClick={() => scrollToSection("contact")} 
                 className="text-white bg-[#0f1e94] hover:bg-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded mt-2 font-['IBM_Plex_Mono']"
