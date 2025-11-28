@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
-import capturePhoneWorkflow from "@/assets/capture-phone-workflow.png";
+import captureMeterReading from "@/assets/capture-meter-reading.png";
 
 const steps = [
   {
@@ -279,8 +279,8 @@ const Technology = ({ className }: { className?: string }) => {
                   >
                     {activeIndex === 0 && (
                       <img 
-                        src={capturePhoneWorkflow} 
-                        alt="Phone workflow for water usage recording"
+                        src={captureMeterReading} 
+                        alt="Phone workflow for water meter reading"
                         className="w-full h-full object-cover"
                       />
                     )}
