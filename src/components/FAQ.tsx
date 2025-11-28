@@ -12,7 +12,7 @@ const faqItems = [
   },
   {
     question: "Why does abstraction data matter?",
-    answer: "Answer coming soon.",
+    answer: "Abstraction data is essential for understanding the balance between how much water is removed from a system and how much is naturally replenished. Groundwater use can remain sustainable only when recharge meets or exceeds extraction. To define sustainable yield, authorities need a clear view of the main inputs and outputs of each aquifer. Because irrigation draws the largest volumes in many regions, reliable abstraction data is a critical part of this balance. Without it, risks to stressed aquifers often remain hidden until they become severe.\n\nAccurate abstraction data also reveals how efficiently farmers convert water into yield and economic value. Indicators such as applied water productivity and economic water productivity depend on trustworthy measurements. These insights highlight differences between irrigation methods, crop choices, and management practices, and they help identify opportunities for improved efficiency or targeted support.\n\nModern abstraction monitoring closes an important information gap. When data is collected manually or inconsistently, agencies must rely on estimates that cannot capture actual use or quantify consumptive demand, blue-water footprints, or irrigation losses. Reliable, high-frequency monitoring provides the foundation for fair allocation, meaningful compliance, and long-term aquifer protection.\n\nIn practical terms, good abstraction data shifts water management from reactive crisis response to proactive stewardship. It transforms static records into operational intelligence for both regulators and farmers.",
   },
   {
     question: "What is the status quo?",
