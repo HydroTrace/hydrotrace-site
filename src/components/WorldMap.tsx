@@ -59,7 +59,7 @@ const WorldMap: React.FC = () => {
     <div className="w-full py-16">
       <div className="max-w-7xl mx-auto px-6">
         <h3 className="text-2xl md:text-3xl font-semibold text-[#21177a] mb-8 font-['Open_Sans']">
-          Water Governance Around the World
+          Water governance challenges around the world
         </h3>
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Map Section */}
