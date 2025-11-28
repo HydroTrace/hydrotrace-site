@@ -19,6 +19,12 @@ const LearnMore = () => {
                 <p>
                   HydroTrace provides the digital infrastructure needed to support modern water governance frameworks—ensuring transparency, accountability, and data-driven decision making at every level.
                 </p>
+                <p>
+                  Across the world, allocation frameworks take many forms, from government-issued licences and quotas to market-based water rights and trading systems. Each seeks to balance equity, efficiency, and sustainability, yet the reality is increasingly complex. Climate variability, shifting economic pressures, and growing demand for irrigation place unprecedented stress on these mechanisms. Effective allocation depends on transparency, reliable data, and adaptive decision-making. However, fragmented information systems, manual reporting, and slow feedback loops make it difficult for regulators to assess compliance or anticipate resource stress.
+                </p>
+                <p>
+                  The result is a widening gap between policy intent and on-the-ground management, underscoring the urgent need for integrated, digital tools that connect data, governance, and accountability.
+                </p>
                 <h2 className="heading-l mt-12 mb-6">
                   Why Digital Water Governance Matters
                 </h2>
