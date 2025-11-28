@@ -88,14 +88,14 @@ const WorldMap: React.FC = () => {
   const [hoveredCountry, setHoveredCountry] = useState<CountryData>(defaultContent);
 
   return (
-    <div className="w-full py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <h3 className="text-2xl md:text-3xl font-semibold text-[#21177a] mb-8 font-['Open_Sans']">
+    <div className="w-full py-8 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <h3 className="text-xl md:text-3xl font-semibold text-[#21177a] mb-6 md:mb-8 font-['Open_Sans']">
           Water governance challenges around the world
         </h3>
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start">
           {/* Map Section */}
-          <div className="w-full lg:w-[65%] bg-[#f8f9fa] rounded-lg p-4" style={{ border: '2px dashed #3366CC' }}>
+          <div className="w-full lg:w-[65%] bg-[#f8f9fa] rounded-lg p-2 md:p-4" style={{ border: '2px dashed #3366CC' }}>
             <ComposableMap
               projection="geoMercator"
               projectionConfig={{
@@ -154,36 +154,36 @@ const WorldMap: React.FC = () => {
 
           {/* Text Section */}
           <div className="w-full lg:w-2/5 flex flex-col justify-center">
-            <div className="relative p-6" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
+            <div className="relative p-4 md:p-6" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
               {/* Corner borders - top left */}
-              <div className="absolute top-0 left-0 w-8 h-8">
+              <div className="absolute top-0 left-0 w-6 h-6 md:w-8 md:h-8">
                 <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-[#3366CC]" />
                 <div className="absolute top-0 left-0 h-full border-l-2 border-dashed border-[#3366CC]" />
               </div>
               {/* Corner borders - top right */}
-              <div className="absolute top-0 right-0 w-8 h-8">
+              <div className="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8">
                 <div className="absolute top-0 right-0 w-full border-t-2 border-dashed border-[#3366CC]" />
                 <div className="absolute top-0 right-0 h-full border-r-2 border-dashed border-[#3366CC]" />
               </div>
               {/* Corner borders - bottom left */}
-              <div className="absolute bottom-0 left-0 w-8 h-8">
+              <div className="absolute bottom-0 left-0 w-6 h-6 md:w-8 md:h-8">
                 <div className="absolute bottom-0 left-0 w-full border-b-2 border-dashed border-[#3366CC]" />
                 <div className="absolute bottom-0 left-0 h-full border-l-2 border-dashed border-[#3366CC]" />
               </div>
               {/* Corner borders - bottom right */}
-              <div className="absolute bottom-0 right-0 w-8 h-8">
+              <div className="absolute bottom-0 right-0 w-6 h-6 md:w-8 md:h-8">
                 <div className="absolute bottom-0 right-0 w-full border-b-2 border-dashed border-[#3366CC]" />
                 <div className="absolute bottom-0 right-0 h-full border-r-2 border-dashed border-[#3366CC]" />
               </div>
               
-              <h4 className="text-xl font-semibold text-[#3366CC] mb-4 font-['Fira_Code']">
+              <h4 className="text-lg md:text-xl font-semibold text-[#3366CC] mb-3 md:mb-4 font-['Fira_Code']">
                 {hoveredCountry.name}
               </h4>
-              <p className="text-[#4a5568] leading-relaxed font-['Open_Sans'] text-base">
+              <p className="text-[#4a5568] leading-relaxed font-['Open_Sans'] text-sm md:text-base">
                 {hoveredCountry.content}
               </p>
             </div>
-            <p className="text-sm text-[#6b7280] mt-4 font-['IBM_Plex_Mono']">
+            <p className="text-xs md:text-sm text-[#6b7280] mt-4 font-['IBM_Plex_Mono']">
               Highlighted countries have detailed information available.
             </p>
           </div>

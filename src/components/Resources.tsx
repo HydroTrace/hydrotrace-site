@@ -220,7 +220,7 @@ const GroundwaterManagementPlot = ({ progress }: { progress: number }) => {
 
   return (
     <div className="w-full">
-      <svg viewBox={`-70 -20 ${w + 80} ${totalH + 60}`} className="w-full" style={{ height: '420px' }}>
+      <svg viewBox={`-70 -20 ${w + 80} ${totalH + 60}`} className="w-full h-64 md:h-[420px]">
         {/* Policy zone backgrounds - Top chart */}
         <rect x={reform1Start * w} y="0" width={(reform2Start - reform1Start) * w} height={h1} fill="#CCDCEE" opacity="0.5" />
         <rect x={reform2Start * w} y="0" width={(1 - reform2Start) * w} height={h1} fill="#CCEECC" opacity="0.5" />
@@ -414,15 +414,15 @@ const Resources = ({ className }: { className?: string }) => {
       <ConcentricCircles position="bottom-right" />
 
       {/* Section Title */}
-      <div className="relative z-10 text-center pt-16 mb-8 max-w-4xl mx-auto px-4">
+      <div className="relative z-10 text-center pt-8 md:pt-16 mb-6 md:mb-8 max-w-4xl mx-auto px-4">
         <h2 
-          className="heading-xl mb-6"
+          className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 md:mb-6"
           style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
         >
           Data-driven water governance
         </h2>
         <p 
-          className="text-lg leading-relaxed"
+          className="text-sm md:text-lg leading-relaxed"
           style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
         >
           Reliable, high-frequency abstraction data is the catalyst that transforms static records into operational intelligence for both regulators and farmers. It moves management beyond simple accounting and into proactive resource stewardship.
@@ -453,7 +453,7 @@ const Resources = ({ className }: { className?: string }) => {
             
             {/* Dashboard title */}
             <h2 
-              className="text-3xl font-normal mb-6"
+              className="text-xl md:text-3xl font-normal mb-6"
               style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
             >
               Dashboard
@@ -469,47 +469,47 @@ const Resources = ({ className }: { className?: string }) => {
             
             {/* Metrics Grid */}
             <div 
-              className="grid grid-cols-12 gap-0"
+              className="grid grid-cols-2 md:grid-cols-12 gap-0"
               style={{ border: '1px solid #3366CC' }}
             >
               {/* Row 1 */}
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   5 M m³/year
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   TOTAL ALLOCATED GROUNDWATER
                 </span>
               </div>
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '0 md:1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   {formatConsumed(currentValue)}
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   TOTAL CONSUMED TO DATE
                 </span>
               </div>
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   {Math.floor(progress * 10000).toLocaleString()}
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   NUMBER OF USAGE RECORDINGS
@@ -517,48 +517,48 @@ const Resources = ({ className }: { className?: string }) => {
               </div>
               
               {/* Right side water tank filling */}
-              <div className="col-span-3 row-span-2 p-1" style={{ borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 row-span-1 md:row-span-2 p-1 h-16 md:h-auto" style={{ borderBottom: '1px solid #3366CC' }}>
                 <WaterTankFilling progress={progress} />
               </div>
               
               {/* Row 2 */}
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   6000
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   REGISTERED FARMERS
                 </span>
               </div>
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-1 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '0 md:1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   7483
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   REGISTERED BOREHOLES
                 </span>
               </div>
-              <div className="col-span-3 h-20 flex flex-col justify-center px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
+              <div className="col-span-2 md:col-span-3 h-16 md:h-20 flex flex-col justify-center px-2 md:px-4" style={{ borderRight: '1px solid #3366CC', borderBottom: '1px solid #3366CC' }}>
                 <span 
-                  className="text-2xl font-semibold"
+                  className="text-sm md:text-2xl font-semibold"
                   style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
                 >
                   103,437
                 </span>
                 <span 
-                  className="text-[10px] mt-1"
+                  className="text-[8px] md:text-[10px] mt-1"
                   style={{ color: '#3366CC', fontFamily: "'Fira Code', monospace", textTransform: 'uppercase' }}
                 >
                   HECTARES OF FARM LAND
@@ -577,7 +577,7 @@ const Resources = ({ className }: { className?: string }) => {
       {/* Sustainable Groundwater Management Section */}
       <div className="relative z-10 flex items-center justify-center px-4 mt-8">
         <div 
-          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm p-6"
+          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm p-4 md:p-6"
           style={{ border: '2px solid #3366CC' }}
         >
           {/* Globe icon */}
@@ -592,14 +592,14 @@ const Resources = ({ className }: { className?: string }) => {
           </div>
           
           <h3 
-            className="text-2xl font-normal mb-2"
+            className="text-xl md:text-2xl font-normal mb-2"
             style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
           >
             Sustainable Groundwater Management
           </h3>
           <p 
-            className="mb-6"
-            style={{ color: '#666', fontFamily: "'Fira Code', monospace", fontSize: '15px' }}
+            className="mb-6 text-xs md:text-sm"
+            style={{ color: '#666', fontFamily: "'Fira Code', monospace" }}
           >
             Pairing abstraction data with groundwater levels can enable informed decisions for long-term aquifer health
           </p>
