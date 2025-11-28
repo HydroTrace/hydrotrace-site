@@ -27,7 +27,7 @@ const About = ({ className }: { className?: string }) => {
               
               {/* Learn more link */}
               <a 
-                href="#" 
+                href="/learn-more" 
                 className="about-learn-more inline-block mt-12 px-6 py-3 text-lg font-bold transition-colors duration-200"
                 style={{ 
                   color: '#21177a', 
