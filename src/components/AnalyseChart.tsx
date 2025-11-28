@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 interface AnalyseChartProps {
   isActive: boolean;
@@ -22,176 +22,99 @@ const recordingsData = [
   { year: "2024", value: 14000 },
 ];
 
-const maxConsumption = 5;
-const maxRecordings = 15000;
-
 const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
-  const [animationProgress, setAnimationProgress] = useState(0);
-  const animationRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number | null>(null);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!isActive) {
-      setAnimationProgress(0);
-      startTimeRef.current = null;
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      setProgress(0);
       return;
     }
 
-    const animateBars = (timestamp: number) => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
-      }
-      
-      const elapsed = timestamp - startTimeRef.current;
-      const duration = 2000; // 2 seconds for full animation
-      const progress = Math.min(elapsed / duration, 1);
-      
-      setAnimationProgress(progress);
-      
-      if (progress < 1) {
-        animationRef.current = requestAnimationFrame(animateBars);
-      }
+    let start: number | null = null;
+    let rafId: number;
+
+    const animate = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const newProgress = Math.min(elapsed / 2500, 1); // 2.5s total
+      setProgress(newProgress);
+      if (newProgress < 1) rafId = requestAnimationFrame(animate);
     };
 
-    animationRef.current = requestAnimationFrame(animateBars);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, [isActive]);
 
-  const formatRecordings = (value: number) => {
-    if (value >= 1000) {
-      return `${(value / 1000).toFixed(1)}k`;
-    }
-    return value.toString();
+  const getBarHeight = (index: number, value: number, max: number) => {
+    const barStart = index * 0.12; // Each bar starts 12% into the animation
+    const barProgress = Math.max(0, Math.min(1, (progress - barStart) / 0.3));
+    return (value / max) * 120 * barProgress;
   };
 
-  const maxBarHeight = 120; // Fixed pixel height for bars
+  const getValue = (index: number, value: number) => {
+    const barStart = index * 0.12;
+    const barProgress = Math.max(0, Math.min(1, (progress - barStart) / 0.3));
+    return value * barProgress;
+  };
+
+  const format = (v: number) => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : Math.round(v).toString();
 
   return (
     <div className="w-full h-full flex p-6 gap-6" style={{ backgroundColor: '#F8FAFC' }}>
-      {/* Left Chart - Usage Recordings */}
-      <div className="flex-1 flex flex-col min-h-0">
-        <div 
-          className="text-xs font-medium mb-3 uppercase tracking-wider"
-          style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
-        >
+      {/* Usage Recordings */}
+      <div className="flex-1 flex flex-col">
+        <div className="text-xs font-medium mb-3 uppercase tracking-wider" style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}>
           Usage Recordings
         </div>
-        <div className="flex-1 flex items-end gap-2 pb-2">
-          {recordingsData.map((item, index) => {
-            const barHeight = (item.value / maxRecordings) * maxBarHeight * animationProgress;
-            const delay = index * 0.1;
-            const adjustedProgress = Math.max(0, Math.min(1, (animationProgress - delay) / (1 - delay)));
-            const animatedHeight = (item.value / maxRecordings) * maxBarHeight * adjustedProgress;
-            
-            return (
-              <div key={item.year} className="flex-1 flex flex-col items-center">
-                <div 
-                  className="w-full flex items-end justify-center"
-                  style={{ height: `${maxBarHeight}px` }}
+        <div className="flex-1 flex items-end gap-2">
+          {recordingsData.map((item, i) => (
+            <div key={item.year} className="flex-1 flex flex-col items-center">
+              <div className="w-full flex items-end justify-center" style={{ height: 120 }}>
+                <div
+                  className="w-full max-w-[32px] rounded-t relative"
+                  style={{ height: getBarHeight(i, item.value, 15000), backgroundColor: '#60A5FA', transition: 'height 0.05s linear' }}
                 >
-                  <div
-                    className="w-full max-w-[32px] rounded-t relative group"
-                    style={{
-                      height: `${animatedHeight}px`,
-                      backgroundColor: '#60A5FA',
-                      transition: 'height 0.1s ease-out',
-                    }}
-                  >
-                    {/* Value label */}
-                    <div 
-                      className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold whitespace-nowrap"
-                      style={{ color: '#0A1B44' }}
-                    >
-                      {formatRecordings(Math.round(item.value * adjustedProgress))}
-                    </div>
-                  </div>
+                  <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold" style={{ color: '#0A1B44' }}>
+                    {format(getValue(i, item.value))}
+                  </span>
                 </div>
-                <span 
-                  className="text-[10px] mt-2 font-medium"
-                  style={{ color: '#64748B' }}
-                >
-                  {item.year}
-                </span>
               </div>
-            );
-          })}
+              <span className="text-[10px] mt-2 font-medium" style={{ color: '#64748B' }}>{item.year}</span>
+            </div>
+          ))}
         </div>
-        {/* Animated counter */}
-        <div 
-          className="text-center mt-3 text-base font-semibold"
-          style={{ color: '#0A1B44' }}
-        >
-          {formatRecordings(Math.round(recordingsData[recordingsData.length - 1].value * animationProgress))} total recordings
+        <div className="text-center mt-3 text-base font-semibold" style={{ color: '#0A1B44' }}>
+          {format(getValue(5, 14000))} total
         </div>
       </div>
 
-      {/* Vertical Divider */}
-      <div 
-        className="w-px self-stretch my-4"
-        style={{ backgroundColor: '#D4DCF6' }}
-      />
+      <div className="w-px self-stretch my-4" style={{ backgroundColor: '#D4DCF6' }} />
 
-      {/* Right Chart - Water Consumption */}
-      <div className="flex-1 flex flex-col min-h-0">
-        <div 
-          className="text-xs font-medium mb-3 uppercase tracking-wider"
-          style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
-        >
+      {/* Water Consumption */}
+      <div className="flex-1 flex flex-col">
+        <div className="text-xs font-medium mb-3 uppercase tracking-wider" style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}>
           Water Consumption (M m³)
         </div>
-        <div className="flex-1 flex items-end gap-2 pb-2">
-          {consumptionData.map((item, index) => {
-            const delay = index * 0.1;
-            const adjustedProgress = Math.max(0, Math.min(1, (animationProgress - delay) / (1 - delay)));
-            const animatedHeight = (item.value / maxConsumption) * maxBarHeight * adjustedProgress;
-            
-            return (
-              <div key={item.year} className="flex-1 flex flex-col items-center">
-                <div 
-                  className="w-full flex items-end justify-center"
-                  style={{ height: `${maxBarHeight}px` }}
+        <div className="flex-1 flex items-end gap-2">
+          {consumptionData.map((item, i) => (
+            <div key={item.year} className="flex-1 flex flex-col items-center">
+              <div className="w-full flex items-end justify-center" style={{ height: 120 }}>
+                <div
+                  className="w-full max-w-[32px] rounded-t relative"
+                  style={{ height: getBarHeight(i, item.value, 5), backgroundColor: '#1E40AF', transition: 'height 0.05s linear' }}
                 >
-                  <div
-                    className="w-full max-w-[32px] rounded-t relative group"
-                    style={{
-                      height: `${animatedHeight}px`,
-                      backgroundColor: '#1E40AF',
-                      transition: 'height 0.1s ease-out',
-                    }}
-                  >
-                    {/* Value label */}
-                    <div 
-                      className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold whitespace-nowrap"
-                      style={{ color: '#0A1B44' }}
-                    >
-                      {(item.value * adjustedProgress).toFixed(1)}M
-                    </div>
-                  </div>
+                  <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold" style={{ color: '#0A1B44' }}>
+                    {getValue(i, item.value).toFixed(1)}M
+                  </span>
                 </div>
-                <span 
-                  className="text-[10px] mt-2 font-medium"
-                  style={{ color: '#64748B' }}
-                >
-                  {item.year}
-                </span>
               </div>
-            );
-          })}
+              <span className="text-[10px] mt-2 font-medium" style={{ color: '#64748B' }}>{item.year}</span>
+            </div>
+          ))}
         </div>
-        {/* Animated counter */}
-        <div 
-          className="text-center mt-3 text-base font-semibold"
-          style={{ color: '#0A1B44' }}
-        >
-          {(consumptionData[consumptionData.length - 1].value * animationProgress).toFixed(1)}M m³/year
+        <div className="text-center mt-3 text-base font-semibold" style={{ color: '#0A1B44' }}>
+          {getValue(5, 4.5).toFixed(1)}M m³/year
         </div>
       </div>
     </div>
