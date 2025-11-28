@@ -598,10 +598,10 @@ const Resources = ({ className }: { className?: string }) => {
             Sustainable Groundwater Management
           </h3>
           <p 
-            className="text-xs mb-6"
-            style={{ color: '#666', fontFamily: "'Fira Code', monospace" }}
+            className="mb-6"
+            style={{ color: '#666', fontFamily: "'Fira Code', monospace", fontSize: '15px' }}
           >
-            Pairing abstraction data with groundwater levels enables informed decisions for long-term aquifer health
+            Pairing abstraction data with groundwater levels can enable informed decisions for long-term aquifer health
           </p>
           
           <GroundwaterManagementPlot progress={progress} />
