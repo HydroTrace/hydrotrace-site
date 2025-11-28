@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface AnalyseChartProps {
   isActive: boolean;
@@ -27,40 +27,41 @@ const maxRecordings = 15000;
 
 const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
   const [animationProgress, setAnimationProgress] = useState(0);
-  const [visibleBars, setVisibleBars] = useState(0);
+  const animationRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isActive) {
       setAnimationProgress(0);
-      setVisibleBars(0);
+      startTimeRef.current = null;
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
       return;
     }
 
-    // Animate bars appearing one by one
-    const barInterval = setInterval(() => {
-      setVisibleBars((prev) => {
-        if (prev >= consumptionData.length) {
-          clearInterval(barInterval);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 300);
+    const animateBars = (timestamp: number) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+      
+      const elapsed = timestamp - startTimeRef.current;
+      const duration = 2000; // 2 seconds for full animation
+      const progress = Math.min(elapsed / duration, 1);
+      
+      setAnimationProgress(progress);
+      
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animateBars);
+      }
+    };
 
-    // Animate bar heights growing
-    const progressInterval = setInterval(() => {
-      setAnimationProgress((prev) => {
-        if (prev >= 1) {
-          clearInterval(progressInterval);
-          return 1;
-        }
-        return prev + 0.02;
-      });
-    }, 20);
+    animationRef.current = requestAnimationFrame(animateBars);
 
     return () => {
-      clearInterval(barInterval);
-      clearInterval(progressInterval);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, [isActive]);
 
@@ -71,46 +72,53 @@ const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
     return value.toString();
   };
 
+  const maxBarHeight = 120; // Fixed pixel height for bars
+
   return (
-    <div className="w-full h-full flex p-4 gap-4" style={{ backgroundColor: '#F8FAFC' }}>
+    <div className="w-full h-full flex p-6 gap-6" style={{ backgroundColor: '#F8FAFC' }}>
       {/* Left Chart - Usage Recordings */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-h-0">
         <div 
-          className="text-xs font-medium mb-2 uppercase tracking-wider"
+          className="text-xs font-medium mb-3 uppercase tracking-wider"
           style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
         >
           Usage Recordings
         </div>
-        <div className="flex-1 flex items-end gap-1">
+        <div className="flex-1 flex items-end gap-2 pb-2">
           {recordingsData.map((item, index) => {
-            const heightPercent = (item.value / maxRecordings) * 100 * animationProgress;
-            const isVisible = index < visibleBars;
+            const barHeight = (item.value / maxRecordings) * maxBarHeight * animationProgress;
+            const delay = index * 0.1;
+            const adjustedProgress = Math.max(0, Math.min(1, (animationProgress - delay) / (1 - delay)));
+            const animatedHeight = (item.value / maxRecordings) * maxBarHeight * adjustedProgress;
+            
             return (
               <div key={item.year} className="flex-1 flex flex-col items-center">
-                <div className="flex-1 w-full flex items-end justify-center">
+                <div 
+                  className="w-full flex items-end justify-center"
+                  style={{ height: `${maxBarHeight}px` }}
+                >
                   <div
-                    className="w-full max-w-[28px] rounded-t transition-all duration-500 ease-out relative group"
+                    className="w-full max-w-[32px] rounded-t relative group"
                     style={{
-                      height: isVisible ? `${heightPercent}%` : '0%',
+                      height: `${animatedHeight}px`,
                       backgroundColor: '#60A5FA',
-                      opacity: isVisible ? 1 : 0,
-                      transitionDelay: `${index * 100}ms`,
+                      transition: 'height 0.1s ease-out',
                     }}
                   >
-                    {/* Value label on hover */}
+                    {/* Value label */}
                     <div 
-                      className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                      className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold whitespace-nowrap"
                       style={{ color: '#0A1B44' }}
                     >
-                      {formatRecordings(Math.round(item.value * animationProgress))}
+                      {formatRecordings(Math.round(item.value * adjustedProgress))}
                     </div>
                   </div>
                 </div>
                 <span 
-                  className="text-[10px] mt-1 font-medium"
+                  className="text-[10px] mt-2 font-medium"
                   style={{ color: '#64748B' }}
                 >
-                  {item.year.slice(-2)}
+                  {item.year}
                 </span>
               </div>
             );
@@ -118,10 +126,10 @@ const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
         </div>
         {/* Animated counter */}
         <div 
-          className="text-center mt-2 text-lg font-semibold"
+          className="text-center mt-3 text-base font-semibold"
           style={{ color: '#0A1B44' }}
         >
-          {formatRecordings(Math.round(recordingsData[recordingsData.length - 1].value * animationProgress))} total
+          {formatRecordings(Math.round(recordingsData[recordingsData.length - 1].value * animationProgress))} total recordings
         </div>
       </div>
 
@@ -132,43 +140,47 @@ const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
       />
 
       {/* Right Chart - Water Consumption */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-h-0">
         <div 
-          className="text-xs font-medium mb-2 uppercase tracking-wider"
+          className="text-xs font-medium mb-3 uppercase tracking-wider"
           style={{ color: '#336CFF', fontFamily: "'Fira Code', monospace" }}
         >
           Water Consumption (M m³)
         </div>
-        <div className="flex-1 flex items-end gap-1">
+        <div className="flex-1 flex items-end gap-2 pb-2">
           {consumptionData.map((item, index) => {
-            const heightPercent = (item.value / maxConsumption) * 100 * animationProgress;
-            const isVisible = index < visibleBars;
+            const delay = index * 0.1;
+            const adjustedProgress = Math.max(0, Math.min(1, (animationProgress - delay) / (1 - delay)));
+            const animatedHeight = (item.value / maxConsumption) * maxBarHeight * adjustedProgress;
+            
             return (
               <div key={item.year} className="flex-1 flex flex-col items-center">
-                <div className="flex-1 w-full flex items-end justify-center">
+                <div 
+                  className="w-full flex items-end justify-center"
+                  style={{ height: `${maxBarHeight}px` }}
+                >
                   <div
-                    className="w-full max-w-[28px] rounded-t transition-all duration-500 ease-out relative group"
+                    className="w-full max-w-[32px] rounded-t relative group"
                     style={{
-                      height: isVisible ? `${heightPercent}%` : '0%',
+                      height: `${animatedHeight}px`,
                       backgroundColor: '#1E40AF',
-                      opacity: isVisible ? 1 : 0,
-                      transitionDelay: `${index * 100}ms`,
+                      transition: 'height 0.1s ease-out',
                     }}
                   >
-                    {/* Value label on hover */}
+                    {/* Value label */}
                     <div 
-                      className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                      className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-semibold whitespace-nowrap"
                       style={{ color: '#0A1B44' }}
                     >
-                      {(item.value * animationProgress).toFixed(1)}M
+                      {(item.value * adjustedProgress).toFixed(1)}M
                     </div>
                   </div>
                 </div>
                 <span 
-                  className="text-[10px] mt-1 font-medium"
+                  className="text-[10px] mt-2 font-medium"
                   style={{ color: '#64748B' }}
                 >
-                  {item.year.slice(-2)}
+                  {item.year}
                 </span>
               </div>
             );
@@ -176,7 +188,7 @@ const AnalyseChart = ({ isActive }: AnalyseChartProps) => {
         </div>
         {/* Animated counter */}
         <div 
-          className="text-center mt-2 text-lg font-semibold"
+          className="text-center mt-3 text-base font-semibold"
           style={{ color: '#0A1B44' }}
         >
           {(consumptionData[consumptionData.length - 1].value * animationProgress).toFixed(1)}M m³/year
