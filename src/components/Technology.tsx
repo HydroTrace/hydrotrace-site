@@ -274,7 +274,7 @@ const Technology = ({ className }: { className?: string }) => {
                   
                   {/* Charts Area */}
                   <div 
-                    className="h-[200px] border-b overflow-hidden"
+                    className="h-[80px] border-b overflow-hidden"
                     style={{ borderColor: '#D4DCF6', border: '2px solid #336CFF' }}
                   >
                     {activeIndex === 0 && (
@@ -287,7 +287,7 @@ const Technology = ({ className }: { className?: string }) => {
                   </div>
                   
                   {/* Bottom Text Area */}
-                  <div className="h-[80px] p-4 flex items-center">
+                  <div className="h-[200px] p-6 flex items-center">
                     {activeIndex === 0 && (
                       <p 
                         className="text-xl leading-relaxed"
