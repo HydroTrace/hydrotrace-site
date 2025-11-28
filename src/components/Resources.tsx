@@ -431,61 +431,13 @@ const Resources = ({ className }: { className?: string }) => {
 
       {/* Dashboard UI */}
       <div className="relative z-10 flex items-center justify-center min-h-[600px] px-4">
-        <div className="w-full max-w-[1400px] flex gap-6">
-          {/* Left Dashboard - Groundwater Management */}
-          <div 
-            className="flex-1 bg-white rounded-lg shadow-sm p-6"
-            style={{ 
-              border: '2px solid #3366CC',
-              minHeight: '550px'
-            }}
-          >
-            {/* Globe icon */}
-            <div className="mb-4">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#3366CC" strokeWidth="1.5">
-                <circle cx="16" cy="16" r="12" />
-                <ellipse cx="16" cy="16" rx="5" ry="12" />
-                <line x1="4" y1="16" x2="28" y2="16" />
-                <path d="M6 10 Q16 8 26 10" />
-                <path d="M6 22 Q16 24 26 22" />
-              </svg>
-            </div>
-            
-            <h3 
-              className="text-2xl font-normal mb-2"
-              style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
-            >
-              Sustainable Groundwater Management
-            </h3>
-            <p 
-              className="text-xs mb-6"
-              style={{ color: '#666', fontFamily: "'Fira Code', monospace" }}
-            >
-              Pairing abstraction data with groundwater levels enables informed decisions for long-term aquifer health
-            </p>
-            
-            <GroundwaterManagementPlot progress={progress} />
-            
-            <div className="mt-4 flex gap-4 text-xs" style={{ fontFamily: "'Fira Code', monospace" }}>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCDCEE' }} />
-                <span style={{ color: '#3366CC' }}>Allocation Freeze</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCEECC' }} />
-                <span style={{ color: '#228B22' }}>Allocation Reduction</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Dashboard - Metrics */}
-          <div 
-            className="w-[500px] bg-white rounded-lg shadow-sm"
-            style={{ 
-              border: '2px solid #3366CC',
-              minHeight: '550px'
-            }}
-          >
+        <div 
+          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm"
+          style={{ 
+            border: '2px solid #3366CC',
+            minHeight: '550px'
+          }}
+        >
           {/* Header with globe icon */}
           <div className="p-6">
             {/* Globe icon */}
@@ -619,6 +571,50 @@ const Resources = ({ className }: { className?: string }) => {
               <ConsumptionPlot progress={progress} />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Sustainable Groundwater Management Section */}
+      <div className="relative z-10 flex items-center justify-center px-4 mt-8">
+        <div 
+          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm p-6"
+          style={{ border: '2px solid #3366CC' }}
+        >
+          {/* Globe icon */}
+          <div className="mb-4">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#3366CC" strokeWidth="1.5">
+              <circle cx="16" cy="16" r="12" />
+              <ellipse cx="16" cy="16" rx="5" ry="12" />
+              <line x1="4" y1="16" x2="28" y2="16" />
+              <path d="M6 10 Q16 8 26 10" />
+              <path d="M6 22 Q16 24 26 22" />
+            </svg>
+          </div>
+          
+          <h3 
+            className="text-2xl font-normal mb-2"
+            style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
+          >
+            Sustainable Groundwater Management
+          </h3>
+          <p 
+            className="text-xs mb-6"
+            style={{ color: '#666', fontFamily: "'Fira Code', monospace" }}
+          >
+            Pairing abstraction data with groundwater levels enables informed decisions for long-term aquifer health
+          </p>
+          
+          <GroundwaterManagementPlot progress={progress} />
+          
+          <div className="mt-4 flex gap-4 text-xs" style={{ fontFamily: "'Fira Code', monospace" }}>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCDCEE' }} />
+              <span style={{ color: '#3366CC' }}>Allocation Freeze</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCEECC' }} />
+              <span style={{ color: '#228B22' }}>Allocation Reduction</span>
+            </div>
           </div>
         </div>
       </div>
