@@ -296,6 +296,14 @@ const Technology = ({ className }: { className?: string }) => {
                         Streamline usage recording with a simple phone workflow. Scan the QR tag at the well, enter the reading, and snap a photo for verification.
                       </p>
                     )}
+                    {activeIndex === 1 && (
+                      <p 
+                        className="text-xl leading-relaxed"
+                        style={{ color: '#0A1B44', fontFamily: "'Open Sans', sans-serif" }}
+                      >
+                        Verify records before they enter the system. HydroTrace checks the reading, validates the photo, and flags anything that looks off.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
