@@ -304,6 +304,14 @@ const Technology = ({ className }: { className?: string }) => {
                         Verify records before they enter the system. HydroTrace checks the reading, validates the photo, and flags anything that looks off.
                       </p>
                     )}
+                    {activeIndex === 2 && (
+                      <p 
+                        className="text-xl leading-relaxed"
+                        style={{ color: '#0A1B44', fontFamily: "'Open Sans', sans-serif" }}
+                      >
+                        Analyse data for compliance, reporting, and planning. Use dashboards to review trends and irregularities or integrate the data through API.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
