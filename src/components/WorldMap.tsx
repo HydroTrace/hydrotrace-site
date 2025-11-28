@@ -45,6 +45,26 @@ const countryInfo: Record<string, CountryData> = {
     name: "China",
     content: "China's water allocation system uses a 'three red lines' policy: caps on total water use, efficiency standards, and pollution limits. The North faces severe scarcity while agriculture in groundwater-dependent regions requires careful management.",
   },
+  "Chile": {
+    name: "Chile",
+    content: "Chile pioneered water markets in 1981, separating water rights from land ownership. While this approach enabled efficient trading, it has also led to concerns about speculation and access inequality, prompting ongoing debates about regulatory reform and environmental protections.",
+  },
+  "Mexico": {
+    name: "Mexico",
+    content: "Mexico manages water through its National Water Commission (CONAGUA), with agriculture consuming about 76% of available water. Aquifer overexploitation in northern regions and competing urban demands have intensified pressure on allocation frameworks.",
+  },
+  "Greece": {
+    name: "Greece",
+    content: "Greece faces water scarcity challenges particularly in its islands and agricultural regions. EU Water Framework Directive implementation has driven reforms in river basin management, though irrigation efficiency and groundwater monitoring remain key priorities.",
+  },
+  "United Kingdom": {
+    name: "United Kingdom",
+    content: "The UK's Environment Agency oversees water abstraction licensing, balancing agricultural, industrial, and environmental needs. Climate change and population growth have prompted reviews of abstraction reform to ensure sustainable water management.",
+  },
+  "France": {
+    name: "France",
+    content: "France manages water through River Basin Agencies under the Water Framework Directive. Agricultural irrigation, particularly in southern regions, faces increasing pressure from drought conditions, driving investment in efficiency measures and alternative storage solutions.",
+  },
 };
 
 const defaultContent: CountryData = {
