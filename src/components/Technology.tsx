@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
 import captureMeterReading from "@/assets/capture-meter-reading.png";
 import verifyWorkflow from "@/assets/verify-workflow.png";
+import actCollaboration from "@/assets/act-collaboration.png";
 import AnalyseChart from "./AnalyseChart";
 
 const steps = [
@@ -295,6 +296,13 @@ const Technology = ({ className }: { className?: string }) => {
                     )}
                     {activeIndex === 2 && (
                       <AnalyseChart isActive={activeIndex === 2} />
+                    )}
+                    {activeIndex === 3 && (
+                      <img 
+                        src={actCollaboration} 
+                        alt="Collaboration between farmer and water steward"
+                        className="w-full h-full object-cover"
+                      />
                     )}
                   </div>
                   
