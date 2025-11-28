@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import hydrotraceLogoMark from "@/assets/hydrotrace-logo-mark.png";
 import captureMeterReading from "@/assets/capture-meter-reading.png";
 import verifyWorkflow from "@/assets/verify-workflow.png";
+import AnalyseChart from "./AnalyseChart";
 
 const steps = [
   {
@@ -291,6 +292,9 @@ const Technology = ({ className }: { className?: string }) => {
                         alt="Data verification workflow"
                         className="w-full h-full object-cover"
                       />
+                    )}
+                    {activeIndex === 2 && (
+                      <AnalyseChart isActive={activeIndex === 2} />
                     )}
                   </div>
                   
