@@ -234,13 +234,19 @@ const Resources = ({ className }: { className?: string }) => {
       <ConcentricCircles position="bottom-right" />
 
       {/* Section Title */}
-      <div className="relative z-10 text-center pt-16 mb-8">
+      <div className="relative z-10 text-center pt-16 mb-8 max-w-4xl mx-auto px-4">
         <h2 
-          className="heading-xl"
+          className="heading-xl mb-6"
           style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
         >
           Data-driven water governance
         </h2>
+        <p 
+          className="text-lg leading-relaxed"
+          style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+        >
+          Reliable, high-frequency abstraction data is the catalyst that transforms static records into operational intelligence for both regulators and farmers. It moves management beyond simple accounting and into proactive resource stewardship.
+        </p>
       </div>
 
       {/* Dashboard UI */}
