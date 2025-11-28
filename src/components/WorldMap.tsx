@@ -154,7 +154,28 @@ const WorldMap: React.FC = () => {
 
           {/* Text Section */}
           <div className="w-full lg:w-2/5 flex flex-col justify-center">
-            <div className="bg-white rounded-lg p-6 shadow-sm" style={{ border: '2px dashed #3366CC' }}>
+            <div className="relative bg-white p-6">
+              {/* Corner borders - top left */}
+              <div className="absolute top-0 left-0 w-8 h-8">
+                <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-[#3366CC]" />
+                <div className="absolute top-0 left-0 h-full border-l-2 border-dashed border-[#3366CC]" />
+              </div>
+              {/* Corner borders - top right */}
+              <div className="absolute top-0 right-0 w-8 h-8">
+                <div className="absolute top-0 right-0 w-full border-t-2 border-dashed border-[#3366CC]" />
+                <div className="absolute top-0 right-0 h-full border-r-2 border-dashed border-[#3366CC]" />
+              </div>
+              {/* Corner borders - bottom left */}
+              <div className="absolute bottom-0 left-0 w-8 h-8">
+                <div className="absolute bottom-0 left-0 w-full border-b-2 border-dashed border-[#3366CC]" />
+                <div className="absolute bottom-0 left-0 h-full border-l-2 border-dashed border-[#3366CC]" />
+              </div>
+              {/* Corner borders - bottom right */}
+              <div className="absolute bottom-0 right-0 w-8 h-8">
+                <div className="absolute bottom-0 right-0 w-full border-b-2 border-dashed border-[#3366CC]" />
+                <div className="absolute bottom-0 right-0 h-full border-r-2 border-dashed border-[#3366CC]" />
+              </div>
+              
               <h4 className="text-xl font-semibold text-[#3366CC] mb-4 font-['Fira_Code']">
                 {hoveredCountry.name}
               </h4>
