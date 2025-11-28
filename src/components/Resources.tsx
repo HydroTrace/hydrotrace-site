@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import WorldMap from "./WorldMap";
+import farmerPhoneDashboard from "@/assets/farmer-phone-dashboard.jpg";
 
 const generateRings = (count: number, baseRadius: number, centerX: number, centerY: number) => {
   const rings = [];
@@ -431,13 +432,15 @@ const Resources = ({ className }: { className?: string }) => {
 
       {/* Dashboard UI */}
       <div className="relative z-10 flex items-center justify-center min-h-[600px] px-4">
-        <div 
-          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm"
-          style={{ 
-            border: '2px solid #3366CC',
-            minHeight: '550px'
-          }}
-        >
+        <div className="flex items-center gap-8 max-w-[1400px]">
+          {/* Main Dashboard */}
+          <div 
+            className="w-[1000px] flex-shrink-0 bg-white rounded-lg shadow-sm"
+            style={{ 
+              border: '2px solid #3366CC',
+              minHeight: '550px'
+            }}
+          >
           {/* Header with globe icon */}
           <div className="p-6">
             {/* Globe icon */}
@@ -571,6 +574,16 @@ const Resources = ({ className }: { className?: string }) => {
               <ConsumptionPlot progress={progress} />
             </div>
           </div>
+        </div>
+
+        {/* Farmer Phone Image */}
+        <div className="hidden xl:block flex-shrink-0">
+          <img 
+            src={farmerPhoneDashboard} 
+            alt="Farmer using HydroTrace mobile app showing water consumption metrics and leaderboard" 
+            className="h-[550px] w-auto object-cover rounded-lg shadow-lg"
+          />
+        </div>
         </div>
       </div>
 
