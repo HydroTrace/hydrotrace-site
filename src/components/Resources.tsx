@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import WorldMap from "./WorldMap";
 
 const generateRings = (count: number, baseRadius: number, centerX: number, centerY: number) => {
   const rings = [];
@@ -393,6 +394,9 @@ const Resources = ({ className }: { className?: string }) => {
           </div>
         </div>
       </div>
+
+      {/* World Map Section */}
+      <WorldMap />
     </section>
   );
 };
