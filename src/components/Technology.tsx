@@ -312,6 +312,14 @@ const Technology = ({ className }: { className?: string }) => {
                         Analyse data for compliance, reporting, and planning. Use dashboards to review trends and irregularities or integrate the data through API.
                       </p>
                     )}
+                    {activeIndex === 3 && (
+                      <p 
+                        className="text-xl leading-relaxed"
+                        style={{ color: '#0A1B44', fontFamily: "'Open Sans', sans-serif" }}
+                      >
+                        Act on clear, reliable information. Use verified data to guide decisions, support compliance, allocate water fairly, and improve groundwater sustainability.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
