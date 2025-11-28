@@ -95,12 +95,12 @@ const WorldMap: React.FC = () => {
         </h3>
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Map Section */}
-          <div className="w-full lg:w-3/5 bg-[#f8f9fa] rounded-lg border border-[#e5e7eb] p-4">
+          <div className="w-full lg:w-[65%] bg-[#f8f9fa] rounded-lg p-4" style={{ border: '2px dashed #3366CC' }}>
             <ComposableMap
               projection="geoMercator"
               projectionConfig={{
-                scale: 120,
-                center: [0, 30],
+                scale: 140,
+                center: [10, 30],
               }}
               style={{ width: "100%", height: "auto" }}
             >
