@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const solutions = [
   { 
@@ -304,38 +304,57 @@ const FootprintOverlay = ({ isHovered }: { isHovered: boolean }) => (
   </div>
 );
 
-const Solutions = ({ className }: { className?: string }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; index: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className="bg-white border border-[#c5d4e8] rounded-sm p-8 flex flex-col justify-between min-h-[200px] hover:shadow-md transition-shadow cursor-pointer group relative overflow-hidden"
+    >
+      {index === 0 && <WaterSeepageOverlay isHovered={isVisible} />}
+      {index === 1 && <VineOverlay isHovered={isVisible} />}
+      {index === 2 && <FootprintOverlay isHovered={isVisible} />}
+      
+      <div className="relative z-10">
+        <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
+          {solution.title}
+        </h3>
+        {solution.description && (
+          <p className="text-sm text-[#21177a]/80 leading-relaxed whitespace-pre-line">
+            {solution.description}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const Solutions = ({ className }: { className?: string }) => {
   return (
     <section className={className}>
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {solutions.map((solution, index) => (
-            <div
-              key={index}
-              className="bg-white border border-[#c5d4e8] rounded-sm p-8 flex flex-col justify-between min-h-[200px] hover:shadow-md transition-shadow cursor-pointer group relative overflow-hidden"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Water seepage overlay for Water Stewards card */}
-              {index === 0 && <WaterSeepageOverlay isHovered={hoveredIndex === 0} />}
-              {/* Vine overlay for Farmers card */}
-              {index === 1 && <VineOverlay isHovered={hoveredIndex === 1} />}
-              {/* Footprint overlay for Water Footprinting card */}
-              {index === 2 && <FootprintOverlay isHovered={hoveredIndex === 2} />}
-              
-              <div className="relative z-10">
-                <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
-                  {solution.title}
-                </h3>
-                {solution.description && (
-                  <p className="text-sm text-[#21177a]/80 leading-relaxed whitespace-pre-line">
-                    {solution.description}
-                  </p>
-                )}
-              </div>
-            </div>
+            <SolutionCard key={index} solution={solution} index={index} />
           ))}
         </div>
       </div>
