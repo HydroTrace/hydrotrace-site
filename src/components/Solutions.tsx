@@ -307,21 +307,38 @@ const FootprintOverlay = ({ isHovered }: { isHovered: boolean }) => (
 const SolutionCard = ({ solution, index }: { solution: typeof solutions[0]; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    // Check if element starts below the viewport
+    const rect = card.getBoundingClientRect();
+    const startsBelow = rect.top > window.innerHeight;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          // Only animate if it started below viewport or after a small delay
+          if (startsBelow) {
+            hasAnimated.current = true;
+            setIsVisible(true);
+          } else {
+            // For elements in view on load, animate after scroll starts
+            setTimeout(() => {
+              if (!hasAnimated.current) {
+                hasAnimated.current = true;
+                setIsVisible(true);
+              }
+            }, 500);
+          }
         }
       },
       { threshold: 0.3 }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
+    observer.observe(card);
     return () => observer.disconnect();
   }, []);
 
