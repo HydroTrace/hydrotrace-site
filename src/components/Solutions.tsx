@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 const solutions = [
   { 
     title: "Water Stewards",
-    description: "HydroTrace is a single hub for agricultural abstraction data. Standardize how information is collected, reduce errors, and streamline compliance tracking across farms and seasons. Replace scattered spreadsheets and paper forms with a clear, auditable digital workflow.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and generate regulatory submissions quickly and confidently."
+    description: "HydroTrace helps water regulators collect, manage, and standardize the abstraction data required by their water laws. Reduce errors, unify reporting across farms and seasons, and replace scattered spreadsheets with a clear, auditable digital workflow tailored to national and regional regulations.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and produce regulatory submissions that align seamlessly with your jurisdiction's compliance framework — quickly and confidently."
   },
   { 
     title: "Farmers",
