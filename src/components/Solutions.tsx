@@ -3,11 +3,11 @@ import { useState, useEffect, useRef } from "react";
 const solutions = [
   { 
     title: "Water Stewards",
-    description: "HydroTrace helps water regulators collect, manage, and standardize the abstraction data required by their water laws. Reduce errors, unify reporting across farms and seasons, and replace scattered spreadsheets with a clear, auditable digital workflow tailored to national and regional regulations.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and produce regulatory submissions that align seamlessly with your jurisdiction's compliance framework — quickly and confidently."
+    description: "HydroTrace helps water regulators collect, manage, and standardize the abstraction data required by their water laws. Reduce errors, unify reporting across farms and seasons, and replace scattered spreadsheets with a clear, auditable digital workflow tailored to national and regional regulations.\n\nBuild a database you can actually use: monitor trends, verify reporting, support enforcement, and produce regulatory submissions that align seamlessly with your jurisdiction's compliance framework, quickly and confidently."
   },
   { 
     title: "Farmers",
-    description: "HydroTrace makes water reporting simple, accurate, and stress-free. Skip the field notebook and manual entries. Capture water-use data automatically, stay compliant with local requirements, and get a reliable picture of your abstractions throughout the season.\n\nSpend less time on paperwork and more time farming — all while protecting your allocation and reducing the risk of compliance issues."
+    description: "HydroTrace makes water reporting simple, accurate, and stress-free. Skip the field notebook and manual entries. Capture water-use data automatically, stay compliant with local requirements, and get a reliable picture of your abstractions throughout the season.\n\nSpend less time on paperwork and more time farming, all while protecting your allocation and reducing the risk of compliance issues."
   },
   { 
     title: "Water Footprinting",
