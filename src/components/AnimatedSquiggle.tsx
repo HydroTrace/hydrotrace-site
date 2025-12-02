@@ -42,117 +42,113 @@ const AnimatedSquiggle = ({ className }: { className?: string }) => {
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        {/* First path tracer gradient - bright blue #0223fa with fade */}
+        {/* First path gradients - cyan to blue */}
         <linearGradient id="tracerGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#0223fa" stopOpacity="0" />
-          <stop offset="30%" stopColor="#0223fa" stopOpacity="0.1" />
-          <stop offset="70%" stopColor="#0223fa" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#0223fa" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="#5CC3D9" stopOpacity="0" />
+          <stop offset="50%" stopColor="#5CC3D9" stopOpacity="0.12" />
+          <stop offset="85%" stopColor="#0A66B7" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#0A66B7" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient id="tracerGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#0223fa" stopOpacity="0" />
-          <stop offset="40%" stopColor="#0223fa" stopOpacity="0.08" />
-          <stop offset="80%" stopColor="#0223fa" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#0223fa" stopOpacity="0.4" />
+          <stop offset="0%" stopColor="#5CC3D9" stopOpacity="0" />
+          <stop offset="60%" stopColor="#5CC3D9" stopOpacity="0.1" />
+          <stop offset="90%" stopColor="#0A66B7" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#0A66B7" stopOpacity="0.25" />
         </linearGradient>
-        {/* Second path tracer gradient - muted indigo #4c5ab5 with fade */}
+        {/* Second path gradients - purple to indigo shade */}
         <linearGradient id="tracerGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4c5ab5" stopOpacity="0" />
-          <stop offset="30%" stopColor="#4c5ab5" stopOpacity="0.1" />
-          <stop offset="70%" stopColor="#4c5ab5" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#4c5ab5" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="#7B8CDE" stopOpacity="0" />
+          <stop offset="50%" stopColor="#7B8CDE" stopOpacity="0.12" />
+          <stop offset="85%" stopColor="#4338CA" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#4338CA" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient id="tracerGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4c5ab5" stopOpacity="0" />
-          <stop offset="40%" stopColor="#4c5ab5" stopOpacity="0.08" />
-          <stop offset="80%" stopColor="#4c5ab5" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#4c5ab5" stopOpacity="0.4" />
+          <stop offset="0%" stopColor="#7B8CDE" stopOpacity="0" />
+          <stop offset="60%" stopColor="#7B8CDE" stopOpacity="0.1" />
+          <stop offset="90%" stopColor="#4338CA" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#4338CA" stopOpacity="0.25" />
         </linearGradient>
       </defs>
       
-      {/* First squiggle - solid grey base path */}
+      {/* First squiggle - base path */}
       <path
         d={squigglePath1}
-        stroke="#9ca3af"
+        stroke="#5CC3D9"
         strokeWidth="1"
         strokeLinecap="round"
         fill="none"
-        opacity="0.3"
+        opacity="0.12"
       />
       
-      {/* First squiggle - dashed blue tracer 1 */}
+      {/* First squiggle - tracer 1 */}
       <path
         d={squigglePath1}
         stroke="url(#tracerGradient1)"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
-        strokeDasharray="8 6"
         fill="none"
         className="tracer-1"
-        style={{ strokeDashoffset: '0' }}
+        style={{ strokeDasharray: '200 3000', strokeDashoffset: '0' }}
       />
       
-      {/* First squiggle - dashed blue tracer 2 */}
+      {/* First squiggle - tracer 2 */}
       <path
         d={squigglePath1}
         stroke="url(#tracerGradient2)"
-        strokeWidth="1.5"
+        strokeWidth="3"
         strokeLinecap="round"
-        strokeDasharray="6 8"
         fill="none"
         className="tracer-2"
-        style={{ strokeDashoffset: '-1200' }}
+        style={{ strokeDasharray: '120 3000', strokeDashoffset: '-1200' }}
       />
 
-      {/* Second squiggle - solid grey base path */}
+      {/* Second squiggle - base path */}
       <path
         d={squigglePath2}
-        stroke="#9ca3af"
+        stroke="#7B8CDE"
         strokeWidth="1"
         strokeLinecap="round"
         fill="none"
-        opacity="0.25"
+        opacity="0.1"
       />
       
-      {/* Second squiggle - dashed indigo tracer 1 */}
+      {/* Second squiggle - tracer 1 */}
       <path
         d={squigglePath2}
         stroke="url(#tracerGradient3)"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
-        strokeDasharray="8 6"
         fill="none"
         className="tracer-3"
-        style={{ strokeDashoffset: '0' }}
+        style={{ strokeDasharray: '180 2800', strokeDashoffset: '0' }}
       />
       
-      {/* Second squiggle - dashed indigo tracer 2 */}
+      {/* Second squiggle - tracer 2 */}
       <path
         d={squigglePath2}
         stroke="url(#tracerGradient4)"
-        strokeWidth="1.5"
+        strokeWidth="3"
         strokeLinecap="round"
-        strokeDasharray="6 8"
         fill="none"
         className="tracer-4"
-        style={{ strokeDashoffset: '-900' }}
+        style={{ strokeDasharray: '100 2800', strokeDashoffset: '-900' }}
       />
       
       <style>
         {`
           .tracer-1 {
-            animation: trace-path-1 18s linear infinite;
+            animation: trace-path-1 14s linear infinite;
           }
           .tracer-2 {
-            animation: trace-path-2 14s linear infinite;
-            animation-delay: -6s;
+            animation: trace-path-2 11s linear infinite;
+            animation-delay: -4s;
           }
           .tracer-3 {
-            animation: trace-path-3 16s linear infinite;
+            animation: trace-path-3 12s linear infinite;
           }
           .tracer-4 {
-            animation: trace-path-4 12s linear infinite;
-            animation-delay: -4s;
+            animation: trace-path-4 9s linear infinite;
+            animation-delay: -3s;
           }
           @keyframes trace-path-1 {
             0% { stroke-dashoffset: 0; }
