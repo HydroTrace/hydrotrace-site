@@ -1,4 +1,4 @@
-import meterImage from "@/assets/capture-meter-reading.png";
+import meterImage from "@/assets/meter-closeup.png";
 import hydrotraceIcon from "@/assets/hydrotrace-circle-logo.png";
 import { Check, CheckCheck, MapPin, Camera } from "lucide-react";
 
