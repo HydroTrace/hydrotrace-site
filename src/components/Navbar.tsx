@@ -59,6 +59,12 @@ const Navbar = () => {
           {/* Desktop Navigation - bordered group */}
           <div className="hidden md:flex items-center h-full border-r border-[#0f1e94]">
             <button 
+              onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }} 
+              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
+            >
+              Digital Water Governance
+            </button>
+            <button 
               onClick={() => scrollToSection("about")} 
               className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['IBM_Plex_Mono']"
             >
@@ -98,6 +104,12 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden pb-4 bg-white border-t border-[#0f1e94] mt-0 p-4">
             <div className="flex flex-col space-y-1">
+              <button 
+                onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }} 
+                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
+              >
+                Digital Water Governance
+              </button>
               <button 
                 onClick={() => scrollToSection("about")} 
                 className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['IBM_Plex_Mono']"
