@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import HomeCards from "@/components/HomeCards";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -8,6 +9,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <HomeCards />
       </main>
       <Footer />
     </div>
