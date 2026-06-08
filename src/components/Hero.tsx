@@ -6,8 +6,8 @@ interface HeroProps {
 }
 
 const Hero = ({ 
-  title = "Building Digital Foundations for Water Governance",
-  description = "From Source to System — Traceable, Trustworthy, and Adaptive Water Management."
+  title = "Digital Infrastructure for Water Governance and Water Risk",
+  description = "From abstraction reporting to crop-water risk screening — transparent, trustworthy, and adaptive water management."
 }: HeroProps) => {
 
   const scrollToAbout = () => {
@@ -60,7 +60,7 @@ const Hero = ({
             className="font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']"
             style={{ color: '#030bfc' }}
           >
-            Water Governance
+            Water Intelligence
           </span>
           
           {/* Title */}
