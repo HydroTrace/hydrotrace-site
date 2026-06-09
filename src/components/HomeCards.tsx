@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 const cards = [
   {
-    title: "Water Governance & Management",
-    description:
-      "Digital tools for abstraction reporting, compliance, allocation monitoring, and basin-scale water planning.",
-    href: "/digital-water-governance",
-  },
-  {
     title: "Agricultural Water Risk",
     description:
       "Crop-water risk screening for farmland investors, lenders, and asset managers.",
     href: "/water-risk",
+  },
+  {
+    title: "Water Governance & Management",
+    description:
+      "Digital tools for abstraction reporting, compliance, allocation monitoring, and basin-scale water planning.",
+    href: "/digital-water-governance",
   },
 ];
 
