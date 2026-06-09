@@ -7,7 +7,6 @@ import Resources from "@/components/Resources";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import WhatsAppMockup from "@/components/WhatsAppMockup";
 
 const DigitalWaterGovernance = () => {
   return (
@@ -21,7 +20,6 @@ const DigitalWaterGovernance = () => {
         <Resources className="bg-muted/20" />
         <FAQ />
         <Contact />
-        <WhatsAppMockup />
       </main>
       <Footer />
     </div>
