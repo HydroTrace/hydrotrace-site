@@ -1,15 +1,30 @@
+import { ReactNode } from "react";
+
 interface HeroProps {
-  title?: string;
+  eyebrow?: string;
+  headline?: ReactNode;
   description?: string;
+  scrollTargetId?: string;
 }
 
 const Hero = ({
-  title = "Digital infrastructure for water governance and water risk.",
+  eyebrow = "Water Intelligence",
+  headline = (
+    <>
+      Digital infrastructure for water governance and{" "}
+      <span className="relative inline-block cursor-default group">
+        water risk
+        <span className="absolute left-0 bottom-[2px] w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+      </span>.
+    </>
+  ),
   description = "From abstraction reporting to crop-water risk screening — transparent, trustworthy, and adaptive water management.",
+  scrollTargetId = "about",
 }: HeroProps) => {
-  const scrollToAbout = () => {
-    const element = document.getElementById("about");
+  const scrollToNext = () => {
+    const element = document.getElementById(scrollTargetId);
     if (element) element.scrollIntoView({ behavior: "smooth" });
+    else window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
   return (
@@ -18,7 +33,6 @@ const Hero = ({
       className="relative min-h-screen flex flex-col justify-end overflow-hidden"
     >
       <div className="relative z-20 w-full pb-20 lg:pb-24">
-        {/* Vertical streaming lines — animate downward on mount */}
         <div
           aria-hidden
           className="hidden lg:block pointer-events-none absolute top-0 bottom-0 w-px bg-white/40 origin-top animate-[lineGrow_1.4s_ease-out_0.1s_both]"
@@ -30,28 +44,21 @@ const Hero = ({
           style={{ left: "4rem" }}
         />
 
-
         <div className="px-6 sm:px-10 lg:px-16">
           <div className="flex items-end gap-10">
-            {/* Eyebrow label far left */}
             <div className="hidden lg:block w-[180px] shrink-0 pb-3 animate-[riseIn_1s_ease-out_0.5s_both]">
               <span className="font-['Brown_Std'] font-normal tracking-[0.22em] text-[11px] uppercase text-white/90">
-                Water Intelligence
+                {eyebrow}
               </span>
             </div>
 
-            {/* Main headline + content */}
             <div className="flex-1 max-w-[1100px]">
               <span className="lg:hidden block font-['Brown_Std'] tracking-[0.22em] text-[11px] uppercase text-white/90 mb-6 animate-[riseIn_1s_ease-out_0.5s_both]">
-                Water Intelligence
+                {eyebrow}
               </span>
 
               <h1 className="font-['Reckless_Neue'] font-light text-white leading-[1.05] tracking-[-0.01em] text-[40px] sm:text-[56px] lg:text-[76px] xl:text-[88px] animate-[riseIn_1.1s_ease-out_0.7s_both]">
-                Digital infrastructure for water governance and{" "}
-                <span className="relative inline-block cursor-default group">
-                  water risk
-                  <span className="absolute left-0 bottom-[2px] w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                </span>.
+                {headline}
               </h1>
 
               <p className="mt-8 max-w-2xl font-['Brown_Std'] font-light text-white/85 text-base sm:text-lg leading-relaxed animate-[riseIn_1.1s_ease-out_1s_both]">
@@ -59,7 +66,7 @@ const Hero = ({
               </p>
 
               <button
-                onClick={scrollToAbout}
+                onClick={scrollToNext}
                 aria-label="Scroll to learn more"
                 className="mt-10 inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/70 text-white transition-colors hover:bg-white/10 animate-[riseIn_1s_ease-out_1.25s_both]"
               >
