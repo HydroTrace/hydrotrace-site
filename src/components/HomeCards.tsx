@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const waterRiskImg = { url: "/images/water-risk-crop.jpg" };
 const waterGovImg = { url: "/images/water-governance.jpg" };
@@ -25,6 +26,8 @@ const cards = [
 ];
 
 const HomeCards = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-white min-h-screen py-24 lg:py-32">
       <div className="px-6 sm:px-10 lg:px-16">
@@ -34,10 +37,13 @@ const HomeCards = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2">
             {cards.map((card, idx) => (
-              <a
+              <div
                 key={card.title}
-                href={card.href}
-                className={`group block py-12 lg:py-16 px-0 md:px-10 lg:px-14 ${
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(card.href)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate(card.href); }}
+                className={`group block cursor-pointer py-12 lg:py-16 px-0 md:px-10 lg:px-14 ${
                   idx === 0
                     ? "md:border-r md:border-[#0A1B44]"
                     : ""
@@ -66,7 +72,7 @@ const HomeCards = () => {
                   </span>
                   <span>{card.cta}</span>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
 
