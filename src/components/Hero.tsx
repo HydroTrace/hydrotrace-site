@@ -47,7 +47,11 @@ const Hero = ({
               </span>
 
               <h1 className="font-['Reckless_Neue'] font-light text-white leading-[1.05] tracking-[-0.01em] text-[40px] sm:text-[56px] lg:text-[76px] xl:text-[88px]">
-                {title}
+                Digital infrastructure for water governance and{" "}
+                <span className="relative inline-block cursor-default group">
+                  water risk
+                  <span className="absolute left-0 bottom-[2px] w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                </span>.
               </h1>
 
               <p className="mt-8 max-w-2xl font-['Brown_Std'] font-light text-white/85 text-base sm:text-lg leading-relaxed">
