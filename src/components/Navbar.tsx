@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/hydrotrace-logo-v2.png.asset.json";
-const logoIcon = logoAsset.url;
+import logoLight from "@/assets/hydrotrace-logo-v2.png.asset.json";
+import logoDark from "@/assets/hydrotrace-logo-dark.png.asset.json";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => {
+      // Switch to dark mode once we've scrolled past most of the hero
+      setScrolled(window.scrollY > window.innerHeight * 0.6);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
@@ -36,8 +47,19 @@ const Navbar = () => {
     }
   };
 
+  const textColor = scrolled ? "text-[#0A1B44]" : "text-white";
+  const textColorMuted = scrolled ? "text-[#0A1B44]/85" : "text-white/90";
+  const underlineColor = scrolled ? "bg-[#0A1B44]" : "bg-white";
+  const borderColor = scrolled ? "border-[#0A1B44]/70" : "border-white/70";
+  const hoverBg = scrolled ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
+  const dividerColor = scrolled ? "bg-[#0A1B44]/40" : "bg-white/40";
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+        scrolled ? "bg-white/90 backdrop-blur-sm" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center h-20">
           {/* Logo */}
@@ -46,34 +68,36 @@ const Navbar = () => {
             onClick={handleLogoClick}
           >
             <img
-              src={logoIcon}
+              src={scrolled ? logoDark.url : logoLight.url}
               alt="HydroTrace Logo"
-              className="h-10 w-auto"
+              className="h-10 w-auto transition-opacity duration-500"
             />
-            <span className="text-[24px] font-normal font-['Brown_Std'] tracking-tight text-white hover:text-white/80 transition-colors">
+            <span
+              className={`text-[24px] font-normal font-['Brown_Std'] tracking-tight transition-colors ${textColor}`}
+            >
               HydroTrace
             </span>
-            <span className="ml-6 h-7 w-px bg-white/40" aria-hidden />
+            <span className={`ml-6 h-7 w-px ${dividerColor}`} aria-hidden />
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center h-full">
             <button
               onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
-              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
+              className={`px-6 py-2 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColorMuted} hover:${textColor}`}
             >
               <span className="relative inline-block group">
                 Water Risk
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                <span className={`absolute left-0 bottom-0 w-full h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 ${underlineColor}`} />
               </span>
             </button>
             <button
               onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
-              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
+              className={`px-6 py-2 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColorMuted} hover:${textColor}`}
             >
               <span className="relative inline-block group">
                 Digital Water Governance
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                <span className={`absolute left-0 bottom-0 w-full h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 ${underlineColor}`} />
               </span>
             </button>
           </div>
@@ -82,7 +106,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center ml-auto h-full">
             <button
               onClick={() => scrollToSection("contact")}
-              className="inline-flex items-center gap-2 px-5 py-2 text-white border border-white/70 hover:bg-white/10 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
+              className={`inline-flex items-center gap-2 px-5 py-2 border transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColor} ${borderColor} ${hoverBg}`}
             >
               Contact us
               <span aria-hidden>→</span>
@@ -93,7 +117,7 @@ const Navbar = () => {
           <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-white/80 transition-colors"
+              className={`transition-colors ${textColor}`}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -103,29 +127,23 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 bg-black/70 backdrop-blur-sm border-t border-white/20 mt-0 p-4">
+          <div className={`md:hidden pb-4 backdrop-blur-sm mt-0 p-4 border-t ${scrolled ? "bg-white/95 border-[#0A1B44]/15" : "bg-black/70 border-white/20"}`}>
             <div className="flex flex-col space-y-1">
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
-                className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
+                className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
               >
-                <span className="relative inline-block group">
-                  Water Risk
-                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                </span>
+                Water Risk
               </button>
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
-                className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
+                className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
               >
-                <span className="relative inline-block group">
-                  Digital Water Governance
-                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                </span>
+                Digital Water Governance
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-white border border-white/70 hover:bg-white/10 transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 mt-2 font-['Brown_Std']"
+                className={`border transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 mt-2 font-['Brown_Std'] ${textColor} ${borderColor}`}
               >
                 Contact us →
               </button>
