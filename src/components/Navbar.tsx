@@ -7,10 +7,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
-    
+
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
@@ -26,7 +26,7 @@ const Navbar = () => {
       }
     }
   };
-  
+
   const handleLogoClick = () => {
     if (location.pathname !== "/") {
       navigate("/");
@@ -36,57 +36,57 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#0f1e94]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center h-20">
-          {/* Logo - bordered */}
-          <div 
-            className="flex-shrink-0 pr-8 border-r border-[#0f1e94] h-full flex items-center gap-3 cursor-pointer"
+          {/* Logo */}
+          <div
+            className="flex-shrink-0 pr-8 h-full flex items-center gap-3 cursor-pointer"
             onClick={handleLogoClick}
           >
-            <img 
-              src={logoIcon} 
-              alt="HydroTrace Logo" 
-              className="h-10 w-auto" 
+            <img
+              src={logoIcon}
+              alt="HydroTrace Logo"
+              className="h-9 w-auto brightness-0 invert"
             />
-            <span 
-              className="text-[22px] font-semibold font-['Brown_Std'] tracking-tight text-[#101982] hover:text-[#044dde] transition-colors"
-            >
+            <span className="text-[22px] font-normal font-['Brown_Std'] tracking-tight text-white hover:text-white/80 transition-colors">
               HydroTrace
             </span>
+            <span className="ml-6 h-7 w-px bg-white/40" aria-hidden />
           </div>
-          
-          {/* Desktop Navigation - bordered group */}
-          <div className="hidden md:flex items-center h-full border-r border-[#0f1e94]">
-            <button 
-              onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }} 
-              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['Brown_Std']"
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center h-full">
+            <button
+              onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
+              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
             >
               Water Risk
             </button>
-            <button 
-              onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }} 
-              className="px-6 py-2 text-[#101982] hover:text-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['Brown_Std']"
+            <button
+              onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
+              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
             >
               Digital Water Governance
             </button>
           </div>
 
           {/* Right side buttons */}
-          <div className="hidden md:flex items-center ml-auto h-full pl-6">
-            <button 
-              onClick={() => scrollToSection("contact")} 
-              className="px-6 py-2.5 text-white bg-[#0f1e94] hover:bg-[#044dde] transition-colors font-normal text-[19px] tracking-wide font-['Brown_Std'] rounded"
+          <div className="hidden md:flex items-center ml-auto h-full">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="inline-flex items-center gap-2 px-5 py-2 text-white border border-white/70 hover:bg-white/10 transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
             >
               Contact us
+              <span aria-hidden>→</span>
             </button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden ml-auto">
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)} 
-              className="text-[#0A1B44] hover:text-[#0f1e94] transition-colors" 
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white hover:text-white/80 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -96,25 +96,25 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 bg-white border-t border-[#0f1e94] mt-0 p-4">
+          <div className="md:hidden pb-4 bg-black/70 backdrop-blur-sm border-t border-white/20 mt-0 p-4">
             <div className="flex flex-col space-y-1">
-              <button 
-                onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }} 
-                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['Brown_Std']"
+              <button
+                onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
+                className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
               >
                 Water Risk
               </button>
-              <button 
-                onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }} 
-                className="text-[#101982] hover:text-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded font-['Brown_Std']"
+              <button
+                onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
+                className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
               >
                 Digital Water Governance
               </button>
-              <button 
-                onClick={() => scrollToSection("contact")} 
-                className="text-white bg-[#0f1e94] hover:bg-[#044dde] transition-colors text-left font-normal text-[19px] tracking-wide px-3 py-3 rounded mt-2 font-['Brown_Std']"
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="text-white border border-white/70 hover:bg-white/10 transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 mt-2 font-['Brown_Std']"
               >
-                Contact us
+                Contact us →
               </button>
             </div>
           </div>
