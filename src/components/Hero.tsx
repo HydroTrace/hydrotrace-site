@@ -22,7 +22,7 @@ const Hero = ({
         <div
           aria-hidden
           className="hidden lg:block pointer-events-none absolute top-0 bottom-0 w-px bg-white/40"
-          style={{ left: "calc(4rem + 180px + 1.25rem - 1.5rem)" }}
+          style={{ left: "calc(4rem + 180px + 1.25rem)" }}
         />
         <div
           aria-hidden
