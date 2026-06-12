@@ -109,13 +109,19 @@ const Navbar = () => {
                 onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
                 className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
               >
-                Water Risk
+                <span className="relative inline-block group">
+                  Water Risk
+                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                </span>
               </button>
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
                 className="text-white/90 hover:text-white transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std']"
               >
-                Digital Water Governance
+                <span className="relative inline-block group">
+                  Digital Water Governance
+                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                </span>
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
