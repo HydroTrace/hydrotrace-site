@@ -17,19 +17,19 @@ const Hero = ({
       id="hero"
       className="relative min-h-screen flex flex-col justify-end overflow-hidden"
     >
-      {/* Vertical streaming lines — start below navbar, stream downward */}
-      <div
-        aria-hidden
-        className="hidden lg:block pointer-events-none absolute top-20 bottom-0 z-10 w-px bg-white/40"
-        style={{ left: "calc(4rem + 180px + 1.25rem)" }}
-      />
-      <div
-        aria-hidden
-        className="hidden lg:block pointer-events-none absolute top-20 bottom-0 z-10 w-px bg-white/15"
-        style={{ left: "4rem" }}
-      />
-
       <div className="relative z-20 w-full pb-20 lg:pb-24">
+        {/* Vertical streaming lines — start at headline top */}
+        <div
+          aria-hidden
+          className="hidden lg:block pointer-events-none absolute top-0 bottom-0 w-px bg-white/40"
+          style={{ left: "calc(4rem + 180px + 1.25rem)" }}
+        />
+        <div
+          aria-hidden
+          className="hidden lg:block pointer-events-none absolute top-0 bottom-0 w-px bg-white/15"
+          style={{ left: "4rem" }}
+        />
+
 
         <div className="px-6 sm:px-10 lg:px-16">
           <div className="flex items-end gap-10">
