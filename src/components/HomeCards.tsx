@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const waterRiskImg = { url: "/images/water-risk-crop.jpg" };
 const waterGovImg = { url: "/images/water-governance.jpg" };
