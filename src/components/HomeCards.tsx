@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import waterRiskImg from "@/assets/water-risk-crop.jpg.asset.json";
-import waterGovImg from "@/assets/water-governance.jpg.asset.json";
+
+const waterRiskImg = { url: "/images/water-risk-crop.jpg" };
+const waterGovImg = { url: "/images/water-governance.jpg" };
 
 const cards = [
   {

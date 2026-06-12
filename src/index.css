@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Reckless Neue';
-  src: url('/__l5e/assets-v1/8d5032fb-e68b-4b63-a942-66bd383f118b/reckless-neue-light.ttf') format('truetype');
+  src: url('/fonts/reckless-neue-light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Brown Std';
-  src: url('/__l5e/assets-v1/ef20f971-458e-4dcf-8d9d-186c47976145/BrownStd-Light.otf') format('opentype');
+  src: url('/fonts/BrownStd-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: 'Brown Std';
-  src: url('/__l5e/assets-v1/197da718-7279-4a5c-830b-4aa1cc49f210/BrownStd-Regular.otf') format('opentype');
+  src: url('/fonts/BrownStd-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
   font-family: 'Brown Std';
-  src: url('/__l5e/assets-v1/ff94f80b-fdeb-4aad-8bee-a3bf70889b90/BrownStd-Bold.otf') format('opentype');
+  src: url('/fonts/BrownStd-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

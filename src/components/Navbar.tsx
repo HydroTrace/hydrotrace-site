@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/hydrotrace-logo-v2.png.asset.json";
-import logoDark from "@/assets/hydrotrace-logo-dark.png.asset.json";
+const logoLight = { url: "/images/hydrotrace-logo-v2.png" };
+const logoDark = { url: "/images/hydrotrace-logo-dark.png" };
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
