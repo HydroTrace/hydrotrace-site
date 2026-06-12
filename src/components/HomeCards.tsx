@@ -23,21 +23,21 @@ const HomeCards = () => {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white border border-[#c5d4e8] rounded-sm p-8 flex flex-col justify-between min-h-[220px] hover:shadow-md transition-shadow"
+              className="bg-white/5 backdrop-blur-sm border border-white/25 rounded-sm p-8 flex flex-col justify-between min-h-[220px] hover:bg-white/10 transition-colors"
             >
               <div>
-                <h3 className="font-['Fira_Code'] text-2xl text-[#21177a] font-medium mb-4">
+                <h3 className="font-['Reckless_Neue'] font-light text-2xl text-white mb-4 leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-sm text-[#21177a]/80 leading-relaxed">
+                <p className="font-['Brown_Std'] font-light text-[15px] text-white/80 leading-relaxed">
                   {card.description}
                 </p>
               </div>
               <Link
                 to={card.href}
-                className="font-['IBM_Plex_Mono'] text-xs tracking-widest uppercase text-[#2563eb] hover:text-[#1d4ed8] mt-6 inline-block"
+                className="font-['Brown_Std'] text-sm tracking-wide text-white/90 hover:text-white mt-6 inline-flex items-center gap-2 border-b border-white/40 hover:border-white pb-1 self-start"
               >
-                Learn more →
+                Learn more <span aria-hidden>→</span>
               </Link>
             </div>
           ))}

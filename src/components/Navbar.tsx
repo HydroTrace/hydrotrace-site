@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoIcon from "@/assets/hydrotrace-icon.png";
+import logoAsset from "@/assets/hydrotrace-logo-white.png.asset.json";
+const logoIcon = logoAsset.url;
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
