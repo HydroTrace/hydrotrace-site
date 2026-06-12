@@ -62,13 +62,19 @@ const Navbar = () => {
               onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
               className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
             >
-              Water Risk
+              <span className="relative inline-block group">
+                Water Risk
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+              </span>
             </button>
             <button
               onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
               className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
             >
-              Digital Water Governance
+              <span className="relative inline-block group">
+                Digital Water Governance
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+              </span>
             </button>
           </div>
 
