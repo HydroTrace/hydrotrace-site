@@ -406,6 +406,7 @@ const Resources = ({ className }: { className?: string }) => {
 
   return (
     <section 
+      id="resources"
       className={cn("py-32 relative overflow-hidden min-h-[900px]", className)} 
       style={{ backgroundColor: '#FAFAF7' }}
     >
@@ -416,14 +417,14 @@ const Resources = ({ className }: { className?: string }) => {
       {/* Section Title */}
       <div className="relative z-10 text-center pt-8 md:pt-16 mb-6 md:mb-8 max-w-4xl mx-auto px-4">
         <h2 
-          className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 md:mb-6"
-          style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+          className="font-['Reckless_Neue'] font-light leading-[1.1] tracking-[-0.01em] text-[36px] md:text-[52px] lg:text-[64px] mb-6"
+          style={{ color: '#0A1B44' }}
         >
           Data-driven water governance
         </h2>
         <p 
-          className="text-sm md:text-lg leading-relaxed"
-          style={{ color: '#21177a', fontFamily: "'Open Sans', sans-serif" }}
+          className="font-['Brown_Std'] font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+          style={{ color: 'rgba(10,27,68,0.75)' }}
         >
           Reliable, high-frequency abstraction data is the catalyst that transforms static records into operational intelligence for both regulators and farmers. It moves management beyond simple accounting and into proactive resource stewardship.
         </p>
@@ -574,53 +575,6 @@ const Resources = ({ className }: { className?: string }) => {
         </div>
       </div>
 
-      {/* Sustainable Groundwater Management Section */}
-      <div className="relative z-10 flex items-center justify-center px-4 mt-8">
-        <div 
-          className="w-full max-w-[1000px] bg-white rounded-lg shadow-sm p-4 md:p-6"
-          style={{ border: '2px solid #3366CC' }}
-        >
-          {/* Globe icon */}
-          <div className="mb-4">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#3366CC" strokeWidth="1.5">
-              <circle cx="16" cy="16" r="12" />
-              <ellipse cx="16" cy="16" rx="5" ry="12" />
-              <line x1="4" y1="16" x2="28" y2="16" />
-              <path d="M6 10 Q16 8 26 10" />
-              <path d="M6 22 Q16 24 26 22" />
-            </svg>
-          </div>
-          
-          <h3 
-            className="text-xl md:text-2xl font-normal mb-2"
-            style={{ color: '#3366CC', fontFamily: "'Open Sans', sans-serif" }}
-          >
-            Sustainable Groundwater Management
-          </h3>
-          <p 
-            className="mb-6 text-xs md:text-sm"
-            style={{ color: '#666', fontFamily: "'Fira Code', monospace" }}
-          >
-            Pairing abstraction data with groundwater levels can enable informed decisions for long-term aquifer health
-          </p>
-          
-          <GroundwaterManagementPlot progress={progress} />
-          
-          <div className="mt-4 flex gap-4 text-xs" style={{ fontFamily: "'Fira Code', monospace" }}>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCDCEE' }} />
-              <span style={{ color: '#3366CC' }}>Allocation Freeze</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: '#CCEECC' }} />
-              <span style={{ color: '#228B22' }}>Allocation Reduction</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* World Map Section */}
-      <WorldMap />
     </section>
   );
 };
