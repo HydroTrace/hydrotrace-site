@@ -48,9 +48,9 @@ const Navbar = () => {
             <img
               src={logoIcon}
               alt="HydroTrace Logo"
-              className="h-9 w-auto brightness-0 invert"
+              className="h-10 w-auto"
             />
-            <span className="text-[22px] font-normal font-['Brown_Std'] tracking-tight text-white hover:text-white/80 transition-colors">
+            <span className="text-[24px] font-normal font-['Brown_Std'] tracking-tight text-white hover:text-white/80 transition-colors">
               HydroTrace
             </span>
             <span className="ml-6 h-7 w-px bg-white/40" aria-hidden />
@@ -60,13 +60,13 @@ const Navbar = () => {
           <div className="hidden md:flex items-center h-full">
             <button
               onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
-              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
+              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
             >
               Water Risk
             </button>
             <button
               onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
-              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
+              className="px-6 py-2 text-white/90 hover:text-white transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
             >
               Digital Water Governance
             </button>
@@ -76,7 +76,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center ml-auto h-full">
             <button
               onClick={() => scrollToSection("contact")}
-              className="inline-flex items-center gap-2 px-5 py-2 text-white border border-white/70 hover:bg-white/10 transition-colors font-light text-[15px] tracking-wide font-['Brown_Std']"
+              className="inline-flex items-center gap-2 px-5 py-2 text-white border border-white/70 hover:bg-white/10 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std']"
             >
               Contact us
               <span aria-hidden>→</span>
