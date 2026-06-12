@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HomeCards from "@/components/HomeCards";
 import Footer from "@/components/Footer";
-import bgRings from "@/assets/hydrotrace-bg-fields.jpg.asset.json";
+import bgRings from "@/assets/hydrotrace-bg-sand.jpg.asset.json";
 
 const Index = () => {
   return (
