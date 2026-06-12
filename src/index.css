@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('/__l5e/assets-v1/8d5032fb-e68b-4b63-a942-66bd383f118b/reckless-neue-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brown Std';
+  src: url('/__l5e/assets-v1/ef20f971-458e-4dcf-8d9d-186c47976145/BrownStd-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

@@ -65,7 +65,7 @@ const Hero = ({
           
           {/* Title */}
           <h1 
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 leading-tight font-['Open_Sans']"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight font-['Reckless_Neue']"
             style={{ color: '#21177a' }}
           >
             {title}
@@ -73,7 +73,7 @@ const Hero = ({
 
           {/* Subtitle */}
           <p 
-            className="text-lg mb-8 leading-relaxed font-['Fira_Code'] uppercase tracking-wide"
+            className="text-lg mb-8 leading-relaxed font-['Brown_Std'] font-light"
             style={{ color: '#249be0' }}
           >
             {description}

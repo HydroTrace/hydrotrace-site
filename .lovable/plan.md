@@ -1,25 +1,15 @@
+## Plan
 
+1. Register the uploaded fonts as Lovable assets from `/mnt/user-uploads/`:
+   - `reckless-neue-light.ttf` → `src/assets/reckless-neue-light.ttf.asset.json`
+   - `BrownStd-Light.otf` → `src/assets/BrownStd-Light.otf.asset.json`
 
-## Plan: WhatsApp Chat Mockup on Landing Page
+2. In `src/index.css`, add two `@font-face` declarations pointing at the asset URLs:
+   - `font-family: 'Reckless Neue'`, weight 300
+   - `font-family: 'Brown Std'`, weight 300
 
-### What
-Create a new `WhatsAppMockup` component that renders a static, phone-framed WhatsApp Business chat mockup showing a hypothetical HydroTrace bot conversation. Place it on the main landing page between the Contact section and the Footer.
+3. In `src/components/Hero.tsx`:
+   - Change the `<h1>` font from `font-['Open_Sans']` to `font-['Reckless_Neue']` (keep current size/color/weight).
+   - Change the subtitle `<p>` from `font-['Fira_Code'] uppercase tracking-wide` to `font-['Brown_Std']` (drop the uppercase + mono styling so the new font reads naturally; keep color `#249be0` and size).
 
-### Component: `src/components/WhatsAppMockup.tsx`
-- **Phone frame**: iPhone-style bezel wrapper (rounded corners, notch, centered on page)
-- **WhatsApp header**: Green bar with HydroTrace icon, name, verified badge
-- **Chat bubbles**: Recreating the uploaded screenshot's flow:
-  - User: "What is my remaining Quota?"
-  - Bot: Quota response with a styled progress bar
-  - Bot: "Please submit your meter reading"
-  - User: Photo of meter (using `capture-meter-reading.png`)
-  - Bot: OCR result confirmation
-  - User: Location shared
-  - Bot: Submission summary with checkmarks
-- **Styling**: WhatsApp green outgoing bubbles, white incoming bubbles, timestamps, blue double-check marks
-- **Bot text in IBM Plex Mono** to tie it to HydroTrace branding
-- Section heading above: something like "Accessible via WhatsApp" with a short description
-
-### Modify: `src/pages/Index.tsx`
-- Import and add `<WhatsAppMockup />` between `<Contact />` and `<Footer />`
-
+No other components or pages are touched.
