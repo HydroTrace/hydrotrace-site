@@ -1,45 +1,61 @@
-import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import waterRiskImg from "@/assets/water-risk-crop.jpg.asset.json";
+import waterGovImg from "@/assets/water-governance.jpg.asset.json";
 
 const cards = [
   {
-    title: "Agricultural Water Risk",
+    title: "Water Risk",
+    image: waterRiskImg.url,
+    alt: "Aerial view of irrigated crop field with concentric pivot rings",
     description:
-      "Crop-water risk screening for farmland investors, lenders, and asset managers.",
-    href: "/water-risk",
+      "Crop-water risk screening for agriculture and supply chains. Identify exposure to scarcity, regulation, and climate stress — from farm to portfolio.",
+    href: "#water-risk",
   },
   {
-    title: "Water Governance & Management",
+    title: "Digital Water Governance",
+    image: waterGovImg.url,
+    alt: "Aerial view of glacial river braids in shades of blue",
     description:
-      "Digital tools for abstraction reporting, compliance, allocation monitoring, and basin-scale water planning.",
-    href: "/digital-water-governance",
+      "Digital infrastructure for abstraction reporting, allocation, and compliance. Transparent, trustworthy data for regulators and water users.",
+    href: "#water-governance",
   },
 ];
 
 const HomeCards = () => {
   return (
-    <section>
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+    <section className="bg-white py-24 lg:py-32">
+      <div className="px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-[1600px] mx-auto">
           {cards.map((card) => (
-            <div
+            <a
               key={card.title}
-              className="bg-white/5 backdrop-blur-sm border border-white/25 rounded-sm p-8 flex flex-col justify-between min-h-[220px] hover:bg-white/10 transition-colors"
+              href={card.href}
+              className="group block"
             >
-              <div>
-                <h3 className="font-['Reckless_Neue'] font-light text-2xl text-white mb-4 leading-tight">
-                  {card.title}
-                </h3>
-                <p className="font-['Brown_Std'] font-light text-[15px] text-white/80 leading-relaxed">
-                  {card.description}
-                </p>
+              <div className="aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                <img
+                  src={card.image}
+                  alt={card.alt}
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
               </div>
-              <Link
-                to={card.href}
-                className="font-['Brown_Std'] text-sm tracking-wide text-white/90 hover:text-white mt-6 inline-flex items-center gap-2 border-b border-white/40 hover:border-white pb-1 self-start"
-              >
-                Learn more <span aria-hidden>→</span>
-              </Link>
-            </div>
+
+              <h2 className="mt-8 font-['Reckless_Neue'] font-light text-[#0A1B44] leading-[1.1] text-[36px] lg:text-[44px] tracking-[-0.01em]">
+                {card.title}
+              </h2>
+
+              <p className="mt-6 max-w-xl font-['Brown_Std'] font-light text-[#0A1B44]/75 text-base lg:text-[17px] leading-relaxed">
+                {card.description}
+              </p>
+
+              <div className="mt-8 inline-flex items-center gap-4 font-['Brown_Std'] tracking-[0.22em] text-[11px] uppercase text-[#0A1B44]">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[#0A1B44]/70 transition-colors group-hover:bg-[#0A1B44] group-hover:text-white">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+                <span>Learn more</span>
+              </div>
+            </a>
           ))}
         </div>
       </div>
