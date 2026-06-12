@@ -10,9 +10,12 @@ const Footer = () => {
             © 2025 HydroTrace | Water Transparency through Technology
           </p>
           <div className="flex items-center justify-center gap-4 text-xs text-primary-foreground/70">
-            <a href="/privacy" className="hover:text-primary-foreground transition-colors">
+            <button
+              onClick={() => navigate("/privacy")}
+              className="hover:text-primary-foreground transition-colors cursor-pointer bg-transparent border-none text-xs text-primary-foreground/70"
+            >
               Privacy Policy
-            </a>
+            </button>
             <span>•</span>
             <a href="#contact" className="hover:text-primary-foreground transition-colors">
               Contact
