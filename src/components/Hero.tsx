@@ -1,15 +1,14 @@
-import AnimatedSquiggle from './AnimatedSquiggle';
+import heroBg from "@/assets/hydrotrace-background.png.asset.json";
 
 interface HeroProps {
   title?: string;
   description?: string;
 }
 
-const Hero = ({ 
+const Hero = ({
   title = "Digital Infrastructure for Water Governance and Water Risk",
-  description = "From abstraction reporting to crop-water risk screening — transparent, trustworthy, and adaptive water management."
+  description = "From abstraction reporting to crop-water risk screening — transparent, trustworthy, and adaptive water management.",
 }: HeroProps) => {
-
   const scrollToAbout = () => {
     const element = document.getElementById("about");
     if (element) {
@@ -20,61 +19,42 @@ const Hero = ({
   return (
     <section
       id="hero"
-      className="relative min-h-[70vh] flex items-center overflow-hidden bg-background"
+      className="relative min-h-[100vh] flex items-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${heroBg.url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      {/* White area behind navbar */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-background z-[1]" />
-
-      {/* Grid Background */}
-      <div className="absolute inset-0 overflow-hidden top-24">
-        {/* Grid pattern - smaller squares, more transparent */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
-              linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px)
-            `,
-            backgroundSize: '30px 30px',
-          }}
-        />
-        {/* Stronger fade overlay from center-left */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 90% 80% at 25% 50%, hsl(var(--background)) 0%, hsl(var(--background) / 0.9) 30%, transparent 70%)`
-          }}
-        />
-      </div>
-
-      {/* Animated Squiggle - spans entire section */}
-      <div className="absolute inset-0 top-24 pointer-events-none z-[2]">
-        <AnimatedSquiggle className="w-full h-full" />
-      </div>
+      {/* Left fade for text legibility */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(8,14,20,0.85) 0%, rgba(8,14,20,0.55) 40%, rgba(8,14,20,0.15) 70%, rgba(8,14,20,0) 100%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28">
         <div className="max-w-2xl">
           {/* Tag */}
-          <span 
-            className="font-medium tracking-wider text-sm uppercase mb-4 block font-['Roboto']"
-            style={{ color: '#030bfc' }}
+          <span
+            className="font-normal tracking-[0.2em] text-sm uppercase mb-6 block font-['Brown_Std'] text-[#9ec5e8]"
           >
             Water Intelligence
           </span>
-          
+
           {/* Title */}
-          <h1 
-            className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight font-['Reckless_Neue']"
-            style={{ color: '#21177a' }}
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-[1.1] font-['Reckless_Neue'] text-white"
           >
             {title}
           </h1>
 
           {/* Subtitle */}
-          <p 
-            className="text-lg mb-8 leading-relaxed font-['Brown_Std'] font-light"
-            style={{ color: '#249be0' }}
+          <p
+            className="text-lg mb-10 leading-relaxed font-['Brown_Std'] font-light text-white/85 max-w-xl"
           >
             {description}
           </p>
@@ -82,17 +62,10 @@ const Hero = ({
           {/* CTA */}
           <button
             onClick={scrollToAbout}
-            className="inline-flex items-center gap-2 bg-[#044cdb] px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-[#044cdb]/90 font-['Brown_Std']"
+            className="inline-flex items-center gap-3 border border-white/70 px-7 py-3 text-base font-light text-white transition-all duration-300 hover:bg-white/10 font-['Brown_Std']"
           >
             Learn More
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <span aria-hidden>→</span>
           </button>
         </div>
       </div>
