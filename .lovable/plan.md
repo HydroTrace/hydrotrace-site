@@ -1,47 +1,27 @@
 ## Goal
+Reduce file sizes of the 7 images in `public/images/` (currently ~11.3 MB total) while keeping them visually crisp, so the Netlify site renders faster.
 
-Make the GitHub/Netlify build self-contained. Remove every reference to `/__l5e/assets-v1/...` and every `.asset.json` import. Serve all images and fonts from `public/images/` and `public/fonts/` using root-relative URLs (`/images/...`, `/fonts/...`).
+## Approach
+Use `sharp` (already in the sandbox) to re-encode each image in place. Same filenames, same paths — no code changes needed.
 
-## Files to migrate
+## Per-file targets
 
-**Images → `public/images/`**
-- hydrotrace-logo-v2.png
-- hydrotrace-logo-dark.png
-- hydrotrace-logo-white.png
-- hydrotrace-background.png
-- hydrotrace-bg-sand.jpg
-- hydrotrace-bg-fields.jpg
-- hydrotrace-bg-rings.png
-- water-risk-bg.png
-- water-risk-crop.jpg
-- water-governance-bg.png
-- water-governance.jpg
+| File | Current | Action | Expected |
+|---|---|---|---|
+| hydrotrace-bg-sand.jpg | 2.4 MB | JPEG quality 78, mozjpeg, max 2560px wide | ~350–500 KB |
+| water-risk-bg.png | 2.7 MB | Convert to JPEG q80 (it's a photo bg), max 2560px | ~400–600 KB |
+| water-governance-bg.png | 2.5 MB | Convert to JPEG q80, max 2560px | ~400–600 KB |
+| water-risk-crop.jpg | 2.0 MB | JPEG q80, mozjpeg, max 2000px | ~250–400 KB |
+| water-governance.jpg | 1.2 MB | JPEG q80, mozjpeg, max 2000px | ~200–350 KB |
+| hydrotrace-logo-v2.png | 369 KB | PNG palette/quantize (keep transparency) | ~60–120 KB |
+| hydrotrace-logo-dark.png | 161 KB | PNG palette/quantize | ~40–80 KB |
 
-**Fonts → `public/fonts/`**
-- reckless-neue-light.ttf
-- BrownStd-Light.otf
-- BrownStd-Regular.otf
-- BrownStd-Bold.otf
-
-## Steps
-
-1. **Download** each asset from its current Lovable CDN URL (read from the `.asset.json` files) and save under `public/images/` or `public/fonts/`.
-
-2. **Rewrite imports in components/pages.** In each of these files, drop the `import X from "@/assets/....asset.json"` line and replace `X.url` references with a string literal like `/images/foo.png`:
-   - `src/pages/Index.tsx` (hydrotrace-bg-sand.jpg)
-   - `src/pages/WaterRisk.tsx` (water-risk-bg.png)
-   - `src/pages/DigitalWaterGovernance.tsx` (water-governance-bg.png)
-   - `src/components/Navbar.tsx` (hydrotrace-logo-v2.png, hydrotrace-logo-dark.png)
-   - `src/components/HomeCards.tsx` (whatever it currently imports)
-
-3. **Rewrite `src/index.css`** — replace the four `@font-face` `url('/__l5e/...')` lines with `url('/fonts/<file>')`.
-
-4. **Delete the `.asset.json` files** under `src/assets/` (15 files) since nothing imports them anymore.
-
-5. **Verify** with a build and a quick grep that no `__l5e` or `.asset.json` references remain.
+Total expected: ~1.7–2.7 MB (≈75–85% reduction).
 
 ## Notes
+- The two `*-bg.png` files I'll convert to `.jpg` only if they have no transparency. If they do, I'll keep PNG and run `pngquant`-style quantization via sharp. If converting to .jpg, I'll update the two `const bg = { url: "/images/...png" }` references in `src/pages/WaterRisk.tsx` and `src/pages/DigitalWaterGovernance.tsx`.
+- Originals will be overwritten — revertable from chat history.
+- After compression I'll run `bun run build` to confirm nothing breaks.
 
-- Using `public/` (not `src/assets/`) means Vite copies the files through unchanged and root-relative `/images/...` URLs work identically on Lovable, Netlify, or any static host.
-- Total payload added to the repo is ~16 MB (mostly the 2–3 MB PNG backgrounds). Acceptable for a marketing site; if you'd rather keep the repo small we can convert the large PNG backgrounds to JPG/WebP at the same time — say the word and I'll include that.
-- Lovable hosting will keep working after this change; only the dependency on the `__l5e` CDN path goes away.
+## Out of scope
+No layout, markup, or caching-header changes. No WebP/AVIF variants (would require `<picture>` markup changes).

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Resources from "@/components/Resources";
 import Footer from "@/components/Footer";
-const bg = { url: "/images/water-governance-bg.png" };
+const bg = { url: "/images/water-governance-bg.jpg" };
 
 const DigitalWaterGovernance = () => {
   return (
