@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-const bg = { url: "/images/water-risk-bg.png" };
+const bg = { url: "/images/water-risk-bg.jpg" };
 
 const WaterRisk = () => {
   return (
