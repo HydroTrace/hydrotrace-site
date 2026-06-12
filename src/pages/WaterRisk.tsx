@@ -1,21 +1,35 @@
 import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import bg from "@/assets/water-risk-bg.png.asset.json";
 
 const WaterRisk = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen relative bg-white">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center pt-20">
-        <div className="text-center">
-          <h1 className="text-3xl font-semibold font-['Open_Sans'] text-[#21177a] mb-4">
-            Water Risk
-          </h1>
-          <p className="text-lg text-[#249be0] font-['Fira_Code']">
-            Coming soon
-          </p>
+
+      <div className="sticky top-0 h-screen w-full z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(8,14,30,0.25) 0%, rgba(8,14,30,0.15) 40%, rgba(8,14,30,0.55) 100%), url(${bg.url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <div className="relative h-full">
+          <Hero
+            eyebrow="Water Risk"
+            headline={<>Water stress translated.</>}
+            description="Water risk is material. Most tools tell you where it exists. We tell you what it costs."
+          />
         </div>
+      </div>
+
+      <main className="relative z-10 bg-white">
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 };
