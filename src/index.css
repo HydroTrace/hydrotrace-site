@@ -18,6 +18,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Brown Std';
+  src: url('/__l5e/assets-v1/197da718-7279-4a5c-830b-4aa1cc49f210/BrownStd-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brown Std';
+  src: url('/__l5e/assets-v1/ff94f80b-fdeb-4aad-8bee-a3bf70889b90/BrownStd-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

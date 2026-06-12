@@ -82,7 +82,7 @@ const Hero = ({
           {/* CTA */}
           <button
             onClick={scrollToAbout}
-            className="inline-flex items-center gap-2 bg-[#044cdb] px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-[#044cdb]/90 font-['Roboto']"
+            className="inline-flex items-center gap-2 bg-[#044cdb] px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-[#044cdb]/90 font-['Brown_Std']"
           >
             Learn More
             <svg 
