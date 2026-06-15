@@ -10,6 +10,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isDarkPage = location.pathname === "/water-risk";
+
   useEffect(() => {
     const onScroll = () => {
       // Switch to dark mode once we've scrolled past most of the hero
