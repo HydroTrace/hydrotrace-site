@@ -10,6 +10,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isDarkPage = location.pathname === "/water-risk";
+
   useEffect(() => {
     const onScroll = () => {
       // Switch to dark mode once we've scrolled past most of the hero
@@ -47,18 +49,21 @@ const Navbar = () => {
     }
   };
 
-  const textColor = scrolled ? "text-[#0A1B44]" : "text-white";
-  const textColorMuted = scrolled ? "text-[#0A1B44]/85" : "text-white/90";
-  const underlineColor = scrolled ? "bg-[#0A1B44]" : "bg-white";
-  const borderColor = scrolled ? "border-[#0A1B44]/70" : "border-white/70";
-  const hoverBg = scrolled ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
-  const dividerColor = scrolled ? "bg-[#0A1B44]/40" : "bg-white/40";
+  const textColor = scrolled && !isDarkPage ? "text-[#0A1B44]" : "text-white";
+  const textColorMuted = scrolled && !isDarkPage ? "text-[#0A1B44]/85" : "text-white/90";
+  const underlineColor = scrolled && !isDarkPage ? "bg-[#0A1B44]" : "bg-white";
+  const borderColor = scrolled && !isDarkPage ? "border-[#0A1B44]/70" : "border-white/70";
+  const hoverBg = scrolled && !isDarkPage ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
+  const dividerColor = scrolled && !isDarkPage ? "bg-[#0A1B44]/40" : "bg-white/40";
+  const bgClass = isDarkPage
+    ? "bg-black/60 backdrop-blur-sm"
+    : scrolled
+    ? "bg-white/90 backdrop-blur-sm"
+    : "bg-transparent";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
-        scrolled ? "bg-white/90 backdrop-blur-sm" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${bgClass}`}
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center h-20">
@@ -127,7 +132,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`md:hidden pb-4 backdrop-blur-sm mt-0 p-4 border-t ${scrolled ? "bg-white/95 border-[#0A1B44]/15" : "bg-black/70 border-white/20"}`}>
+          <div className={`md:hidden pb-4 backdrop-blur-sm mt-0 p-4 border-t ${scrolled && !isDarkPage ? "bg-white/95 border-[#0A1B44]/15" : "bg-black/70 border-white/20"}`}>
             <div className="flex flex-col space-y-1">
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
