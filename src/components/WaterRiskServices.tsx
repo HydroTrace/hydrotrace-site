@@ -20,14 +20,14 @@ const WaterRiskServices = () => {
     <section className="relative bg-black text-white">
       <div className="grid grid-cols-1 md:grid-cols-[260px_1fr_1fr] divide-y md:divide-y-0 md:divide-x divide-white/15">
         <div className="px-8 md:px-10 py-12 md:py-20">
-          <span className="text-[11px] tracking-[0.22em] font-mono text-white/70 uppercase">
+          <span className="text-[14px] tracking-[0.22em] font-mono text-white/70 uppercase">
             Water Risk Services
           </span>
         </div>
 
         {services.map((s) => (
           <article key={s.title} className="px-8 md:px-12 py-12 md:py-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 md:mb-10">
+            <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-8 md:mb-10">
               {s.title}
             </h2>
             <div className="aspect-[4/3] w-full overflow-hidden mb-6">
@@ -38,7 +38,7 @@ const WaterRiskServices = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-base md:text-[15px] leading-relaxed text-white/85 mb-10 max-w-xl">
+            <p className="text-base md:text-[15px] leading-relaxed text-white/85 mb-10 max-w-xl font-['Brown_Std']">
               {s.description}
             </p>
             <div className="flex items-center gap-4 text-white/50">
