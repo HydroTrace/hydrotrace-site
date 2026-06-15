@@ -49,12 +49,17 @@ const Navbar = () => {
     }
   };
 
-  const textColor = scrolled ? "text-[#0A1B44]" : "text-white";
-  const textColorMuted = scrolled ? "text-[#0A1B44]/85" : "text-white/90";
-  const underlineColor = scrolled ? "bg-[#0A1B44]" : "bg-white";
-  const borderColor = scrolled ? "border-[#0A1B44]/70" : "border-white/70";
-  const hoverBg = scrolled ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
-  const dividerColor = scrolled ? "bg-[#0A1B44]/40" : "bg-white/40";
+  const textColor = scrolled && !isDarkPage ? "text-[#0A1B44]" : "text-white";
+  const textColorMuted = scrolled && !isDarkPage ? "text-[#0A1B44]/85" : "text-white/90";
+  const underlineColor = scrolled && !isDarkPage ? "bg-[#0A1B44]" : "bg-white";
+  const borderColor = scrolled && !isDarkPage ? "border-[#0A1B44]/70" : "border-white/70";
+  const hoverBg = scrolled && !isDarkPage ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
+  const dividerColor = scrolled && !isDarkPage ? "bg-[#0A1B44]/40" : "bg-white/40";
+  const bgClass = isDarkPage
+    ? "bg-black/60 backdrop-blur-sm"
+    : scrolled
+    ? "bg-white/90 backdrop-blur-sm"
+    : "bg-transparent";
 
   return (
     <nav
