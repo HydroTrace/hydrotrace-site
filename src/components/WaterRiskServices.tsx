@@ -27,7 +27,7 @@ const WaterRiskServices = () => {
         </div>
 
         {/* Card 1 */}
-        <article className="px-8 md:px-12">
+        <article className="px-8 md:px-12 max-w-[580px]">
           <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-10">
             {services[0].title}
           </h2>
