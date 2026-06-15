@@ -29,6 +29,7 @@ const WaterRisk = () => {
       </div>
 
       <main className="relative z-10 bg-white">
+        <WaterRiskServices />
         <Footer />
       </main>
     </div>
