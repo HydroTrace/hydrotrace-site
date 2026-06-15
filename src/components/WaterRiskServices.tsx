@@ -18,7 +18,7 @@ const services = [
 const WaterRiskServices = () => {
   return (
     <section className="relative bg-black text-white min-h-screen flex items-center py-32 md:py-48">
-      <div className="w-full grid grid-cols-1 md:grid-cols-[220px_1fr_1fr] relative">
+      <div className="w-full grid grid-cols-1 md:grid-cols-[220px_auto_auto_1fr] relative">
         {/* Label column */}
         <div className="px-8 md:px-10 pt-2">
           <span className="text-[14px] tracking-[0.22em] font-mono text-white/70 uppercase leading-tight block">
