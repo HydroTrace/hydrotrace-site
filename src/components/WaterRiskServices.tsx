@@ -18,7 +18,7 @@ const services = [
 const WaterRiskServices = () => {
   return (
     <section className="relative bg-black text-white min-h-screen flex items-center py-32 md:py-48">
-      <div className="w-full grid grid-cols-1 md:grid-cols-[220px_1fr_1fr] relative">
+      <div className="w-full grid grid-cols-1 md:grid-cols-[220px_auto_auto_1fr] relative">
         {/* Label column */}
         <div className="px-8 md:px-10 pt-2">
           <span className="text-[14px] tracking-[0.22em] font-mono text-white/70 uppercase leading-tight block">
@@ -27,7 +27,7 @@ const WaterRiskServices = () => {
         </div>
 
         {/* Card 1 */}
-        <article className="px-8 md:px-12">
+        <article className="px-8 md:px-12 max-w-[580px]">
           <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-10">
             {services[0].title}
           </h2>
@@ -53,7 +53,7 @@ const WaterRiskServices = () => {
         </article>
 
         {/* Card 2 */}
-        <article className="relative px-8 md:px-12 md:border-l md:border-white/90">
+        <article className="relative px-8 md:px-12 md:border-l md:border-white/90 max-w-[580px]">
           <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-10">
             {services[1].title}
           </h2>
