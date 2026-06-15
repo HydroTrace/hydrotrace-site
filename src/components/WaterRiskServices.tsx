@@ -85,10 +85,10 @@ const WaterRiskServices = () => {
         style={{ left: "220px" }}
       />
 
-      {/* Middle divider — starts at card 2 title level, between card 1 and card 2 */}
+      {/* Middle divider — starts at title level, between card 1 and card 2 */}
       <div
         className="hidden md:block absolute w-px bg-white"
-        style={{ left: "calc(220px + 50%)", top: "4rem" /* approx title level */, bottom: "0" }}
+        style={{ left: "calc(50% + 110px)", top: "6.5rem", bottom: "0" }}
       />
     </section>
   );
