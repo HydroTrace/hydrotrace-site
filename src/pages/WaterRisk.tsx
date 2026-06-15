@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import WaterRiskServices from "@/components/WaterRiskServices";
 const bg = { url: "/images/water-risk-bg.jpg" };
 
 const WaterRisk = () => {
