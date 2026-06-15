@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import WaterRiskServices from "@/components/WaterRiskServices";
 const bg = { url: "/images/water-risk-bg.jpg" };
 
 const WaterRisk = () => {
@@ -28,6 +29,7 @@ const WaterRisk = () => {
       </div>
 
       <main className="relative z-10 bg-white">
+        <WaterRiskServices />
         <Footer />
       </main>
     </div>
