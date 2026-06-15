@@ -73,7 +73,7 @@ const Navbar = () => {
             onClick={handleLogoClick}
           >
             <img
-              src={isDarkPage || scrolled ? logoDark.url : logoLight.url}
+              src={scrolled && !isDarkPage ? logoDark.url : logoLight.url}
               alt="HydroTrace Logo"
               className="h-10 w-auto transition-opacity duration-500"
             />
