@@ -17,21 +17,21 @@ const services = [
 
 const WaterRiskServices = () => {
   return (
-    <section className="relative bg-black text-white">
-      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_1fr]">
+    <section className="relative bg-black text-white min-h-screen flex items-center py-32 md:py-48">
+      <div className="w-full grid grid-cols-1 md:grid-cols-[220px_1fr_1fr] relative">
         {/* Label column */}
-        <div className="relative px-8 md:px-10 py-12 md:py-20">
-          <span className="text-[14px] tracking-[0.22em] font-mono text-white/70 uppercase">
-            Water Risk Services
+        <div className="px-8 md:px-10 pt-2">
+          <span className="text-[14px] tracking-[0.22em] font-mono text-white/70 uppercase leading-tight block">
+            Water Risk<br />Services
           </span>
         </div>
 
         {/* Card 1 */}
-        <article className="relative px-8 md:px-12 py-12 md:py-16">
-          <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-8 md:mb-10">
+        <article className="px-8 md:px-12">
+          <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-10">
             {services[0].title}
           </h2>
-          <div className="aspect-[4/3] max-w-[520px] overflow-hidden mb-6">
+          <div className="aspect-[4/3] max-w-[520px] overflow-hidden mb-8">
             <img
               src={services[0].image}
               alt={services[0].alt}
@@ -39,7 +39,7 @@ const WaterRiskServices = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-base md:text-[15px] leading-relaxed text-white/85 mb-10 max-w-xl font-['Brown_Std']">
+          <p className="text-[15px] leading-relaxed text-white/85 mb-12 max-w-md font-['Brown_Std']">
             {services[0].description}
           </p>
           <div className="flex items-center gap-4 text-white/50">
@@ -53,11 +53,11 @@ const WaterRiskServices = () => {
         </article>
 
         {/* Card 2 */}
-        <article className="relative px-8 md:px-12 py-12 md:py-16">
-          <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-8 md:mb-10">
+        <article className="relative px-8 md:px-12 md:border-l md:border-white/90">
+          <h2 className="font-serif text-[34px] md:text-[46px] font-light mb-10">
             {services[1].title}
           </h2>
-          <div className="aspect-[4/3] max-w-[520px] overflow-hidden mb-6">
+          <div className="aspect-[4/3] max-w-[520px] overflow-hidden mb-8">
             <img
               src={services[1].image}
               alt={services[1].alt}
@@ -65,7 +65,7 @@ const WaterRiskServices = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-base md:text-[15px] leading-relaxed text-white/85 mb-10 max-w-xl font-['Brown_Std']">
+          <p className="text-[15px] leading-relaxed text-white/85 mb-12 max-w-md font-['Brown_Std']">
             {services[1].description}
           </p>
           <div className="flex items-center gap-4 text-white/50">
@@ -77,19 +77,10 @@ const WaterRiskServices = () => {
             </span>
           </div>
         </article>
+
+        {/* Thick left divider — full section height, between label and card 1 */}
+        <div className="hidden md:block absolute top-[-8rem] md:top-[-12rem] bottom-[-8rem] md:bottom-[-12rem] w-[2px] bg-white left-[220px]" />
       </div>
-
-      {/* Thick left divider — full height, between label and card 1 */}
-      <div
-        className="hidden md:block absolute top-0 bottom-0 w-[2px] bg-white"
-        style={{ left: "220px" }}
-      />
-
-      {/* Middle divider — starts at title level, between card 1 and card 2 */}
-      <div
-        className="hidden md:block absolute w-px bg-white"
-        style={{ left: "calc(50% + 110px)", top: "4rem", bottom: "0" }}
-      />
     </section>
   );
 };
