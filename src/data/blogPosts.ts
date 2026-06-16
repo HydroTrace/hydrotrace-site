@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         short: "Vatter et al. (2021). Tackling growing water risks in the food sector.",
-        html: 'Vatter, J., Laporte-Bisquit, A., Camargo, R., &amp; Morgan, A. (2021). <a href="https://wwf.panda.org/discover/our_focus/freshwater_practice/water_risk_filter/" target="_blank" rel="noopener noreferrer"><em>Tackling growing water risks in the food sector: How scenario analysis can help food retailers understand future risk and build resilience.</em></a> WWF Germany.',
+        html: 'Vatter, J., Laporte-Bisquit, A., Camargo, R., &amp; Morgan, A. (2021). <a href="https://wwf.panda.org/discover/our_focus/freshwater_practice/water_risk_filter/wwf-wrf-tackling-growing-water-risks-in-foodsector-2021_1.pdf" target="_blank" rel="noopener noreferrer"><em>Tackling growing water risks in the food sector: How scenario analysis can help food retailers understand future risk and build resilience.</em></a> WWF Germany.',
       },
       {
         short: "Zhao, Ancev & Vervoort (2024). Water market functionality: Evidence from the Australian experience.",
