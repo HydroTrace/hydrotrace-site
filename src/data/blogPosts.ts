@@ -1,5 +1,5 @@
-import blogAgriValuation from "@/assets/blog-agri-valuation.png.asset.json";
-import blogCsrdIrrigation from "@/assets/blog-csrd-irrigation.png.asset.json";
+const blogAgriValuation = { url: "/images/blog/blog-agri-valuation.png" };
+const blogCsrdIrrigation = { url: "/images/blog/blog-csrd-irrigation.png" };
 
 export interface BlogReference {
   /** Short label for tooltip: "Author (Year). Title." */
