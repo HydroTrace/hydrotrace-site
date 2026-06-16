@@ -145,8 +145,8 @@ export const blogPosts: BlogPost[] = [
         html: 'FBN (2025). <a href="https://www.fbn.com/community/blog/how-does-irrigation-affect-farmland-value" target="_blank" rel="noopener noreferrer"><em>How Irrigation Affects Farmland Value.</em></a> Farmer\'s Business Network.',
       },
       {
-        short: "Qin et al. (2021). Increasing risks of crop failure and water scarcity in global breadbaskets by 2030.",
-        html: 'Qin, Y. et al. (2021). <a href="https://doi.org/10.1088/1748-9326/ac22c1" target="_blank" rel="noopener noreferrer"><em>Increasing risks of crop failure and water scarcity in global breadbaskets by 2030.</em></a> Environmental Research Letters.',
+        short: "Caparas et al. (2021). Increasing risks of crop failure and water scarcity in global breadbaskets by 2030.",
+        html: 'Caparas, M., Zobel, Z., Castanho, A.D.A., &amp; Schwalm, C.R. (2021). <a href="https://doi.org/10.1088/1748-9326/ac22c1" target="_blank" rel="noopener noreferrer"><em>Increasing risks of crop failure and water scarcity in global breadbaskets by 2030.</em></a> Environmental Research Letters, 16(10), 104013.',
       },
       {
         short: "Hughes et al. (2023). An economic model of spatial and temporal water trade in the southern Murray-Darling Basin.",
