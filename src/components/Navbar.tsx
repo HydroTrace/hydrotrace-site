@@ -11,6 +11,8 @@ const Navbar = () => {
   const location = useLocation();
 
   const isDarkPage = location.pathname === "/water-risk";
+  const isBlogPage = location.pathname === "/blog";
+  const useDarkTheme = isDarkPage || isBlogPage;
 
   useEffect(() => {
     const onScroll = () => {
@@ -49,17 +51,19 @@ const Navbar = () => {
     }
   };
 
-  const textColor = scrolled && !isDarkPage ? "text-[#0A1B44]" : "text-white";
-  const textColorMuted = scrolled && !isDarkPage ? "text-[#0A1B44]/85" : "text-white/90";
-  const underlineColor = scrolled && !isDarkPage ? "bg-[#0A1B44]" : "bg-white";
-  const borderColor = scrolled && !isDarkPage ? "border-[#0A1B44]/70" : "border-white/70";
-  const hoverBg = scrolled && !isDarkPage ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
-  const dividerColor = scrolled && !isDarkPage ? "bg-[#0A1B44]/40" : "bg-white/40";
-  const bgClass = scrolled
-    ? isDarkPage
-      ? "bg-black/60 backdrop-blur-sm"
-      : "bg-white/90 backdrop-blur-sm"
-    : "bg-transparent";
+  const textColor = scrolled && !useDarkTheme ? "text-[#0A1B44]" : "text-white";
+  const textColorMuted = scrolled && !useDarkTheme ? "text-[#0A1B44]/85" : "text-white/90";
+  const underlineColor = scrolled && !useDarkTheme ? "bg-[#0A1B44]" : "bg-white";
+  const borderColor = scrolled && !useDarkTheme ? "border-[#0A1B44]/70" : "border-white/70";
+  const hoverBg = scrolled && !useDarkTheme ? "hover:bg-[#0A1B44]/5" : "hover:bg-white/10";
+  const dividerColor = scrolled && !useDarkTheme ? "bg-[#0A1B44]/40" : "bg-white/40";
+  const bgClass = isBlogPage
+    ? "bg-[#0A1B44]/95 backdrop-blur-sm"
+    : scrolled
+      ? isDarkPage
+        ? "bg-black/60 backdrop-blur-sm"
+        : "bg-white/90 backdrop-blur-sm"
+      : "bg-transparent";
 
   return (
     <nav
