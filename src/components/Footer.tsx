@@ -17,7 +17,7 @@ const Footer = () => {
               Privacy Policy
             </button>
             <span>•</span>
-            <a href="#contact" className="hover:text-primary-foreground transition-colors">
+            <a href="mailto:info@hydrotrace.io" className="hover:text-primary-foreground transition-colors">
               Contact
             </a>
             <span>•</span>

@@ -122,13 +122,13 @@ const Navbar = () => {
 
           {/* Right side buttons */}
           <div className="hidden md:flex items-center ml-auto h-full">
-            <button
-              onClick={() => scrollToSection("contact")}
+            <a
+              href="mailto:info@hydrotrace.io"
               className={`inline-flex items-center gap-2 px-5 py-2 border transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColor} ${borderColor} ${hoverBg}`}
             >
               Contact us
               <span aria-hidden>→</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -165,12 +165,12 @@ const Navbar = () => {
               >
                 Blog
               </button>
-              <button
-                onClick={() => scrollToSection("contact")}
+              <a
+                href="mailto:info@hydrotrace.io"
                 className={`border transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 mt-2 font-['Brown_Std'] ${textColor} ${borderColor}`}
               >
                 Contact us →
-              </button>
+              </a>
             </div>
           </div>
         )}
