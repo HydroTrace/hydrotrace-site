@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Irrigated agriculture is one of the most water-dependent asset classes in existence. Roughly 40% of the world's food is produced on the 20% of cropland that is irrigated [1]. That land commands a premium not simply because of soil quality, but because of reliable water access. Water is the productive asset. The land is just where it sits.",
           "Yet when capital allocators, including farmland funds, agricultural lenders, and infrastructure investors, assess water risk, they typically rely on basin-level screening tools: WRI Aqueduct scores, MSCI ESG ratings, or watershed-level drought indices. These tools can show that an asset sits in a high-stress basin. They cannot show what that stress costs.",
-          "This is not a minor omission. It is the central unanswered question in agricultural asset finance: how does water stress translate into yield loss, revenue impairment, and asset value? Companies reported $425 billion in combined water-related value at risk via CDP in 2019 [12] — yet the tools most financial institutions use to assess that risk stop at the basin level.",
+          "This is not a minor omission. It is the central unanswered question in agricultural asset finance: how does water stress translate into yield loss, revenue impairment, and asset value? Companies reported $425 billion in combined water-related value at risk via CDP in 2019 [12] , yet the tools most financial institutions use to assess that risk stop at the basin level.",
         ],
       },
       {

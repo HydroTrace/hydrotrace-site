@@ -103,7 +103,7 @@ const BlogPost = () => {
       {/* Body */}
       <main className="bg-white pt-20 pb-32">
         <div className="container mx-auto px-6 lg:px-12">
-          <article className="max-w-[720px] mx-auto font-['Brown_Std'] text-[#0A1B44] text-[17px] leading-[1.75]">
+          <article className="max-w-[720px] mx-auto font-['Roboto'] font-light text-[#0A1B44] text-[18px] leading-[1.75]">
             {post.sections.map((section, idx) => (
               <section key={idx} className="mb-10">
                 {section.heading && (
