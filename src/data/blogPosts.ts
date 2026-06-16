@@ -1,4 +1,5 @@
 import blogAgriValuation from "@/assets/blog-agri-valuation.png.asset.json";
+import blogCsrdIrrigation from "@/assets/blog-csrd-irrigation.png.asset.json";
 
 export interface BlogReference {
   /** Short label for tooltip: "Author (Year). Title." */
@@ -163,6 +164,86 @@ export const blogPosts: BlogPost[] = [
       {
         short: "Zhao, Ancev & Vervoort (2024). Water market functionality: Evidence from the Australian experience.",
         html: 'Zhao, M., Ancev, T. &amp; Vervoort, R.W. (2024). <a href="https://doi.org/10.1029/2022WR033938" target="_blank" rel="noopener noreferrer"><em>Water market functionality: Evidence from the Australian experience.</em></a> Water Resources Research, 60, e2022WR033938.',
+      },
+    ],
+  },
+  {
+    id: "2",
+    slug: "european-climate-disclosure-irrigated-agriculture",
+    category: "Perspectives",
+    title:
+      "European climate disclosure and irrigated agriculture: the quantification gap nobody is talking about",
+    subtitle:
+      "Why the first wave of CSRD reports is likely understating the physical water risk in Mediterranean agricultural portfolios.",
+    date: "May 2026",
+    image: blogCsrdIrrigation.url,
+    imageAlt:
+      "Cyanotype of an irrigation pivot in a Mediterranean field with EU flag stars",
+    sections: [
+      {
+        paragraphs: [
+          "European agricultural lenders and farmland asset managers in the first wave of mandatory CSRD reporting completed their initial disclosure cycle in 2025, covering FY2024. With the Omnibus I Directive now in force and Wave 2 reporting delayed to 2028, attention is shifting from compliance mechanics to the quality of what is actually being disclosed. For any institution with material exposure to irrigated agriculture in Southern Europe, that shift surfaces a specific and largely unresolved problem.",
+          "Physical water risk in Mediterranean irrigated systems is not a background hazard. It is the primary risk driver, and the one that current disclosure practice handles least adequately.",
+        ],
+      },
+      {
+        heading: "What the regulatory stack actually demands",
+        paragraphs: [
+          "CSRD and the ESRS standards came into force for Wave 1 entities reporting on FY2024 [1]. Following the Omnibus I Directive and Stop-the-Clock measures adopted in 2025, Wave 2 reporting has been delayed to 2028. The core disclosure requirements for Wave 1 institutions remain in place: a double materiality assessment, physical climate risk identification, and scenario analysis demonstrating how climate conditions affect financial resilience. ESRS E1 requires physical climate risk to be assessed under at least two climate scenarios, covering short, medium, and long-term horizons. Where physical risks are assessed as material under double materiality, quantitative financial impact disclosure is the standard to work toward.",
+          "The ECB has been unambiguous about the implication for agricultural lenders. Its 2022 climate stress test found that banks' vulnerability to a drought and heat scenario is highly dependent on sectoral activities and the geographical location of their exposures, with agriculture among the hardest-hit sectors. The impact materialises through a decrease in sectoral productivity and an increase in loan losses in affected areas [2]. That finding applies directly to any European bank with loan books concentrated in Mediterranean irrigated farming regions.",
+          "Yet the same 2022 stress test found that just 20% of banks considered climate risk as a variable when granting loans, and most did not include climate risk in their credit risk models [2]. ECB supervisory pressure has increased since then, but the gap between what supervisors expect and what institutions actually disclose on physical agricultural risk remains wide, and narrowing it requires more than a basin-level hazard score.",
+        ],
+      },
+      {
+        heading: "Why Mediterranean irrigated agriculture is the specific pressure point",
+        paragraphs: [
+          "Mediterranean countries like Spain, Italy, and Greece experience the highest levels of water stress in the EU, driven by a dry climate and heavy agricultural water consumption. Agriculture is the largest water user across EU member states and is particularly vulnerable to water scarcity [3]. That vulnerability is not evenly distributed. It is concentrated in irrigated permanent crops and field crops across the Mediterranean arc.",
+          "The numbers from the ground are striking. In the Axarquía region of southern Spain, a major avocado and mango production area, reservoir levels dropped below the 8% outlet threshold between 2019 and 2024, dam water for irrigation was entirely suspended in November 2022, and socioeconomic impacts ranged from substantial crop losses to a potential long-term decline in regional economic viability [4]. This is not a projected scenario. It happened, within the loan book horizon of every agricultural lender with Spanish exposure.",
+          "A systematic review of 44 studies on future water availability for Mediterranean agriculture under climate change scenarios found that future Mediterranean water reserves may not meet agricultural water demands, due to reduced reservoir inflows [5]. The direction of travel is consistent across the literature.",
+          "What is not consistent is how financial institutions are translating this physical signal into credit risk and asset valuation terms.",
+        ],
+      },
+      {
+        heading: "The gap between hazard identification and financial quantification",
+        paragraphs: [
+          "Standard physical climate risk tools, including the basin-level drought indices and water stress scores that populate most ESRS E1 disclosures, tell an institution that a location sits in a high-stress region. They do not tell it what that stress costs.",
+          "For irrigated agriculture specifically, the translation from physical hazard to financial outcome requires crop-level modelling that accounts for how different crops respond to water deficits at specific growth stages, how irrigation systems mediate between available water and crop water supply, and how climate scenarios affect yield distributions rather than just average conditions. A drought stress score for Almería province does not tell a lender whether their olive or almond borrowers face a 10% or 40% revenue reduction in a dry year equivalent to 2022 conditions.",
+          "The ongoing climate crisis and growing water scarcity are exerting increasing pressure on agriculture in Southern and Western Europe, leading to reduced crop yields, greater risk of land abandonment, and deterioration of soil quality [6]. For a lender or farmland fund, each of those outcomes has a different financial mechanism: yield reduction affects revenue, land abandonment affects collateral values, and soil deterioration affects long-term productivity premia. Disaggregating these effects requires physically-grounded crop-water simulation at the asset level, not a regional hazard index.",
+        ],
+      },
+      {
+        heading: "What adequate quantification looks like",
+        paragraphs: [
+          "ESRS E1 scenario analysis for irrigated agricultural exposure requires a chain that most current practice does not complete: from climate forcing (temperature, precipitation, evapotranspiration) through crop water demand, irrigation water availability, and yield outcome, to revenue distribution and ultimately financial impact under named scenarios.",
+          "This chain is buildable from open-source climate data and FAO-calibrated crop simulation models. The same approach applies to almonds in Andalusia, olives in Puglia, or cotton in Greece, wherever irrigated crop revenue is material to an institution's portfolio.",
+          "The regulatory requirement is here. The physical risk is visible and in some regions already materialising. The gap is in the financial translation, connecting the physics of Mediterranean water stress to the asset-level revenue and collateral exposure that ESRS E1 and ECB supervisory expectations now require.",
+        ],
+      },
+    ],
+    references: [
+      {
+        short: "European Commission (2022). Corporate Sustainability Reporting Directive (CSRD).",
+        html: 'European Commission (2022). <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464" target="_blank" rel="noopener noreferrer"><em>Corporate Sustainability Reporting Directive (CSRD).</em></a> Directive 2022/2464/EU. ESRS E1 Climate Change standard adopted as Delegated Regulation (EU) 2023/2772.',
+      },
+      {
+        short: "ECB Banking Supervision (2022). 2022 Climate Risk Stress Test.",
+        html: 'ECB Banking Supervision (2022). <a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.climate_stress_test_report.20220708~2e3cc0999f.en.pdf" target="_blank" rel="noopener noreferrer"><em>2022 Climate Risk Stress Test.</em></a> European Central Bank.',
+      },
+      {
+        short: "EPRS (2025). The future of water availability and use in the EU.",
+        html: 'European Parliament Research Service (2025). <a href="https://www.europarl.europa.eu/RegData/etudes/STUD/2025/765769/EPRS_STU(2025)765769_EN.pdf" target="_blank" rel="noopener noreferrer"><em>The future of water availability and use in the EU.</em></a> EPRS Study PE 765769.',
+      },
+      {
+        short: "Contreras-López et al. (2025). Severe water crisis in southern Spain under expanding irrigated agriculture.",
+        html: 'Contreras-López, M. et al. (2025). <a href="https://doi.org/10.1073/pnas.2508055122" target="_blank" rel="noopener noreferrer"><em>Severe water crisis in southern Spain under expanding irrigated agriculture: A multidimensional drought analysis.</em></a> PNAS, 122(39).',
+      },
+      {
+        short: "Torresan et al. (2024). Future agricultural water availability in Mediterranean countries under climate change.",
+        html: 'Torresan, C. et al. (2024). <a href="https://doi.org/10.3390/w16172484" target="_blank" rel="noopener noreferrer"><em>Future agricultural water availability in Mediterranean countries under climate change: A systematic review.</em></a> Water, 16(17), 2484.',
+      },
+      {
+        short: "Scalone et al. (2025). Climate crises and agricultural drought: evolutions in water scarcity context at the farm level.",
+        html: 'Scalone, M. et al. (2025). <a href="https://doi.org/10.3390/earth6020056" target="_blank" rel="noopener noreferrer"><em>Climate crises and agricultural drought: evolutions in water scarcity context at the farm level.</em></a> Earth, 6(2), 56.',
       },
     ],
   },
