@@ -186,3 +186,74 @@ All colors MUST be HSL.
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Inline citations */
+.citation {
+  font-size: 0.7em;
+  line-height: 0;
+  margin-left: 1px;
+  vertical-align: super;
+}
+.citation-link {
+  position: relative;
+  color: #21177a;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 1px;
+  cursor: pointer;
+}
+.citation-link:hover {
+  text-decoration: underline;
+}
+.citation-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #0A1B44;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Brown_Std', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: normal;
+  width: max-content;
+  max-width: 280px;
+  box-shadow: 0 6px 24px rgba(10, 27, 68, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 50;
+  text-align: left;
+}
+.citation-link:hover::after,
+.citation-link:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Reference list */
+.reference-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.reference-list li {
+  scroll-margin-top: 120px;
+}
+.reference-list li:target {
+  background: rgba(33, 23, 122, 0.06);
+  border-radius: 4px;
+  padding: 6px 8px;
+  transition: background 600ms ease;
+}
+.reference-list a {
+  color: #21177a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.reference-list a:hover {
+  text-decoration: none;
+}
