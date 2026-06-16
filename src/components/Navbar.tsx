@@ -145,7 +145,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`md:hidden pb-4 backdrop-blur-sm mt-0 p-4 border-t ${scrolled && !isDarkPage ? "bg-white/95 border-[#0A1B44]/15" : "bg-black/70 border-white/20"}`}>
+          <div className={`md:hidden pb-4 backdrop-blur-sm mt-0 p-4 border-t ${scrolled && !useDarkTheme ? "bg-white/95 border-[#0A1B44]/15" : "bg-black/70 border-white/20"}`}>
             <div className="flex flex-col space-y-1">
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/water-risk"); }}
