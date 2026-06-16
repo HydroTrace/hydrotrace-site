@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     category: "Perspectives",
     title: "The blind spot in agricultural asset valuation: crop-level water risk",
     subtitle:
-      "Why basin-level screening systematically mispricesthe water risk embedded in irrigated farmland.",
+      "Why basin-level screening systematically misprices the water risk embedded in irrigated farmland.",
     date: "June 16, 2026",
     image: blogAgriValuation.url,
     imageAlt: "Aerial cyanotype of terraced agricultural fields",
