@@ -1,30 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import blogAgriValuation from "@/assets/blog-agri-valuation.png.asset.json";
+import { blogPosts } from "@/data/blogPosts";
 
-export interface BlogPost {
-  id: string;
-  slug: string;
-  category: string;
-  title: string;
-  date: string;
-  image: string;
-  imageAlt?: string;
-}
-
-// Add new blog posts here — they will automatically appear in a 2-column grid.
-export const blogPosts: BlogPost[] = [
-  {
-    id: "1",
-    slug: "blind-spot-agricultural-asset-valuation",
-    category: "Insights",
-    title: "The blind spot in agricultural asset valuation",
-    date: "June 16, 2026",
-    image: blogAgriValuation.url,
-    imageAlt: "Aerial cyanotype of terraced agricultural fields",
-  },
-];
+export { blogPosts } from "@/data/blogPosts";
+export type { BlogPost } from "@/data/blogPosts";
 
 const Blog = () => {
   const navigate = useNavigate();

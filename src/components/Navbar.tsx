@@ -11,7 +11,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const isDarkPage = location.pathname === "/water-risk";
-  const isBlogPage = location.pathname === "/blog";
+  const isBlogPage = location.pathname.startsWith("/blog");
   const useDarkTheme = isDarkPage || isBlogPage;
 
   useEffect(() => {
