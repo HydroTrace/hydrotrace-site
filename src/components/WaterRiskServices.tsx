@@ -1,19 +1,10 @@
-const services = [
-  {
-    title: "Crop-Water Assessment",
-    image: "/images/services/crop-water.jpg",
-    alt: "Aerial view of irrigated farmland fields",
-    description:
-      "Field-level yield distributions and revenue-at-risk from physically-based crop-water simulation.",
-  },
-  {
-    title: "Water Market Intelligence",
-    image: "/images/services/water-market.jpg",
-    alt: "River flowing through forested gorge",
-    description:
-      "Storage, allocation, price, and crop demand in one integrated view.",
-  },
-];
+const service = {
+  title: "Insights",
+  image: "/images/services/crop-water.jpg",
+  alt: "Aerial view of irrigated farmland fields",
+  description:
+    "Analysis and perspectives on water risk in agriculture and capital markets.",
+};
 
 const WaterRiskServices = () => {
   return (
