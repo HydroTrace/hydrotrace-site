@@ -1,95 +1,80 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
-import waterGovernanceImage from "@/assets/resource-water-governance.png";
-import municipalImage from "@/assets/resource-municipal.jpg";
-import industrialImage from "@/assets/resource-industrial.jpg";
-import conservationImage from "@/assets/resource-conservation.jpg";
+import blogAgriValuation from "@/assets/blog-agri-valuation.png.asset.json";
 
-const resources = [
+export interface BlogPost {
+  id: string;
+  slug: string;
+  category: string;
+  title: string;
+  date: string;
+  image: string;
+  imageAlt?: string;
+}
+
+// Add new blog posts here — they will automatically appear in a 2-column grid.
+export const blogPosts: BlogPost[] = [
   {
-    id: "water-governance",
-    title: "Accountable and transparent water governance",
-    description: "Optimize irrigation systems and ensure sustainable water use for farming communities",
-    image: waterGovernanceImage,
-    slug: "water-governance"
+    id: "1",
+    slug: "blind-spot-agricultural-asset-valuation",
+    category: "Insights",
+    title: "The blind spot in agricultural asset valuation",
+    date: "June 16, 2026",
+    image: blogAgriValuation.url,
+    imageAlt: "Aerial cyanotype of terraced agricultural fields",
   },
-  {
-    id: "municipal-water-supply",
-    title: "Municipal Water Supply",
-    description: "Track and verify urban water distribution for transparent public service delivery",
-    image: municipalImage,
-    slug: "municipal-water-supply"
-  },
-  {
-    id: "industrial-water-compliance",
-    title: "Industrial Water Compliance",
-    description: "Monitor industrial water extraction and maintain regulatory compliance",
-    image: industrialImage,
-    slug: "industrial-water-compliance"
-  },
-  {
-    id: "groundwater-conservation",
-    title: "Groundwater Conservation",
-    description: "Protect aquifer systems through verifiable monitoring and sustainable practices",
-    image: conservationImage,
-    slug: "groundwater-conservation"
-  }
 ];
 
 const Blog = () => {
   const navigate = useNavigate();
-  
-  const handleResourceClick = (slug: string) => {
-    navigate(`/blog/${slug}`);
-  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted/20">
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <main className="flex-1 pt-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 font-['DM_Serif_Text'] text-foreground">
-              Learn More
-            </h1>
-            <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
-              Explore how HydroTrace enables transparent water management across diverse sectors
-            </p>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {resources.map((resource) => (
-                <div
-                  key={resource.id}
-                  onClick={() => handleResourceClick(resource.slug)}
-                  className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group border border-border"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={resource.image}
-                      alt={resource.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-3 font-['DM_Serif_Text'] text-foreground">
-                      {resource.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {resource.description}
-                    </p>
-                    <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
-                      Learn more
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
+      <main className="pt-32 pb-24">
+        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+          <header className="mb-16">
+            <p className="font-['IBM_Plex_Mono'] text-[13px] tracking-wide text-[#21177a] mb-4">
+              Blog
+            </p>
+            <h1 className="font-['Open_Sans'] text-[#0A1B44] text-4xl md:text-5xl lg:text-6xl font-light leading-tight max-w-3xl">
+              Insights on water risk, governance and stewardship
+            </h1>
+          </header>
+
+          <div className="border-t border-dashed border-[#DCE2EE]" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 pt-16">
+            {blogPosts.map((post) => (
+              <article
+                key={post.id}
+                onClick={() => navigate(`/blog/${post.slug}`)}
+                className="group cursor-pointer"
+              >
+                <div className="overflow-hidden bg-[#F4F6FB] aspect-[16/9] mb-6">
+                  <img
+                    src={post.image}
+                    alt={post.imageAlt ?? post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
                 </div>
-              ))}
-            </div>
+                <p className="font-['IBM_Plex_Mono'] text-[12px] tracking-wide text-[#21177a] uppercase mb-3">
+                  {post.category}
+                </p>
+                <h2 className="font-['Open_Sans'] text-[#0A1B44] text-2xl md:text-3xl font-light leading-snug mb-4 group-hover:underline underline-offset-4 decoration-1">
+                  {post.title}
+                </h2>
+                <p className="font-['IBM_Plex_Mono'] text-[12px] tracking-wide text-[#21177a]">
+                  {post.date}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );
