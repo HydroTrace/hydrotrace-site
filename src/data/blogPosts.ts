@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "2",
     slug: "european-climate-disclosure-irrigated-agriculture",
-    category: "Water Risk",
+    category: "Regulation",
     title:
       "European climate disclosure and irrigated agriculture: the quantification gap nobody is talking about",
     subtitle:
