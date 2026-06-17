@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "1",
     slug: "blind-spot-agricultural-asset-valuation",
-    category: "Perspectives",
+    category: "Water Risk",
     title: "The blind spot in agricultural asset valuation: crop-level water risk",
     subtitle:
       "Why basin-level screening systematically misprices the water risk embedded in irrigated farmland.",
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "2",
     slug: "european-climate-disclosure-irrigated-agriculture",
-    category: "Perspectives",
+    category: "Water Risk",
     title:
       "European climate disclosure and irrigated agriculture: the quantification gap nobody is talking about",
     subtitle:

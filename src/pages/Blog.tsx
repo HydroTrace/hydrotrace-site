@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,8 +7,17 @@ import { blogPosts } from "@/data/blogPosts";
 export { blogPosts } from "@/data/blogPosts";
 export type { BlogPost } from "@/data/blogPosts";
 
+const FILTERS = ["All", "Water Risk", "Regulation", "Science", "Governance", "Markets"] as const;
+type Filter = (typeof FILTERS)[number];
+
 const Blog = () => {
   const navigate = useNavigate();
+  const [activeFilter, setActiveFilter] = useState<Filter>("All");
+
+  const filteredPosts =
+    activeFilter === "All"
+      ? blogPosts
+      : blogPosts.filter((p) => p.category.toLowerCase() === activeFilter.toLowerCase());
 
   return (
     <div className="min-h-screen bg-white">
@@ -15,7 +25,7 @@ const Blog = () => {
 
       <main className="pt-32 pb-48">
         <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-          <header className="mb-24">
+          <header className="mb-16">
             <p className="font-['Brown_Std'] font-normal tracking-[0.22em] text-[11px] uppercase text-[#0A1B44] mb-6">
               Blog
             </p>
@@ -26,8 +36,28 @@ const Blog = () => {
 
           <div className="border-t border-dashed border-[#DCE2EE]" />
 
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-3 py-6">
+            {FILTERS.map((f, i) => (
+              <div key={f} className="flex items-center gap-x-2">
+                {i > 0 && <span className="text-[#0A1B44]/30 text-[11px]">·</span>}
+                <button
+                  onClick={() => setActiveFilter(f)}
+                  className={`font-['Brown_Std'] font-normal tracking-[0.22em] text-[11px] uppercase px-3 py-1.5 transition-colors ${
+                    activeFilter === f
+                      ? "bg-[#0A1B44] text-white"
+                      : "text-[#0A1B44]/70 hover:text-[#0A1B44]"
+                  }`}
+                >
+                  {f}
+                </button>
+              </div>
+            ))}
+          </nav>
+
+          <div className="border-t border-dashed border-[#DCE2EE]" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 pt-24">
-            {blogPosts.map((post) => (
+            {filteredPosts.map((post) => (
               <article
                 key={post.id}
                 onClick={() => navigate(`/blog/${post.slug}`)}
