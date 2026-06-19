@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
     title: "The blind spot in agricultural asset valuation: crop-level water risk",
     subtitle:
       "Why basin-level screening systematically misprices the water risk embedded in irrigated farmland.",
-    date: "June 16, 2026",
+    date: "June 2026",
     image: blogAgriValuation.url,
     imageAlt: "Aerial cyanotype of terraced agricultural fields",
     sections: [
@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Irrigated agriculture is one of the most water-dependent asset classes in existence. Roughly 40% of the world's food is produced on the 20% of cropland that is irrigated [1]. That land commands a premium not simply because of soil quality, but because of reliable water access. Water is the productive asset. The land is just where it sits.",
           "Yet when capital allocators, including farmland funds, agricultural lenders, and infrastructure investors, assess water risk, they typically rely on basin-level screening tools: WRI Aqueduct scores, MSCI ESG ratings, or watershed-level drought indices. These tools can show that an asset sits in a high-stress basin. They cannot show what that stress costs.",
-          "This is not a minor omission. It is the central unanswered question in agricultural asset finance: how does water stress translate into yield loss, revenue impairment, and asset value? Companies reported $425 billion in combined water-related value at risk via CDP in 2019 [12] , yet the tools most financial institutions use to assess that risk stop at the basin level.",
+          "The central unanswered question in agricultural asset finance is how water stress translates into yield loss, revenue impairment, and asset value. Companies already reported $425 billion in combined water-related value at risk via CDP in 2019 [12], yet the tools most financial institutions use to assess that risk stop at the basin level.",
         ],
       },
       {
@@ -83,8 +83,8 @@ export const blogPosts: BlogPost[] = [
         heading: "The entitlement dimension",
         paragraphs: [
           "Yield risk is only the first layer. In regulated water markets, water stress also affects the value of the water rights themselves.",
-          "In markets such as the Murray-Darling Basin in Australia, water allocation systems in Spain, and abstraction licence regimes in England, water entitlements are tradeable assets. Their value is a function of expected allocation reliability under future climate conditions.",
-          "A general security entitlement in an over-allocated basin facing declining inflows under warming scenarios may be worth materially less in 2040 than its current market price implies. Yet current valuation frameworks often price recent trading history rather than forward climate risk. Research confirms that water market prices reflect current scarcity conditions effectively [13] — but that signal is backward-looking. It does not price the forward shift in allocation reliability that warming scenarios imply.",
+          "In markets such as the Murray-Darling Basin in Australia, water allocation systems in Spain, and prior appropriation water rights in California and the western United States, water entitlements are tradeable assets. Their value is a function of expected allocation reliability under future climate conditions.",
+          "A general security entitlement in an over-allocated basin facing declining inflows under warming scenarios may be worth materially less in 2040 than its current market price implies. Yet current valuation frameworks often price recent trading history rather than forward climate risk. Research confirms that water market prices reflect current scarcity conditions effectively [13], but that signal is backward-looking. It does not price the forward shift in allocation reliability that warming scenarios imply.",
           "Research shows the income differential between senior and junior water right holders can reach $141 per acre per year, a gap that compounds considerably in land valuations [8]. As climate change shifts the distribution of available water, the reliability premium attached to senior entitlements will also change. Assets valued on historical allocation reliability will need to be revalued against forward climate projections.",
           "This is a mispricing that basin-level hazard scores cannot identify, because they do not model the allocation mechanisms that determine who receives water when supply falls short.",
           "For farmland funds holding entitlement portfolios, and for lenders whose agricultural loan security includes water rights, this is an emerging but material valuation risk.",
