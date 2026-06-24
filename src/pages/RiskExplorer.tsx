@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
+import bgAsset from "@/assets/risk-explorer-bg.jpg.asset.json";
 
 type Rec = {
   crop: string;
@@ -48,16 +49,16 @@ const DEBT_RATE = 0.065;
 
 const COL = {
   bg: "#0e0e0e",
-  text: "#e8e8e8",
-  sub: "#888888",
-  tert: "#555555",
-  border: "rgba(255,255,255,0.12)",
-  card: "rgba(255,255,255,0.04)",
-  physical: "#4B5FDB",
-  optimised: "#9B4FD4",
-  breach: "#E8527A",
-  danger: "#E84F3A",
-  aqueduct: "#F5A623",
+  text: "#ffffff",
+  sub: "rgba(255,255,255,0.92)",
+  tert: "rgba(255,255,255,0.75)",
+  border: "rgba(255,255,255,0.18)",
+  card: "rgba(10,18,8,0.55)",
+  physical: "#9DB4FF",
+  optimised: "#C9A6FF",
+  breach: "#FF8FA8",
+  danger: "#FF8A78",
+  aqueduct: "#FFC774",
 };
 
 const AQUEDUCT = {
@@ -304,6 +305,7 @@ export default function RiskExplorer() {
   const [dscrCovenant, setDscrCovenant] = useState(1.25);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch("/data/sweep_results.json")
       .then((r) => r.json())
       .then((data: Rec[]) => {
@@ -391,7 +393,19 @@ export default function RiskExplorer() {
         : COL.physical;
 
   return (
-    <div style={{ background: COL.bg, minHeight: "100vh", color: COL.text }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        color: COL.text,
+        backgroundColor: COL.bg,
+        backgroundImage: `linear-gradient(rgba(10,12,8,0.55), rgba(10,12,8,0.7)), url(${bgAsset.url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+
       <style>{`
         .rx-slider {
           -webkit-appearance: none;
