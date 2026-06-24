@@ -1144,6 +1144,19 @@ export default function RiskExplorer() {
                 Get in touch →
               </a>
             </div>
+
+            {/* Disclaimer */}
+            <div
+              style={{
+                fontFamily: "'Open Sans', sans-serif",
+                fontSize: 10,
+                color: "#444",
+                textAlign: "center",
+                paddingTop: 8,
+              }}
+            >
+              Outputs are illustrative and do not constitute financial advice. Site-specific analysis available on request.
+            </div>
           </div>
         </div>
       </div>
