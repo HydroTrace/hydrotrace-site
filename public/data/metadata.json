@@ -1,0 +1,103 @@
+{
+  "generated": "2026-06-23T23:30:52.070810",
+  "n_records": 1116,
+  "n_errors": 0,
+  "runtime_seconds": 6914,
+  "parameter_space": {
+    "crops": [
+      "Cotton",
+      "Wheat",
+      "Maize",
+      "Sorghum",
+      "Sunflower",
+      "SugarBeet"
+    ],
+    "planting_timings": [
+      "Early",
+      "Normal",
+      "Late"
+    ],
+    "irrigation_methods": [
+      "rainfed",
+      "flood",
+      "sprinkler",
+      "drip"
+    ],
+    "allocation_levels": {
+      "p10": 0.1,
+      "p20": 0.2,
+      "p30": 0.3,
+      "p40": 0.4,
+      "p50": 0.5,
+      "p60": 0.6,
+      "p70": 0.7,
+      "p80": 0.8,
+      "p90": 0.9,
+      "p100": 1.0
+    },
+    "schedules": [
+      "standard",
+      "optimised"
+    ],
+    "total_runs": 1116
+  },
+  "climate": {
+    "source": "Tunis daily (AquaCrop built-in dataset)",
+    "precip_scale": 0.2,
+    "description": "Semi-arid irrigation-dependent regime (~90mm/yr effective precip)",
+    "sim_period": "1979/01/01 to 1995/12/31",
+    "usable_seasons": "~15 per run (first season dropped for spin-up)",
+    "upsell_note": "Site-specific analysis uses ERA5 forcing + CMIP6 ensemble"
+  },
+  "default_financial_assumptions": {
+    "farm_ha": 500,
+    "loan_per_ha": "per-crop (see crop_loan_per_ha in each record)",
+    "op_cost_per_ha": 1200,
+    "debt_rate": 0.065,
+    "dscr_covenant": 1.25
+  },
+  "per_crop_loan_per_ha": {
+    "Cotton": 4000,
+    "Wheat": 2500,
+    "Maize": 2000,
+    "Sorghum": 1500,
+    "Sunflower": 1800,
+    "SugarBeet": 3000
+  },
+  "v2_changes": {
+    "planting_dates": "Maize/Sorghum/Sunflower moved from Oct to Apr planting. Oct planting coincided with Mediterranean wet season \u2014 allocation never bound. Apr planting hits dry summer, making irrigation genuinely water-limited.",
+    "loan_per_ha": "Per-crop loan assumptions replacing universal AUD 4,000/ha. Cotton/Wheat higher (irrigated MDB land values). Maize/Sorghum/Sunflower lower (broadacre). SugarBeet mid-range (European intensive arable)."
+  },
+  "groundwater": {
+    "energy_formula": "kWh/ML = depth_m \u00d7 1.6",
+    "pump_efficiency": 0.65,
+    "electricity_rate": "AUD 0.18/kWh",
+    "reference": "Skinner et al. 2016 (GW pumping, Australian irrigation)"
+  },
+  "references": {
+    "Ky_values": "FAO Irrigation Paper 33 (Doorenbos & Kassam 1979)",
+    "AppEff": "FAO 56 Table 6; Phocaides 2007 (FAO irrigation manual)",
+    "deficit_irr": "Fereres & Soriano 2007, J.Exp.Bot 58(2):147-159",
+    "scheduling": "English 1990, deficit irrigation optimisation",
+    "gw_energy": "Skinner et al. 2016 (GW pumping energy)"
+  },
+  "aqueduct_integration": {
+    "current_status": "Static placeholder \u2014 replace with API call",
+    "implementation": "Query WRI Aqueduct 4.0 API once at sweep time for representative location (lat/lon of Tunis climate: ~33.9N, 9.5E). Store result in AQUEDUCT dict above. No other code changes required.",
+    "api_note": "Aqueduct score intentionally static in tool \u2014 demonstrates basin screening limitation regardless of whether value is real or placeholder."
+  },
+  "website_implementation": {
+    "lookup_keys": [
+      "crop",
+      "timing",
+      "irrigation",
+      "allocation",
+      "schedule"
+    ],
+    "allocation_slider": "Snap to nearest 10% step OR linear interpolation between adjacent records",
+    "financial_sliders": "Apply client-side to yields_raw: revenue = yield \u00d7 price \u00d7 farm_ha",
+    "gw_cost_slider": "Read from gw_costs[depth_key].pumping_cost_aud",
+    "api_calls_at_runtime": false,
+    "methodology_exposed": false
+  }
+}
