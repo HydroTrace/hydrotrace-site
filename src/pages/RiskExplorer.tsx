@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Info } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import bgAsset from "@/assets/risk-explorer-bg.jpg.asset.json";
+
 import {
   Tooltip,
   TooltipContent,
@@ -400,7 +400,7 @@ export default function RiskExplorer() {
         minHeight: "100vh",
         color: COL.text,
         backgroundColor: COL.bg,
-        backgroundImage: `linear-gradient(rgba(10,12,8,0.55), rgba(10,12,8,0.7)), url(${bgAsset.url})`,
+        backgroundImage: `linear-gradient(rgba(10,12,8,0.55), rgba(10,12,8,0.7)), url(/images/risk-explorer-bg.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
