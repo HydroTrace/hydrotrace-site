@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
 
-type Record = {
+type Rec = {
   crop: string;
   timing: string;
   irrigation: string;
@@ -17,7 +17,7 @@ type Record = {
 };
 
 const CROPS = ["Cotton", "Wheat", "Maize", "Sorghum", "Sunflower", "SugarBeet"] as const;
-const CROP_LABELS: Record<string, string> = {
+const CROP_LABELS: Rec<string, string> = {
   Cotton: "Cotton",
   Wheat: "Wheat",
   Maize: "Maize",
@@ -27,14 +27,14 @@ const CROP_LABELS: Record<string, string> = {
 };
 const TIMINGS = ["Early", "Normal", "Late"] as const;
 const IRRIGATION_LABELS = ["Flood / furrow", "Sprinkler", "Drip / micro", "Rainfed"] as const;
-const IRRIGATION_MAP: Record<string, string> = {
+const IRRIGATION_MAP: Rec<string, string> = {
   "Flood / furrow": "flood",
   Sprinkler: "sprinkler",
   "Drip / micro": "drip",
   Rainfed: "rainfed",
 };
 
-const CROP_DEFAULTS: Record<string, { price: number; loan: number }> = {
+const CROP_DEFAULTS: Rec<string, { price: number; loan: number }> = {
   Cotton: { price: 580, loan: 4000 },
   Wheat: { price: 320, loan: 2500 },
   Maize: { price: 280, loan: 2000 },
@@ -282,7 +282,7 @@ const DEPTH_SNAPS = [5, 15, 30, 50, 80];
 
 export default function RiskExplorer() {
   const [records, setRecords] = useState<Record[] | null>(null);
-  const [index, setIndex] = useState<Map<string, Record>>(new Map());
+  const [index, setIndex] = useState<Map<string, Rec>>(new Map());
 
   // Controls
   const [crop, setCrop] = useState<string>("Cotton");
@@ -306,9 +306,9 @@ export default function RiskExplorer() {
   useEffect(() => {
     fetch("/data/sweep_results.json")
       .then((r) => r.json())
-      .then((data: Record[]) => {
+      .then((data: Rec[]) => {
         setRecords(data);
-        const m = new Map<string, Record>();
+        const m = new Map<string, Rec>();
         data.forEach((r) => {
           m.set(
             `${r.crop}|${r.timing}|${r.irrigation}|${r.allocation}|${r.schedule}`,
