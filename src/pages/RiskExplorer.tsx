@@ -1069,15 +1069,55 @@ export default function RiskExplorer() {
                   flexWrap: "wrap",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "'Open Sans', sans-serif",
-                    fontSize: 12,
-                    color: COL.sub,
-                  }}
-                >
-                  Annual pumping cost at {depthM}m depth
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span
+                    style={{
+                      fontFamily: "'Open Sans', sans-serif",
+                      fontSize: 12,
+                      color: COL.text,
+                    }}
+                  >
+                    Annual pumping cost at {depthM}m depth
+                  </span>
+                  <TooltipProvider delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          style={{
+                            background: "none",
+                            border: "none",
+                            padding: 0,
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            color: "#555",
+                          }}
+                        >
+                          <Info size={14} />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="top"
+                        sideOffset={6}
+                        style={{
+                          background: "rgba(20,20,20,0.95)",
+                          border: "1px solid rgba(255,255,255,0.12)",
+                          borderRadius: 6,
+                          padding: "8px 12px",
+                          fontFamily: "'Open Sans', sans-serif",
+                          fontSize: 11,
+                          color: "#888",
+                          maxWidth: 280,
+                          lineHeight: 1.4,
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                        }}
+                      >
+                        Pumping energy estimated at 1.6 kWh/ML per metre of lift, assuming pump efficiency of 65%. Energy cost at $0.18/kWh. Formula: cost = water volume (ML) × depth (m) × 1.6 × $0.18.
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
                 <span
                   style={{
                     fontFamily: "'DM Serif Display', 'DM Serif Text', serif",
@@ -1091,7 +1131,7 @@ export default function RiskExplorer() {
                   style={{
                     fontFamily: "'Open Sans', sans-serif",
                     fontSize: 11,
-                    color: COL.tert,
+                    color: COL.text,
                   }}
                 >
                   {gw
