@@ -46,14 +46,28 @@ const WaterRiskServices = () => {
           <p className="text-[15px] leading-relaxed text-white/85 mb-12 max-w-md font-['Brown_Std']">
             {services[0].description}
           </p>
-          <div className="flex items-center gap-4 text-white/50">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/30">
-              <span className="block w-1.5 h-1.5 rounded-full bg-white/40" />
+          <button
+            onClick={() => navigate('/risk-explorer')}
+            className="group flex items-center gap-4 text-white/70 hover:text-white transition-colors cursor-pointer"
+          >
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/30 group-hover:border-white/60 transition-colors">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </span>
             <span className="text-xs tracking-[0.22em] font-mono uppercase">
-              Coming Soon
+              Explore the water risk explorer now
             </span>
-          </div>
+          </button>
         </article>
 
         {/* Card 2 */}
