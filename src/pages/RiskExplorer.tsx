@@ -474,7 +474,7 @@ export default function RiskExplorer() {
             margin: 0,
           }}
         >
-          This explorer draws on 1,116 AquaCrop crop-water simulations across a
+          This explorer draws on 1,116 physically-based crop-water simulations across a
           representative semi-arid irrigated agriculture profile. Adjust crop
           type, water availability, irrigation method, and financial parameters
           to see how physical water stress translates into financial exposure,
