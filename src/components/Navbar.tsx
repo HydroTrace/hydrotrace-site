@@ -163,6 +163,12 @@ const Navbar = () => {
                 Water Risk
               </button>
               <button
+                onClick={() => { setIsMenuOpen(false); navigate("/risk-explorer"); }}
+                className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
+              >
+                Risk explorer
+              </button>
+              <button
                 onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
                 className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
               >
