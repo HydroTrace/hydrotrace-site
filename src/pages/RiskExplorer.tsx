@@ -208,7 +208,7 @@ function Toggle<T extends string>({
 }: {
   options: readonly T[];
   value: T;
-  onChange: (v: T) => void;
+  onChange: (v: any) => void;
 }) {
   return (
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
