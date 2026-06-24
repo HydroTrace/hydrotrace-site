@@ -10,8 +10,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isDarkPage = location.pathname === "/water-risk";
+  const isDarkPage = location.pathname === "/water-risk" || location.pathname === "/risk-explorer";
   const isBlogPage = location.pathname.startsWith("/blog");
+  const isRiskExplorerPage = location.pathname === "/risk-explorer";
   const useDarkTheme = isDarkPage || isBlogPage;
 
   useEffect(() => {
@@ -59,6 +60,8 @@ const Navbar = () => {
   const dividerColor = scrolled && !useDarkTheme ? "bg-[#0A1B44]/40" : "bg-white/40";
   const bgClass = isBlogPage
     ? "bg-[#0A1B44]/95 backdrop-blur-sm"
+    : isRiskExplorerPage
+      ? "bg-black/65 backdrop-blur-sm"
     : scrolled
       ? isDarkPage
         ? "bg-black/60 backdrop-blur-sm"
