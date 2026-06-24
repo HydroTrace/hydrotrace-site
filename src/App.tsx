@@ -9,6 +9,7 @@ import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import DigitalWaterGovernance from "./pages/DigitalWaterGovernance";
 import WaterRisk from "./pages/WaterRisk";
+import RiskExplorer from "./pages/RiskExplorer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/digital-water-governance" element={<DigitalWaterGovernance />} />
           <Route path="/water-risk" element={<WaterRisk />} />
+          <Route path="/risk-explorer" element={<RiskExplorer />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

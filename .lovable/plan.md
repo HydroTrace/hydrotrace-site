@@ -1,27 +1,46 @@
-## Goal
-Reduce file sizes of the 7 images in `public/images/` (currently ~11.3 MB total) while keeping them visually crisp, so the Netlify site renders faster.
+# Risk Explorer page
 
-## Approach
-Use `sharp` (already in the sandbox) to re-encode each image in place. Same filenames, same paths — no code changes needed.
+Build a new `/risk-explorer` page following the supplied spec verbatim. Add it to the main nav between "Water Risk" and "Digital Water Governance".
 
-## Per-file targets
+## Files
 
-| File | Current | Action | Expected |
-|---|---|---|---|
-| hydrotrace-bg-sand.jpg | 2.4 MB | JPEG quality 78, mozjpeg, max 2560px wide | ~350–500 KB |
-| water-risk-bg.png | 2.7 MB | Convert to JPEG q80 (it's a photo bg), max 2560px | ~400–600 KB |
-| water-governance-bg.png | 2.5 MB | Convert to JPEG q80, max 2560px | ~400–600 KB |
-| water-risk-crop.jpg | 2.0 MB | JPEG q80, mozjpeg, max 2000px | ~250–400 KB |
-| water-governance.jpg | 1.2 MB | JPEG q80, mozjpeg, max 2000px | ~200–350 KB |
-| hydrotrace-logo-v2.png | 369 KB | PNG palette/quantize (keep transparency) | ~60–120 KB |
-| hydrotrace-logo-dark.png | 161 KB | PNG palette/quantize | ~40–80 KB |
+1. **Data drop** — copy the three uploads into `public/data/`:
+   - `public/data/sweep_results.json`
+   - `public/data/aqueduct_seasonal_peaks.json`
+   - `public/data/metadata.json`
 
-Total expected: ~1.7–2.7 MB (≈75–85% reduction).
+2. **New page** — `src/pages/RiskExplorer.tsx`
+   - Page intro section (Reckless Neue headline, DM Serif Display subhead, Open Sans body) on `#0e0e0e` background.
+   - Two-column layout: 240px controls + flex outputs, 16px gap, 24px padding. Stacks on mobile.
+   - All cards as frosted glass (`rgba(255,255,255,0.04)`, `1px solid rgba(255,255,255,0.12)`, radius 10px).
+   - Loads `/data/sweep_results.json` on mount, builds keyed index `${crop}|${timing}|${irrigation}|${allocation}|${schedule}`.
 
-## Notes
-- The two `*-bg.png` files I'll convert to `.jpg` only if they have no transparency. If they do, I'll keep PNG and run `pngquant`-style quantization via sharp. If converting to .jpg, I'll update the two `const bg = { url: "/images/...png" }` references in `src/pages/WaterRisk.tsx` and `src/pages/DigitalWaterGovernance.tsx`.
-- Originals will be overwritten — revertable from chat history.
-- After compression I'll run `bun run build` to confirm nothing breaks.
+3. **Small components co-located in the page file** (or `src/components/risk-explorer/`):
+   - `ControlsPanel` — Crop card, Water source card (allocation OR depth slider), Irrigation card, Financial card.
+   - `MetricStrip` — 4 tiles (Yield P50, Revenue P50, DSCR P50, Breach prob) with colour logic per spec.
+   - `AqueductPanel` — fully static, hardcoded values, amber accent, four "—" rows that never update.
+   - `PhysicalPanel` — 5 yield bars (P10–P90 at specified opacities), revenue-at-risk line, DSCR P50 big number, breach probability with 3px fill track.
+   - `GroundwaterStrip` — visible only when source = Groundwater.
+   - `UpsellStrip` — always visible, button links to `/contact` (route doesn't exist; use `mailto:info@hydrotrace.io` to match the existing Contact us pattern — confirm below).
 
-## Out of scope
-No layout, markup, or caching-header changes. No WebP/AVIF variants (would require `<picture>` markup changes).
+4. **Logic helpers** — keep inside the page module:
+   - `computeFinancials(yieldsRaw, price, farmHa, loanPerHa, dscrCovenant)` exactly as specified (normal CDF approximation included).
+   - `gwCost(irrAppliedMm, farmHa, depthM)` exactly as specified.
+   - `formatRevenue`, plus formatters for yield/DSCR/breach/area/price/loan/depth/allocation per the number-formatting table.
+   - Irrigation label → key map; allocation → `p${pct}` (forced to `p100` when Rainfed); schedule label → `standard|optimised`.
+   - When crop changes, reset price and loan-per-ha to the crop default; clamp price slider range to ±40% of new default.
+
+5. **Routing** — `src/App.tsx`: add `<Route path="/risk-explorer" element={<RiskExplorer />} />` above the catch-all.
+
+6. **Navigation** — `src/components/Navbar.tsx`: insert "Risk explorer" button between "Water Risk" and "Digital Water Governance" (desktop + mobile), matching existing styling.
+
+## Styling notes
+
+- All colours hardcoded per the spec's data palette — this page is intentionally outside the site's design tokens because it's a self-contained dark tool surface. Confirmed by the explicit hex table in the brief.
+- Use native `<input type="range">` styled to spec rather than the shadcn Slider, to hit the exact 3px track + `#4B5FDB` fill cleanly without fighting the token system.
+- Fonts loaded already (`Reckless Neue`, `DM Serif Display`/`DM Serif Text`, `Open Sans`, `Brown Std`). Page intro uses Reckless Neue for the headline only; everything else uses DM Serif Display for headings and Open Sans for body.
+- Generic `$` for monetary values; never surface `allocation_label` or any region-specific terms from JSON.
+
+## One clarification before I build
+
+The upsell button says "linking to existing `/contact` page", but this site has no `/contact` route — Contact us currently opens `mailto:info@hydrotrace.io` everywhere. I'll wire the button to `mailto:info@hydrotrace.io` to match the rest of the site unless you'd rather I add a new `/contact` route.

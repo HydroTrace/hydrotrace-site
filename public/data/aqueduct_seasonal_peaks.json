@@ -1,0 +1,732 @@
+{
+  "MDB_Griffith": {
+    "Cotton": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.513,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.175,
+      "mean_bws_cat": 1,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.513,
+        0.316,
+        0.087,
+        0.022,
+        0.02,
+        0.09
+      ]
+    },
+    "Wheat": {
+      "peak_month": 11,
+      "peak_bws_raw": 2.291,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 0.528,
+      "mean_bws_cat": 1,
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_monthly_raw": [
+        0.087,
+        0.022,
+        0.02,
+        0.09,
+        0.657,
+        2.291
+      ]
+    },
+    "Maize": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.513,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.175,
+      "mean_bws_cat": 1,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.513,
+        0.316,
+        0.087,
+        0.022,
+        0.02,
+        0.09
+      ]
+    },
+    "Sorghum": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.513,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.175,
+      "mean_bws_cat": 1,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.513,
+        0.316,
+        0.087,
+        0.022,
+        0.02,
+        0.09
+      ]
+    },
+    "Sunflower": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.513,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.175,
+      "mean_bws_cat": 1,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.513,
+        0.316,
+        0.087,
+        0.022,
+        0.02,
+        0.09
+      ]
+    },
+    "SugarBeet": {
+      "peak_month": 3,
+      "peak_bws_raw": 0.625,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.264,
+      "mean_bws_cat": 1,
+      "season_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_monthly_raw": [
+        0.625,
+        0.513,
+        0.316,
+        0.087,
+        0.022,
+        0.02
+      ]
+    }
+  },
+  "Guadalquivir": {
+    "Cotton": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.284,
+      "mean_bws_cat": 3,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.093,
+        0.433,
+        1.514,
+        2.134,
+        2.189,
+        1.341
+      ]
+    },
+    "Wheat": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.292,
+      "mean_bws_cat": 3,
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_monthly_raw": [
+        1.514,
+        2.134,
+        2.189,
+        1.341,
+        0.403,
+        0.171
+      ]
+    },
+    "Maize": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.284,
+      "mean_bws_cat": 3,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.093,
+        0.433,
+        1.514,
+        2.134,
+        2.189,
+        1.341
+      ]
+    },
+    "Sorghum": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.284,
+      "mean_bws_cat": 3,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.093,
+        0.433,
+        1.514,
+        2.134,
+        2.189,
+        1.341
+      ]
+    },
+    "Sunflower": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.284,
+      "mean_bws_cat": 3,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.093,
+        0.433,
+        1.514,
+        2.134,
+        2.189,
+        1.341
+      ]
+    },
+    "SugarBeet": {
+      "peak_month": 8,
+      "peak_bws_raw": 2.189,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 1.068,
+      "mean_bws_cat": 2,
+      "season_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_monthly_raw": [
+        0.042,
+        0.093,
+        0.433,
+        1.514,
+        2.134,
+        2.189
+      ]
+    }
+  },
+  "Central_Valley_CA": {
+    "Cotton": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.683,
+      "mean_bws_cat": 4,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.474,
+        1.878,
+        3.645,
+        4.035,
+        3.673,
+        2.396
+      ]
+    },
+    "Wheat": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.717,
+      "mean_bws_cat": 4,
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_monthly_raw": [
+        3.645,
+        4.035,
+        3.673,
+        2.396,
+        1.469,
+        1.087
+      ]
+    },
+    "Maize": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.683,
+      "mean_bws_cat": 4,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.474,
+        1.878,
+        3.645,
+        4.035,
+        3.673,
+        2.396
+      ]
+    },
+    "Sorghum": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.683,
+      "mean_bws_cat": 4,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.474,
+        1.878,
+        3.645,
+        4.035,
+        3.673,
+        2.396
+      ]
+    },
+    "Sunflower": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.683,
+      "mean_bws_cat": 4,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.474,
+        1.878,
+        3.645,
+        4.035,
+        3.673,
+        2.396
+      ]
+    },
+    "SugarBeet": {
+      "peak_month": 7,
+      "peak_bws_raw": 4.035,
+      "peak_bws_cat": 4,
+      "peak_bws_label": "Extremely High (>80%)",
+      "mean_bws_raw": 2.327,
+      "mean_bws_cat": 4,
+      "season_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_monthly_raw": [
+        0.256,
+        0.474,
+        1.878,
+        3.645,
+        4.035,
+        3.673
+      ]
+    }
+  },
+  "Punjab_India": {
+    "Cotton": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.605,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.257,
+      "mean_bws_cat": 2,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.605,
+        0.465,
+        0.325,
+        0.122,
+        0.01,
+        0.012
+      ]
+    },
+    "Wheat": {
+      "peak_month": 6,
+      "peak_bws_raw": 0.325,
+      "peak_bws_cat": 2,
+      "peak_bws_label": "Medium - High (20-40%)",
+      "mean_bws_raw": 0.113,
+      "mean_bws_cat": 1,
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_monthly_raw": [
+        0.325,
+        0.122,
+        0.01,
+        0.012,
+        0.06,
+        0.146
+      ]
+    },
+    "Maize": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.605,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.257,
+      "mean_bws_cat": 2,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.605,
+        0.465,
+        0.325,
+        0.122,
+        0.01,
+        0.012
+      ]
+    },
+    "Sorghum": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.605,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.257,
+      "mean_bws_cat": 2,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.605,
+        0.465,
+        0.325,
+        0.122,
+        0.01,
+        0.012
+      ]
+    },
+    "Sunflower": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.605,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.257,
+      "mean_bws_cat": 2,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.605,
+        0.465,
+        0.325,
+        0.122,
+        0.01,
+        0.012
+      ]
+    },
+    "SugarBeet": {
+      "peak_month": 4,
+      "peak_bws_raw": 0.605,
+      "peak_bws_cat": 3,
+      "peak_bws_label": "High (40-80%)",
+      "mean_bws_raw": 0.349,
+      "mean_bws_cat": 2,
+      "season_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_monthly_raw": [
+        0.566,
+        0.605,
+        0.465,
+        0.325,
+        0.122,
+        0.01
+      ]
+    }
+  },
+  "Po_Valley_Italy": {
+    "Cotton": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.042,
+      "mean_bws_cat": 0,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.01,
+        0.018,
+        0.042,
+        0.086,
+        0.065,
+        0.032
+      ]
+    },
+    "Wheat": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.042,
+      "mean_bws_cat": 0,
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_monthly_raw": [
+        0.042,
+        0.086,
+        0.065,
+        0.032,
+        0.019,
+        0.009
+      ]
+    },
+    "Maize": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.042,
+      "mean_bws_cat": 0,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.01,
+        0.018,
+        0.042,
+        0.086,
+        0.065,
+        0.032
+      ]
+    },
+    "Sorghum": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.042,
+      "mean_bws_cat": 0,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.01,
+        0.018,
+        0.042,
+        0.086,
+        0.065,
+        0.032
+      ]
+    },
+    "Sunflower": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.042,
+      "mean_bws_cat": 0,
+      "season_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_monthly_raw": [
+        0.01,
+        0.018,
+        0.042,
+        0.086,
+        0.065,
+        0.032
+      ]
+    },
+    "SugarBeet": {
+      "peak_month": 7,
+      "peak_bws_raw": 0.086,
+      "peak_bws_cat": 0,
+      "peak_bws_label": "Low (<10%)",
+      "mean_bws_raw": 0.038,
+      "mean_bws_cat": 0,
+      "season_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_monthly_raw": [
+        0.007,
+        0.01,
+        0.018,
+        0.042,
+        0.086,
+        0.065
+      ]
+    }
+  }
+}

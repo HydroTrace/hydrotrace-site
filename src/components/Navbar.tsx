@@ -101,6 +101,15 @@ const Navbar = () => {
               </span>
             </button>
             <button
+              onClick={() => { setIsMenuOpen(false); navigate("/risk-explorer"); }}
+              className={`px-6 py-2 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColorMuted} hover:${textColor}`}
+            >
+              <span className="relative inline-block group">
+                Risk explorer
+                <span className={`absolute left-0 bottom-0 w-full h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 ${underlineColor}`} />
+              </span>
+            </button>
+            <button
               onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
               className={`px-6 py-2 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColorMuted} hover:${textColor}`}
             >
@@ -152,6 +161,12 @@ const Navbar = () => {
                 className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
               >
                 Water Risk
+              </button>
+              <button
+                onClick={() => { setIsMenuOpen(false); navigate("/risk-explorer"); }}
+                className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
+              >
+                Risk explorer
               </button>
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
