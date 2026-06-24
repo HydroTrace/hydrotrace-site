@@ -477,7 +477,7 @@ export default function RiskExplorer() {
           This explorer draws on 1,116 AquaCrop crop-water simulations across a
           representative semi-arid irrigated agriculture profile. Adjust crop
           type, water availability, irrigation method, and financial parameters
-          to see how physical water stress translates into financial exposure —
+          to see how physical water stress translates into financial exposure,
           and why basin-level screening alone cannot answer that question.
           Site-specific analysis using your actual climate data and asset
           parameters is available on request.
