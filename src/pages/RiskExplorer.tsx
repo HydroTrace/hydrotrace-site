@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Info } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import bgAsset from "@/assets/risk-explorer-bg.jpg.asset.json";
 import {
