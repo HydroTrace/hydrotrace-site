@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
 import bgAsset from "@/assets/risk-explorer-bg.jpg.asset.json";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Rec = {
   crop: string;
