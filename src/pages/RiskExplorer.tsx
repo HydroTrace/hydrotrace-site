@@ -383,9 +383,6 @@ export default function RiskExplorer() {
         { k: "P90", v: record.yield_p90, op: 0.35 },
       ]
     : [];
-  const yieldMax = yieldPs.length
-    ? Math.max(...yieldPs.map((p) => p.v))
-    : 1;
 
   // Colour logic
   const dscrColor =
@@ -872,7 +869,14 @@ export default function RiskExplorer() {
                   }}
                 >
                   {yieldPs.map((p) => {
-                    const h = (p.v / yieldMax) * 100;
+                    const minVal = record.yield_p10;
+                    const maxVal = record.yield_p90;
+                    const range = maxVal - minVal || 0.01;
+                    let h = 15;
+                    if (p.k === "P90") h = 100;
+                    else if (p.k !== "P10") {
+                      h = 15 + ((p.v - minVal) / range) * 85;
+                    }
                     return (
                       <div
                         key={p.k}
