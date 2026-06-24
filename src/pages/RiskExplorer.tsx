@@ -17,7 +17,7 @@ type Rec = {
 };
 
 const CROPS = ["Cotton", "Wheat", "Maize", "Sorghum", "Sunflower", "SugarBeet"] as const;
-const CROP_LABELS: Rec<string, string> = {
+const CROP_LABELS: Record<string, string> = {
   Cotton: "Cotton",
   Wheat: "Wheat",
   Maize: "Maize",
@@ -27,14 +27,14 @@ const CROP_LABELS: Rec<string, string> = {
 };
 const TIMINGS = ["Early", "Normal", "Late"] as const;
 const IRRIGATION_LABELS = ["Flood / furrow", "Sprinkler", "Drip / micro", "Rainfed"] as const;
-const IRRIGATION_MAP: Rec<string, string> = {
+const IRRIGATION_MAP: Record<string, string> = {
   "Flood / furrow": "flood",
   Sprinkler: "sprinkler",
   "Drip / micro": "drip",
   Rainfed: "rainfed",
 };
 
-const CROP_DEFAULTS: Rec<string, { price: number; loan: number }> = {
+const CROP_DEFAULTS: Record<string, { price: number; loan: number }> = {
   Cotton: { price: 580, loan: 4000 },
   Wheat: { price: 320, loan: 2500 },
   Maize: { price: 280, loan: 2000 },
@@ -281,7 +281,7 @@ function Dropdown({
 const DEPTH_SNAPS = [5, 15, 30, 50, 80];
 
 export default function RiskExplorer() {
-  const [records, setRecords] = useState<Record[] | null>(null);
+  const [records, setRecords] = useState<Rec[] | null>(null);
   const [index, setIndex] = useState<Map<string, Rec>>(new Map());
 
   // Controls
