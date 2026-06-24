@@ -24,14 +24,13 @@ type Rec = {
   yields_raw: number[];
 };
 
-const CROPS = ["Cotton", "Wheat", "Maize", "Sorghum", "Sunflower", "SugarBeet"] as const;
+const CROPS = ["Cotton", "Wheat", "Maize", "Sorghum", "Sunflower"] as const;
 const CROP_LABELS: Record<string, string> = {
   Cotton: "Cotton",
   Wheat: "Wheat",
   Maize: "Maize",
   Sorghum: "Sorghum",
   Sunflower: "Sunflower",
-  SugarBeet: "Sugar beet",
 };
 const TIMINGS = ["Early", "Normal", "Late"] as const;
 const IRRIGATION_LABELS = ["Flood / furrow", "Sprinkler", "Drip / micro", "Rainfed"] as const;
@@ -48,7 +47,6 @@ const CROP_DEFAULTS: Record<string, { price: number; loan: number }> = {
   Maize: { price: 280, loan: 2000 },
   Sorghum: { price: 250, loan: 1500 },
   Sunflower: { price: 500, loan: 1800 },
-  SugarBeet: { price: 45, loan: 3000 },
 };
 
 const OP_COST_PER_HA = 1200;
