@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
 import bgAsset from "@/assets/risk-explorer-bg.jpg.asset.json";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Rec = {
   crop: string;
@@ -558,16 +564,44 @@ export default function RiskExplorer() {
               ) : (
                 <div style={{ marginTop: 14 }}>
                   <SectionLabel>Water table depth</SectionLabel>
-                  <div
-                    style={{
-                      fontFamily: "'Open Sans', sans-serif",
-                      fontSize: 12,
-                      color: COL.sub,
-                      marginBottom: 6,
-                    }}
-                  >
-                    {depthM} m
-                  </div>
+                  {depthM === 5 ? (
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <div
+                            style={{
+                              fontFamily: "'Open Sans', sans-serif",
+                              fontSize: 12,
+                              color: "#F5A623",
+                              marginBottom: 6,
+                              cursor: "help",
+                            }}
+                          >
+                            5 m · shallow
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          side="top"
+                          className="max-w-[260px] text-xs leading-relaxed bg-[#1a1a1a] border border-white/20 text-white"
+                        >
+                          At shallow depths, capillary rise may contribute to
+                          crop water supply — not captured in this model.
+                          Available in site-specific analysis.
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  ) : (
+                    <div
+                      style={{
+                        fontFamily: "'Open Sans', sans-serif",
+                        fontSize: 12,
+                        color: COL.sub,
+                        marginBottom: 6,
+                      }}
+                    >
+                      {depthM} m
+                    </div>
+                  )}
                   <input
                     type="range"
                     min={0}
