@@ -400,7 +400,7 @@ export default function RiskExplorer() {
         minHeight: "100vh",
         color: COL.text,
         backgroundColor: COL.bg,
-        backgroundImage: `linear-gradient(rgba(10,12,8,0.55), rgba(10,12,8,0.7)), url(/images/risk-explorer-bg.jpg)`
+        backgroundImage: `linear-gradient(rgba(10,12,8,0.55), rgba(10,12,8,0.7)), url(/images/risk-explorer-bg.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
