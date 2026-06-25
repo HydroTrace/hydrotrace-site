@@ -518,46 +518,46 @@ export default function RiskExplorer() {
                 value={source}
                 onChange={setSource}
               />
-              {source === "Surface water" ? (
-                <div style={{ marginTop: 14 }}>
-                  <SectionLabel>Water allocation</SectionLabel>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontFamily: "'Open Sans', sans-serif",
-                      fontSize: 12,
-                      color: COL.text,
-                      marginBottom: 6,
-                    }}
-                  >
-                    <span style={{ color: COL.sub }}>
-                      {isRainfed ? "—" : `${allocationPct}%`}
-                    </span>
-                  </div>
-                  <RangeSlider
-                    min={10}
-                    max={100}
-                    step={10}
-                    value={allocationPct}
-                    onChange={setAllocationPct}
-                    disabled={sliderDisabled}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontFamily: "'Open Sans', sans-serif",
-                      fontSize: 10,
-                      color: COL.tert,
-                      marginTop: 6,
-                    }}
-                  >
-                    <span>Low reliability</span>
-                    <span>Full allocation</span>
-                  </div>
+              <div style={{ marginTop: 14 }}>
+                <SectionLabel>Water allocation</SectionLabel>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontFamily: "'Open Sans', sans-serif",
+                    fontSize: 12,
+                    color: COL.text,
+                    marginBottom: 6,
+                  }}
+                >
+                  <span style={{ color: COL.sub }}>
+                    {isRainfed ? "—" : `${allocationPct}%`}
+                  </span>
                 </div>
-              ) : (
+                <RangeSlider
+                  min={10}
+                  max={100}
+                  step={10}
+                  value={allocationPct}
+                  onChange={setAllocationPct}
+                  disabled={sliderDisabled}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontFamily: "'Open Sans', sans-serif",
+                    fontSize: 10,
+                    color: COL.tert,
+                    marginTop: 6,
+                  }}
+                >
+                  <span>Low reliability</span>
+                  <span>Full allocation</span>
+                </div>
+              </div>
+
+              {source === "Groundwater" && (
                 <div style={{ marginTop: 14 }}>
                   <SectionLabel>Water table depth</SectionLabel>
                   {depthM === 5 ? (
