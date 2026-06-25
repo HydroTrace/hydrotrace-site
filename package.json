@@ -59,7 +59,7 @@
     "react-resizable-panels": "^2.1.9",
     "react-router-dom": "^7.18.0",
     "react-simple-maps": "^3.0.0",
-    "recharts": "^3.9.0",
+    "recharts": "^2.15.4",
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
@@ -87,6 +87,7 @@
     "vite": "^5.4.19"
   },
   "overrides": {
-    "d3-color": "^3.1.0"
+    "d3-color": "^3.1.0",
+    "lodash": "^4.17.21"
   }
 }
