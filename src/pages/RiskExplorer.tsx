@@ -561,31 +561,43 @@ export default function RiskExplorer() {
                 <div style={{ marginTop: 14 }}>
                   <SectionLabel>Water table depth</SectionLabel>
                   {depthM === 5 ? (
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div
-                            style={{
-                              fontFamily: "'Open Sans', sans-serif",
-                              fontSize: 12,
-                              color: "#F5A623",
-                              marginBottom: 6,
-                              cursor: "help",
-                            }}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
+                        marginBottom: 6,
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontFamily: "'Open Sans', sans-serif",
+                          fontSize: 12,
+                          color: "#F5A623",
+                        }}
+                      >
+                        5 m · shallow
+                      </div>
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info
+                              size={14}
+                              color="#F5A623"
+                              style={{ cursor: "help" }}
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent
+                            side="top"
+                            className="max-w-[260px] text-xs leading-relaxed bg-[#1a1a1a] border border-white/20 text-white"
                           >
-                            5 m · shallow
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent
-                          side="top"
-                          className="max-w-[260px] text-xs leading-relaxed bg-[#1a1a1a] border border-white/20 text-white"
-                        >
-                          At shallow depths, capillary rise may contribute to
-                          crop water supply — not captured in this model.
-                          Available in site-specific analysis.
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                            At shallow depths, capillary rise may contribute to
+                            crop water supply — not captured in this model.
+                            Available in site-specific analysis.
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                   ) : (
                     <div
                       style={{
