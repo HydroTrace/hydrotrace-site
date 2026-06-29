@@ -6,7 +6,7 @@ const services = [
     image: "/images/services/licence-adequacy.jpg",
     alt: "Aerial view of irrigation pivot watering green agricultural field",
     description:
-      "We estimate crop water demand from physical simulation and compare it against licensed abstraction volumes. This gives operators, regulators, and investors a probabilistic assessment of whether a licence is adequate for the crop, location, and conditions it covers. No metered abstraction data required.",
+      "We estimate crop water demand from physical simulation and compare it against licensed abstraction volumes. Where licence information or abstraction records are unavailable, we can independently estimate the volumes a crop and location require under current and future conditions. This gives operators, regulators, and investors a probabilistic assessment of whether a licence is adequate, whether demand is being met, and where water use is likely to concentrate across a catchment.",
   },
   {
     title: "Water Use Transparency",
