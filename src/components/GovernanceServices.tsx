@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 
 const services = [
   {
@@ -18,7 +18,6 @@ const services = [
 ];
 
 const GovernanceServices = () => {
-  const navigate = useNavigate();
 
   return (
     <section className="relative bg-black text-white min-h-screen flex items-center py-32 md:py-48">
@@ -47,8 +46,8 @@ const GovernanceServices = () => {
           <p className="text-[15px] leading-relaxed text-white/85 mb-12 max-w-md font-['Brown_Std']">
             {services[0].description}
           </p>
-          <button
-            onClick={() => navigate('/contact')}
+          <a
+            href="mailto:info@hydrotrace.io"
             className="group flex items-center gap-4 text-white/70 hover:text-white transition-colors cursor-pointer"
           >
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/30 group-hover:border-white/60 transition-colors">
@@ -68,7 +67,7 @@ const GovernanceServices = () => {
             <span className="text-xs tracking-[0.22em] font-mono uppercase">
               Request an assessment
             </span>
-          </button>
+          </a>
         </article>
 
         {/* Card 2 */}
