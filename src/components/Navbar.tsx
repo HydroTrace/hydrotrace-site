@@ -117,7 +117,7 @@ const Navbar = () => {
               className={`px-6 py-2 transition-colors font-light text-[18px] tracking-wide font-['Brown_Std'] ${textColorMuted} hover:${textColor}`}
             >
               <span className="relative inline-block group">
-                Digital Water Governance
+                Water Governance
                 <span className={`absolute left-0 bottom-0 w-full h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 ${underlineColor}`} />
               </span>
             </button>
@@ -175,7 +175,7 @@ const Navbar = () => {
                 onClick={() => { setIsMenuOpen(false); navigate("/digital-water-governance"); }}
                 className={`transition-colors text-left font-light text-[15px] tracking-wide px-3 py-3 font-['Brown_Std'] ${textColorMuted}`}
               >
-                Digital Water Governance
+                Water Governance
               </button>
               <button
                 onClick={() => { setIsMenuOpen(false); navigate("/blog"); }}

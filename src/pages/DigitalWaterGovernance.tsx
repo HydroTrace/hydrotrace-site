@@ -21,7 +21,7 @@ const DigitalWaterGovernance = () => {
         />
         <div className="relative h-full">
           <Hero
-            eyebrow="Digital Water Governance"
+            eyebrow="Water Governance"
             headline={<>Making water use legible.</>}
             description="From abstraction licences to crop demand. Translating physical water use into transparent, defensible data."
             scrollTargetId="governance-services"

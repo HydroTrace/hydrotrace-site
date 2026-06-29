@@ -15,7 +15,7 @@ const cards = [
     cta: "Explore Water Risk",
   },
   {
-    title: "Digital Water Governance",
+    title: "Water Governance",
     image: waterGovImg.url,
     alt: "Aerial view of glacial river braids in shades of blue",
     description:
